@@ -21,7 +21,7 @@ export default defineConfig({
       { text: 'Blog', link: '/' },
       { text: 'Tags', link: '/tags' },
       { text: 'Docs', link: 'https://docs.flyto2.com' },
-      { text: 'flyto2.com', link: 'https://flyto2.com' },
+      { text: 'Flyto2', link: 'https://flyto2.com' },
     ],
 
     sidebar: false,

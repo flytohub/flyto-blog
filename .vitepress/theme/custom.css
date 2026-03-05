@@ -1,0 +1,36 @@
+/* Blog-specific overrides */
+
+/* Remove default VitePress page padding on home */
+.VPDoc.has-aside .content-container,
+.VPDoc:not(.has-aside) .content-container {
+  max-width: 100% !important;
+}
+
+/* Post page styling */
+.vp-doc h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+/* Post page meta bar */
+.post-page-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0 1.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+}
+
+.post-page-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+}
