@@ -58,6 +58,7 @@ export default defineConfig({
     sidebar: false,
 
     socialLinks: [
+      { icon: 'youtube', link: 'https://www.youtube.com/@Flyto2' },
       { icon: 'github', link: 'https://github.com/flytohub' },
     ],
 
