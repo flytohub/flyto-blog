@@ -1,5 +1,6 @@
 ---
 title: Using Flyto2 as an MCP Server
+description: Step-by-step guide to connecting flyto-core as an MCP server to Claude Desktop, Cursor, and other MCP-compatible AI clients.
 date: 2025-03-05
 tags: [tutorial, mcp]
 author: Flyto2 Team

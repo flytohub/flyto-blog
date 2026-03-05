@@ -1,5 +1,6 @@
 ---
 title: Introducing Flyto2 — Enterprise Workflow Platform
+description: Meet Flyto2, an enterprise workflow platform with 412+ pre-built modules, deterministic execution, full audit trails, and native MCP support.
 date: 2025-03-05
 tags: [announcement, platform]
 author: Flyto2 Team

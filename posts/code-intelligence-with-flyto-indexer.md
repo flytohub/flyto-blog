@@ -1,5 +1,6 @@
 ---
 title: Code Intelligence with flyto-indexer
+description: How flyto-indexer gives AI agents deep codebase understanding with impact analysis, cross-project references, dead code detection, and code health scoring.
 date: 2025-03-05
 tags: [tutorial, indexer, mcp]
 author: Flyto2 Team
