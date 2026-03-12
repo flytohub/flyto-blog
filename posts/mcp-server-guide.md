@@ -4,11 +4,14 @@ description: Step-by-step guide to connecting flyto-core as an MCP server to Cla
 date: 2025-03-05
 tags: [tutorial, mcp]
 author: Flyto2 Team
+cover: /mcp-server.svg
 ---
 
 Learn how to connect flyto-core as an MCP server to Claude Desktop, Cursor, and other MCP-compatible clients.
 
 <!-- more -->
+
+![412 Modules as MCP Tools](/mcp-server.svg)
 
 ## What is MCP?
 

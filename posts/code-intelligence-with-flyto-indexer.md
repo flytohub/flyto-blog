@@ -4,11 +4,14 @@ description: How flyto-indexer gives AI agents deep codebase understanding with 
 date: 2025-03-05
 tags: [tutorial, indexer, mcp]
 author: Flyto2 Team
+cover: /code-intelligence.svg
 ---
 
 flyto-indexer is a zero-dependency MCP server that gives AI agents deep understanding of your codebase — impact analysis, cross-project references, and code quality scoring.
 
 <!-- more -->
+
+![Know What Breaks Before You Change It](/code-intelligence.svg)
 
 ## The Problem
 

@@ -4,11 +4,14 @@ description: Meet Flyto2, an enterprise workflow platform with 412+ pre-built mo
 date: 2025-03-05
 tags: [announcement, platform]
 author: Flyto2 Team
+cover: /introducing-flyto2.svg
 ---
 
 We're excited to introduce Flyto2, an enterprise workflow platform with 412+ pre-built modules and deterministic execution.
 
 <!-- more -->
+
+![The Flyto2 Ecosystem](/introducing-flyto2.svg)
 
 ## What is Flyto2?
 
