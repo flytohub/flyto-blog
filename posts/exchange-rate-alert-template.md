@@ -4,6 +4,7 @@ description: A step-by-step guide to using the Exchange Rate Alert community tem
 date: 2026-03-06
 tags: [template, tutorial, notification, free-api]
 author: Flyto2 Team
+cover: /exchange-rate-alert.svg
 ---
 
 Monitor live currency exchange rates and get instant notifications — no API key required. This guide walks you through the **Exchange Rate Alert** community template.
