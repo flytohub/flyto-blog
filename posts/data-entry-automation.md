@@ -4,6 +4,7 @@ description: "Data entry automation eliminates repetitive typing and copying. Le
 date: 2026-03-17
 tags: [data-entry, automation, productivity, no-code]
 author: Flyto2 Team
+cover: /data-entry-automation.svg
 ---
 
 Manual data entry is one of the biggest time wasters in modern work. You have the information in one place and need it in another, but the only way to get it there is to type it in by hand. Data entry automation puts an end to that — letting your computer handle the copying while you do something more valuable.
@@ -73,6 +74,8 @@ The platform opens the target website, identifies the form fields, and matches t
 Flyto2 fills out the form, clicks submit, and moves to the next record. Each entry is logged with a screenshot so you can verify that everything was entered correctly.
 
 For a hundred records, what would take a full day of typing is done in minutes.
+
+![Before and after comparison: manual typing takes 2 hours vs Flyto2 auto-filling in 2 minutes](/data-entry-before-after.svg)
 
 ## Practical Examples of Data Entry Automation
 

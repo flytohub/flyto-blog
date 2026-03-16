@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Flyto2 Blog',
-  description: 'Product updates, tutorials, and engineering insights from the Flyto2 team.',
+  title: 'Flyto2 Blog - Automation Tips, Guides & Updates',
+  description: 'Practical guides on automating browser tasks, workflow tips, and product updates from the Flyto2 team.',
   lang: 'en-US',
   cleanUrls: true,
   sitemap: { hostname: 'https://blog.flyto2.com' },

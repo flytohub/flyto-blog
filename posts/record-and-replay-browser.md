@@ -4,6 +4,7 @@ description: "Record and replay is the simplest way to automate browser tasks. L
 date: 2026-03-17
 tags: [record-and-replay, browser-automation, productivity, no-code]
 author: Flyto2 Team
+cover: /record-and-replay-browser.svg
 ---
 
 What if automating your browser was as simple as doing the task once? That is the idea behind record and replay — you perform a task while the tool watches, and then it repeats the exact same steps whenever you want.
@@ -88,6 +89,8 @@ Recordings are not set in stone. You can:
 - Remove steps (skip an action that is no longer needed)
 - Change data (use different input values for each run)
 - Add conditions (only perform a step if a certain element is visible)
+
+![Record and replay flow: record button captures steps, play button replays them with verification](/record-replay-flow.svg)
 
 ## Record and Replay vs. Other Automation Approaches
 

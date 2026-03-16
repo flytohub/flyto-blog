@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="440" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="55" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Free Alternative for Small Teams</text>
+
+  <!-- Team of 3 people -->
+  <!-- Person 1 -->
+  <circle cx="400" cy="150" r="20" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="400" cy="143" r="8" fill="#a78bfa"/>
+  <path d="M 384 168 Q 400 180 416 168" fill="none" stroke="#a78bfa" stroke-width="2"/>
+
+  <!-- Person 2 -->
+  <circle cx="480" cy="140" r="22" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="480" cy="133" r="9" fill="#a78bfa"/>
+  <path d="M 462 158 Q 480 172 498 158" fill="none" stroke="#a78bfa" stroke-width="2"/>
+
+  <!-- Person 3 -->
+  <circle cx="560" cy="150" r="20" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="560" cy="143" r="8" fill="#a78bfa"/>
+  <path d="M 544 168 Q 560 180 576 168" fill="none" stroke="#a78bfa" stroke-width="2"/>
+
+  <!-- Gear icon below team -->
+  <g transform="translate(455, 200)">
+    <circle cx="25" cy="25" r="18" fill="none" stroke="url(#purple)" stroke-width="3"/>
+    <circle cx="25" cy="25" r="7" fill="url(#purple)"/>
+    <!-- Gear teeth -->
+    <rect x="21" y="0" width="8" height="10" rx="2" fill="url(#purple)"/>
+    <rect x="21" y="40" width="8" height="10" rx="2" fill="url(#purple)"/>
+    <rect x="0" y="21" width="10" height="8" rx="2" fill="url(#purple)"/>
+    <rect x="40" y="21" width="10" height="8" rx="2" fill="url(#purple)"/>
+    <!-- Diagonal teeth -->
+    <rect x="5" y="5" width="8" height="10" rx="2" fill="url(#purple)" transform="rotate(45, 9, 10)"/>
+    <rect x="37" y="5" width="8" height="10" rx="2" fill="url(#purple)" transform="rotate(-45, 41, 10)"/>
+    <rect x="5" y="35" width="8" height="10" rx="2" fill="url(#purple)" transform="rotate(-45, 9, 40)"/>
+    <rect x="37" y="35" width="8" height="10" rx="2" fill="url(#purple)" transform="rotate(45, 41, 40)"/>
+  </g>
+
+  <!-- Features list -->
+  <g transform="translate(310, 280)">
+    <path d="M 0 8 L 5 14 L 14 2" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="14" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">No per-bot licensing</text>
+
+    <path d="M 0 38 L 5 44 L 14 32" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="44" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">No enterprise complexity</text>
+
+    <path d="M 0 68 L 5 74 L 14 62" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="74" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">412+ modules, ready to use</text>
+  </g>
+
+  <!-- Right side features -->
+  <g transform="translate(560, 280)">
+    <path d="M 0 8 L 5 14 L 14 2" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="14" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">Free &amp; open source</text>
+
+    <path d="M 0 38 L 5 44 L 14 32" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="44" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">5-minute setup</text>
+
+    <path d="M 0 68 L 5 74 L 14 62" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="74" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="13">Runs on your machine</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="480" y="410" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">flyto2.com</text>
+</svg>

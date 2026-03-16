@@ -4,6 +4,7 @@ description: "Need an automation anywhere alternative that's free and easy? Flyt
 date: 2026-03-17
 tags: [automation, alternative, free, small-teams]
 author: Flyto2 Team
+cover: /free-alternative-to-automation-anywhere.svg
 ---
 
 Enterprise automation platforms are built for large companies with dedicated IT teams, big budgets, and months to spare for setup. But what if you're a small team that just wants to get things done?
@@ -81,6 +82,8 @@ Every module is included for free:
 - **API calls** — send HTTP requests, handle responses, chain API workflows
 
 No "premium modules." No "enterprise tier." Everything is available from day one.
+
+![Small team plus simple automation equals 10x faster results with zero licensing fees](/small-team-automation.svg)
 
 ## Real-World Use Cases for Small Teams
 

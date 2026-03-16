@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Divider -->
+  <line x1="480" y1="30" x2="480" y2="270" stroke="#334155" stroke-width="1" stroke-dasharray="4 4"/>
+
+  <!-- BEFORE side -->
+  <text x="240" y="40" text-anchor="middle" fill="#ef4444" font-family="system-ui,sans-serif" font-size="16" font-weight="700">BEFORE</text>
+
+  <!-- Person figure -->
+  <circle cx="140" cy="90" r="16" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="140" y1="106" x2="140" y2="150" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="120" y1="125" x2="160" y2="125" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="140" y1="150" x2="125" y2="180" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="140" y1="150" x2="155" y2="180" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- Slow typing indicator -->
+  <text x="140" y="210" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="10">Typing...</text>
+
+  <!-- Form with empty fields -->
+  <rect x="220" y="65" width="200" height="160" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="320" y="85" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">Web Form</text>
+  <rect x="235" y="95" width="170" height="18" rx="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="245" y="108" fill="#475569" font-family="system-ui,sans-serif" font-size="9">Name: J|</text>
+  <rect x="235" y="120" width="170" height="18" rx="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="245" y="133" fill="#475569" font-family="system-ui,sans-serif" font-size="9">Email: ___</text>
+  <rect x="235" y="145" width="170" height="18" rx="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="245" y="158" fill="#475569" font-family="system-ui,sans-serif" font-size="9">Phone: ___</text>
+  <rect x="235" y="170" width="170" height="18" rx="3" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="245" y="183" fill="#475569" font-family="system-ui,sans-serif" font-size="9">Company: ___</text>
+
+  <!-- Time indicator -->
+  <text x="240" y="250" text-anchor="middle" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14" font-weight="700">2 hours</text>
+  <text x="240" y="268" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">for 100 records</text>
+
+  <!-- AFTER side -->
+  <text x="720" y="40" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="16" font-weight="700">AFTER</text>
+
+  <!-- Flyto2 icon / robot -->
+  <rect x="580" y="70" width="50" height="40" rx="8" fill="#7c3aed" opacity="0.3" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="605" y="95" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="16" font-weight="700">F2</text>
+  <!-- Speed lines -->
+  <line x1="640" y1="80" x2="660" y2="80" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+  <line x1="640" y1="90" x2="670" y2="90" stroke="#10b981" stroke-width="2" opacity="0.8"/>
+  <line x1="640" y1="100" x2="660" y2="100" stroke="#10b981" stroke-width="2" opacity="0.6"/>
+
+  <!-- Form with filled fields -->
+  <rect x="680" y="65" width="200" height="160" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="780" y="85" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">Web Form</text>
+  <rect x="695" y="95" width="170" height="18" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <text x="705" y="108" fill="#10b981" font-family="system-ui,sans-serif" font-size="9">Name: Jane Smith</text>
+  <rect x="695" y="120" width="170" height="18" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <text x="705" y="133" fill="#10b981" font-family="system-ui,sans-serif" font-size="9">Email: jane@example.com</text>
+  <rect x="695" y="145" width="170" height="18" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <text x="705" y="158" fill="#10b981" font-family="system-ui,sans-serif" font-size="9">Phone: 555-0101</text>
+  <rect x="695" y="170" width="170" height="18" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="1" opacity="0.5"/>
+  <text x="705" y="183" fill="#10b981" font-family="system-ui,sans-serif" font-size="9">Company: Acme Corp</text>
+
+  <!-- Checkmark -->
+  <circle cx="870" y="200" r="10" fill="#10b981" opacity="0.2"/>
+  <polyline points="864,200 868,206 878,194" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Time indicator -->
+  <text x="720" y="250" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="14" font-weight="700">2 minutes</text>
+  <text x="720" y="268" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="10">for 100 records</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Website browser window -->
+  <rect x="80" y="40" width="280" height="220" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <rect x="80" y="40" width="280" height="30" rx="10" fill="#334155"/>
+  <rect x="80" y="60" width="280" height="10" fill="#334155"/>
+  <circle cx="98" cy="55" r="5" fill="#ef4444" opacity="0.7"/>
+  <circle cx="113" cy="55" r="5" fill="#f59e0b" opacity="0.7"/>
+  <circle cx="128" cy="55" r="5" fill="#10b981" opacity="0.7"/>
+  <rect x="150" y="48" width="120" height="14" rx="3" fill="#1e293b"/>
+  <text x="210" y="59" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">example.com</text>
+
+  <!-- Website content lines -->
+  <rect x="100" y="85" width="120" height="8" rx="3" fill="#475569"/>
+  <rect x="100" y="100" width="90" height="6" rx="3" fill="#334155"/>
+  <rect x="100" y="112" width="100" height="6" rx="3" fill="#334155"/>
+  <rect x="100" y="130" width="120" height="8" rx="3" fill="#475569"/>
+  <rect x="100" y="145" width="80" height="6" rx="3" fill="#334155"/>
+  <rect x="100" y="157" width="110" height="6" rx="3" fill="#334155"/>
+  <rect x="100" y="175" width="120" height="8" rx="3" fill="#475569"/>
+  <rect x="100" y="190" width="95" height="6" rx="3" fill="#334155"/>
+  <rect x="100" y="202" width="105" height="6" rx="3" fill="#334155"/>
+
+  <!-- Highlighted data on website -->
+  <rect x="230" y="85" width="60" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+  <rect x="230" y="130" width="60" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+  <rect x="230" y="175" width="60" height="8" rx="2" fill="#7c3aed" opacity="0.3"/>
+
+  <text x="220" y="238" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Website</text>
+
+  <!-- Arrow -->
+  <path d="M 400 150 L 510 150" stroke="url(#purple)" stroke-width="3" stroke-dasharray="8 5"/>
+  <polygon points="510,142 530,150 510,158" fill="url(#purple)"/>
+  <text x="465" y="138" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Extract</text>
+
+  <!-- Extracted data table -->
+  <rect x="570" y="50" width="310" height="200" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+
+  <!-- Table header -->
+  <rect x="580" y="60" width="290" height="28" rx="6" fill="#7c3aed" opacity="0.2"/>
+  <text x="625" y="79" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Name</text>
+  <text x="725" y="79" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Price</text>
+  <text x="820" y="79" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Stock</text>
+
+  <!-- Table rows -->
+  <line x1="580" y1="95" x2="870" y2="95" stroke="#334155" stroke-width="1"/>
+  <text x="625" y="114" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">Product A</text>
+  <text x="725" y="114" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">$29.99</text>
+  <text x="820" y="114" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">In Stock</text>
+
+  <line x1="580" y1="125" x2="870" y2="125" stroke="#334155" stroke-width="1"/>
+  <text x="625" y="144" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">Product B</text>
+  <text x="725" y="144" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">$49.99</text>
+  <text x="820" y="144" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">In Stock</text>
+
+  <line x1="580" y1="155" x2="870" y2="155" stroke="#334155" stroke-width="1"/>
+  <text x="625" y="174" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">Product C</text>
+  <text x="725" y="174" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">$19.99</text>
+  <text x="820" y="174" text-anchor="middle" fill="#f59e0b" font-family="system-ui,sans-serif" font-size="10">Low</text>
+
+  <line x1="580" y1="185" x2="870" y2="185" stroke="#334155" stroke-width="1"/>
+  <text x="625" y="204" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">Product D</text>
+  <text x="725" y="204" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">$39.99</text>
+  <text x="820" y="204" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">In Stock</text>
+
+  <line x1="580" y1="215" x2="870" y2="215" stroke="#334155" stroke-width="1"/>
+  <text x="625" y="234" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">Product E</text>
+  <text x="725" y="234" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">$59.99</text>
+  <text x="820" y="234" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">In Stock</text>
+
+  <text x="725" y="272" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Structured Data</text>
+</svg>

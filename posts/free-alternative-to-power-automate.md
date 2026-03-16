@@ -4,6 +4,7 @@ description: "Looking for a power automate alternative free of Microsoft account
 date: 2026-03-17
 tags: [automation, alternative, free]
 author: Flyto2 Team
+cover: /free-alternative-to-power-automate.svg
 ---
 
 If you've ever tried to automate a simple task — like renaming files, filling out a form, or pulling data from a website — you've probably come across Microsoft Power Automate. It works, but it comes with strings attached: a Microsoft account, a cloud subscription, and a learning curve that can feel steep for basic tasks.
@@ -75,6 +76,8 @@ steps:
 ```
 
 Three steps. No drag-and-drop designer. No connectors to configure. Just tell it what to do, and it does it.
+
+![Comparison chart: cloud-based tools vs Flyto2 across cost, offline support, privacy, and open source](/power-automate-comparison.svg)
 
 ## How Flyto2 Compares as a Power Automate Alternative
 

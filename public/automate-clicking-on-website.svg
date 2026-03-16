@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="440" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="60" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Automate Clicking on Websites</text>
+
+  <!-- Button 1 -->
+  <rect x="300" y="130" width="120" height="40" rx="8" fill="#7c3aed" opacity="0.8"/>
+  <text x="360" y="155" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Approve</text>
+
+  <!-- Cursor on button 1 -->
+  <g transform="translate(385, 148)">
+    <path d="M 0 0 L 0 20 L 6 15 L 11 23 L 15 21 L 9 13 L 16 11 Z" fill="#e2e8f0" stroke="#0f172a" stroke-width="0.8"/>
+  </g>
+  <!-- Click ripple -->
+  <circle cx="390" cy="150" r="18" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="390" cy="150" r="28" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.3"/>
+
+  <!-- Arrow down -->
+  <path d="M 360 180 L 360 200" stroke="#475569" stroke-width="2"/>
+  <polygon points="354,198 360,210 366,198" fill="#475569"/>
+
+  <!-- Button 2 -->
+  <rect x="300" y="220" width="120" height="40" rx="8" fill="#7c3aed" opacity="0.8"/>
+  <text x="360" y="245" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Submit</text>
+  <!-- Click ripple -->
+  <circle cx="360" cy="240" r="18" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Arrow down -->
+  <path d="M 360 270 L 360 290" stroke="#475569" stroke-width="2"/>
+  <polygon points="354,288 360,300 366,288" fill="#475569"/>
+
+  <!-- Button 3 -->
+  <rect x="300" y="310" width="120" height="40" rx="8" fill="#7c3aed" opacity="0.8"/>
+  <text x="360" y="335" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Next Page</text>
+  <!-- Click ripple -->
+  <circle cx="360" cy="330" r="18" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Right side: repeat indicator -->
+  <rect x="520" y="180" width="180" height="120" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="610" y="215" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="14" font-weight="600">Repeat x100</text>
+  <!-- Circular arrow -->
+  <path d="M 580 260 A 30 30 0 1 1 640 260" fill="none" stroke="#a78bfa" stroke-width="2.5"/>
+  <polygon points="636,252 644,262 632,264" fill="#a78bfa"/>
+
+  <!-- Footer -->
+  <text x="480" y="410" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">flyto2.com</text>
+</svg>

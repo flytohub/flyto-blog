@@ -4,6 +4,7 @@ description: "New to computer automation? This beginner's guide explains what it
 date: 2026-03-17
 tags: [automation, beginner, guide, getting-started]
 author: Flyto2 Team
+cover: /computer-automation-for-beginners.svg
 ---
 
 Every day, you probably do the same things on your computer over and over. Downloading files, organizing folders, copying data, filling out forms. What if your computer could do those things by itself? That's what **computer automation** is all about.
@@ -17,6 +18,8 @@ This guide is for complete beginners. No programming experience needed. By the e
 Computer automation means teaching your computer to do repetitive tasks without your help. Instead of you clicking, typing, and dragging things around, you give the computer a set of instructions and it follows them — faster and without mistakes.
 
 Think of it like setting an alarm clock. You tell the clock what time to ring, and it handles the rest. Computer automation works the same way, just for more complex tasks.
+
+![How computer automation works: Trigger starts the process, Steps follow instructions, Result shows task complete](/automation-concept.svg)
 
 ## What Can You Automate?
 

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="440" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="55" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Free Alternative to Power Automate</text>
+
+  <!-- Left side: Power Automate (crossed out) -->
+  <rect x="170" y="110" width="240" height="230" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="290" y="145" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Power Automate</text>
+
+  <text x="210" y="180" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Microsoft account</text>
+  <text x="385" y="180" text-anchor="end" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14">Required</text>
+
+  <text x="210" y="210" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Cloud dependency</text>
+  <text x="385" y="210" text-anchor="end" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14">Yes</text>
+
+  <text x="210" y="240" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Offline mode</text>
+  <text x="385" y="240" text-anchor="end" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14">No</text>
+
+  <text x="210" y="270" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Free tier limits</text>
+  <text x="385" y="270" text-anchor="end" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14">750 runs/mo</text>
+
+  <text x="210" y="300" fill="#64748b" font-family="system-ui,sans-serif" font-size="12">Open source</text>
+  <text x="385" y="300" text-anchor="end" fill="#ef4444" font-family="system-ui,sans-serif" font-size="14">No</text>
+
+  <!-- Right side: Flyto2 -->
+  <rect x="550" y="110" width="240" height="230" rx="12" fill="#1e293b" stroke="url(#purple)" stroke-width="2"/>
+  <text x="670" y="145" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Flyto2</text>
+
+  <text x="590" y="180" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Account needed</text>
+  <path d="M 748 174 L 754 182 L 766 166" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="590" y="210" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Runs locally</text>
+  <path d="M 748 204 L 754 212 L 766 196" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="590" y="240" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Offline mode</text>
+  <path d="M 748 234 L 754 242 L 766 226" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="590" y="270" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Unlimited runs</text>
+  <path d="M 748 264 L 754 272 L 766 256" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <text x="590" y="300" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Open source</text>
+  <path d="M 748 294 L 754 302 L 766 286" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- VS divider -->
+  <circle cx="480" cy="225" r="24" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="231" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="14" font-weight="700">VS</text>
+
+  <!-- Footer -->
+  <text x="480" y="410" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">flyto2.com</text>
+</svg>

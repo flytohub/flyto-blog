@@ -4,6 +4,7 @@ description: "Discover how no code browser automation lets anyone automate repet
 date: 2026-03-17
 tags: [browser-automation, no-code, productivity, automation]
 author: Flyto2 Team
+cover: /no-code-browser-automation.svg
 ---
 
 You do not need to be a programmer to automate your browser. No code browser automation tools let anyone turn repetitive online tasks into workflows that run themselves — saving hours every week.
@@ -58,6 +59,8 @@ The workflow runs in a real browser. You can watch it happen or let it run in th
 ### 4. Reuse Anytime
 
 Once your workflow is set up, you can run it whenever you need it. Same task, zero effort.
+
+![Record, Save, and Replay flow showing the three steps of no-code browser automation](/browser-automation-steps.svg)
 
 ## Real-World Examples of No Code Browser Automation
 

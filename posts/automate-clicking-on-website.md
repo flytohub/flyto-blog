@@ -4,6 +4,7 @@ description: "Learn how to automate clicking on a website to eliminate repetitiv
 date: 2026-03-17
 tags: [automation, clicking, browser-automation, productivity]
 author: Flyto2 Team
+cover: /automate-clicking-on-website.svg
 ---
 
 If you spend part of your day clicking the same buttons on the same websites, you already know it is a waste of time. Here is how to automate clicking on a website so your computer does the repetitive work while you focus on things that matter.
@@ -67,6 +68,8 @@ Flyto2 opens a real browser and starts clicking. You can watch the automation ha
 ### Step 4: Save and Reuse
 
 Once your clicking workflow is set up, save it and run it whenever you need it. Tomorrow, next week, or on a schedule — the same clicks, perfectly executed every time.
+
+![Automated click flow: cursor clicks button, repeats 50 times, task complete](/auto-click-flow.svg)
 
 ## Practical Examples
 

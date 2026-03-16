@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Record button -->
+  <rect x="50" y="70" width="140" height="140" rx="14" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="120" cy="120" r="28" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+  <circle cx="120" cy="120" r="13" fill="#ef4444"/>
+  <text x="120" y="175" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Record</text>
+
+  <!-- Arrow -->
+  <path d="M 210 140 L 255 140" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5 3"/>
+  <polygon points="255,134 268,140 255,146" fill="#a78bfa"/>
+
+  <!-- Steps captured -->
+  <rect x="280" y="50" width="180" height="180" rx="12" fill="#1e293b" stroke="#7c3aed" stroke-width="2"/>
+  <text x="370" y="75" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Steps Captured</text>
+
+  <rect x="295" y="88" width="150" height="22" rx="4" fill="#7c3aed" opacity="0.15"/>
+  <text x="305" y="103" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">1. goto login page</text>
+
+  <rect x="295" y="116" width="150" height="22" rx="4" fill="#7c3aed" opacity="0.15"/>
+  <text x="305" y="131" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">2. type username</text>
+
+  <rect x="295" y="144" width="150" height="22" rx="4" fill="#7c3aed" opacity="0.15"/>
+  <text x="305" y="159" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">3. click "Login"</text>
+
+  <rect x="295" y="172" width="150" height="22" rx="4" fill="#7c3aed" opacity="0.15"/>
+  <text x="305" y="187" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="10">4. click "Download"</text>
+
+  <!-- Arrow -->
+  <path d="M 478 140 L 523 140" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5 3"/>
+  <polygon points="523,134 536,140 523,146" fill="#a78bfa"/>
+
+  <!-- Play button -->
+  <rect x="548" y="70" width="140" height="140" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <circle cx="618" cy="120" r="28" fill="none" stroke="#10b981" stroke-width="2.5"/>
+  <polygon points="608,105 608,135 632,120" fill="#10b981"/>
+  <text x="618" y="175" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Replay</text>
+
+  <!-- Arrow -->
+  <path d="M 706 140 L 751 140" stroke="#34d399" stroke-width="2" stroke-dasharray="5 3"/>
+  <polygon points="751,134 764,140 751,146" fill="#34d399"/>
+
+  <!-- Steps replayed with checks -->
+  <rect x="776" y="50" width="140" height="180" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <text x="846" y="75" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Replayed</text>
+
+  <text x="800" y="103" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">1. goto</text>
+  <polyline points="890,96 895,102 905,90" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <text x="800" y="127" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">2. type</text>
+  <polyline points="890,120 895,126 905,114" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <text x="800" y="151" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">3. click</text>
+  <polyline points="890,144 895,150 905,138" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <text x="800" y="175" fill="#10b981" font-family="system-ui,sans-serif" font-size="10">4. click</text>
+  <polyline points="890,168 895,174 905,162" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Footer -->
+  <text x="480" y="272" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="12">flyto2.com</text>
+</svg>

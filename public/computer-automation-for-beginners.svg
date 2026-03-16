@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="440" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="55" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Computer Automation for Beginners</text>
+
+  <!-- Friendly computer monitor -->
+  <rect x="370" y="100" width="220" height="160" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <!-- Screen -->
+  <rect x="385" y="115" width="190" height="120" rx="8" fill="#0f172a"/>
+  <!-- Smiley face on screen -->
+  <circle cx="440" cy="170" r="8" fill="none" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="440" cy="167" r="1.5" fill="#a78bfa"/>
+  <circle cx="520" cy="170" r="8" fill="none" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="520" cy="167" r="1.5" fill="#a78bfa"/>
+  <path d="M 445 195 Q 480 215 515 195" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Monitor stand -->
+  <rect x="455" y="260" width="50" height="12" rx="2" fill="#334155"/>
+  <rect x="440" y="272" width="80" height="6" rx="3" fill="#334155"/>
+
+  <!-- Steps: 1, 2, 3 -->
+  <!-- Step 1 -->
+  <g transform="translate(200, 310)">
+    <circle cx="25" cy="25" r="25" fill="url(#purple)"/>
+    <text x="25" y="32" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="18" font-weight="700">1</text>
+    <text x="25" y="72" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Install</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 260 335 L 370 335" stroke="#475569" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="368,329 380,335 368,341" fill="#475569"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(395, 310)">
+    <circle cx="25" cy="25" r="25" fill="url(#purple)"/>
+    <text x="25" y="32" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="18" font-weight="700">2</text>
+    <text x="25" y="72" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Pick a Task</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 455 335 L 565 335" stroke="#475569" stroke-width="2" stroke-dasharray="6 3"/>
+  <polygon points="563,329 575,335 563,341" fill="#475569"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(590, 310)">
+    <circle cx="25" cy="25" r="25" fill="url(#green)"/>
+    <text x="25" y="32" text-anchor="middle" fill="#fff" font-family="system-ui,sans-serif" font-size="18" font-weight="700">3</text>
+    <text x="25" y="72" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Run It</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="480" y="425" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">flyto2.com</text>
+</svg>

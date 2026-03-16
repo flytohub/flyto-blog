@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Left: Selenium code -->
+  <rect x="40" y="25" width="410" height="240" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <!-- Code editor bar -->
+  <rect x="40" y="25" width="410" height="28" rx="12" fill="#334155"/>
+  <rect x="40" y="43" width="410" height="10" fill="#334155"/>
+  <circle cx="58" cy="39" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="74" cy="39" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="90" cy="39" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="245" y="43" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9">selenium_script.py</text>
+
+  <!-- Python code lines -->
+  <text x="60" y="72" fill="#7c3aed" font-family="monospace" font-size="9">from</text>
+  <text x="88" y="72" fill="#e2e8f0" font-family="monospace" font-size="9">selenium</text>
+  <text x="148" y="72" fill="#7c3aed" font-family="monospace" font-size="9">import</text>
+  <text x="190" y="72" fill="#e2e8f0" font-family="monospace" font-size="9">webdriver</text>
+
+  <text x="60" y="86" fill="#7c3aed" font-family="monospace" font-size="9">from</text>
+  <text x="88" y="86" fill="#e2e8f0" font-family="monospace" font-size="9">selenium...support</text>
+  <text x="220" y="86" fill="#7c3aed" font-family="monospace" font-size="9">import</text>
+  <text x="262" y="86" fill="#e2e8f0" font-family="monospace" font-size="9">EC</text>
+
+  <text x="60" y="104" fill="#94a3b8" font-family="monospace" font-size="9">driver = webdriver.Chrome()</text>
+
+  <text x="60" y="118" fill="#94a3b8" font-family="monospace" font-size="9">driver.get("https://...")</text>
+
+  <text x="60" y="136" fill="#94a3b8" font-family="monospace" font-size="9">wait = WebDriverWait(driver, 10)</text>
+
+  <text x="60" y="150" fill="#94a3b8" font-family="monospace" font-size="9">el = wait.until(</text>
+  <text x="72" y="164" fill="#94a3b8" font-family="monospace" font-size="9">EC.presence_of_element_...</text>
+  <text x="60" y="178" fill="#94a3b8" font-family="monospace" font-size="9">)</text>
+
+  <text x="60" y="192" fill="#94a3b8" font-family="monospace" font-size="9">el.send_keys("my_user")</text>
+
+  <text x="60" y="206" fill="#94a3b8" font-family="monospace" font-size="9">driver.find_element(...).click()</text>
+
+  <text x="60" y="220" fill="#94a3b8" font-family="monospace" font-size="9">driver.quit()</text>
+
+  <!-- Line count -->
+  <text x="245" y="250" text-anchor="middle" fill="#ef4444" font-family="system-ui,sans-serif" font-size="13" font-weight="700">22+ lines of Python</text>
+
+  <!-- VS -->
+  <text x="480" y="150" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="20" font-weight="700">vs</text>
+
+  <!-- Right: Flyto2 YAML -->
+  <rect x="510" y="25" width="410" height="240" rx="12" fill="#1e293b" stroke="#7c3aed" stroke-width="2"/>
+  <!-- Editor bar -->
+  <rect x="510" y="25" width="410" height="28" rx="12" fill="#334155"/>
+  <rect x="510" y="43" width="410" height="10" fill="#334155"/>
+  <circle cx="528" cy="39" r="5" fill="#ef4444" opacity="0.6"/>
+  <circle cx="544" cy="39" r="5" fill="#f59e0b" opacity="0.6"/>
+  <circle cx="560" cy="39" r="5" fill="#10b981" opacity="0.6"/>
+  <text x="715" y="43" text-anchor="middle" fill="#a78bfa" font-family="system-ui,sans-serif" font-size="9">workflow.yaml</text>
+
+  <!-- YAML content -->
+  <text x="530" y="76" fill="#a78bfa" font-family="monospace" font-size="10">steps:</text>
+
+  <text x="540" y="96" fill="#94a3b8" font-family="monospace" font-size="10">-</text>
+  <text x="555" y="96" fill="#10b981" font-family="monospace" font-size="10">browser.goto:</text>
+  <text x="560" y="112" fill="#e2e8f0" font-family="monospace" font-size="10">url: https://app.example.com</text>
+
+  <text x="540" y="136" fill="#94a3b8" font-family="monospace" font-size="10">-</text>
+  <text x="555" y="136" fill="#10b981" font-family="monospace" font-size="10">browser.type:</text>
+  <text x="560" y="152" fill="#e2e8f0" font-family="monospace" font-size="10">selector: "#username"</text>
+
+  <text x="540" y="176" fill="#94a3b8" font-family="monospace" font-size="10">-</text>
+  <text x="555" y="176" fill="#10b981" font-family="monospace" font-size="10">browser.click:</text>
+  <text x="560" y="192" fill="#e2e8f0" font-family="monospace" font-size="10">selector: "#login-btn"</text>
+
+  <!-- Line count -->
+  <text x="715" y="250" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="13" font-weight="700">7 lines of YAML</text>
+
+  <!-- Footer -->
+  <text x="480" y="288" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="12">flyto2.com</text>
+</svg>

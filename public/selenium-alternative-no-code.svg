@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="440" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="440" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="50" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="24" font-weight="700">Selenium Alternative</text>
+  <text x="480" y="76" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="15">No Code Needed</text>
+
+  <!-- Left side: Code (crossed out) -->
+  <g transform="translate(150, 110)">
+    <rect x="0" y="0" width="260" height="200" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Code lines -->
+    <text x="16" y="30" fill="#ef4444" font-family="monospace" font-size="11">from</text>
+    <text x="45" y="30" fill="#64748b" font-family="monospace" font-size="11"> selenium </text>
+    <text x="110" y="30" fill="#ef4444" font-family="monospace" font-size="11">import</text>
+    <text x="16" y="50" fill="#64748b" font-family="monospace" font-size="11">driver = webdriver.Chrome()</text>
+    <text x="16" y="70" fill="#64748b" font-family="monospace" font-size="11">driver.get(url)</text>
+    <text x="16" y="90" fill="#64748b" font-family="monospace" font-size="11">elem = driver.find_element(</text>
+    <text x="16" y="110" fill="#64748b" font-family="monospace" font-size="11">  By.CSS_SELECTOR, ".btn")</text>
+    <text x="16" y="130" fill="#64748b" font-family="monospace" font-size="11">elem.click()</text>
+    <text x="16" y="150" fill="#64748b" font-family="monospace" font-size="11">driver.quit()</text>
+
+    <!-- Big X over code -->
+    <line x1="20" y1="10" x2="240" y2="180" stroke="#ef4444" stroke-width="4" opacity="0.6"/>
+    <line x1="240" y1="10" x2="20" y2="180" stroke="#ef4444" stroke-width="4" opacity="0.6"/>
+
+    <text x="130" y="195" text-anchor="middle" fill="#ef4444" font-family="system-ui,sans-serif" font-size="12">Complex &amp; brittle</text>
+  </g>
+
+  <!-- VS -->
+  <circle cx="480" cy="210" r="24" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="216" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="14" font-weight="700">VS</text>
+
+  <!-- Right side: Simple YAML -->
+  <g transform="translate(550, 110)">
+    <rect x="0" y="0" width="260" height="200" rx="10" fill="#0f172a" stroke="url(#purple)" stroke-width="1.5"/>
+
+    <!-- YAML content -->
+    <text x="16" y="30" fill="#a78bfa" font-family="monospace" font-size="12">steps:</text>
+    <text x="16" y="55" fill="#64748b" font-family="monospace" font-size="12">  - goto:</text>
+    <text x="16" y="75" fill="#94a3b8" font-family="monospace" font-size="12">      url: example.com</text>
+    <text x="16" y="100" fill="#64748b" font-family="monospace" font-size="12">  - click:</text>
+    <text x="16" y="120" fill="#94a3b8" font-family="monospace" font-size="12">      target: Submit</text>
+    <text x="16" y="145" fill="#64748b" font-family="monospace" font-size="12">  - extract:</text>
+    <text x="16" y="165" fill="#94a3b8" font-family="monospace" font-size="12">      selector: .result</text>
+
+    <text x="130" y="195" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="12">Simple &amp; readable</text>
+  </g>
+
+  <!-- Bottom: checkmarks -->
+  <g transform="translate(260, 340)">
+    <path d="M 0 8 L 5 14 L 14 2" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="14" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">No Python needed</text>
+  </g>
+  <g transform="translate(430, 340)">
+    <path d="M 0 8 L 5 14 L 14 2" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="14" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">No driver setup</text>
+  </g>
+  <g transform="translate(600, 340)">
+    <path d="M 0 8 L 5 14 L 14 2" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="24" y="14" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">No selector hell</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="480" y="410" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">flyto2.com</text>
+</svg>

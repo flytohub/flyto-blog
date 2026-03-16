@@ -4,6 +4,7 @@ description: "Learn how batch automation can save hours of repetitive work. Proc
 date: 2026-03-17
 tags: [automation, batch-processing, guide, productivity]
 author: Flyto2 Team
+cover: /batch-automation-guide.svg
 ---
 
 You have 300 invoices to rename. Or 150 product listings to update. Or 500 rows of data to enter into a web form. Doing it one by one would take all day. **Batch automation** lets you do it all at once.
@@ -50,6 +51,8 @@ Here are some everyday examples:
 - Send personalized messages to a list of contacts
 - Generate reports for each client from a template
 - Create calendar events from a task list
+
+![Batch processing flow: 300 input items flowing through a processing pipeline to completed results](/batch-processing-flow.svg)
 
 ## How Batch Automation Works in Flyto2
 

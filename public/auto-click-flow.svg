@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="300" rx="12" fill="url(#bg)"/>
+
+  <!-- Cursor clicking button -->
+  <rect x="100" y="55" width="200" height="170" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <!-- Button -->
+  <rect x="140" y="110" width="120" height="36" rx="8" fill="#7c3aed"/>
+  <text x="200" y="133" text-anchor="middle" fill="#ffffff" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Approve</text>
+  <!-- Cursor arrow -->
+  <polygon points="230,120 230,148 240,140 248,155 254,152 246,137 256,134" fill="#e2e8f0" stroke="#0f172a" stroke-width="1"/>
+  <!-- Click ripple -->
+  <circle cx="235" cy="130" r="18" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="235" cy="130" r="28" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.2"/>
+  <text x="200" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Click</text>
+
+  <!-- Arrow to repeat -->
+  <path d="M 330 140 L 390 140" stroke="url(#purple)" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="390,133 406,140 390,147" fill="url(#purple)"/>
+
+  <!-- Repeat icon -->
+  <rect x="420" y="55" width="200" height="170" rx="12" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <!-- Circular arrows for repeat -->
+  <path d="M 495 105 A 30 30 0 1 1 545 135" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="545,127 553,140 538,138" fill="#a78bfa"/>
+  <path d="M 545 165 A 30 30 0 1 1 495 135" fill="none" stroke="#a78bfa" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="495,143 487,130 502,132" fill="#a78bfa"/>
+  <text x="520" y="110" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="20" font-weight="700">x50</text>
+  <text x="520" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Repeat</text>
+
+  <!-- Arrow to done -->
+  <path d="M 650 140 L 710 140" stroke="url(#green)" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <polygon points="710,133 726,140 710,147" fill="url(#green)"/>
+
+  <!-- Checkmark done -->
+  <rect x="740" y="55" width="160" height="170" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+  <circle cx="820" cy="120" r="30" fill="#10b981" opacity="0.15"/>
+  <circle cx="820" cy="120" r="22" fill="none" stroke="#10b981" stroke-width="2.5"/>
+  <polyline points="808,120 816,130 834,110" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="820" y="200" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12" font-weight="600">Done</text>
+
+  <!-- Footer -->
+  <text x="480" y="270" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="12">flyto2.com</text>
+</svg>

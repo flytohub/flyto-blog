@@ -4,6 +4,7 @@ description: "Learn how to use a web scraping tool to collect data from websites
 date: 2026-03-17
 tags: [web-scraping, no-code, automation, data-collection]
 author: Flyto2 Team
+cover: /web-scraping-without-code.svg
 ---
 
 Collecting data from websites used to mean writing scripts, dealing with broken selectors, and spending hours debugging. A modern web scraping tool changes all of that — letting anyone pull data from the web without touching a line of code.
@@ -35,6 +36,8 @@ Think of a web scraping tool as a very fast assistant who can browse the interne
 5. Moves on to the next page and repeats
 
 The key difference from old-school scraping scripts is that modern tools use a real browser. This means they can handle websites that load content dynamically, require scrolling, or use interactive elements — things that trip up basic scraping approaches.
+
+![Diagram showing a website with highlighted data flowing through extraction into a structured table](/web-scraping-diagram.svg)
 
 ## Getting Started with Web Scraping in Flyto2
 
