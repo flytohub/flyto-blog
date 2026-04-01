@@ -43,7 +43,7 @@ For workflows that involve your actual computer and real websites, you need a di
 
 ## Building Workflows With Flyto2
 
-Flyto2 is an open-source automation platform with 412+ modules. It runs on your computer and handles the full range of workflow tasks — browser automation, file operations, data processing, and system commands.
+Flyto2 is an open-source automation platform with 467+ modules. It runs on your computer and handles the full range of workflow tasks — browser automation, file operations, data processing, and system commands.
 
 ### A Real Workflow: Weekly Report
 
@@ -92,7 +92,7 @@ One file. Seven modules. Runs in under a minute. And you can schedule it to run 
 
 ### Workflow Building Blocks
 
-Flyto2's 412+ modules cover everything you need to build complete workflows:
+Flyto2's 467+ modules cover everything you need to build complete workflows:
 
 | Category | What It Does | Example Modules |
 |----------|-------------|----------------|

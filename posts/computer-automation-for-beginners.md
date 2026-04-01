@@ -60,7 +60,7 @@ For example, an automation to organize your downloads folder might look like:
 
 ## Getting Started with Computer Automation Using Flyto2
 
-[Flyto2](https://flyto2.com) is a free automation tool that runs on your own computer. It comes with 412+ ready-to-use building blocks (called modules) that handle common tasks — opening web pages, moving files, processing data, and more.
+[Flyto2](https://flyto2.com) is a free automation tool that runs on your own computer. It comes with 467+ ready-to-use building blocks (called modules) that handle common tasks — opening web pages, moving files, processing data, and more.
 
 ### Step 1: Install Flyto2
 
@@ -135,7 +135,7 @@ Once you see how much time your first automation saves, you'll start spotting op
 
 ## Try Flyto2
 
-Computer automation doesn't have to be complicated. [Flyto2](https://flyto2.com) gives you everything you need to start — 412+ modules, simple YAML workflows, and zero cost. Install it today, automate your first task, and see the difference for yourself.
+Computer automation doesn't have to be complicated. [Flyto2](https://flyto2.com) gives you everything you need to start — 467+ modules, simple YAML workflows, and zero cost. Install it today, automate your first task, and see the difference for yourself.
 
 - **Get started**: [flyto2.com](https://flyto2.com)
 - **Read the docs**: [docs.flyto2.com](https://docs.flyto2.com)

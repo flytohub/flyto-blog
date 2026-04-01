@@ -1,6 +1,6 @@
 ---
 title: "Automa Alternative — When a Browser Extension Isn't Enough"
-description: "Looking for an Automa alternative? Flyto2 goes beyond browser extensions with 412+ modules, file operations, AI agents, and offline desktop automation."
+description: "Looking for an Automa alternative? Flyto2 goes beyond browser extensions with 467+ modules, file operations, AI agents, and cloud automation."
 date: 2026-03-25
 tags: [automation, alternative, browser-automation, automa]
 author: Flyto2 Team
@@ -27,7 +27,7 @@ None of these are bugs — they are fundamental limitations of running inside a 
 
 ## Flyto2 — Automa but for Your Entire Computer
 
-Flyto2 is a desktop automation platform with 412+ modules. It includes everything Automa does — browser clicks, form fills, data extraction — plus everything Automa cannot do.
+Flyto2 is a desktop automation platform with 467+ modules. It includes everything Automa does — browser clicks, form fills, data extraction — plus everything Automa cannot do.
 
 ### Browser Automation That Matches Automa
 
@@ -91,7 +91,7 @@ The agent figures out the steps, writes the YAML, and runs it.
 | Feature | Automa | Flyto2 |
 |---------|--------|--------|
 | **Browser automation** | Yes | Yes |
-| **File operations** | No | Yes (412+ modules) |
+| **File operations** | No | Yes (467+ modules) |
 | **System commands** | No | Yes |
 | **Works without browser open** | No | Yes |
 | **Cross-browser** | Chrome only | Chromium, Firefox, WebKit |

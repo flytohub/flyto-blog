@@ -1,6 +1,6 @@
 ---
 title: "免費自動化工具推薦 — 不花錢也能自動化你的日常工作"
-description: "尋找免費自動化工具？Flyto2 提供 412+ 模組、瀏覽器自動化、檔案處理，完全免費且開源。本文比較主流工具並教你如何開始。"
+description: "尋找免費自動化工具？Flyto2 提供 467+ 模組、瀏覽器自動化、檔案處理，完全免費且開源。本文比較主流工具並教你如何開始。"
 date: 2026-03-25
 tags: [automation, free, guide, chinese]
 author: Flyto2 Team
@@ -35,7 +35,7 @@ Flyto2 is an open-source automation platform. Here is what "free" means in this 
 
 ### What You Can Automate
 
-Flyto2 comes with 412+ modules covering:
+Flyto2 comes with 467+ modules covering:
 
 | Category | Examples |
 |----------|---------|

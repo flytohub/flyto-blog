@@ -72,7 +72,7 @@ And if you do not want to write YAML, the AI agent will generate workflows from 
 | **Free plan** | 1,000 ops/month | Unlimited |
 | **Paid plans** | From $9/month | Free forever |
 | **Visual editor** | Yes (scenario canvas) | YAML + AI agent |
-| **App integrations** | 1,800+ | 412+ modules |
+| **App integrations** | 1,800+ | 467+ modules |
 | **Browser automation** | No | Yes (Playwright) |
 | **Offline execution** | No | Yes |
 | **Data privacy** | Cloud-based | Local-first |

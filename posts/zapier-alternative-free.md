@@ -1,6 +1,6 @@
 ---
 title: "Free Zapier Alternative That Actually Runs on Your Computer"
-description: "Looking for a Zapier alternative free of monthly limits and cloud lock-in? Flyto2 automates workflows locally with 412+ modules and zero subscription fees."
+description: "Looking for a Zapier alternative free of monthly limits and cloud lock-in? Flyto2 automates workflows locally with 467+ modules and zero subscription fees."
 date: 2026-03-25
 tags: [automation, alternative, free, workflow-automation]
 author: Flyto2 Team
@@ -29,13 +29,13 @@ When people search for a free Zapier alternative, they usually want:
 1. **No task limits** — run as many automations as you need
 2. **No monthly fees** — free means free, not "free for 14 days"
 3. **Works without APIs** — can automate websites that Zapier cannot reach
-4. **Keeps data private** — nothing leaves your machine unless you say so
+4. **Data control** — enterprise self-hosted deployment available for full data ownership
 
 Flyto2 checks every box.
 
 ## How Flyto2 Works as a Zapier Alternative
 
-Flyto2 is an open-source automation platform with 412+ pre-built modules. Instead of connecting cloud apps through APIs, it runs workflows directly on your computer — including a full browser engine that can interact with any website.
+Flyto2 is an open-source automation platform with 467+ pre-built modules. Instead of connecting cloud apps through APIs, it runs workflows directly on your computer — including a full browser engine that can interact with any website.
 
 ### No Limits, No Subscription
 
@@ -74,9 +74,9 @@ steps:
 
 Try doing that with Zapier. You cannot — because Zapier only talks to APIs.
 
-### Your Data Stays on Your Machine
+### Enterprise Self-Hosted Deployment
 
-Every Flyto2 workflow runs locally. Your credentials, your files, your data — none of it passes through a third-party server. For teams handling sensitive information, this matters a lot.
+For teams handling sensitive information, Flyto2 offers enterprise self-hosted deployment. Your credentials, your files, your data — all within your own infrastructure. This matters a lot for teams with strict compliance requirements.
 
 ## Zapier vs Flyto2 — Honest Comparison
 
@@ -86,8 +86,8 @@ Every Flyto2 workflow runs locally. Your credentials, your files, your data — 
 | **Paid plans** | From $19.99/month | Free forever |
 | **API integrations** | 6,000+ apps | Via HTTP modules |
 | **Browser automation** | No | Yes (Playwright) |
-| **Runs offline** | No | Yes |
-| **Data privacy** | Cloud-based | Local-first |
+| **Enterprise self-hosted** | No | Yes |
+| **Data control** | Cloud-only | Cloud or self-hosted |
 | **Open source** | No | [Yes](https://github.com/flytohub/flyto-core) |
 | **AI assistant** | Limited | Full AI agent |
 
@@ -97,7 +97,7 @@ Be honest — Zapier is better if:
 
 - **You only need API-to-API connections.** If your entire workflow is "when X happens in Slack, update Y in Notion," Zapier handles that beautifully.
 - **You want zero setup.** Zapier's web UI is polished and requires no installation.
-- **You need 6,000+ pre-built integrations.** Flyto2 has 412+ modules, but Zapier's app catalog is massive.
+- **You need 6,000+ pre-built integrations.** Flyto2 has 467+ modules, but Zapier's app catalog is massive.
 
 ## When Flyto2 Is the Better Zapier Alternative
 
@@ -106,7 +106,7 @@ Flyto2 wins when:
 - **You hit Zapier's limits.** No more watching your task count or upgrading plans.
 - **You need browser automation.** Websites without APIs, legacy portals, government forms — Flyto2 handles them all.
 - **Budget is tight.** Flyto2 is completely free. No "starter" tier, no "pro" upsell.
-- **Privacy matters.** Everything runs on your machine. Period.
+- **Privacy matters.** Enterprise self-hosted deployment keeps everything on your infrastructure.
 - **You want AI help.** Describe your task in plain English, and Flyto2's AI agent builds the workflow for you.
 
 ## Getting Started
@@ -119,4 +119,4 @@ Ready to try a **Zapier alternative** that does not charge by the task?
 
 ## Try Flyto2
 
-Stop paying for automation. [Flyto2](https://flyto2.com) is free, open source, and runs on your computer with no limits. Your workflows, your data, your rules.
+Stop paying for automation. [Flyto2](https://flyto2.com) is free, open source, and has no limits. Your workflows, your data, your rules.

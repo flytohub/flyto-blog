@@ -11,11 +11,11 @@ Learn how to connect flyto-core as an MCP server to Claude Desktop, Cursor, and 
 
 <!-- more -->
 
-![412 Modules as MCP Tools](/mcp-server.svg)
+![467 Modules as MCP Tools](/mcp-server.svg)
 
 ## What is MCP?
 
-The Model Context Protocol (MCP) is an open standard for connecting AI models to external tools and data sources. flyto-core implements MCP, exposing all 412+ modules as tools that any MCP client can use.
+The Model Context Protocol (MCP) is an open standard for connecting AI models to external tools and data sources. flyto-core implements MCP, exposing all 467+ modules as tools that any MCP client can use.
 
 ## Setup with Claude Desktop
 
@@ -47,7 +47,7 @@ Claude will call the `crypto.encrypt` module and return the result.
 
 ## What Modules Are Available?
 
-All 412+ modules become MCP tools, organized into 55 categories:
+All 467+ modules become MCP tools, organized into 55 categories:
 
 - **Browser** — Navigate, click, type, extract, screenshot
 - **Data** — Parse JSON, CSV, XML, YAML

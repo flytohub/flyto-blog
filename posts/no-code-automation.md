@@ -35,7 +35,7 @@ Flyto2 takes a different path. It offers two ways to automate without code:
 
 ### 1. Pre-Built Modules
 
-Flyto2 has 412+ modules that each do one specific thing — open a web page, click a button, read a CSV, rename a file. You combine them in a simple YAML file to create a workflow.
+Flyto2 has 467+ modules that each do one specific thing — open a web page, click a button, read a CSV, rename a file. You combine them in a simple YAML file to create a workflow.
 
 Here is what it looks like:
 
@@ -83,7 +83,7 @@ Every week, you log into a portal and download the same report. Flyto2 handles t
 
 | Feature | Why It Matters |
 |---------|---------------|
-| **412+ pre-built modules** | Cover browser, file, data, and system tasks |
+| **467+ pre-built modules** | Cover browser, file, data, and system tasks |
 | **AI agent** | Describe tasks in English — no YAML needed |
 | **Runs locally** | Your data never leaves your computer |
 | **Free** | No subscriptions, no task limits |
@@ -93,7 +93,7 @@ Every week, you log into a portal and download the same report. Flyto2 handles t
 
 One common worry: is no code automation limited? Can it only handle simple tasks?
 
-With Flyto2, the answer is no. The same 412+ modules that support no code workflows also support complex multi-step automations with loops, conditionals, and error handling. You start simple and scale up as your needs grow — without switching tools.
+With Flyto2, the answer is no. The same 467+ modules that support no code workflows also support complex multi-step automations with loops, conditionals, and error handling. You start simple and scale up as your needs grow — without switching tools.
 
 ## Getting Started
 
@@ -104,4 +104,4 @@ With Flyto2, the answer is no. The same 412+ modules that support no code workfl
 
 ## Try Flyto2
 
-Automation should not require learning to code. [Flyto2](https://flyto2.com) gives you 412+ pre-built modules and an AI agent that turns plain English into working workflows. Free, local, and open source.
+Automation should not require learning to code. [Flyto2](https://flyto2.com) gives you 467+ pre-built modules and an AI agent that turns plain English into working workflows. Free, local, and open source.

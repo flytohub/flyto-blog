@@ -1,6 +1,6 @@
 ---
-title: "Free Power Automate Alternative That Works Offline"
-description: "Looking for a power automate alternative free of Microsoft accounts? Flyto2 runs locally, needs no cloud login, and automates workflows for free."
+title: "Free Power Automate Alternative That Just Works"
+description: "Looking for a power automate alternative free of Microsoft accounts? Flyto2 needs no Microsoft ecosystem, and automates workflows for free."
 date: 2026-03-17
 tags: [automation, alternative, free]
 author: Flyto2 Team
@@ -31,8 +31,8 @@ If any of that sounds familiar, you're not alone. A lot of people just want a st
 When searching for a power automate alternative, most people want three things:
 
 1. **Free to use** — not a 14-day trial, actually free
-2. **Works offline** — no cloud account, no internet requirement for local tasks
-3. **Easy to start** — install it and go, without reading 50 pages of docs first
+2. **No Microsoft lock-in** — no Microsoft 365 account required
+3. **Easy to start** — sign up and go, without reading 50 pages of docs first
 
 Flyto2 checks all three boxes.
 
@@ -44,11 +44,11 @@ You can get started with a single command in your terminal:
 pip install flyto-core
 ```
 
-That's it. No sign-up. No credit card. No Microsoft account. It runs entirely on your machine.
+That's it. No credit card. No Microsoft account.
 
-### 412+ Ready-to-Use Modules
+### 467+ Ready-to-Use Modules
 
-Flyto2 comes with over 412 pre-built modules that cover the most common automation needs:
+Flyto2 comes with over 467 pre-built modules that cover the most common automation needs:
 
 - **Browser automation** — open pages, click buttons, fill forms, take screenshots
 - **File operations** — rename, move, copy, convert, and organize files in bulk
@@ -77,20 +77,20 @@ steps:
 
 Three steps. No drag-and-drop designer. No connectors to configure. Just tell it what to do, and it does it.
 
-![Comparison chart: cloud-based tools vs Flyto2 across cost, offline support, privacy, and open source](/power-automate-comparison.svg)
+![Comparison chart: cloud-based tools vs Flyto2 across cost, privacy, and open source](/power-automate-comparison.svg)
 
 ## How Flyto2 Compares as a Power Automate Alternative
 
 | Feature | Cloud-Based Tools | Flyto2 |
 |---------|-------------------|--------|
 | Cost | Free tier + paid plans | Completely free |
-| Account required | Yes | No |
-| Runs offline | No | Yes |
-| Your data stays local | Not always | Always |
-| Pre-built modules | Varies | 412+ |
+| Account required | Microsoft 365 | Free sign-up |
+| Enterprise self-hosted | No | Yes |
+| Data control | Limited | Full (enterprise self-hosted available) |
+| Pre-built modules | Varies | 467+ |
 | Open source engine | No | [Yes](https://github.com/flytohub/flyto-core) |
 
-The biggest difference is privacy. With Flyto2, your files, your data, and your workflows never leave your computer unless you explicitly send them somewhere.
+The biggest difference is flexibility. With Flyto2, you are not locked into the Microsoft ecosystem, and enterprise teams can deploy on their own infrastructure for full data control.
 
 ## Who Is This For?
 
@@ -99,7 +99,7 @@ Flyto2 works well for:
 - **Freelancers** who need to automate invoicing, file management, or client reports
 - **Small teams** that don't want to pay per-user for automation tools
 - **Developers** who prefer YAML and CLI over drag-and-drop interfaces
-- **Privacy-conscious users** who don't want their data in someone else's cloud
+- **Privacy-conscious users** who want enterprise self-hosted deployment for full data control
 - **Students and hobbyists** learning about automation without spending money
 
 ## What About AI-Powered Workflows?
@@ -112,7 +112,7 @@ This is entirely optional — you can use Flyto2 with or without AI.
 
 ## Getting Started with Flyto2
 
-If you're looking for a power automate alternative that's free, private, and simple, here's how to start:
+If you're looking for a power automate alternative that's free and simple, here's how to start:
 
 1. **Install it**: `pip install flyto-core`
 2. **Read the docs**: [docs.flyto2.com](https://docs.flyto2.com)
@@ -122,4 +122,4 @@ You can also download the desktop app from [flyto2.com](https://flyto2.com) if y
 
 ## Try Flyto2
 
-Ready to automate without the overhead? [Flyto2](https://flyto2.com) is free, runs on your machine, and gives you full control over your workflows. No account needed — just install and start building.
+Ready to automate without the overhead? [Flyto2](https://flyto2.com) is free and gives you full control over your workflows. Sign up and start building in minutes.

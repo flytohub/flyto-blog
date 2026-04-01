@@ -140,7 +140,7 @@ If you do the same batch job weekly — like processing invoices or generating r
 
 Flyto2 is especially well-suited for batch automation because:
 
-- **412+ modules** cover files, web browsers, data processing, APIs, and more
+- **467+ modules** cover files, web browsers, data processing, APIs, and more
 - **Deterministic execution** — same inputs always produce the same outputs
 - **Full audit trail** — every step is recorded with evidence
 - **Runs locally** — your data stays on your machine

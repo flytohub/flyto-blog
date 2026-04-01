@@ -39,7 +39,7 @@ These are real, common tasks. And they are exactly what desktop automation is bu
 
 ## How to Get Started with Desktop Automation
 
-Flyto2 is a free, open-source desktop automation platform with 412+ modules. It handles browser automation, file operations, and data processing — all from your own computer.
+Flyto2 is a free, open-source desktop automation platform with 467+ modules. It handles browser automation, file operations, and data processing — all from your own computer.
 
 ### Step 1: Install
 
@@ -120,7 +120,7 @@ Here are some of the most common desktop automation tasks:
 
 ## Why Flyto2 for Desktop Automation?
 
-- **412+ modules** — browser, file, data, system, and more
+- **467+ modules** — browser, file, data, system, and more
 - **AI agent** — describe tasks in English instead of writing YAML
 - **Completely free** — no subscriptions, no task limits
 - **Open source** — inspect, modify, and extend as needed
@@ -128,7 +128,7 @@ Here are some of the most common desktop automation tasks:
 
 ## Try Flyto2
 
-Your computer already does most of your work. Let it do the boring parts too. [Flyto2](https://flyto2.com) is free desktop automation with 412+ modules — install it and start automating in minutes.
+Your computer already does most of your work. Let it do the boring parts too. [Flyto2](https://flyto2.com) is free desktop automation with 467+ modules — install it and start automating in minutes.
 
 - **Install**: `pip install flyto-core`
 - **Download**: [flyto2.com](https://flyto2.com)

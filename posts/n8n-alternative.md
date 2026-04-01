@@ -1,6 +1,6 @@
 ---
 title: "n8n Alternative — When You Need Browser Automation, Not Just API Connections"
-description: "Looking for an n8n alternative? Flyto2 adds browser automation, offline execution, and AI agents to your workflow toolkit. See a full comparison."
+description: "Looking for an n8n alternative? Flyto2 adds browser automation, cloud execution, and AI agents to your workflow toolkit. See a full comparison."
 date: 2026-03-17
 tags: [n8n, alternative, workflow-automation, browser-automation]
 author: Flyto2 Team
@@ -26,7 +26,7 @@ If any of these sound familiar, you are not alone. These are the exact pain poin
 
 ## What Flyto2 Does Differently
 
-Flyto2 is an open-source automation platform with 412+ pre-built modules. It takes a fundamentally different approach from n8n:
+Flyto2 is an open-source automation platform with 467+ pre-built modules. It takes a fundamentally different approach from n8n:
 
 ### 1. Real Browser Automation Built In
 
@@ -34,11 +34,11 @@ Flyto2 includes a full browser automation engine powered by Playwright. It can o
 
 This means you can automate tasks on websites that have no API. Log into your bank portal, download a statement, rename the file, and save it to a folder. No API key needed. No integration to configure.
 
-### 2. Works Offline — No Docker, No Server
+### 2. No Docker, No Server Setup
 
-Flyto2 runs directly on your computer as a desktop app. Download it, open it, and start automating. There is no Docker to install, no server to maintain, and no ports to configure.
+Flyto2 runs as a cloud SaaS platform — just sign up and start automating. There is no Docker to install, no server to maintain, and no ports to configure. For enterprise teams, self-hosted deployment is also available.
 
-This makes Flyto2 a practical **n8n alternative** for anyone who does not want to deal with infrastructure. It works on macOS, Windows, and Linux.
+This makes Flyto2 a practical **n8n alternative** for anyone who does not want to deal with infrastructure.
 
 ### 3. YAML Workflows Instead of Visual Nodes
 
@@ -78,8 +78,7 @@ Neither tool is universally better. They solve different problems. Here is an ho
 | **Visual editor** | Yes (node-based canvas) | YAML + AI agent |
 | **Browser automation** | Limited (via HTTP requests) | Full browser engine (Playwright) |
 | **API integrations** | 400+ built-in nodes | Via HTTP modules + browser |
-| **Self-hosting** | Requires Docker or server | Desktop app, no server needed |
-| **Offline execution** | No (needs running server) | Yes, runs locally |
+| **Self-hosting** | Requires Docker or server | Cloud SaaS or enterprise self-hosted |
 | **AI assistance** | AI code generation in nodes | AI agent builds entire workflows |
 | **Pricing** | Free (self-hosted) or paid cloud | Free and open source |
 | **Learning curve** | Moderate (JSON, data mapping) | Low (YAML or natural language) |
@@ -99,9 +98,8 @@ n8n is the right choice when:
 Flyto2 is the better fit when:
 
 - **The website has no API.** If you need to interact with a web page the way a human does — clicking, typing, scrolling — Flyto2 handles that natively.
-- **You want zero infrastructure.** No Docker, no server, no port forwarding. Download the desktop app and start automating in minutes.
+- **You want zero infrastructure.** No Docker, no server, no port forwarding. Use the cloud platform and start automating in minutes.
 - **Your team is non-technical.** YAML is simpler than configuring n8n nodes, and the AI agent means you can describe tasks in plain English.
-- **You need to work offline.** Flyto2 runs entirely on your machine. No internet connection required for local workflows.
 - **You combine browser tasks with file operations.** Download a file from a website, rename it, move it to a specific folder, and send an email notification — Flyto2 handles the entire chain.
 
 ## Using Flyto2 and n8n Together
@@ -126,7 +124,7 @@ Here are specific scenarios where teams switch to or add Flyto2:
 
 If you are ready to try Flyto2 as your **n8n alternative**, getting started takes just a few minutes:
 
-1. **Download Flyto2** from [flyto2.com](https://flyto2.com) — available for macOS, Windows, and Linux
+1. **Sign up for Flyto2** at [flyto2.com](https://flyto2.com)
 2. **Describe your task** in plain English, or write a simple YAML workflow
 3. **Run it** — Flyto2 opens a browser, performs your steps, and shows results
 
@@ -134,7 +132,7 @@ For more advanced workflows, check the [documentation](https://docs.flyto2.com) 
 
 ## Try Flyto2
 
-Ready to automate the tasks that n8n cannot reach? Flyto2 is free, open source, and runs on your machine with zero setup.
+Ready to automate the tasks that n8n cannot reach? Flyto2 is free, open source, and ready to use with zero setup.
 
 - **Website:** [flyto2.com](https://flyto2.com)
 - **Documentation:** [docs.flyto2.com](https://docs.flyto2.com)

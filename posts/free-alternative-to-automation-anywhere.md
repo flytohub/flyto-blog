@@ -1,6 +1,6 @@
 ---
 title: "A Simpler Automation Anywhere Alternative for Small Teams"
-description: "Need an automation anywhere alternative that's free and easy? Flyto2 gives small teams 412+ modules, no licensing fees, and no enterprise complexity."
+description: "Need an automation anywhere alternative that's free and easy? Flyto2 gives small teams 467+ modules, no licensing fees, and no enterprise complexity."
 date: 2026-03-17
 tags: [automation, alternative, free, small-teams]
 author: Flyto2 Team
@@ -37,7 +37,7 @@ Flyto2 was designed with exactly these needs in mind.
 
 ## How Flyto2 Works as an Automation Anywhere Alternative
 
-Flyto2 is an open-source workflow automation platform with 412+ pre-built modules. You write workflows in simple YAML, or let an AI agent build them for you.
+Flyto2 is an open-source workflow automation platform with 467+ pre-built modules. You write workflows in simple YAML, or let an AI agent build them for you.
 
 ### Install in Seconds
 
@@ -71,7 +71,7 @@ steps:
 
 Even if you've never written code, you can look at this and understand what it does. That's the point — your whole team should be able to read, modify, and trust your automations.
 
-### 412+ Modules, Zero Licensing
+### 467+ Modules, Zero Licensing
 
 Every module is included for free:
 
@@ -111,7 +111,7 @@ Instead of manually entering form data from spreadsheets, a team uses browser au
 |---------|---------------|--------|
 | Cost | $10,000+/year | Free |
 | Setup time | Weeks | Minutes |
-| Modules included | Varies by license | 412+ (all free) |
+| Modules included | Varies by license | 467+ (all free) |
 | Requires IT team | Usually | No |
 | Open source | No | [Yes](https://github.com/flytohub/flyto-core) |
 | Runs locally | Sometimes | Always |
