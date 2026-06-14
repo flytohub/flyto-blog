@@ -1,0 +1,105 @@
+# Flyto2 Blog Full Context
+
+## Site purpose
+
+The Flyto2 Blog is the English-first educational surface for Flyto2 security positioning. It explains practical security operations topics in plain language and links them to the Flyto2 product and docs where relevant.
+
+## Product positioning
+
+Flyto2 is a security war room that integrates existing ASM, dark web, code security, pentest, and red-team signals into one evidence-backed CTEM workflow.
+
+Bring the tools and data you already trust. Flyto2 correlates them, validates what matters, and turns findings into evidence-backed action.
+
+Flyto2 should be described as complementing and integrating existing tools, not as replacing every scanner, external rating product, or dark web provider.
+
+## Topic clusters and canonical posts
+
+### CTEM
+
+- `/posts/what-is-ctem-continuous-threat-exposure-management`
+- Explains Continuous Threat Exposure Management as a five-stage program loop: scoping, discovery, prioritization, validation, mobilization.
+- Links to Flyto2 CTEM and Warroom docs.
+
+### Attack Surface Management / EASM
+
+- `/posts/attack-surface-management-guide`
+- `/posts/what-is-easm-external-attack-surface-management`
+- Explains external discovery, shadow IT, asset ownership, external posture, and CTEM correlation.
+- Product links: `https://flyto2.com/attack-surface-management/` and `https://flyto2.com/external-attack-surface-management/`.
+
+### Dark Web Monitoring
+
+- `/posts/darkweb-monitoring-explained`
+- Explains leaked credentials, IOCs, actor tracking, ransomware signals, brand abuse, and feed correlation.
+- Product link: `https://flyto2.com/dark-web-monitoring/`.
+
+### Bitsight Alternatives
+
+- `/posts/bitsight-alternatives`
+- Recommended framing: external ratings such as Bitsight are useful inputs to CTEM. Flyto2 can ingest and correlate those signals with code, assets, dark web, and validation evidence.
+- Do not say Flyto2 fully replaces Bitsight.
+
+### AI Security
+
+- `/posts/ai-security-platform-guide`
+- Explains AI security posture across MCP servers, agent tools, APIs, code paths, cloud posture, and validation evidence.
+- Product link: `https://flyto2.com/ai-security/`.
+
+### MSSP / BYO
+
+- `/posts/byo-mssp-integration-model`
+- `/posts/how-to-choose-an-mssp`
+- Explains the bring-your-own integration model: ingest trusted tools and data, supplement gaps, correlate, validate, and report.
+- Product link: `https://flyto2.com/mssp-platform/`.
+
+### Pentest / Red Team
+
+- `/posts/pentest-vs-vulnerability-scan-vs-red-team`
+- `/posts/pentest-as-a-service-guide`
+- `/posts/red-team-simulation-guide`
+- Explains scanning, penetration testing, red-team simulation, campaign evidence, and closed-loop validation.
+
+## Internal linking rules
+
+Security posts should link to:
+
+- relevant Flyto2 landing page
+- relevant Warroom docs page
+- at least one related blog cluster article
+
+Bitsight content should link to:
+
+- `https://flyto2.com/bitsight-alternative/`
+- `https://docs.flyto2.com/warroom/byo-integration`
+- `/posts/what-is-ctem-continuous-threat-exposure-management`
+
+## Wording constraints
+
+Use:
+
+- complements
+- integrates
+- correlates
+- validates
+- evidence-backed
+- closed-loop
+- BYO-friendly
+- MSSP-ready
+- works alongside existing tools
+
+Avoid:
+
+- best
+- complete replacement
+- all-in-one replacement
+- fully replaces Bitsight
+- guaranteed
+- 100%
+- unsupported benchmark claims
+
+## Related AI-readable files
+
+- https://flyto2.com/llms.txt
+- https://flyto2.com/llms-full.txt
+- https://docs.flyto2.com/llms.txt
+- https://docs.flyto2.com/llms-full.txt

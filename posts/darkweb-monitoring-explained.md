@@ -75,7 +75,9 @@ We charge for the **integration and the closed loop**, not for re-running an alg
 
 Darkweb monitoring stops being a feed of scary headlines when each signal closes a loop and feeds one operational picture. Leaked credentials become footprint nodes, IOCs become runtime correlations, actor intel becomes prioritization, and brand abuse becomes a pentest target — all folded into a single unified score alongside the other eight surfaces.
 
-- Read the full [Darkweb / threat intel surface docs](https://docs.flyto2.com/warroom/surfaces/darkweb) — routes, query keys, events, and recipes end-to-end.
+- Read the full [Darkweb / threat intel surface docs](https://docs.flyto2.com/warroom/surfaces/darkweb-threat-intel) — routes, query keys, events, and recipes end-to-end.
+- Explore the [Flyto2 dark web monitoring page](https://flyto2.com/dark-web-monitoring/).
+- See the [MSSP / BYO platform page](https://flyto2.com/mssp-platform/) for the integration model.
 - See how findings promote across surfaces in [Closed-Loop Verify](https://docs.flyto2.com/warroom/closed-loop).
 - Understand how nine surfaces become one number in the [Scoring Methodology](https://docs.flyto2.com/warroom/scoring-methodology).
 - Connect what you already own via [Integrations](https://docs.flyto2.com/warroom/integrations) — BYO ingest for threat feeds, GitHub/GitLab, scanners, and MCP.

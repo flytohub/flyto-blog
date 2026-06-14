@@ -70,7 +70,7 @@ A live adversary simulation that runs unbounded is a liability, so every campaig
 | Parameter | Role | Default |
 |-----------|------|---------|
 | `soft_limit` | Warning threshold; campaign begins winding down | 80% of budget |
-| `hard_limit` | Absolute maximum; campaign stops immediately | 100% of budget |
+| `hard_limit` | Absolute maximum; campaign stops immediately | full budget cap |
 | `per_probe_cap` | Maximum tokens per individual probe | 5% of budget |
 
 When the soft limit is reached, no new probes are dispatched, in-flight probes complete, and the campaign transitions to the next phase, emitting a `budget.soft_breach` event. The hard limit stops the campaign outright. Resource consumption is a first-class, observable property of the simulation — not an afterthought.

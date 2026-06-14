@@ -90,7 +90,7 @@ onMounted(() => {
     <!-- Section label -->
     <div v-if="!tag && filtered.length > 1" class="section-label animate-item">
       <span class="section-line" />
-      <span class="section-text">Latest Posts</span>
+      <span class="section-text">Security Guides</span>
       <span class="section-line" />
     </div>
 

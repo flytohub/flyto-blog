@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
 Sitemap: https://blog.flyto2.com/sitemap.xml
+LLMs-Txt: https://blog.flyto2.com/llms.txt
+LLMs-Full-Txt: https://blog.flyto2.com/llms-full.txt

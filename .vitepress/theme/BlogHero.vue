@@ -2,6 +2,14 @@
 import { onMounted, ref } from 'vue'
 
 const visible = ref(false)
+const clusters = [
+  { label: 'CTEM', href: '/posts/what-is-ctem-continuous-threat-exposure-management' },
+  { label: 'ASM / EASM', href: '/posts/attack-surface-management-guide' },
+  { label: 'Dark Web Monitoring', href: '/posts/darkweb-monitoring-explained' },
+  { label: 'AI Security', href: '/posts/ai-security-platform-guide' },
+  { label: 'MSSP / BYO', href: '/posts/byo-mssp-integration-model' },
+  { label: 'Pentest / Red Team', href: '/posts/pentest-vs-vulnerability-scan-vs-red-team' },
+]
 onMounted(() => {
   requestAnimationFrame(() => { visible.value = true })
 })
@@ -12,38 +20,38 @@ onMounted(() => {
     <!-- Animated mesh gradient background -->
     <div class="hero-mesh" />
 
-    <!-- Floating orbs -->
-    <div class="orb orb-1" />
-    <div class="orb orb-2" />
-    <div class="orb orb-3" />
-
     <!-- Grid pattern overlay -->
     <div class="hero-grid" />
 
     <div class="hero-inner">
       <div class="hero-badge">
         <span class="badge-dot" />
-        Flyto2 Blog
+        Flyto2 Security Blog
       </div>
       <h1 class="hero-title">
-        <span class="title-line">Engineering Insights</span>
-        <span class="title-line title-gradient">&amp; Updates</span>
+        <span class="title-line">CTEM, attack surface,</span>
+        <span class="title-line title-gradient">dark web, and AI security</span>
       </h1>
-      <p class="hero-desc">Product announcements, technical deep dives, and workflow automation tutorials from the Flyto2 team.</p>
+      <p class="hero-desc">Practical guides for teams building evidence-backed security workflows with existing tools, BYO integrations, validation, and red-team evidence.</p>
+      <div class="topic-grid">
+        <a v-for="cluster in clusters" :key="cluster.href" :href="cluster.href" class="topic-chip">
+          {{ cluster.label }}
+        </a>
+      </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">412+</span>
-          <span class="stat-label">Modules</span>
+          <span class="stat-num">CTEM</span>
+          <span class="stat-label">Workflow</span>
         </div>
         <div class="stat-divider" />
         <div class="stat">
-          <span class="stat-num">MCP</span>
-          <span class="stat-label">Native</span>
+          <span class="stat-num">BYO</span>
+          <span class="stat-label">Integrations</span>
         </div>
         <div class="stat-divider" />
         <div class="stat">
-          <span class="stat-num">OSS</span>
-          <span class="stat-label">Open Source</span>
+          <span class="stat-num">Evidence</span>
+          <span class="stat-label">Backed</span>
         </div>
       </div>
     </div>
@@ -150,7 +158,7 @@ onMounted(() => {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -196,7 +204,7 @@ onMounted(() => {
   font-weight: 800;
   line-height: 1.15;
   margin: 0 0 1.25rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--vp-c-text-1);
 }
 
@@ -246,6 +254,41 @@ onMounted(() => {
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
 }
 
+.topic-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0 auto 2rem;
+  max-width: 680px;
+  opacity: 0;
+  transform: translateY(16px);
+}
+.blog-hero.visible .topic-grid {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
+}
+.topic-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.1rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 82%, transparent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.topic-chip:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
 /* Stats */
 .hero-stats {
   display: inline-flex;
@@ -275,7 +318,7 @@ onMounted(() => {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--vp-c-brand-1);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .stat-label {
   font-size: 0.7rem;
@@ -293,6 +336,7 @@ onMounted(() => {
   .blog-hero { padding: 3rem 1rem 2.5rem; }
   .hero-title { font-size: 2rem; }
   .hero-desc { font-size: 0.95rem; }
+  .topic-grid { justify-content: flex-start; }
   .hero-stats { gap: 1rem; padding: 0.6rem 1rem; }
 }
 </style>

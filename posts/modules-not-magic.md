@@ -69,9 +69,9 @@ Here's what that means in practice:
 
 The AI gets out of the way as fast as possible. That's by design.
 
-## 100% Local
+## Local by Default
 
-Flyto2 runs on your machine. Your data, your credentials, your screenshots — nothing leaves your computer. There's no cloud dependency and no third-party data processing.
+Flyto2 runs on your machine by default. Your data, your credentials, your screenshots — nothing leaves your computer unless you explicitly configure a workflow to send it somewhere.
 
 ## What People Use It For
 

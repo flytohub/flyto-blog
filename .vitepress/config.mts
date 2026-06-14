@@ -1,8 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Flyto2 Blog - Automation Tips, Guides & Updates',
-  description: 'Practical guides on automating browser tasks, workflow tips, and product updates from the Flyto2 team.',
+  title: 'Flyto2 Blog - CTEM, Attack Surface, Dark Web, and AI Security',
+  description: 'Practical security guides on CTEM, ASM, EASM, dark web monitoring, AI security, MSSP/BYO, pentest, and red-team workflows from Flyto2.',
   lang: 'en-US',
   cleanUrls: true,
   sitemap: { hostname: 'https://blog.flyto2.com' },
@@ -10,22 +10,20 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'canonical', href: 'https://blog.flyto2.com' }],
     // Open Graph
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Flyto2 Blog' }],
-    ['meta', { property: 'og:title', content: 'Flyto2 Blog — Engineering Insights & Updates' }],
-    ['meta', { property: 'og:description', content: 'Product updates, tutorials, and engineering insights from the Flyto2 team.' }],
-    ['meta', { property: 'og:url', content: 'https://blog.flyto2.com' }],
+    ['meta', { property: 'og:title', content: 'Flyto2 Blog — CTEM, ASM, Dark Web, and AI Security' }],
+    ['meta', { property: 'og:description', content: 'Security guides on evidence-backed CTEM, attack surface management, dark web monitoring, AI security, MSSP/BYO, pentest, and red-team workflows.' }],
     ['meta', { property: 'og:image', content: 'https://blog.flyto2.com/og-image.png' }],
     ['meta', { property: 'og:locale', content: 'en_US' }],
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'Flyto2 Blog — Engineering Insights & Updates' }],
-    ['meta', { name: 'twitter:description', content: 'Product updates, tutorials, and engineering insights from the Flyto2 team.' }],
+    ['meta', { name: 'twitter:title', content: 'Flyto2 Blog — CTEM, ASM, Dark Web, and AI Security' }],
+    ['meta', { name: 'twitter:description', content: 'Security guides on evidence-backed CTEM, attack surface management, dark web monitoring, AI security, MSSP/BYO, pentest, and red-team workflows.' }],
     ['meta', { name: 'twitter:image', content: 'https://blog.flyto2.com/og-image.png' }],
     // SEO
-    ['meta', { name: 'keywords', content: 'flyto2, workflow automation, MCP, modules, enterprise platform, code intelligence, AI agents' }],
+    ['meta', { name: 'keywords', content: 'Flyto2, CTEM, attack surface management, external attack surface management, EASM, ASM, dark web monitoring, AI security platform, MSSP, BYO security integrations, pentest, red team' }],
     ['meta', { name: 'author', content: 'Flyto2 Team' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
     // JSON-LD structured data
@@ -33,7 +31,7 @@ export default defineConfig({
       '@context': 'https://schema.org',
       '@type': 'Blog',
       name: 'Flyto2 Blog',
-      description: 'Product updates, tutorials, and engineering insights from the Flyto2 team.',
+      description: 'Security guides on CTEM, attack surface management, dark web monitoring, AI security, MSSP/BYO, pentest, and red-team workflows.',
       url: 'https://blog.flyto2.com',
       publisher: {
         '@type': 'Organization',
@@ -74,6 +72,19 @@ export default defineConfig({
 
   // Per-post SEO: inject og:title, og:description, article structured data
   transformPageData(pageData) {
+    const canonicalPath = pageData.relativePath === 'index.md'
+      ? ''
+      : pageData.relativePath
+          .replace(/(^|\/)index\.md$/, '$1')
+          .replace(/\.md$/, '')
+          .replace(/\/$/, '')
+    const canonicalUrl = `https://blog.flyto2.com${canonicalPath ? `/${canonicalPath}` : ''}`
+
+    pageData.frontmatter.head = [
+      ...(pageData.frontmatter.head || []),
+      ['link', { rel: 'canonical', href: canonicalUrl }],
+    ]
+
     if (pageData.relativePath.startsWith('posts/')) {
       pageData.frontmatter.layout = pageData.frontmatter.layout || 'doc'
       pageData.frontmatter.sidebar = false
@@ -85,9 +96,10 @@ export default defineConfig({
       const date = pageData.frontmatter.date || ''
       const tags = pageData.frontmatter.tags || []
       const author = pageData.frontmatter.author || 'Flyto2 Team'
-      const url = `https://blog.flyto2.com/${pageData.relativePath.replace(/\.md$/, '')}`
+      const url = canonicalUrl
 
       pageData.frontmatter.head = [
+        ...(pageData.frontmatter.head || []),
         ['meta', { property: 'og:type', content: 'article' }],
         ['meta', { property: 'og:title', content: title }],
         ['meta', { property: 'og:description', content: description }],

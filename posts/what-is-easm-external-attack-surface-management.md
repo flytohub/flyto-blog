@@ -84,6 +84,8 @@ In the Flyto2 Warroom, external attack surface management is one of nine closed-
 
 The BYO/MSSP model means you can bring the EASM and recon tools you already license; the Warroom's job is to integrate them, supplement the gaps, and run the scoring and correlation in one place — so you pay for the closed loop, not for re-running an algorithm you already own. Underneath, the Flyto2 automation engine provides deterministic, replayable modules with evidence trails, which is exactly what attribution and "prove this asset is ours" demand: every discovery decision is reproducible rather than a black-box assertion.
 
+Product references: [External Attack Surface Management](https://flyto2.com/external-attack-surface-management/), [Attack Surface Management](https://flyto2.com/attack-surface-management/), and the [external attack surface docs](https://docs.flyto2.com/warroom/surfaces/attack-surface).
+
 ## The Bottom Line
 
 EASM is the outside-in half of attack surface management: continuously finding the internet-facing assets — especially the shadow ones — that attackers will find anyway. Done well, it produces a fresh, attributed inventory of subdomains, certs, mail records, and exposed services, and it feeds that inventory into CTEM for scoping, validation, and prioritization. Done poorly, it produces a stale list full of misattributed assets that erodes trust. The difference is continuous discovery, honest confidence-scored attribution, and a path from "what's exposed" to "what to fix first."

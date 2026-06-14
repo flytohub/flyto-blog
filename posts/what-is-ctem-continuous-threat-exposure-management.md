@@ -82,4 +82,6 @@ The hardest CTEM problem in practice is the seam *between* stages. Most teams ha
 
 That reflects our BYO/MSSP thesis: you likely already own scanners and tools. The value is not re-running an algorithm you already paid for — it is integrating those signals, supplementing the gaps, and running scoping through validation in one continuous loop, with the [unified scoring](/posts/unified-security-scoring-guide) that makes prioritization defensible. Underneath, the Flyto2 automation engine runs the discovery and validation steps as deterministic, replayable modules, so every exposure in the loop carries the evidence of how it was found and confirmed — which is exactly what mobilization needs to get engineers to act.
 
+For the product view, see the [Flyto2 CTEM page](https://flyto2.com/ctem/), the [attack surface management page](https://flyto2.com/attack-surface-management/), and the [Warroom docs](https://docs.flyto2.com/warroom/).
+
 CTEM is ultimately a discipline of honesty: only act on exposures you can prove are real, reachable, and worth fixing — and measure whether your work moved the number. Start with one scope, run the five stages as a loop, and let the trend, not the backlog, tell you if it is working.
