@@ -2,10 +2,19 @@ import { defineConfig } from 'vitepress'
 
 const SITE_URL = 'https://blog.flyto2.com'
 const NON_CONTENT_PATHS = new Set([
+  'AGENTS.md',
+  'ARCHITECTURE.md',
+  'CHANGELOG.md',
+  'CLAUDE.md',
   'CONTRIBUTING.md',
+  'DECISIONS.md',
   'POSTING.md',
+  'PROJECT.md',
   'README.md',
+  'ROADMAP.md',
   'SECURITY.md',
+  'STATE.md',
+  'tasks.md',
   'public/blog/CREDITS.md',
 ])
 
@@ -14,7 +23,10 @@ function toPublicPath(url: string) {
 }
 
 function isNonContentPath(relativePath: string) {
-  return NON_CONTENT_PATHS.has(relativePath) || relativePath.startsWith('public/')
+  return NON_CONTENT_PATHS.has(relativePath)
+    || relativePath.startsWith('public/')
+    || relativePath.startsWith('workflows/')
+    || relativePath.startsWith('handoffs/')
 }
 
 export default defineConfig({
