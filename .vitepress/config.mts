@@ -1,11 +1,42 @@
 import { defineConfig } from 'vitepress'
 
+const SITE_URL = 'https://blog.flyto2.com'
+const NON_CONTENT_PATHS = new Set([
+  'CONTRIBUTING.md',
+  'POSTING.md',
+  'README.md',
+  'SECURITY.md',
+  'public/blog/CREDITS.md',
+])
+
+function toPublicPath(url: string) {
+  return url.startsWith('http') ? new URL(url).pathname : url
+}
+
+function isNonContentPath(relativePath: string) {
+  return NON_CONTENT_PATHS.has(relativePath) || relativePath.startsWith('public/')
+}
+
 export default defineConfig({
   title: 'Flyto2 Blog - CTEM, Attack Surface, Dark Web, and AI Security',
   description: 'Practical security guides on CTEM, ASM, EASM, dark web monitoring, AI security, MSSP/BYO, pentest, and red-team workflows from Flyto2.',
   lang: 'en-US',
   cleanUrls: true,
-  sitemap: { hostname: 'https://blog.flyto2.com' },
+  sitemap: {
+    hostname: SITE_URL,
+    transformItems(items) {
+      return items.filter((item) => {
+        const path = toPublicPath(item.url).replace(/^\/+/, '')
+        return ![
+          'CONTRIBUTING',
+          'POSTING',
+          'README',
+          'SECURITY',
+          'public/blog/CREDITS',
+        ].includes(path)
+      })
+    },
+  },
   lastUpdated: true,
 
   head: [
@@ -78,11 +109,13 @@ export default defineConfig({
           .replace(/(^|\/)index\.md$/, '$1')
           .replace(/\.md$/, '')
           .replace(/\/$/, '')
-    const canonicalUrl = `https://blog.flyto2.com${canonicalPath ? `/${canonicalPath}` : ''}`
+    const canonicalUrl = `${SITE_URL}${canonicalPath ? `/${canonicalPath}` : ''}`
+    const noindex = isNonContentPath(pageData.relativePath)
 
     pageData.frontmatter.head = [
       ...(pageData.frontmatter.head || []),
       ['link', { rel: 'canonical', href: canonicalUrl }],
+      ...(noindex ? [['meta', { name: 'robots', content: 'noindex, follow' }] as [string, Record<string, string>]] : []),
     ]
 
     if (pageData.relativePath.startsWith('posts/')) {
@@ -94,9 +127,14 @@ export default defineConfig({
       const title = pageData.frontmatter.title || pageData.title
       const description = pageData.frontmatter.description || pageData.description || ''
       const date = pageData.frontmatter.date || ''
+      const dateModified = pageData.lastUpdated
+        ? new Date(pageData.lastUpdated).toISOString()
+        : date
       const tags = pageData.frontmatter.tags || []
       const author = pageData.frontmatter.author || 'Flyto2 Team'
       const url = canonicalUrl
+      const cover = pageData.frontmatter.cover || '/og-image.png'
+      const image = cover.startsWith('http') ? cover : `${SITE_URL}${cover}`
 
       pageData.frontmatter.head = [
         ...(pageData.frontmatter.head || []),
@@ -104,26 +142,45 @@ export default defineConfig({
         ['meta', { property: 'og:title', content: title }],
         ['meta', { property: 'og:description', content: description }],
         ['meta', { property: 'og:url', content: url }],
+        ['meta', { property: 'og:image', content: image }],
         ['meta', { property: 'article:published_time', content: date }],
+        ['meta', { property: 'article:modified_time', content: dateModified }],
         ['meta', { property: 'article:author', content: author }],
         ...tags.map((t: string) => ['meta', { property: 'article:tag', content: t }] as [string, Record<string, string>]),
         ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
         ['meta', { name: 'twitter:title', content: title }],
         ['meta', { name: 'twitter:description', content: description }],
+        ['meta', { name: 'twitter:image', content: image }],
         ['script', { type: 'application/ld+json' }, JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'BlogPosting',
-          headline: title,
-          description,
-          datePublished: date,
-          author: { '@type': 'Person', name: author },
-          publisher: {
-            '@type': 'Organization',
-            name: 'Flyto2',
-            url: 'https://flyto2.com',
-          },
-          url,
-          keywords: tags.join(', '),
+          '@graph': [
+            {
+              '@type': 'BlogPosting',
+              headline: title,
+              description,
+              datePublished: date,
+              dateModified,
+              image,
+              author: { '@type': 'Organization', name: author, url: 'https://flyto2.com' },
+              publisher: {
+                '@type': 'Organization',
+                name: 'Flyto2',
+                url: 'https://flyto2.com',
+                logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+              },
+              url,
+              mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+              articleSection: tags[0] || 'Security',
+              keywords: tags.join(', '),
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Flyto2 Blog', item: `${SITE_URL}/` },
+                { '@type': 'ListItem', position: 2, name: title, item: url },
+              ],
+            },
+          ],
         })],
       ]
     }
