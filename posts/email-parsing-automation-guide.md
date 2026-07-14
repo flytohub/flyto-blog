@@ -17,7 +17,7 @@ Your inbox is full of structured data trapped in unstructured messages. Order co
 
 Email parsing automation is the process of automatically extracting specific pieces of information from incoming emails and converting them into structured data your other systems can use.
 
-A human reading an order confirmation instantly recognizes the order number, customer name, total, and line items. A parser does the same thing programmatically: it scans the subject, body, and attachments, locates each field using rules or patterns, and outputs clean key-value data — for example `order_id: 48213`, `total: 129.00`, `customer_email: jordan@example.com`.
+A human reading an order confirmation instantly recognizes the order number, customer name, total, and line items. A parser does the same thing programmatically: it scans the subject, body, and attachments, locates each field using rules or patterns, and outputs clean key-value data — for example `order_id: 48213`, `total: 129.00`, `customer_email: jordan@flyto2.com`.
 
 The point is not just reading email. The point is turning email into a **trigger and a payload** for a workflow. Once the data is structured, you can route it, validate it, store it, or fill a form with it — no manual handling in between.
 

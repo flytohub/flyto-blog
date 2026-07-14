@@ -33,7 +33,7 @@ Most APIs you will integrate are REST APIs that speak HTTP and exchange JSON. Yo
 | **Method** | The action | `GET` (read), `POST` (create), `PUT/PATCH` (update), `DELETE` (remove) |
 | **Headers** | Metadata sent with the request | `Authorization`, `Content-Type: application/json` |
 | **Query parameters** | Filters appended to the URL | `?status=active&limit=50` |
-| **Body** | Data you send (for POST/PUT) | `{ "name": "Acme", "email": "a@acme.com" }` |
+| **Body** | Data you send (for POST/PUT) | `{ "name": "Acme", "email": "a@flyto2.com" }` |
 | **Response** | What you get back | JSON object plus a status code (200, 401, 429, 500) |
 
 The status code is your first diagnostic tool. `2xx` means success, `401/403` means an auth problem, `404` means a wrong URL, `429` means you are being rate-limited, and `5xx` means the other side broke. A good no-code tool surfaces these clearly instead of failing silently.

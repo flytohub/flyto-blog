@@ -15,7 +15,7 @@ Email was never designed to prove who sent a message. The `From:` address you se
 
 ## Why email authentication matters
 
-Without authentication, anyone can send mail that claims to be from `you@yourcompany.com`. Receivers have no reliable way to tell a real invoice from a spoofed one. The result is the everyday reality of phishing, invoice fraud, and brand impersonation. SPF, DKIM, and DMARC don't encrypt mail or stop spam outright — they answer a narrower, foundational question: **is this message really authorized by the domain it claims to come from?**
+Without authentication, anyone can send mail that claims to be from `you@flyto2.com`. Receivers have no reliable way to tell a real invoice from a spoofed one. The result is the everyday reality of phishing, invoice fraud, and brand impersonation. SPF, DKIM, and DMARC don't encrypt mail or stop spam outright — they answer a narrower, foundational question: **is this message really authorized by the domain it claims to come from?**
 
 Each standard covers a different angle, and you need all three working together.
 
@@ -46,7 +46,7 @@ DKIM adds a cryptographic signature to outgoing mail. Your sending platform sign
 SPF and DKIM each authenticate a domain, but not necessarily the one the user sees. DMARC adds **alignment**: the SPF/DKIM-authenticated domain must match the `From:` domain. It also lets you publish a *policy* telling receivers what to do on failure, and request *reports* so you can see who is sending as you. A starter record:
 
 ```
-v=DMARC1; p=none; rua=mailto:dmarc@yourcompany.com; fo=1
+v=DMARC1; p=none; rua=mailto:dmarc@flyto2.com; fo=1
 ```
 
 `p=` is the enforcement level (`none`, `quarantine`, `reject`); `rua=` is where aggregate reports are sent.

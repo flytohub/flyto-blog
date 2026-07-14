@@ -55,8 +55,8 @@ Start with your data in a structured format — a spreadsheet, CSV file, or even
 For example, a CSV file with customer records:
 ```
 Name, Email, Phone, Company
-Jane Smith, jane@example.com, 555-0101, Acme Corp
-Bob Wilson, bob@example.com, 555-0102, Widget Inc
+Jane Smith, jane@flyto2.com, 555-0101, Acme Corp
+Bob Wilson, bob@flyto2.com, 555-0102, Widget Inc
 ```
 
 ### 2. Describe the Target

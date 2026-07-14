@@ -59,7 +59,7 @@ steps:
   - module: browser.type
     params:
       selector: "#email"
-      text: "you@company.com"
+      text: "you@flyto2.com"
   - module: browser.click
     params:
       selector: "#login-btn"
