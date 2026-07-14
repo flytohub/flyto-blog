@@ -1,7 +1,7 @@
-<h1 align="center">Flyto Blog</h1>
+<h1 align="center">Flyto2 Blog</h1>
 
 <p align="center">
-  <b>Engineering notes, release stories, and showcases from the Flyto team.</b>
+  <b>Engineering notes, release stories, and showcases from the Flyto2 team.</b>
 </p>
 
 <p align="center">
