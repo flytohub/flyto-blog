@@ -33,7 +33,7 @@ Most APIs you will integrate are REST APIs that speak HTTP and exchange JSON. Yo
 | **Method** | The action | `GET` (read), `POST` (create), `PUT/PATCH` (update), `DELETE` (remove) |
 | **Headers** | Metadata sent with the request | `Authorization`, `Content-Type: application/json` |
 | **Query parameters** | Filters appended to the URL | `?status=active&limit=50` |
-| **Body** | Data you send (for POST/PUT) | `{ "name": "Acme", "email": "a@flyto2.com" }` |
+| **Body** | Data you send (for POST/PUT) | `{ "name": "Acme", "email": "team@flyto2.com" }` |
 | **Response** | What you get back | JSON object plus a status code (200, 401, 429, 500) |
 
 The status code is your first diagnostic tool. `2xx` means success, `401/403` means an auth problem, `404` means a wrong URL, `429` means you are being rate-limited, and `5xx` means the other side broke. A good no-code tool surfaces these clearly instead of failing silently.
@@ -114,7 +114,7 @@ This is exactly the shape of any [workflow automation](/posts/workflow-automatio
 
 ## Where Flyto2 Fits
 
-The Flyto2 automation engine is built on a library of 400+ deterministic, MCP-native modules — and that includes the HTTP and data-handling building blocks no-code API integration depends on. Instead of wiring up an HTTP client by hand, you compose modules: make the request, parse the JSON, map the fields, paginate, and pass the result to the next step. Because the modules are MCP-native, an AI assistant can call them directly — you can describe the integration in plain language and have it assembled from real, deterministic modules rather than generated, unpredictable code. If you are new to that protocol, our [MCP server guide](/posts/mcp-server-guide) covers how it works.
+The Flyto2 automation engine is built on a library of 451 deterministic, MCP-native modules — and that includes the HTTP and data-handling building blocks no-code API integration depends on. Instead of wiring up an HTTP client by hand, you compose modules: make the request, parse the JSON, map the fields, paginate, and pass the result to the next step. Because the modules are MCP-native, an AI assistant can call them directly — you can describe the integration in plain language and have it assembled from real, deterministic modules rather than generated, unpredictable code. If you are new to that protocol, our [MCP server guide](/posts/mcp-server-guide) covers how it works.
 
 Two properties matter for integrations specifically. First, the modules are **deterministic** — the same input produces the same output, so a working integration keeps working. Second, every run is recorded as **evidence you can replay**: the exact request, response, and status of each step. When an API changes a field name or starts returning `429`, you are not guessing — you have the run to look at.
 

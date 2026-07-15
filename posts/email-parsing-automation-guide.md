@@ -17,7 +17,7 @@ Your inbox is full of structured data trapped in unstructured messages. Order co
 
 Email parsing automation is the process of automatically extracting specific pieces of information from incoming emails and converting them into structured data your other systems can use.
 
-A human reading an order confirmation instantly recognizes the order number, customer name, total, and line items. A parser does the same thing programmatically: it scans the subject, body, and attachments, locates each field using rules or patterns, and outputs clean key-value data — for example `order_id: 48213`, `total: 129.00`, `customer_email: jordan@flyto2.com`.
+A human reading an order confirmation instantly recognizes the order number, customer name, total, and line items. A parser does the same thing programmatically: it scans the subject, body, and attachments, locates each field using rules or patterns, and outputs clean key-value data — for example `order_id: 48213`, `total: 129.00`, `customer_email: reports@flyto2.com`.
 
 The point is not just reading email. The point is turning email into a **trigger and a payload** for a workflow. Once the data is structured, you can route it, validate it, store it, or fill a form with it — no manual handling in between.
 
@@ -89,7 +89,7 @@ Before you ship a parser, confirm:
 
 Email parsing is only valuable when the extracted data goes somewhere. That last mile — taking a clean record and acting on it — is exactly what the **Flyto2 automation engine** is built for.
 
-Flyto2 is a deterministic, modular automation engine: 412+ modules you compose into recipes, each step producing evidence you can replay. Once an email is parsed into fields, a recipe can take over and drive the downstream work — logging into a portal, navigating to the right screen, and entering the data. This pairs naturally with [data entry automation](/posts/data-entry-automation), where the parsed fields become the input that gets typed into target systems, and with [auto-filling forms](/posts/auto-fill-forms), where extracted leads populate web forms without manual keying.
+Flyto2 is a deterministic, modular automation engine: 451 modules you compose into recipes, each step producing evidence you can replay. Once an email is parsed into fields, a recipe can take over and drive the downstream work — logging into a portal, navigating to the right screen, and entering the data. This pairs naturally with [data entry automation](/posts/data-entry-automation), where the parsed fields become the input that gets typed into target systems, and with [auto-filling forms](/posts/auto-fill-forms), where extracted leads populate web forms without manual keying.
 
 Because every module run is deterministic and produces a replayable record, you get the same audit trail email parsing needs: given the same input, the same result, with evidence of what happened. That makes the pipeline from inbox to system-of-record predictable, reviewable, and safe to trust with real business data — no hand-typing, no copy-paste, no silent drift.
 

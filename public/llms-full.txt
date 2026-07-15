@@ -14,6 +14,19 @@ Bring the tools and data you already trust. Flyto2 correlates them, validates wh
 
 Flyto2 should be described as complementing and integrating existing tools, not as replacing every scanner, external rating product, or dark web provider.
 
+## Core runtime context
+
+The product and examples should treat flyto-core as the shared execution kernel. Current public facts:
+
+- 451 registry-backed modules.
+- 84 catalog categories.
+- 41 built-in recipes.
+- 54 browser automation modules.
+- MCP-native server support over stdio and streamable HTTP.
+- Evidence capture, trace checkpoints, replay, YAML recipes, sandbox guards, and deterministic verification primitives.
+
+Use https://docs.flyto2.com/modules/ for module details, https://docs.flyto2.com/core/ for execution behavior, and https://docs.flyto2.com/mcp/ for MCP setup.
+
 ## Topic clusters and canonical posts
 
 ### CTEM

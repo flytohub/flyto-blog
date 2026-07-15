@@ -11,7 +11,7 @@ Flyto2 can expose deterministic workflow modules through the Model Context Proto
 
 <!-- more -->
 
-![467 Modules as MCP Tools](/mcp-server.svg)
+![451 Modules as MCP Tools](/mcp-server.svg)
 
 ## What is MCP?
 

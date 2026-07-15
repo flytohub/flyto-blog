@@ -1,6 +1,6 @@
 ---
 title: "Free Zapier Alternative That Actually Runs on Your Computer"
-description: "Looking for a Zapier alternative free of monthly limits and cloud lock-in? Flyto2 automates workflows locally with 467+ modules and zero subscription fees."
+description: "Looking for a Zapier alternative free of monthly limits and cloud lock-in? Flyto2 automates workflows locally with 451 modules and zero subscription fees."
 date: 2026-03-25
 tags: [automation, alternative, free, workflow-automation]
 author: Flyto2 Team
@@ -35,7 +35,7 @@ Flyto2 checks every box.
 
 ## How Flyto2 Works as a Zapier Alternative
 
-Flyto2 is an open-source automation platform with 467+ pre-built modules. Instead of connecting cloud apps through APIs, it runs workflows directly on your computer — including a full browser engine that can interact with any website.
+Flyto2 is an open-source automation platform with 451 pre-built modules. Instead of connecting cloud apps through APIs, it runs workflows directly on your computer — including a full browser engine that can interact with any website.
 
 ### No Limits, No Subscription
 
@@ -59,7 +59,7 @@ steps:
   - module: browser.type
     params:
       selector: "#email"
-      text: "you@flyto2.com"
+      text: "team@flyto2.com"
   - module: browser.click
     params:
       selector: "#login-btn"
@@ -97,7 +97,7 @@ Be honest — Zapier is better if:
 
 - **You only need API-to-API connections.** If your entire workflow is "when X happens in Slack, update Y in Notion," Zapier handles that beautifully.
 - **You want zero setup.** Zapier's web UI is polished and requires no installation.
-- **You need 6,000+ pre-built integrations.** Flyto2 has 467+ modules, but Zapier's app catalog is massive.
+- **You need 6,000+ pre-built integrations.** Flyto2 has 451 modules, but Zapier's app catalog is massive.
 
 ## When Flyto2 Is the Better Zapier Alternative
 

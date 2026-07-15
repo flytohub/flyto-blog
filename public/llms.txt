@@ -27,6 +27,10 @@
 
 Flyto2 is a security war room that integrates existing ASM, dark web, code security, pentest, and red-team signals into one evidence-backed CTEM workflow. It complements existing tools and turns trusted signals into correlated, validated, evidence-backed action.
 
+## Core runtime context
+
+Flyto2 workflows run on flyto-core: 451 registry-backed modules across 84 catalog categories, 41 built-in recipes, 54 browser automation modules, MCP transports, evidence capture, replay, and YAML execution. Use https://docs.flyto2.com/modules/ for module details and https://docs.flyto2.com/mcp/ for MCP setup.
+
 ## Site role
 
 The blog is the educational and search-intent surface. Use it for "what is", "guide", "alternatives", "vs", and evaluation questions. Use `flyto2.com` for product positioning and `docs.flyto2.com` for technical mechanics.

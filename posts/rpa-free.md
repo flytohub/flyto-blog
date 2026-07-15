@@ -1,6 +1,6 @@
 ---
 title: "Free RPA — Robotic Process Automation Without the Enterprise Price Tag"
-description: "Need RPA but can't justify the enterprise cost? Flyto2 is a free, open-source RPA tool with 467+ modules, browser automation, and zero licensing fees."
+description: "Need RPA but can't justify the enterprise cost? Flyto2 is a free, open-source RPA tool with 451 modules, browser automation, and zero licensing fees."
 date: 2026-03-25
 tags: [rpa, free, automation, open-source]
 author: Flyto2 Team
@@ -36,7 +36,7 @@ Flyto2 is an open-source automation platform that does everything traditional RP
 
 ### What You Get for Free
 
-- **467+ pre-built modules** covering browser automation, file operations, data processing, and system tasks
+- **451 pre-built modules** covering browser automation, file operations, data processing, and system tasks
 - **A real browser engine** (Playwright) that can interact with any website
 - **Cloud or self-hosted** — use the cloud SaaS or deploy on your own infrastructure
 - **AI agent** — describe tasks in plain English and let the AI build the workflow

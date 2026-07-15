@@ -54,7 +54,7 @@ steps:
   - module: browser.type
     params:
       selector: "#email"
-      text: "jane@flyto2.com"
+      text: "team@flyto2.com"
   - module: browser.type
     params:
       selector: "#message"

@@ -1,6 +1,6 @@
 ---
 title: "We Don't Do Magic Prompts"
-description: "Why Flyto2 uses 450 validated modules instead of letting AI write code from scratch. Deterministic automation that you can actually debug."
+description: "Why Flyto2 uses 451 validated modules instead of letting AI write code from scratch. Deterministic automation that you can actually debug."
 date: 2026-03-13
 tags: [engineering, announcement]
 author: Flyto2 Team
@@ -27,7 +27,7 @@ Automation should be boring. Predictable. Debuggable.
 
 ## What We Actually Built
 
-Flyto2 has **450 pre-built, schema-validated modules**. When you ask it to do something, the AI doesn't write code. It picks the right module and fills in the parameters.
+Flyto2 has **451 pre-built, schema-validated modules**. When you ask it to do something, the AI doesn't write code. It picks the right module and fills in the parameters.
 
 ```
 "Screenshot this page"  →  browser.screenshot  →  validated, traced, reproducible
@@ -59,7 +59,7 @@ Here's what that means in practice:
 
 **Schema validation catches errors before execution.** If you pass a string where a number is expected, it fails immediately with a clear message — not three steps later with a cryptic traceback.
 
-**450 modules encode real-world knowledge.** Browser quirks, timeout handling, retry logic, encoding edge cases — these are solved once in the module, not re-discovered by the AI on every run.
+**451 modules encode real-world knowledge.** Browser quirks, timeout handling, retry logic, encoding edge cases — these are solved once in the module, not re-discovered by the AI on every run.
 
 **Blueprints learn from success, not from prompts.** When a workflow works, Flyto2 saves it as a reusable pattern. Next time, it loads the proven blueprint instead of asking the AI to figure it out again.
 
@@ -83,7 +83,7 @@ Flyto2 runs on your machine by default. Your data, your credentials, your screen
 
 ## Open Source Core
 
-The engine behind Flyto2 is fully open source: [flyto-core](https://github.com/flytohub/flyto-core) — 450 modules, Apache-2.0 licensed.
+The engine behind Flyto2 is fully open source: [flyto-core](https://github.com/flytohub/flyto-core) — 451 modules, Apache-2.0 licensed.
 
 ```bash
 pip install flyto-core[browser]

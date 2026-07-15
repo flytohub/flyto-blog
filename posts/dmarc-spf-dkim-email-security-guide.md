@@ -15,7 +15,7 @@ Email was never designed to prove who sent a message. The `From:` address you se
 
 ## Why email authentication matters
 
-Without authentication, anyone can send mail that claims to be from `you@flyto2.com`. Receivers have no reliable way to tell a real invoice from a spoofed one. The result is the everyday reality of phishing, invoice fraud, and brand impersonation. SPF, DKIM, and DMARC don't encrypt mail or stop spam outright — they answer a narrower, foundational question: **is this message really authorized by the domain it claims to come from?**
+Without authentication, anyone can send mail that claims to be from `team@flyto2.com`. Receivers have no reliable way to tell a real invoice from a spoofed one. The result is the everyday reality of phishing, invoice fraud, and brand impersonation. SPF, DKIM, and DMARC don't encrypt mail or stop spam outright — they answer a narrower, foundational question: **is this message really authorized by the domain it claims to come from?**
 
 Each standard covers a different angle, and you need all three working together.
 

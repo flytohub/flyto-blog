@@ -89,7 +89,7 @@ Flyto2 is an MSSP / BYO platform. The first thing this surface does on entry is 
 2. **We supplement what you lack.** No runtime telemetry, or no cloud-identity coverage? Those signals fill in around your existing tools instead of duplicating them.
 3. **We run the loop.** A CVE gets joined to the role its workload assumes and the runtime activity it shows; an exposed credential gets promoted toward pentest. All the way through to evidence collection and red-team simulation, unified in one war-room.
 
-We charge for the **integration and the closed loop**, not for re-running a scan you already paid for. And it is the same deterministic engine behind our automation line — [flyto-core](https://docs.flyto2.com/): 412+ deterministic modules, MCP-native, YAML recipes, evidence and replay — that literally runs these scans, collects the evidence, and joins the picture. Automation is the *how*; the war-room is the *what and why*.
+We charge for the **integration and the closed loop**, not for re-running a scan you already paid for. And it is the same deterministic engine behind our automation line — [flyto-core](https://docs.flyto2.com/): 451 deterministic modules, MCP-native, YAML recipes, evidence and replay — that literally runs these scans, collects the evidence, and joins the picture. Automation is the *how*; the war-room is the *what and why*.
 
 ## Where to go next
 
