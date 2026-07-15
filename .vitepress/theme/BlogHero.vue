@@ -3,6 +3,9 @@ import { onMounted, ref } from 'vue'
 
 const visible = ref(false)
 const clusters = [
+  { label: 'AI Workflow Automation', href: '/posts/ai-browser-automation-guide' },
+  { label: 'Open Source Automation', href: '/posts/modules-not-magic' },
+  { label: 'MCP Server Automation', href: '/posts/mcp-server-guide' },
   { label: 'CTEM', href: '/posts/what-is-ctem-continuous-threat-exposure-management' },
   { label: 'ASM / EASM', href: '/posts/attack-surface-management-guide' },
   { label: 'Dark Web Monitoring', href: '/posts/darkweb-monitoring-explained' },
@@ -26,13 +29,13 @@ onMounted(() => {
     <div class="hero-inner">
       <div class="hero-badge">
         <span class="badge-dot" />
-        Flyto2 Security Blog
+        Flyto2 Blog
       </div>
       <h1 class="hero-title">
-        <span class="title-line">CTEM, attack surface,</span>
-        <span class="title-line title-gradient">dark web, and AI security</span>
+        <span class="title-line">AI workflow automation, MCP,</span>
+        <span class="title-line title-gradient">CTEM, and security guides</span>
       </h1>
-      <p class="hero-desc">Practical guides for teams building evidence-backed security workflows with existing tools, BYO integrations, validation, and red-team evidence.</p>
+      <p class="hero-desc">Practical guides for open-source AI agent automation, MCP server tooling, no-code browser workflows, evidence-backed CTEM, BYO integrations, and red-team validation.</p>
       <div class="topic-grid">
         <a v-for="cluster in clusters" :key="cluster.href" :href="cluster.href" class="topic-chip">
           {{ cluster.label }}
@@ -40,18 +43,18 @@ onMounted(() => {
       </div>
       <div class="hero-stats">
         <div class="stat">
+          <span class="stat-num">451</span>
+          <span class="stat-label">Modules</span>
+        </div>
+        <div class="stat-divider" />
+        <div class="stat">
+          <span class="stat-num">MCP</span>
+          <span class="stat-label">Agent Tools</span>
+        </div>
+        <div class="stat-divider" />
+        <div class="stat">
           <span class="stat-num">CTEM</span>
-          <span class="stat-label">Workflow</span>
-        </div>
-        <div class="stat-divider" />
-        <div class="stat">
-          <span class="stat-num">BYO</span>
-          <span class="stat-label">Integrations</span>
-        </div>
-        <div class="stat-divider" />
-        <div class="stat">
-          <span class="stat-num">Evidence</span>
-          <span class="stat-label">Backed</span>
+          <span class="stat-label">Evidence</span>
         </div>
       </div>
     </div>
