@@ -1,0 +1,57 @@
+# Flyto2 Blog SEO Keyword Matrix
+
+Date: 2026-07-16
+Locale: US / English
+Source: Ubersuggest keyword ideas and keyword overview
+Scope: `https://blog.flyto2.com`
+
+This file is internal editorial SEO evidence. Blog posts should answer search
+intent in plain language, then route product and implementation intent to the
+landing page and docs.
+
+## Heat Bands
+
+- High: 500+ estimated monthly searches
+- Medium: 100-499 estimated monthly searches
+- Low: 10-99 estimated monthly searches
+- Emerging: 0-9 estimated monthly searches or no reliable estimate
+
+## Editorial Keyword Coverage
+
+| Intent | Keyword | Volume | SD | PD | CPC | Heat | Primary Blog Post | Related Landing | Related Docs |
+| --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |
+| AI workflow education | AI workflow automation | 1000 | 20 | 23 | 21.68 | High | `/posts/ai-browser-automation-guide`, `/posts/workflow-automation` | `https://flyto2.com/` | `https://docs.flyto2.com/core/` |
+| Open-source agent education | open source AI agent framework | 1600 | 6 | 3 | 7.05 | High | `/posts/mcp-server-guide`, `/posts/modules-not-magic` | `https://flyto2.com/open-source/` | `https://docs.flyto2.com/core/` |
+| Attack surface education | attack surface management | 880 | 44 | 25 | 32.48 | High | `/posts/attack-surface-management-guide` | `https://flyto2.com/attack-surface-management/` | `https://docs.flyto2.com/warroom/surfaces/attack-surface` |
+| AI workflow tools | AI workflow automation tools | 480 | 32 | 11 | 33.65 | Medium | `/posts/workflow-automation`, `/posts/no-code-automation` | `https://flyto2.com/` | `https://docs.flyto2.com/modules/` |
+| ASM tools | attack surface management tools | 390 | 46 | 14 | 43.46 | Medium | `/posts/attack-surface-management-guide` | `https://flyto2.com/attack-surface-management/` | `https://docs.flyto2.com/warroom/surfaces/attack-surface` |
+| CTEM education | continuous threat exposure management | 260 | 39 | 32 | 171.87 | Medium | `/posts/what-is-ctem-continuous-threat-exposure-management` | `https://flyto2.com/ctem/` | `https://docs.flyto2.com/warroom/closed-loop` |
+| EASM education | external attack surface management tools | 110 | 37 | 11 | 135.21 | Medium | `/posts/what-is-easm-external-attack-surface-management` | `https://flyto2.com/external-attack-surface-management/` | `https://docs.flyto2.com/warroom/surfaces/attack-surface` |
+| AI workflow buyer intent | best AI workflow automation tools | 110 | 37 | 17 | 14.45 | Medium | `/posts/workflow-automation`, `/posts/ai-browser-automation-guide` | `https://flyto2.com/` | `https://docs.flyto2.com/core/` |
+| AI workflow question | what is AI workflow automation | 90 | 51 | 10 | 17.07 | Low | `/posts/workflow-automation`, `/posts/ai-browser-automation-guide` | `https://flyto2.com/` | `https://docs.flyto2.com/guide/getting-started` |
+| CTEM framework | continuous threat exposure management ctem framework | 20 | 6 | 2 | 84.42 | Low | `/posts/what-is-ctem-continuous-threat-exposure-management` | `https://flyto2.com/ctem/` | `https://docs.flyto2.com/warroom/closed-loop` |
+| MCP education | MCP server automation | 10 | 34 | 68 | 16.50 | Low | `/posts/mcp-server-guide` | `https://flyto2.com/api-docs/` | `https://docs.flyto2.com/mcp/` |
+| Browser automation education | no code browser automation | 20 | 23 | 56 | 16.13 | Low | `/posts/no-code-browser-automation` | `https://flyto2.com/` | `https://docs.flyto2.com/modules/browser` |
+
+## Long-Tail Editorial Plan
+
+| Cluster | Long-tail examples | Existing coverage | Editorial priority |
+| --- | --- | --- | --- |
+| AI workflow automation | `AI workflow automation tools`, `what is AI workflow automation`, `agentic AI workflow automation`, `open source AI workflow automation` | Strong | Keep updating examples and internal links to docs. |
+| MCP automation | `MCP server automation`, `MCP automation tools`, `MCP tools for AI agents`, `MCP server automation testing` | Medium | Add more implementation-oriented examples if docs adds testing pages. |
+| Attack surface management | `attack surface management tools`, `attack surface management software`, `what is attack surface management`, `external attack surface management tools` | Strong | Maintain comparison and educational posts without unsupported replacement claims. |
+| CTEM | `continuous threat exposure management ctem`, `CTEM framework`, `what is continuous threat exposure management`, `CTEM vs vulnerability management` | Strong | Keep linking CTEM posts to landing `/ctem/` and docs closed-loop pages. |
+| Browser automation | `no code browser automation`, `web scraping without code`, `record and replay browser automation` | Strong | Keep beginner and template-style content readable and practical. |
+
+## Current Assessment
+
+- Keywords: covered in `.vitepress/config.mts`, post frontmatter, tags, and JSON-LD.
+- Long-tail keywords: covered by 65 posts plus `public/llms.txt` and `public/llms-full.txt`.
+- Search heat: now documented here with source, date, volume, SD, PD, and CPC.
+
+## Maintenance Rules
+
+- Refresh this matrix quarterly or after every major content batch.
+- Use Google Search Console impressions/clicks to prune or expand the editorial queue.
+- Keep every article focused on intent, not keyword stuffing.
+- Keep Flyto2 spelling exact and keep public contact emails on `@flyto2.com`.
