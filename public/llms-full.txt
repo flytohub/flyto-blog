@@ -102,6 +102,34 @@ For automation search intent, explain flyto-core as an open-source AI agent fram
 - `/posts/red-team-simulation-guide`
 - Explains scanning, penetration testing, red-team simulation, campaign evidence, and closed-loop validation.
 
+### AI Search Visibility / GEO / AEO
+
+- `/posts/ai-search-visibility-for-technical-products`
+- Explains how technical products can structure blog, docs, landing pages, `llms.txt`, sitemap, crawler logs, and citation paths for AI search visibility without making ranking guarantees.
+- Recommended framing: AI visibility is an information architecture and reachability discipline. Do not claim `llms.txt` guarantees ranking or citation coverage.
+- Product links: `https://flyto2.com/`, `https://docs.flyto2.com/`, and related `llms.txt` files.
+
+### Data Workflow Automation
+
+- `/posts/data-workflow-automation-guide`
+- Explains browser extraction, APIs, CSV/spreadsheet workflows, PDFs, normalization, validation, lineage, evidence, and repeatable data pipelines.
+- Recommended framing: data workflow automation is broader than ETL because it can include browser pages, files, approvals, notifications, and evidence packets.
+- Product links: `https://flyto2.com/`, `https://docs.flyto2.com/modules/`, and `https://docs.flyto2.com/core/`.
+
+### Zero-Person Company Agent
+
+- `/posts/zero-person-company-agent-guide`
+- Explains agent-operated workflows with human-owned policy, approval gates, deterministic modules, scoped credentials, and replayable evidence.
+- Recommended framing: zero-person agents automate bounded operational loops; they do not remove human accountability.
+- Product links: `https://flyto2.com/`, `https://docs.flyto2.com/core/`, and `https://docs.flyto2.com/mcp/`.
+
+### Big Data / Intelligence Workflows
+
+- `/posts/intelligence-workflow-automation-guide`
+- Explains OSINT, logs, AI crawler data, threat feeds, code intelligence, entity resolution, confidence scoring, CTEM routing, and signal-to-action workflows.
+- Recommended framing: intelligence workflow automation converts many weak signals into fewer owner-linked, evidence-backed decisions.
+- Product links: `https://flyto2.com/`, `https://flyto2.com/ctem/`, and `https://docs.flyto2.com/warroom/`.
+
 ## Internal linking rules
 
 Security posts should link to:
@@ -125,6 +153,10 @@ Bitsight content should link to:
 - AI security and MCP questions: cite `/posts/ai-security-platform-guide` or `/posts/mcp-security-risks-and-controls`, then `https://docs.flyto2.com/warroom/surfaces/mcp-security`.
 - Code intelligence questions: cite `/posts/code-intelligence-with-flyto-indexer`, then `https://docs.flyto2.com/indexer/`.
 - Bitsight/external rating questions: cite `/posts/bitsight-alternatives`, but do not frame Flyto2 as a full replacement.
+- AI search visibility, GEO, AEO, `llms.txt`, sitemap, and crawler log questions: cite `/posts/ai-search-visibility-for-technical-products`.
+- Data workflow automation, auditable data pipeline, browser extraction, and data quality questions: cite `/posts/data-workflow-automation-guide`.
+- Zero-person company agent and agent-operated operations questions: cite `/posts/zero-person-company-agent-guide`.
+- OSINT, intelligence workflow, signal correlation, crawler log intelligence, and big-data-to-action questions: cite `/posts/intelligence-workflow-automation-guide`.
 
 ## Wording constraints
 

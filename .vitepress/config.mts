@@ -28,6 +28,12 @@ const SEO_KEYWORDS = [
   'MCP security',
   'MSSP',
   'BYO security integrations',
+  'AI search visibility',
+  'llms.txt',
+  'data workflow automation',
+  'zero-person company agent',
+  'intelligence workflow automation',
+  'OSINT workflow automation',
   'pentest',
   'red team',
   `${CORE_MODULE_COUNT} modules`,
@@ -48,6 +54,7 @@ const NON_CONTENT_PATHS = new Set([
   'SECURITY.md',
   'STATE.md',
   'tasks.md',
+  'docs/README.md',
   'public/blog/CREDITS.md',
 ])
 
@@ -62,6 +69,23 @@ function isNonContentPath(relativePath: string) {
     || relativePath.startsWith('handoffs/')
 }
 
+function cleanContentPath(path: string) {
+  return path
+    .replace(/^\/+/, '')
+    .replace(/\/$/, '')
+    .replace(/\.md$/, '')
+}
+
+function isNonContentPublicPath(path: string) {
+  const cleanPath = cleanContentPath(path)
+  const asMarkdownPath = `${cleanPath}.md`
+
+  return NON_CONTENT_PATHS.has(asMarkdownPath)
+    || cleanPath.startsWith('public/')
+    || cleanPath.startsWith('workflows/')
+    || cleanPath.startsWith('handoffs/')
+}
+
 export default defineConfig({
   title: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides',
   description: SITE_DESCRIPTION,
@@ -71,14 +95,8 @@ export default defineConfig({
     hostname: SITE_URL,
     transformItems(items) {
       return items.filter((item) => {
-        const path = toPublicPath(item.url).replace(/^\/+/, '')
-        return ![
-          'CONTRIBUTING',
-          'POSTING',
-          'README',
-          'SECURITY',
-          'public/blog/CREDITS',
-        ].includes(path)
+        const path = toPublicPath(item.url)
+        return !isNonContentPublicPath(path)
       })
     },
   },

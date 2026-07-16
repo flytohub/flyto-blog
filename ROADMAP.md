@@ -9,9 +9,10 @@
 ## P1 before controlled production
 
 - Add posts for Flyto2 Cloud / Apps / Automation as a first-class product line.
-- Add GEO / AI visibility posts that explain `llms.txt`, crawler policy, and log
-  analysis.
-- Add Data, Zero-person Agent, and Big Data / Intelligence content plans.
+- Expand the first-pass GEO / AI visibility post into tactical examples for
+  crawler log analysis, AI citation auditing, and content-cluster maintenance.
+- Expand the first-pass Data, Zero-person Agent, and Big Data / Intelligence
+  posts into template-driven walkthroughs and example workflows.
 
 ## P2
 

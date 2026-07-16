@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://flyto2.com/blog">📰 Read online</a>
+  <a href="https://blog.flyto2.com">Read online</a>
 </p>
 
 ---
@@ -17,6 +17,10 @@ Long-form writing that doesn't belong inside a product README:
 - **Release stories** — "v2.x shipped; here's what changed and why"
 - **Engineering deep dives** — design decisions, migration stories
 - **Showcase posts** — real automations customers have built
+- **SEO/AEO/GEO guides** — AI search visibility, crawler logs, and answer-shaped
+  technical content
+- **Product-line education** — automation, security, Data, Zero-person Company
+  Agent, and Big Data / Intelligence workflows
 - **Post-mortems** — incident reports with blameless root-cause
 - **Community spotlights** — plugin and template authors
 
