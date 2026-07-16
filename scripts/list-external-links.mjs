@@ -37,6 +37,7 @@ function shouldSkipUrl(rawUrl, parsed) {
 
   const host = parsed.hostname.toLowerCase();
   if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return true;
+  if (!host.includes('.')) return true;
   if (host === 'example.com' || host.endsWith('.example.com')) return true;
   if (host === 'unsplash.com' || host.endsWith('.unsplash.com')) return true;
 
