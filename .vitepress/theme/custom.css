@@ -1,5 +1,9 @@
 /* Blog-specific overrides */
 
+:root {
+  --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 /* Keep the nav logo footprint stable before the image finishes loading. */
 .VPNavBarTitle .VPImage.logo {
   width: 27px;
