@@ -25,13 +25,37 @@ function cleanUrl(value) {
     .replace(/&amp;/g, '&');
 }
 
+function stripCodeBlocks(value) {
+  return value
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/~~~[\s\S]*?~~~/g, '');
+}
+
+function shouldSkipUrl(rawUrl, parsed) {
+  if (rawUrl.includes('[[') || rawUrl.includes(']]')) return true;
+  if (ownHosts.has(parsed.host)) return true;
+
+  const host = parsed.hostname.toLowerCase();
+  if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return true;
+  if (host === 'example.com' || host.endsWith('.example.com')) return true;
+  if (host === 'unsplash.com' || host.endsWith('.unsplash.com')) return true;
+
+  const pathName = parsed.pathname.toLowerCase();
+  if (host === 'api.telegram.org' && pathName.startsWith('/bot')) return true;
+  if (host === 'discord.com' && pathName.startsWith('/api/webhooks/')) return true;
+  if (host === 'hooks.slack.com' && pathName.startsWith('/services/')) return true;
+  if (host === 'notify-api.line.me') return true;
+
+  return false;
+}
+
 for (const filePath of walk(root)) {
   if (!filePath.endsWith('.md') && !filePath.endsWith('.txt')) continue;
-  const content = readFileSync(filePath, 'utf8');
+  const content = stripCodeBlocks(readFileSync(filePath, 'utf8'));
   for (const match of content.matchAll(/https?:\/\/[^\s<>"'`]+/g)) {
     const url = cleanUrl(match[0]);
     const parsed = new URL(url);
-    if (!ownHosts.has(parsed.host)) links.add(url);
+    if (!shouldSkipUrl(url, parsed)) links.add(url);
   }
 }
 

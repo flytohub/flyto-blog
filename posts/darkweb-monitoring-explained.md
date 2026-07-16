@@ -57,7 +57,7 @@ We do not publish a count of "breaches detected" or a fabricated threat level, b
 
 Brand abuse is the darkweb signal that reaches your *customers* before it reaches you. Lookalike domains (`acme-login.example`, `acme.secure-portal.example`), cloned login pages, and impersonation infrastructure exist to harvest credentials or payments under your name. The `brand-manager-attack-surface` query and the `sensor-map` view track this impersonation footprint, and the `darkweb-sensor-brand-loop.yaml` recipe closes the loop from a detected lookalike through to evidence collection.
 
-Because brand sensors emit `footprint.run.finalized`, a confirmed impersonation domain doesn't stay in the darkweb surface either — it flows into the [Footprint / attribution](https://docs.flyto2.com/warroom/surfaces/footprint) graph and, where it has a live attackable surface, can be promoted toward the **Pentest** and **Red-team simulation** surfaces for validation. A lookalike that's merely registered is a watch item; a lookalike that's actively serving a credential-harvest page is something you escalate.
+Because brand sensors emit `footprint.run.finalized`, a confirmed impersonation domain doesn't stay in the darkweb surface either — it flows into the [Footprint / attribution](https://docs.flyto2.com/warroom/surfaces/footprint-attribution) graph and, where it has a live attackable surface, can be promoted toward the **Pentest** and **Red-team simulation** surfaces for validation. A lookalike that's merely registered is a watch item; a lookalike that's actively serving a credential-harvest page is something you escalate.
 
 ## The BYO angle: bring your own darkweb feed
 

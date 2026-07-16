@@ -128,4 +128,4 @@ Sends the formatted report via `notify.send`. The module auto-detects the platfo
 
 ---
 
-Ready to try it? [Install the template from the Marketplace](https://flyto2.com/marketplace) and start monitoring exchange rates in minutes.
+Ready to try it? [Install the template from Flyto2 templates](https://flyto2.com/cloud/templates) and start monitoring exchange rates in minutes.
