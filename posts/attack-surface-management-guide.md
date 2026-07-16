@@ -1,6 +1,6 @@
 ---
 title: "Attack Surface Management: A Practical Guide for 2026"
-description: "A practical guide to attack surface management in 2026 — continuous external discovery, CTEM, shadow IT, and how a war-room correlates exposure with internal code in one closed loop."
+description: "A practical guide to attack surface management in 2026: external discovery, CTEM, shadow IT, and how a war room correlates exposure with code."
 date: 2026-06-10
 tags: [security, attack-surface, ctem]
 author: Flyto2 Team

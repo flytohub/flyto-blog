@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides
+title: Flyto2 Blog
 ---
 
 <BlogHero />
