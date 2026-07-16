@@ -33,7 +33,7 @@ Severity isn't uniform. An unauthenticated server exposing only read-only intros
 
 A server bound to `0.0.0.0` — or to any routable interface instead of loopback — is reachable far beyond its intended client. An MCP server meant for a single local IDE that ends up on a shared network interface converts a local-only tool surface into a lateral-movement target. The nuance that catches teams out: an *empty* or *wildcard* bind address that fails open should be treated as exposed, not as "no binding configured." Silence is not safety.
 
-The right control cross-references bind scope with your external discovery. An MCP port that shows up in external attack-surface scanning is a different severity than one confined to loopback — a call you can only make if the MCP surface talks to your [external attack surface](https://docs.flyto2.com/warroom/surfaces/exposure) and [asset map](https://docs.flyto2.com/warroom/surfaces/assets).
+The right control cross-references bind scope with your external discovery. An MCP port that shows up in external attack-surface scanning is a different severity than one confined to loopback — a call you can only make if the MCP surface talks to your [external attack surface](https://docs.flyto2.com/warroom/surfaces/attack-surface) and [asset map](https://docs.flyto2.com/warroom/surfaces/asset-map).
 
 ### 3. Tool authorization
 
@@ -57,7 +57,7 @@ This is a standalone loop: point it at the MCP servers you run with zero other t
 
 Posture is the static picture; runtime events are the moving one. A server that's hardened today can flip open tomorrow on a redeploy with a stale config. The control is continuous: stream MCP activity — tool invocations, auth decisions, bind changes, policy hits — as runtime events.
 
-In the war-room each meaningful action emits an `activity.logged` event on the `/runtime-events` route, turning MCP security from a one-time audit into a live surface. A new high-impact tool invocation, a server that suddenly answers on a routable interface, or an auth gate that flipped open all show up as runtime events and re-trigger scoring. That same `activity.logged` spine is shared with the [container/runtime surface](https://docs.flyto2.com/warroom/surfaces/runtime) — one telemetry backbone, two loops reading from it.
+In the war-room each meaningful action emits an `activity.logged` event on the `/runtime-events` route, turning MCP security from a one-time audit into a live surface. A new high-impact tool invocation, a server that suddenly answers on a routable interface, or an auth gate that flipped open all show up as runtime events and re-trigger scoring. That same `activity.logged` spine is shared with the [container/runtime and cloud identity surface](https://docs.flyto2.com/warroom/surfaces/container-cloud-identity) — one telemetry backbone, two loops reading from it.
 
 ## The hardening pattern: simulate the policy before you enforce it
 

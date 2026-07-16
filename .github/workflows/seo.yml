@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run verify
@@ -38,6 +38,13 @@ jobs:
           args: >-
             --verbose
             --no-progress
+            --cache
+            --max-cache-age 1d
+            --max-concurrency 8
+            --scheme http
+            --scheme https
+            --exclude '^https://blog\.flyto2\.com'
+            --accept 200,204,206,301,302,307,308,429
             './README.md'
             './posts/**/*.md'
             './public/llms.txt'

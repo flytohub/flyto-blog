@@ -40,7 +40,7 @@ So the inventory separates *candidate* from *confirmed*, and **an asset is admit
 | Repository via authenticated integration | The code is connected through your account |
 | IP an owned, verified hostname resolves to | The address is in scope by resolution |
 
-Candidates that lack a confirmation stay visible as **unconfirmed** for triage — you can see them, investigate them, and claim them — but they do not contribute to the score or get handed to downstream surfaces as in-scope targets. This is the same ownership gate that governs [asset → exposure mapping](https://docs.flyto2.com/warroom/surfaces/exposure): an open port is only *your* exposure if the host underneath it is *your* asset. Ownership gating is what keeps the score honest and the pentest legal.
+Candidates that lack a confirmation stay visible as **unconfirmed** for triage — you can see them, investigate them, and claim them — but they do not contribute to the score or get handed to downstream surfaces as in-scope targets. This is the same ownership gate that governs [asset to exposure mapping](https://docs.flyto2.com/warroom/surfaces/attack-surface): an open port is only *your* exposure if the host underneath it is *your* asset. Ownership gating is what keeps the score honest and the pentest legal.
 
 ## Importing your existing CMDB (BYO)
 
