@@ -4,7 +4,7 @@ description: "Looking for a Zapier alternative free of monthly limits and cloud 
 date: 2026-03-25
 tags: [automation, alternative, free, workflow-automation]
 author: Flyto2 Team
-cover: /zapier-alternative-free.svg
+cover: /small-team-automation.svg
 ---
 
 Zapier is everywhere. It connects your apps, moves data around, and saves you from copying things between tabs all day. But at some point, you hit the wall — the free plan runs out, the pricing jumps, and you realize you are paying real money just to move rows between Google Sheets and Slack.

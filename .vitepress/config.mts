@@ -110,6 +110,7 @@ export default defineConfig({
     ['meta', { property: 'og:site_name', content: 'Flyto2 Blog' }],
     ['meta', { property: 'og:title', content: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides' }],
     ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
+    ['meta', { property: 'og:url', content: SITE_URL }],
     ['meta', { property: 'og:image', content: 'https://blog.flyto2.com/og-image.png' }],
     ['meta', { property: 'og:locale', content: 'en_US' }],
     // Twitter Card

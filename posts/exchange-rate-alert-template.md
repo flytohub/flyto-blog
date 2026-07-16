@@ -1,6 +1,6 @@
 ---
 title: "Template: Exchange Rate Alert — Monitor Currency Rates with Telegram, Discord & Slack"
-description: A step-by-step guide to using the Exchange Rate Alert community template. Fetch live rates from a free API and get notified on Telegram, Discord, Slack, or LINE — no API key required.
+description: "Use the Exchange Rate Alert community template to fetch live currency rates from a free API and notify Telegram, Discord, Slack, or LINE."
 date: 2026-03-06
 tags: [template, tutorial, notification, free-api]
 author: Flyto2 Team

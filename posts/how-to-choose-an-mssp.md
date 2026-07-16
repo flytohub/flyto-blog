@@ -1,6 +1,6 @@
 ---
 title: "How to Choose an MSSP: A Practical Buyer's Guide"
-description: How to choose an MSSP — what a managed security provider does, in-house vs MSSP vs MDR, the evaluation criteria that matter (coverage, SLAs, tooling, BYO support, transparency), red flags to avoid, and a scoring checklist to compare vendors.
+description: "How to choose an MSSP: compare MSSP vs MDR vs in-house, evaluate coverage, SLAs, tooling, BYO support, transparency, red flags, and scoring."
 date: 2026-06-10
 author: Flyto2 Team
 tags: ["MSSP","managed security","vendor selection","buyer guide"]

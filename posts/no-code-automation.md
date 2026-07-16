@@ -4,7 +4,7 @@ description: "No code automation lets anyone automate repetitive tasks without p
 date: 2026-03-25
 tags: [no-code, automation, productivity, beginner]
 author: Flyto2 Team
-cover: /no-code-automation.svg
+cover: /small-team-automation.svg
 ---
 
 You should not need a computer science degree to stop doing the same task 50 times a day. That is the promise of **no code automation** — and when it works, it is one of the best productivity upgrades you can make.

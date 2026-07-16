@@ -1,6 +1,6 @@
 ---
 title: "Unified Security Scoring: One Number Across Nine Surfaces"
-description: How a unified security score on a 250–900 band is computed across code security, attack surface, and diligence vectors — the sub-vector model, three scoring modes, cross-dimensional modifiers and grade caps, and the honesty invariants that keep the number trustworthy.
+description: "Unified security scoring guide: compute a 250-900 score across code, attack surface, diligence vectors, modifiers, grade caps, and evidence."
 date: 2026-06-10
 tags: [security, scoring]
 author: Flyto2 Team

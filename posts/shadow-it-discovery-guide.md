@@ -1,6 +1,6 @@
 ---
 title: "Shadow IT Discovery: Find and Manage Unsanctioned Assets"
-description: "A practical shadow IT discovery guide: define shadow IT and shadow SaaS, learn DNS, certificate transparency, cloud, and SSO log techniques, triage risk, and govern unsanctioned assets."
+description: "Shadow IT discovery guide: find unsanctioned SaaS, DNS, certificate transparency, cloud, and SSO assets, triage risk, and govern exposure."
 date: 2026-06-10
 tags: ["shadow IT","asset discovery","SaaS security","attack surface"]
 author: Flyto2 Team

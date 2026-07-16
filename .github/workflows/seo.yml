@@ -1,0 +1,44 @@
+name: SEO
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: seo-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  seo:
+    name: SEO surface gate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+      - name: Lighthouse SEO
+        run: npx @lhci/cli@0.15.1 autorun --config=./lighthouserc.cjs
+      - name: Link check public SEO surfaces
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          fail: true
+          failIfEmpty: true
+          format: markdown
+          output: lychee-seo-report.md
+          args: >-
+            --verbose
+            --no-progress
+            './README.md'
+            './posts/**/*.md'
+            './public/llms.txt'
+            './public/llms-full.txt'

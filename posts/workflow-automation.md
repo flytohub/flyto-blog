@@ -4,7 +4,7 @@ description: "Workflow automation connects multiple tasks into a single process 
 date: 2026-03-25
 tags: [workflow-automation, automation, productivity, guide]
 author: Flyto2 Team
-cover: /workflow-automation.svg
+cover: /automation-concept.svg
 ---
 
 Automating a single task is useful. Automating an entire workflow is transformative. The difference between "save me 2 minutes" and "save me 2 hours" comes down to chaining tasks together — turning a multi-step process into something that runs with one click.

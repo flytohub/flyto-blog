@@ -1,6 +1,6 @@
 ---
 title: "Container and Cloud Identity Security in One Picture"
-description: A practical guide to container security and cloud identity security — OS-package CVE posture, runtime events, and cloud-identity risk like over-privileged roles and exposed credential classes — and why correlating them with code and exposure beats three disconnected scanner outputs.
+description: "Container and cloud identity security guide: correlate image CVEs, runtime events, over-privileged roles, exposed credentials, code, and external exposure."
 date: 2026-06-10
 tags: [security, container, cloud]
 author: Flyto2 Team

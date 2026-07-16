@@ -1,6 +1,6 @@
 ---
 title: "Footprint & Attribution: Mapping Assets to Owners Without Guessing"
-description: A practical guide to digital footprint discovery and attribution — how an attribution graph expands from a handful of seeds, how ownership gating and de-correlated confidence keep it honest, and why "is this actually mine?" is the question that makes every downstream security score trustworthy.
+description: "Digital footprint attribution guide: expand OSINT seeds into assets, apply ownership gating, score confidence, and keep security scoring trustworthy."
 date: 2026-06-10
 tags: [security, footprint, osint]
 author: Flyto2 Team

@@ -4,7 +4,7 @@ description: "Looking for an Automa alternative? Flyto2 goes beyond browser exte
 date: 2026-03-25
 tags: [automation, alternative, browser-automation, automa]
 author: Flyto2 Team
-cover: /automa-alternative.svg
+cover: /browser-automation-steps.svg
 ---
 
 Automa is a clever tool. It lets you automate browser tasks right from a Chrome extension — no coding, no server, just drag-and-drop blocks inside your browser. For simple tasks like filling forms or clicking through pages, it works great.

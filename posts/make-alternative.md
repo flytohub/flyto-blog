@@ -4,7 +4,7 @@ description: "Looking for a Make.com alternative? Flyto2 runs locally, handles b
 date: 2026-03-25
 tags: [automation, alternative, make, workflow-automation]
 author: Flyto2 Team
-cover: /make-alternative.svg
+cover: /automation-concept.svg
 ---
 
 Make.com (formerly Integromat) is one of the most popular automation platforms out there. It is visual, flexible, and genuinely powerful for connecting apps together. But it has the same fundamental limitation as every cloud-based automation tool — it can only talk to APIs.

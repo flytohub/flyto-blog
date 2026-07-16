@@ -1,6 +1,6 @@
 ---
 title: "MCP Security: Risks and Controls for AI Tool Servers"
-description: A practical guide to MCP security — the MCP attack surface (unauthenticated execution, bind exposure, tool authorization), policy simulation before enforcement, and the hardening patterns flyto-core applied to its own MCP server, grounded in real controls without invented CVE numbers.
+description: "MCP security guide: inventory tool servers, reduce unauthenticated execution, bind exposure, and authorization risk, then simulate policy before enforcement."
 date: 2026-06-10
 tags: [security, mcp]
 author: Flyto2 Team

@@ -4,7 +4,7 @@ description: "Tired of filling out the same web forms? Learn how to auto fill fo
 date: 2026-03-25
 tags: [form-automation, auto-fill, browser-automation, productivity]
 author: Flyto2 Team
-cover: /auto-fill-forms.svg
+cover: /data-entry-before-after.svg
 ---
 
 You know the drill. Open a web form, type the same information, click submit, open the next one, repeat. Whether it is entering customer records, submitting applications, or updating inventory — manual form filling is one of the most tedious tasks in any job.

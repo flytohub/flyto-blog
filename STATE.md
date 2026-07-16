@@ -12,6 +12,11 @@ Current state on 2026-07-16:
   AI search visibility.
 - `public/robots.txt`, `public/llms.txt`, and `public/llms-full.txt` exist.
 - Root project memory files are filtered as non-content by VitePress config.
+- `npm run audit:seo` now verifies the built homepage, every blog post,
+  sitemap coverage, robots policy, llms files, keyword matrix freshness,
+  Flyto2 brand hygiene, and `@flyto2.com` email hygiene.
+- `.github/workflows/seo.yml` adds a separate SEO gate with local metadata
+  audit, Lighthouse SEO assertions, and public-link checks.
 
 Known gaps:
 
@@ -20,5 +25,6 @@ Known gaps:
   templates, and multilingual strategy after docs and landing hreflang strategy
   stabilizes.
 - GitHub Pages deploy still depends on GitHub Actions availability. If Actions
-  is blocked by account or billing state, local `npm run build` can validate the
-  site but production will not update until the deployment runner is restored.
+  is blocked by account or billing state, local `npm run verify` can validate
+  the site but production will not update until the deployment runner is
+  restored.

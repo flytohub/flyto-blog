@@ -4,7 +4,7 @@ description: "Learn what desktop automation is and how to automate repetitive ta
 date: 2026-03-25
 tags: [desktop-automation, automation, productivity, guide]
 author: Flyto2 Team
-cover: /desktop-automation.svg
+cover: /computer-automation-for-beginners.svg
 ---
 
 Most automation tools live in the cloud. They connect your Slack to your Google Sheets, or your CRM to your email. That is great — until you need to automate something on your actual computer. Renaming 200 files. Filling out a form in a browser. Downloading reports from a website and organizing them into folders.

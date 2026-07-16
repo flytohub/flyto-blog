@@ -9,6 +9,11 @@
   workflow automation.
 - Added the new topic clusters and citation guidance to `public/llms.txt` and
   `public/llms-full.txt`.
+- Added `npm run audit:seo` to validate built homepage metadata, every blog
+  post, sitemap inclusion, robots policy, llms files, keyword evidence, brand
+  hygiene, and email-domain hygiene.
+- Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,
+  and public-link checks.
 - Added project memory files, workflow docs, and handoff registry.
 
 ### Changed

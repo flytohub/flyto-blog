@@ -1,6 +1,6 @@
 ---
 title: "Red-Team Simulation: From Attack Paths to Validated Risk"
-description: How red-team simulation consumes pentest evidence and mapped attack paths, runs an evidence-producing adversary campaign through a five-phase state machine, and feeds validated risk back into a single unified score — the difference between a posture you assume and one an actual simulated attack confirmed.
+description: "Red-team simulation guide: use pentest evidence and mapped attack paths to run adversary campaigns and feed validated risk into security scoring."
 date: 2026-06-10
 tags: [security, red-team]
 author: Flyto2 Team

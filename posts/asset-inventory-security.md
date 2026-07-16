@@ -1,6 +1,6 @@
 ---
 title: "Asset Inventory Is the Foundation of Security Scoring"
-description: "You cannot score risk on assets you cannot see. A practical look at IT asset discovery for security — deterministic asset inventory, ownership gating, importing an existing CMDB (BYO), and why an authoritative asset map is the prerequisite for any unified risk score."
+description: "Practical asset inventory security guide: deterministic discovery, ownership gating, BYO CMDB imports, asset maps, and reliable security scoring."
 date: 2026-06-10
 tags: [security, asset-management]
 author: Flyto2 Team

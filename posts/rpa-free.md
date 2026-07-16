@@ -4,7 +4,7 @@ description: "Need RPA but can't justify the enterprise cost? Flyto2 is a free, 
 date: 2026-03-25
 tags: [rpa, free, automation, open-source]
 author: Flyto2 Team
-cover: /rpa-free.svg
+cover: /free-alternative-to-automation-anywhere.svg
 ---
 
 Robotic Process Automation sounds like something only big companies can afford. And honestly, that has been true for a long time. UiPath, Automation Anywhere, Blue Prism — they all target enterprises with budgets to match. But the tasks RPA solves are not exclusive to Fortune 500 companies.
