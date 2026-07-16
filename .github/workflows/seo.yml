@@ -28,6 +28,8 @@ jobs:
       - run: npm run verify
       - name: Lighthouse SEO
         run: npx @lhci/cli@0.15.1 autorun --config=./lighthouserc.cjs
+      - name: Generate external link manifest
+        run: npm run links:external -- .external-links.txt
       - name: Link check public SEO surfaces
         uses: lycheeverse/lychee-action@v2.9.0
         with:
@@ -45,7 +47,4 @@ jobs:
             --scheme https
             --exclude '^https://blog\.flyto2\.com'
             --accept 200,204,206,301,302,307,308,429
-            './README.md'
-            './posts/**/*.md'
-            './public/llms.txt'
-            './public/llms-full.txt'
+            './.external-links.txt'

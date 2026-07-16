@@ -5,14 +5,20 @@
   "scripts": {
     "dev": "vitepress dev",
     "test": "node scripts/audit-blog-source.mjs",
-    "lint": "node --check scripts/audit-blog-source.mjs && node --check scripts/audit-seo-surface.mjs",
+    "lint": "node --check scripts/audit-blog-source.mjs && node --check scripts/audit-seo-surface.mjs && node --check scripts/check-public-links.mjs && node --check scripts/list-external-links.mjs",
     "build": "vitepress build",
     "preview": "vitepress preview",
     "audit:seo": "node scripts/audit-seo-surface.mjs",
     "check:links": "node scripts/check-public-links.mjs",
+    "links:external": "node scripts/list-external-links.mjs",
     "verify": "npm run test && npm run lint && npm run build && npm run check:links && npm run audit:seo"
   },
   "devDependencies": {
     "vitepress": "^1.6.4"
+  },
+  "overrides": {
+    "vite": "6.4.3",
+    "esbuild": "0.25.12",
+    "postcss": ">=8.5.10"
   }
 }
