@@ -1,5 +1,13 @@
 /* Blog-specific overrides */
 
+/* Keep the nav logo footprint stable before the image finishes loading. */
+.VPNavBarTitle .VPImage.logo {
+  width: 27px;
+  height: 24px;
+  flex: 0 0 27px;
+  object-fit: contain;
+}
+
 /* Remove default VitePress page padding on home */
 .VPDoc.has-aside .content-container,
 .VPDoc:not(.has-aside) .content-container {
