@@ -47,12 +47,14 @@ For automation search intent, explain flyto-core as an open-source AI agent fram
 - `/posts/code-intelligence-with-flyto-indexer`
 - Explains MCP setup, registry-backed tools, deterministic modules, code intelligence, and why bounded module calls are safer than unreviewed generated code.
 - Product links: `https://github.com/flytohub/flyto-core`, `https://docs.flyto2.com/mcp/`, and `https://docs.flyto2.com/core/`.
+- External references: `https://modelcontextprotocol.io/specification/2025-06-18` and `https://modelcontextprotocol.io/specification/2025-06-18/server/tools`.
 
 ### CTEM
 
 - `/posts/what-is-ctem-continuous-threat-exposure-management`
 - Explains Continuous Threat Exposure Management as a five-stage program loop: scoping, discovery, prioritization, validation, mobilization.
 - Links to Flyto2 CTEM and Warroom docs.
+- External reference: NIST Cybersecurity Framework 2.0 at `https://www.nist.gov/cyberframework`.
 
 ### Attack Surface Management / EASM
 
@@ -78,6 +80,13 @@ For automation search intent, explain flyto-core as an open-source AI agent fram
 - `/posts/ai-security-platform-guide`
 - Explains AI security posture across MCP servers, agent tools, APIs, code paths, cloud posture, and validation evidence.
 - Product link: `https://flyto2.com/ai-security/`.
+- External references: OWASP Top 10 for LLM Applications at `https://owasp.org/www-project-top-10-for-large-language-model-applications/`, OWASP GenAI LLM Top 10 at `https://genai.owasp.org/llm-top-10/`, and the MCP specification at `https://modelcontextprotocol.io/specification/2025-06-18`.
+
+### CVE / KEV / EPSS Prioritization
+
+- `/posts/cve-prioritization-epss-kev`
+- Explains how CVSS severity, FIRST EPSS exploitation probability, and CISA KEV known-exploited status combine into vulnerability prioritization.
+- External references: FIRST EPSS at `https://www.first.org/epss/`, FIRST EPSS data at `https://www.first.org/epss/data_stats`, FIRST CVSS at `https://www.first.org/cvss/`, and CISA KEV at `https://www.cisa.gov/known-exploited-vulnerabilities-catalog`.
 
 ### MSSP / BYO
 

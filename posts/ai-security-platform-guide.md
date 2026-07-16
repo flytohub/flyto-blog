@@ -27,6 +27,8 @@ Many AI security failures are ordinary security failures made easier to trigger:
 
 This means an AI security platform needs context from code, APIs, identity, cloud posture, external attack surface, and runtime workflows. A standalone prompt scanner is useful, but it is not enough.
 
+For external security context, anchor your review in the [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/), the [OWASP GenAI Security Project 2025 risk list](https://genai.owasp.org/llm-top-10/), and the [Model Context Protocol specification](https://modelcontextprotocol.io/specification/2025-06-18). Those references keep agent, prompt, and tool-surface risk tied to public terminology instead of vendor-only labels.
+
 ## What an AI security platform should answer
 
 Start with practical questions:
@@ -100,3 +102,9 @@ Relevant Flyto2 pages:
 - [Code Intelligence docs](https://docs.flyto2.com/warroom/surfaces/code-intelligence)
 - [CTEM overview](https://flyto2.com/ctem/)
 - [What Is CTEM?](/posts/what-is-ctem-continuous-threat-exposure-management)
+
+External references:
+
+- [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+- [OWASP GenAI Security Project LLM Top 10](https://genai.owasp.org/llm-top-10/)
+- [Model Context Protocol specification](https://modelcontextprotocol.io/specification/2025-06-18)

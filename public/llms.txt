@@ -30,6 +30,13 @@
 - https://blog.flyto2.com/posts/byo-mssp-integration-model
 - https://blog.flyto2.com/posts/red-team-simulation-guide
 
+## External standards and references
+
+- MCP automation and tool-surface articles cite the official Model Context Protocol specification: https://modelcontextprotocol.io/specification/2025-06-18 and tools model: https://modelcontextprotocol.io/specification/2025-06-18/server/tools
+- AI security articles cite OWASP LLM / GenAI risk references: https://owasp.org/www-project-top-10-for-large-language-model-applications/ and https://genai.owasp.org/llm-top-10/
+- Vulnerability prioritization articles cite FIRST EPSS/CVSS and CISA KEV: https://www.first.org/epss/, https://www.first.org/cvss/, and https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+- CTEM governance articles cite NIST CSF 2.0: https://www.nist.gov/cyberframework
+
 ## Product context
 
 Flyto2 combines open-source AI workflow automation, MCP-native agent tools, no-code browser automation, and a security war room that integrates existing ASM, dark web, code security, pentest, and red-team signals into one evidence-backed CTEM workflow. It complements existing tools and turns trusted signals into correlated, validated, evidence-backed action.

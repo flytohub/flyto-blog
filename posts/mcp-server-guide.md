@@ -17,6 +17,8 @@ Flyto2 can expose deterministic workflow modules through the Model Context Proto
 
 The Model Context Protocol is an open protocol for connecting AI models to external tools and data sources. Instead of a model only producing text, an MCP client can ask a server to run a tool with structured arguments and return a structured result.
 
+The canonical protocol reference is the [Model Context Protocol specification](https://modelcontextprotocol.io/specification/2025-06-18), and the [MCP tools specification](https://modelcontextprotocol.io/specification/2025-06-18/server/tools) defines how servers expose callable functions, schemas, results, and tool-safety expectations.
+
 That tool boundary is powerful. It is also a security boundary. Once an AI client can call tools, the question becomes: what can those tools read, write, execute, and mutate?
 
 Flyto2's MCP support is useful because it exposes deterministic modules rather than opaque actions. A module has a name, parameters, output shape, and operational behavior. That makes tool use easier to inspect, test, and govern.
@@ -115,6 +117,8 @@ Finally, avoid storing credentials directly in client configuration files. Keep 
 
 ## Next steps
 
+- Read the [MCP specification](https://modelcontextprotocol.io/specification/2025-06-18)
+- Review the [MCP tools model](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)
 - Browse the [module reference](https://docs.flyto2.com/modules/)
 - Read the [MCP server documentation](https://docs.flyto2.com/mcp/)
 - Review [MCP security in Warroom](https://docs.flyto2.com/warroom/surfaces/mcp-security)

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { data as posts } from './posts.data.mts'
 
 const props = defineProps<{
@@ -31,20 +31,49 @@ function formatDate(dateStr: string) {
 
 // Intersection Observer for scroll animations
 const listRef = ref<HTMLElement>()
+let animationObserver: IntersectionObserver | undefined
+let imageObserver: IntersectionObserver | undefined
+
 onMounted(() => {
   if (!listRef.value) return
-  const observer = new IntersectionObserver(
+  animationObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view')
-          observer.unobserve(entry.target)
+          animationObserver?.unobserve(entry.target)
         }
       })
     },
     { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
   )
-  listRef.value.querySelectorAll('.animate-item').forEach((el) => observer.observe(el))
+  listRef.value.querySelectorAll('.animate-item').forEach((el) => animationObserver?.observe(el))
+
+  imageObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+
+        const img = entry.target as HTMLImageElement
+        const src = img.dataset.src
+        if (src) {
+          img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true })
+          img.src = src
+          img.removeAttribute('data-src')
+        }
+        imageObserver?.unobserve(img)
+      })
+    },
+    { threshold: 0.01, rootMargin: '180px 0px' }
+  )
+  listRef.value
+    .querySelectorAll<HTMLImageElement>('.deferred-cover[data-src]')
+    .forEach((el) => imageObserver?.observe(el))
+})
+
+onBeforeUnmount(() => {
+  animationObserver?.disconnect()
+  imageObserver?.disconnect()
 })
 </script>
 
@@ -61,8 +90,17 @@ onMounted(() => {
 
     <!-- Featured post -->
     <a v-if="!tag && filtered.length" :href="filtered[0].url" class="featured-card animate-item">
-      <div class="featured-cover" :style="filtered[0].cover ? { backgroundImage: `url(${filtered[0].cover})` } : {}">
-        <div v-if="!filtered[0].cover" class="featured-cover-fallback">
+      <div class="featured-cover">
+        <img
+          v-if="filtered[0].cover"
+          class="cover-image"
+          :src="filtered[0].cover"
+          :alt="filtered[0].title"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+        <div v-else class="featured-cover-fallback">
           <div class="cover-pattern" />
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
@@ -103,8 +141,15 @@ onMounted(() => {
         class="post-card animate-item"
         :style="{ '--stagger': i }"
       >
-        <div class="card-cover" :style="post.cover ? { backgroundImage: `url(${post.cover})` } : {}">
-          <div v-if="!post.cover" class="card-cover-fallback" :style="{ '--hue': (i * 47 + 200) % 360 }">
+        <div class="card-cover">
+          <img
+            v-if="post.cover"
+            class="cover-image deferred-cover"
+            :data-src="post.cover"
+            :alt="post.title"
+            decoding="async"
+          >
+          <div v-else class="card-cover-fallback" :style="{ '--hue': (i * 47 + 200) % 360 }">
             <div class="cover-dots" />
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
@@ -196,8 +241,20 @@ onMounted(() => {
 .featured-cover {
   min-height: 300px; position: relative; overflow: hidden;
   background: linear-gradient(135deg, color-mix(in srgb, var(--vp-c-brand-soft) 60%, transparent) 0%, var(--vp-c-bg-soft) 100%);
-  background-size: cover; background-position: center;
   display: flex; align-items: center; justify-content: center;
+}
+.cover-image {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.deferred-cover {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.deferred-cover.is-loaded {
+  opacity: 1;
 }
 .featured-cover-fallback { color: var(--vp-c-brand-1); opacity: 0.25; position: relative; z-index: 1; }
 .cover-pattern {
@@ -246,7 +303,6 @@ onMounted(() => {
 .card-cover {
   height: 160px; position: relative; overflow: hidden;
   background: linear-gradient(135deg, var(--vp-c-brand-soft) 0%, var(--vp-c-bg-soft) 100%);
-  background-size: cover; background-position: center;
   display: flex; align-items: center; justify-content: center;
 }
 .card-cover-fallback { color: hsl(var(--hue, 200), 60%, 60%); opacity: 0.25; position: relative; z-index: 1; }

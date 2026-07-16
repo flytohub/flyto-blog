@@ -19,6 +19,8 @@ CTEM is **not a product** — it is an operating model. It answers three questio
 
 The "continuous" part matters just as much. Your domains, certificates, cloud services, and the credentials that leak from them change every day. A point-in-time assessment is stale the moment it finishes. CTEM treats exposure as a moving target and builds a repeatable loop to keep up with it.
 
+For governance language, map CTEM output to a broader risk framework such as the [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework). NIST CSF does not replace CTEM, but it gives executives and auditors a common vocabulary for govern, identify, protect, detect, respond, and recover outcomes.
+
 ## The 5 stages of CTEM
 
 Gartner defines CTEM as a five-stage cycle. The stages run in order, and then the cycle repeats — each loop tightens the picture.
@@ -83,5 +85,9 @@ The hardest CTEM problem in practice is the seam *between* stages. Most teams ha
 That reflects our BYO/MSSP thesis: you likely already own scanners and tools. The value is not re-running an algorithm you already paid for — it is integrating those signals, supplementing the gaps, and running scoping through validation in one continuous loop, with the [unified scoring](/posts/unified-security-scoring-guide) that makes prioritization defensible. Underneath, the Flyto2 automation engine runs the discovery and validation steps as deterministic, replayable modules, so every exposure in the loop carries the evidence of how it was found and confirmed — which is exactly what mobilization needs to get engineers to act.
 
 For the product view, see the [Flyto2 CTEM page](https://flyto2.com/ctem/), the [attack surface management page](https://flyto2.com/attack-surface-management/), and the [Warroom docs](https://docs.flyto2.com/warroom/).
+
+External reference:
+
+- [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework)
 
 CTEM is ultimately a discipline of honesty: only act on exposures you can prove are real, reachable, and worth fixing — and measure whether your work moved the number. Start with one scope, run the five stages as a loop, and let the trend, not the backlog, tell you if it is working.
