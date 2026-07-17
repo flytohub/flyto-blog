@@ -5,7 +5,7 @@ const CORE_MODULE_COUNT = 451
 const CORE_CATALOG_CATEGORY_COUNT = 84
 const BUILT_IN_RECIPE_COUNT = 41
 const CORE_RUNTIME_SUMMARY = `${CORE_MODULE_COUNT} registry-backed modules across ${CORE_CATALOG_CATEGORY_COUNT} catalog categories, ${BUILT_IN_RECIPE_COUNT} built-in recipes, MCP transports, evidence capture, and replayable YAML execution`
-const SITE_DESCRIPTION = 'Flyto2 guides for AI workflow automation, MCP server automation, no-code browser workflows, CTEM, ASM, EASM, and security automation.'
+const SITE_DESCRIPTION = 'Plain-language Flyto2 guides for AI workflow automation tools, open-source AI agent frameworks, MCP server automation, browser automation, CTEM, ASM, and AI search visibility.'
 const SEO_KEYWORDS = [
   'Flyto2 blog',
   'AI workflow automation',

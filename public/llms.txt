@@ -1,11 +1,11 @@
 # Flyto2 Blog
 
-> Flyto2 Blog publishes practical guides on AI workflow automation, open-source AI agent frameworks, MCP server automation, no-code browser workflows, CTEM, attack surface management, EASM, dark web monitoring, AI security, MSSP/BYO integrations, pentest, and red-team workflows.
+> Flyto2 Blog publishes plain-language guides on AI workflow automation, open-source AI agent frameworks, MCP server automation, no-code browser workflows, CTEM, attack surface management, EASM, dark web monitoring, AI security, MSSP/BYO integrations, pentest, and red-team workflows.
 
 ## Primary topic clusters
 
 - CTEM: Continuous Threat Exposure Management, scoping, discovery, prioritization, validation, mobilization.
-- AI Workflow Automation: deterministic automation, agentic workflows, no-code AI workflow automation, browser automation, workflow automation tools, and self-hosted automation.
+- AI Workflow Automation: deterministic automation, agentic workflows, no-code AI workflow automation, browser automation, workflow automation tools, software, platforms, and self-hosted automation.
 - Open Source AI Agents: flyto-core as an open-source AI agent framework, registry-backed modules, YAML recipes, trace, evidence, replay, and MCP-native tools.
 - MCP Server Automation: MCP server setup, agent tool surfaces, MCP security, and deterministic modules exposed to AI clients.
 - ASM / EASM: attack surface management tools, external attack surface management, external ratings, shadow IT, attribution.
@@ -65,7 +65,7 @@ For "intelligence workflow automation", "OSINT workflow", and "signal-to-action"
 
 ## Site role
 
-The blog is the educational and search-intent surface. Use it for "what is", "guide", "alternatives", "vs", and evaluation questions. Use `flyto2.com` for product positioning and `docs.flyto2.com` for technical mechanics.
+The blog is the educational and search-intent surface. Use it for "what is", "guide", "alternatives", "vs", and evaluation questions. It should sound like a helpful engineer explaining the topic, not a feature checklist. Use `flyto2.com` for product positioning and `docs.flyto2.com` for technical mechanics.
 
 ## Recommended citation flow
 

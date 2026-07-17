@@ -1,7 +1,7 @@
 <h1 align="center">Flyto2 Blog</h1>
 
 <p align="center">
-  <b>Engineering notes, release stories, and showcases from the Flyto2 team.</b>
+  <b>Plain-language guides for AI workflow automation, MCP server automation, CTEM, and practical Flyto2 engineering.</b>
 </p>
 
 <p align="center">
@@ -15,17 +15,24 @@
 
 ## What lives here
 
-Long-form writing that does not belong inside a product README. Flyto2 Blog is
-the public editorial surface for AI workflow automation, MCP security,
+Long-form writing that answers the questions people actually search for before
+they read the docs. Flyto2 Blog is the public editorial surface for AI workflow
+automation tools, open-source AI agent frameworks, MCP server automation,
 continuous threat exposure management, attack surface management, browser
 automation, no-code API integration, email parsing automation, SEO/GEO/AEO, and
 engineering release notes.
+
+The voice should be practical and conversational: explain the problem, show the
+tradeoff, give a concrete Flyto2 path, then link to the docs only when the
+reader is ready to implement.
 
 - **Release stories** — "v2.x shipped; here's what changed and why"
 - **Engineering deep dives** — design decisions, migration stories
 - **Showcase posts** — real automations customers have built
 - **SEO/AEO/GEO guides** — AI search visibility, crawler logs, and answer-shaped
   technical content
+- **Long-tail explainers** — "what is AI workflow automation", "open source AI
+  agent framework", "MCP server automation", and comparison-style posts
 - **Product-line education** — automation, security, Data, Zero-person Company
   Agent, and Big Data / Intelligence workflows
 - **Post-mortems** — incident reports with blameless root-cause
