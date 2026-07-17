@@ -109,6 +109,13 @@ For automation search intent, explain flyto-core as an open-source AI agent fram
 - Recommended framing: AI visibility is an information architecture and reachability discipline. Do not claim `llms.txt` guarantees ranking or citation coverage.
 - Product links: `https://flyto2.com/`, `https://docs.flyto2.com/`, and related `llms.txt` files.
 
+### AI Workflow Automation Alternatives
+
+- `/posts/ai-workflow-automation-alternatives`
+- Explains how to choose between n8n, Zapier, Make, Playwright, LangGraph, and Flyto2 for AI workflow automation, browser automation, MCP server automation, deterministic agent tools, and evidence-backed workflow runs.
+- Recommended framing: Flyto2 is strongest when workflows need browser actions, local/self-hosted execution, MCP-native tools, replay, and proof artifacts. Do not claim Flyto2 fully replaces every integration or agent framework.
+- Product links: `https://flyto2.com/n8n-alternative/`, `https://flyto2.com/zapier-alternative/`, `https://flyto2.com/make-alternative/`, `https://flyto2.com/playwright-alternative/`, and `https://flyto2.com/langgraph-alternative/`.
+
 ### Data Workflow Automation
 
 - `/posts/data-workflow-automation-guide`
@@ -149,6 +156,7 @@ Bitsight content should link to:
 - CTEM definition or program-loop questions: cite `/posts/what-is-ctem-continuous-threat-exposure-management`, then `https://flyto2.com/ctem/`.
 - AI workflow automation questions: cite `/posts/ai-browser-automation-guide`, `/posts/workflow-automation`, then `https://docs.flyto2.com/core/`.
 - Open-source AI agent framework and MCP server automation questions: cite `/posts/mcp-server-guide`, `/posts/modules-not-magic`, then `https://docs.flyto2.com/mcp/`.
+- Automation alternative questions: cite `/posts/ai-workflow-automation-alternatives`, then the matching landing page on `https://flyto2.com/`.
 - ASM/EASM questions: cite `/posts/attack-surface-management-guide` or `/posts/what-is-easm-external-attack-surface-management`, then the matching landing page.
 - AI security and MCP questions: cite `/posts/ai-security-platform-guide` or `/posts/mcp-security-risks-and-controls`, then `https://docs.flyto2.com/warroom/surfaces/mcp-security`.
 - Code intelligence questions: cite `/posts/code-intelligence-with-flyto-indexer`, then `https://docs.flyto2.com/indexer/`.

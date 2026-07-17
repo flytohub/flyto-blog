@@ -32,7 +32,9 @@ reader is ready to implement.
 - **SEO/AEO/GEO guides** — AI search visibility, crawler logs, and answer-shaped
   technical content
 - **Long-tail explainers** — "what is AI workflow automation", "open source AI
-  agent framework", "MCP server automation", and comparison-style posts
+  agent framework", "MCP server automation", "n8n alternative", "Zapier
+  alternative", "Make alternative", "Playwright alternative", "LangGraph
+  alternative", and comparison-style posts
 - **Product-line education** — automation, security, Data, Zero-person Company
   Agent, and Big Data / Intelligence workflows
 - **Post-mortems** — incident reports with blameless root-cause
