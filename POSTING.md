@@ -43,3 +43,17 @@ pages, or similar channels:
 5. Never commit tokens or generated secret-bearing responses.
 
 Supported live environment variables are documented in `social/README.md`.
+
+## Video drafts
+
+When a post should become a YouTube or Shorts draft:
+
+1. Add a plan under `video/plans/<slug>.json`.
+2. Keep the blog post as the canonical source URL.
+3. Run `npm run video:check`.
+4. Run `npm run video:storyboard` for review artifacts.
+5. Use the manual `Video Render` GitHub Action to produce an MP4 artifact.
+6. Keep YouTube upload/publish separate from blog deployment and social
+   syndication.
+
+Video plan rules live in `video/README.md`.

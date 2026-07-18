@@ -11,6 +11,9 @@
   LinkedIn/Facebook draft and publish flows.
 - Added a `Social Publish` GitHub Action for manual or scheduled social
   publishing with dry-run fallback when platform secrets are missing.
+- Added an open-source-safe video production starter with video plans,
+  storyboard rendering, private-first YouTube metadata, and a manual MP4 render
+  workflow.
 - Added four long-form SEO/AEO/GEO blog posts for AI search visibility,
   zero-person company agents, data workflow automation, and intelligence
   workflow automation.

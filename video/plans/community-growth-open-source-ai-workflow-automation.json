@@ -1,0 +1,65 @@
+{
+  "id": "community-growth-open-source-ai-workflow-automation",
+  "title": "Flyto2 community growth for open-source AI workflow automation",
+  "description": "A short engineering video that turns the Flyto2 community post into a clear YouTube-ready walkthrough for contributors and builders.",
+  "sourceUrl": "https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation",
+  "format": "short",
+  "aspectRatio": "16:9",
+  "durationSeconds": 45,
+  "humanReviewRequired": true,
+  "aiDisclosureRequired": false,
+  "assets": [
+    {
+      "name": "Flyto2 generated title cards",
+      "license": "owned"
+    },
+    {
+      "name": "Flyto2 product and documentation screenshots",
+      "license": "owned"
+    }
+  ],
+  "scenes": [
+    {
+      "durationSeconds": 5,
+      "title": "Open-source AI workflow automation should be easy to trust.",
+      "body": "Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop."
+    },
+    {
+      "durationSeconds": 7,
+      "title": "One source, many useful surfaces.",
+      "body": "A blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story."
+    },
+    {
+      "durationSeconds": 7,
+      "title": "Good-first work matters.",
+      "body": "Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing."
+    },
+    {
+      "durationSeconds": 8,
+      "title": "Social posts should be reviewed, not sprayed.",
+      "body": "Flyto2 drafts LinkedIn, Facebook, GitHub, YouTube, and package-page copy from one plan, then keeps live publishing behind maintainer approval."
+    },
+    {
+      "durationSeconds": 8,
+      "title": "Every claim points back to evidence.",
+      "body": "The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool."
+    },
+    {
+      "durationSeconds": 10,
+      "title": "Join the Flyto2 community.",
+      "body": "Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked."
+    }
+  ],
+  "youtube": {
+    "privacyStatus": "private",
+    "categoryId": "28",
+    "tags": [
+      "Flyto2",
+      "open-source AI workflow automation",
+      "MCP server automation",
+      "AI agents",
+      "workflow automation"
+    ],
+    "description": "A short Flyto2 community walkthrough for open-source AI workflow automation builders. Canonical post: https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation"
+  }
+}

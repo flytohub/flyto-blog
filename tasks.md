@@ -9,3 +9,4 @@
   clusters.
 - [x] Add review-first social syndication tooling for community posts.
 - [x] Add GitHub Action automation for reviewed social publishing.
+- [x] Add video plan, storyboard, and manual render workflow for YouTube drafts.

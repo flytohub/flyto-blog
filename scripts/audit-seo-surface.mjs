@@ -50,6 +50,7 @@ const forbiddenSitemapTokens = [
   '/STATE',
   '/tasks',
   '/social/',
+  '/video/',
   '/workflows/',
   '/handoffs/',
   '/public/blog/',

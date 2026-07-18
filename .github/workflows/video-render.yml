@@ -1,0 +1,41 @@
+name: Video Render
+
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Video plan path
+        required: true
+        default: video/plans/community-growth-open-source-ai-workflow-automation.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Render review video artifact
+    runs-on: ubuntu-latest
+    env:
+      VIDEO_PLAN: ${{ github.event.inputs.plan || 'video/plans/community-growth-open-source-ai-workflow-automation.json' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install render tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg librsvg2-bin
+      - name: Validate video plan
+        run: npm run video:check -- --plan "${VIDEO_PLAN}"
+      - name: Render MP4 draft
+        run: npm run video:render -- --plan "${VIDEO_PLAN}" --mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flyto2-video-draft
+          path: video/dist/**
+          if-no-files-found: error

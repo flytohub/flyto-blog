@@ -73,6 +73,7 @@ function isNonContentPath(relativePath: string) {
   return NON_CONTENT_PATHS.has(relativePath)
     || relativePath.startsWith('public/')
     || relativePath.startsWith('social/')
+    || relativePath.startsWith('video/')
     || relativePath.startsWith('workflows/')
     || relativePath.startsWith('handoffs/')
 }
@@ -91,6 +92,7 @@ function isNonContentPublicPath(path: string) {
   return NON_CONTENT_PATHS.has(asMarkdownPath)
     || cleanPath.startsWith('public/')
     || cleanPath.startsWith('social/')
+    || cleanPath.startsWith('video/')
     || cleanPath.startsWith('workflows/')
     || cleanPath.startsWith('handoffs/')
 }

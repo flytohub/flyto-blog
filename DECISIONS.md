@@ -15,6 +15,17 @@ schedule. It requests live mode only through GitHub Secrets and falls back to
 dry-run when credentials are absent, so open-source contributors can review the
 automation without seeing private tokens.
 
+## 2026-07-18 - Video production is artifact-first
+
+Decision: YouTube and Shorts drafts start as committed video plans under
+`video/plans/`, render review artifacts locally or through a manual GitHub
+Action, and keep upload credentials out of source.
+
+Reason: Flyto2 is open source. Contributors should be able to review the script,
+storyboard, captions, and metadata without receiving OAuth tokens or accidentally
+publishing to a public channel. Generated videos stay private-first until a
+maintainer reviews the artifact.
+
 ## 2026-07-18 - Blog keeps hreflang tied to published posts
 
 Decision: blog reads `.seo/i18n-seo-manifest.json` from the shared Flyto2 i18n

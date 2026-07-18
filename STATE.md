@@ -21,6 +21,13 @@ Current state on 2026-07-18:
 - `.github/workflows/social-publish.yml` can run social syndication manually or
   weekly; it publishes only when GitHub Secrets are configured and otherwise
   records a dry-run artifact.
+- `video/plans/community-growth-open-source-ai-workflow-automation.json` is the
+  first YouTube-ready video plan. `npm run video:check` validates video plans,
+  and `npm run video:storyboard` generates storyboard, frames, captions, and
+  YouTube metadata without credentials.
+- `.github/workflows/video-render.yml` is a manual artifact-only render path; it
+  installs `ffmpeg` plus `rsvg-convert`, produces an MP4 draft, and does not
+  upload to YouTube.
 - `public/robots.txt`, `public/llms.txt`, and `public/llms-full.txt` exist.
 - Root project memory files are filtered as non-content by VitePress config.
 - `npm run audit:seo` now verifies the built homepage, every blog post,
@@ -30,6 +37,9 @@ Current state on 2026-07-18:
 - `npm run social:check` verifies the social publisher dry-run, required
   channels, environment guards, GitHub Action guardrails, and no committed
   tokens.
+- `npm run video:check` verifies video plan shape, canonical links, private or
+  unlisted YouTube metadata, licensing notes, Flyto2 brand hygiene, email-domain
+  hygiene, and no committed tokens.
 - `.github/workflows/seo.yml` adds a separate SEO gate with local metadata
   audit, Lighthouse SEO assertions, and public-link checks.
 
