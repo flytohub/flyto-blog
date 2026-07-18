@@ -4,6 +4,13 @@
 
 ### Added
 
+- Added the community growth post and social syndication plan for Flyto2
+  open-source AI workflow automation.
+- Added `scripts/social-publish.mjs`, `npm run social:dry-run`,
+  `npm run social:publish`, and `npm run social:check` for review-first
+  LinkedIn/Facebook draft and publish flows.
+- Added a `Social Publish` GitHub Action for manual or scheduled social
+  publishing with dry-run fallback when platform secrets are missing.
 - Added four long-form SEO/AEO/GEO blog posts for AI search visibility,
   zero-person company agents, data workflow automation, and intelligence
   workflow automation.

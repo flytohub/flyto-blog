@@ -11,6 +11,9 @@ Important files:
 - `.vitepress/config.mts` controls sitemap filtering, canonical links, JSON-LD,
   article metadata, and non-content path handling.
 - `POSTING.md` defines article frontmatter.
+- `social/posts/*.json` defines reviewable social syndication plans.
+- `scripts/social-publish.mjs` generates dry-run drafts and can publish live to
+  supported APIs only when runtime credentials are present.
 - `tags.md` organizes topic clusters.
 - `public/llms.txt` and `public/llms-full.txt` are AI-readable indexes.
 

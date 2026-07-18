@@ -13,12 +13,23 @@ Current state on 2026-07-18:
 - Public topics cover security, automation, Data workflow automation,
   Zero-person Company Agent, Big Data / Intelligence workflow automation, and
   AI search visibility.
+- `posts/community-growth-open-source-ai-workflow-automation.md` is the
+  canonical community growth and social syndication post.
+- `scripts/social-publish.mjs` provides dry-run-first LinkedIn/Facebook social
+  syndication; live mode requires runtime credentials and is not tied to site
+  deployment.
+- `.github/workflows/social-publish.yml` can run social syndication manually or
+  weekly; it publishes only when GitHub Secrets are configured and otherwise
+  records a dry-run artifact.
 - `public/robots.txt`, `public/llms.txt`, and `public/llms-full.txt` exist.
 - Root project memory files are filtered as non-content by VitePress config.
 - `npm run audit:seo` now verifies the built homepage, every blog post,
   sitemap coverage, robots policy, llms files, keyword matrix freshness,
   Flyto2 brand hygiene, `@flyto2.com` email hygiene, manifest source hash, and
   keyword evidence.
+- `npm run social:check` verifies the social publisher dry-run, required
+  channels, environment guards, GitHub Action guardrails, and no committed
+  tokens.
 - `.github/workflows/seo.yml` adds a separate SEO gate with local metadata
   audit, Lighthouse SEO assertions, and public-link checks.
 

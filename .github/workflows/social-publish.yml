@@ -1,0 +1,76 @@
+name: Social Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: Social plan path
+        required: true
+        default: social/posts/community-growth-open-source-ai-workflow-automation.json
+      live:
+        description: Publish live instead of dry-run
+        required: true
+        type: boolean
+        default: false
+  schedule:
+    - cron: "30 2 * * 2"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Review and publish social plan
+    runs-on: ubuntu-latest
+    env:
+      SOCIAL_PLAN: ${{ github.event.inputs.plan || 'social/posts/community-growth-open-source-ai-workflow-automation.json' }}
+      REQUEST_LIVE: ${{ github.event_name == 'schedule' || github.event.inputs.live == 'true' }}
+      LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+      LINKEDIN_VERSION: ${{ vars.LINKEDIN_VERSION || '202606' }}
+      META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
+      META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
+      META_GRAPH_VERSION: ${{ vars.META_GRAPH_VERSION || 'v25.0' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run social:check
+      - name: Publish or dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+
+          if [[ "${REQUEST_LIVE}" != "true" ]]; then
+            npm run social:publish -- --plan "${SOCIAL_PLAN}" --dry-run --out artifacts/social-dry-run.json
+            exit 0
+          fi
+
+          missing=()
+          for name in LINKEDIN_ACCESS_TOKEN LINKEDIN_AUTHOR_URN META_PAGE_ID META_PAGE_ACCESS_TOKEN; do
+            if [[ -z "${!name:-}" ]]; then
+              missing+=("${name}")
+            fi
+          done
+
+          if (( ${#missing[@]} > 0 )); then
+            printf 'Live social credentials missing: %s\n' "${missing[*]}"
+            npm run social:publish -- --plan "${SOCIAL_PLAN}" --dry-run --out artifacts/social-dry-run.json
+            exit 0
+          fi
+
+          npm run social:publish -- --plan "${SOCIAL_PLAN}" --live --out artifacts/social-live-result.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: social-publish-output
+          path: artifacts/*.json
+          if-no-files-found: ignore

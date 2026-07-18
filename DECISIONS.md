@@ -1,5 +1,20 @@
 # Decisions
 
+## 2026-07-18 - Social publishing is review-first
+
+Decision: social syndication plans live under `social/posts/`; the publisher
+defaults to dry-run and publishes live only when a maintainer passes platform
+credentials through runtime environment variables.
+
+Reason: LinkedIn and Facebook publishing require account/page authorization and
+rate-limit-aware API usage. Site deploys should not accidentally post to social
+channels, and secrets must not enter source control.
+
+Follow-up: the `Social Publish` GitHub Action may run on demand or by weekly
+schedule. It requests live mode only through GitHub Secrets and falls back to
+dry-run when credentials are absent, so open-source contributors can review the
+automation without seeing private tokens.
+
 ## 2026-07-18 - Blog keeps hreflang tied to published posts
 
 Decision: blog reads `.seo/i18n-seo-manifest.json` from the shared Flyto2 i18n

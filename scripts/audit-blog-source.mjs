@@ -20,6 +20,7 @@ const requiredPosts = [
   'data-workflow-automation-guide.md',
   'zero-person-company-agent-guide.md',
   'intelligence-workflow-automation-guide.md',
+  'community-growth-open-source-ai-workflow-automation.md',
 ];
 
 function fail(message) {

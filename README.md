@@ -85,14 +85,26 @@ npm run build
 Run the production build before publishing public content:
 
 ```bash
-npm run build
+npm run verify
 ```
+
+For social drafts, run:
+
+```bash
+npm run social:dry-run
+```
+
+The `Social Publish` GitHub Action can publish approved plans to LinkedIn and a
+Facebook Page once the maintainer-owned secrets are configured. Without those
+secrets, the action records a dry-run artifact instead of failing or posting.
 
 ## Contributing a post
 
 1. Fork + branch.
 2. Add `posts/YYYY-MM-DD-your-slug.md`.
-3. Open PR; tag `@flytohub/editors` for review.
+3. If the post should be promoted, add or update a plan under `social/posts/`
+   and verify it with `npm run social:check`.
+4. Open PR; tag `@flytohub/editors` for review.
 
 Not a team member but want to contribute a guest post? Open a
 [Discussion](https://github.com/flytohub/flyto-core/discussions/categories/ideas)
@@ -104,3 +116,4 @@ with an outline first.
 - [flyto-docs](https://github.com/flytohub/flyto-docs) — product documentation (not essays)
 - [flyto-landing-page](https://github.com/flytohub/flyto-landing-page)
 - [flyto-indexer](https://github.com/flytohub/flyto-indexer) — code intelligence MCP for AI-assisted engineering
+- [Flyto2 community hub](https://flyto2.com/community/)

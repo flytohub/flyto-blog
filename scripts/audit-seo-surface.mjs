@@ -36,6 +36,7 @@ const requiredPostTerms = new Map([
   ['posts/data-workflow-automation-guide.html', ['data workflow automation']],
   ['posts/zero-person-company-agent-guide.html', ['zero-person company']],
   ['posts/intelligence-workflow-automation-guide.html', ['intelligence workflow automation']],
+  ['posts/community-growth-open-source-ai-workflow-automation.html', ['open-source AI workflow automation', 'MCP server automation examples']],
 ]);
 const forbiddenSitemapTokens = [
   '/AGENTS',
@@ -48,6 +49,7 @@ const forbiddenSitemapTokens = [
   '/SECURITY',
   '/STATE',
   '/tasks',
+  '/social/',
   '/workflows/',
   '/handoffs/',
   '/public/blog/',
@@ -69,6 +71,7 @@ const requiredLlmsTokens = [
   'AI search visibility',
   'zero-person company agent',
   'data workflow automation',
+  'Community Growth',
   'https://flyto2.com',
   'https://docs.flyto2.com',
 ];

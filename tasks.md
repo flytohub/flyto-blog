@@ -7,3 +7,5 @@
 - [ ] Refresh `public/llms-full.txt` after major content additions.
 - [ ] Plan Data, Zero-person Agent, and Big Data / Intelligence content
   clusters.
+- [x] Add review-first social syndication tooling for community posts.
+- [x] Add GitHub Action automation for reviewed social publishing.

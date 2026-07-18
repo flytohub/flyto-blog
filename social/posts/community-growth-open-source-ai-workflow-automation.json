@@ -1,0 +1,44 @@
+{
+  "id": "community-growth-open-source-ai-workflow-automation",
+  "canonicalUrl": "https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation",
+  "title": "Flyto2 community growth for open-source AI workflow automation",
+  "description": "How Flyto2 turns docs, good-first issues, reusable recipes, MCP examples, package pages, and reviewed social posts into one community loop.",
+  "tags": [
+    "open-source-ai-workflow-automation",
+    "mcp-server-automation",
+    "developer-community",
+    "social-syndication"
+  ],
+  "channels": {
+    "linkedin": {
+      "enabled": true,
+      "commentary": "Flyto2 now has a clearer community loop for open-source AI workflow automation: good-first issues, reusable recipes, MCP examples, docs links, and reviewed social syndication from one canonical post.",
+      "article": {
+        "title": "Flyto2 community growth for open-source AI workflow automation",
+        "description": "A practical community loop for Flyto2 contributors, workflow builders, MCP users, and maintainers."
+      }
+    },
+    "facebook": {
+      "enabled": true,
+      "message": "Flyto2 now has a clearer community loop: good-first issues, reusable workflow recipes, MCP examples, docs links, and reviewed social syndication from one canonical post."
+    },
+    "github": {
+      "enabled": true,
+      "mode": "manual",
+      "target": "https://github.com/flytohub/flyto-core/discussions",
+      "message": "Share the community-growth post in Discussions and invite recipe, MCP, and Warroom CE showcases."
+    },
+    "youtube": {
+      "enabled": true,
+      "mode": "manual",
+      "target": "https://www.youtube.com/@Flyto2",
+      "message": "Use this post as the description source for a short demo about recipes, replay, and MCP setup."
+    },
+    "packagePages": {
+      "enabled": true,
+      "mode": "manual",
+      "target": "PyPI, npm, Docker Hub, GitHub repository descriptions",
+      "message": "Keep package descriptions pointing to flyto2.com, docs.flyto2.com, blog.flyto2.com, and the community hub."
+    }
+  }
+}

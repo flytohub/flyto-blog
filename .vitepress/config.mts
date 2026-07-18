@@ -72,6 +72,7 @@ function toPublicPath(url: string) {
 function isNonContentPath(relativePath: string) {
   return NON_CONTENT_PATHS.has(relativePath)
     || relativePath.startsWith('public/')
+    || relativePath.startsWith('social/')
     || relativePath.startsWith('workflows/')
     || relativePath.startsWith('handoffs/')
 }
@@ -89,6 +90,7 @@ function isNonContentPublicPath(path: string) {
 
   return NON_CONTENT_PATHS.has(asMarkdownPath)
     || cleanPath.startsWith('public/')
+    || cleanPath.startsWith('social/')
     || cleanPath.startsWith('workflows/')
     || cleanPath.startsWith('handoffs/')
 }
@@ -164,6 +166,7 @@ export default defineConfig({
     nav: [
       { text: 'Blog', link: '/' },
       { text: 'Tags', link: '/tags' },
+      { text: 'Community', link: 'https://flyto2.com/community/' },
       { text: 'Docs', link: 'https://docs.flyto2.com' },
       { text: 'Flyto2', link: 'https://flyto2.com' },
     ],
