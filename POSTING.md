@@ -29,6 +29,20 @@ cover: /slug.svg                # optional; 1200×630 image in public/
 - **Links**: use root-relative paths (`/tags`) for internal links so they resolve correctly in production.
 - **Images**: store in `public/` and reference as `/image-name.ext`.
 
+## SEO score gate
+
+Every post is scored by `npm run seo:score` after the site builds. Treat it like
+a CI version of a WordPress SEO panel:
+
+- Put the focus keyword or long-tail phrase in the title, description, H1, and
+  opening paragraph.
+- Use at least three useful H2 sections.
+- Add relevant internal links and at least one evidence link when the topic
+  benefits from a source.
+- Give every image descriptive alt text.
+- Keep body copy answer-shaped so search engines and AI answer engines can
+  extract the topic, entity, and next step.
+
 ## Social syndication
 
 When a post should be promoted on LinkedIn, Facebook, GitHub, YouTube, package

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Flyto2 Blog
+title: "Flyto2 Blog: AI Workflow Automation Guides"
 ---
 
 <BlogHero />

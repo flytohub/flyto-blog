@@ -1,13 +1,13 @@
 ---
-title: "We Don't Do Magic Prompts"
-description: "Why Flyto2 uses 451 validated modules instead of letting AI write code from scratch. Deterministic automation that you can actually debug."
+title: "AI Automation Modules, Not Magic Prompts"
+description: "Why Flyto2 uses 451 AI automation modules instead of letting agents write code from scratch: deterministic workflows you can debug and replay."
 date: 2026-03-13
 tags: [engineering, announcement]
 author: Flyto2 Team
 cover: /modules-not-magic.svg
 ---
 
-Most AI automation tools sell you a dream: *"Just tell the AI what you want and it figures it out."*
+Flyto2 uses AI automation modules instead of magic prompts. Most AI automation tools sell you a dream: *"Just tell the AI what you want and it figures it out."*
 
 We tried that. It doesn't work.
 

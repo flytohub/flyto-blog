@@ -25,6 +25,9 @@
 - Added `npm run audit:seo` to validate built homepage metadata, every blog
   post, sitemap inclusion, robots policy, llms files, keyword evidence, brand
   hygiene, and email-domain hygiene.
+- Added `npm run seo:score`, a Rank Math-style page scoring gate with JSON and
+  Markdown reports for technical SEO, focus keywords, readability, links/images,
+  and AI visibility signals.
 - Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,
   and public-link checks.
 - Added project memory files, workflow docs, and handoff registry.

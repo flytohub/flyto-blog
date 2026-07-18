@@ -88,6 +88,13 @@ Run the production build before publishing public content:
 npm run verify
 ```
 
+`npm run verify` includes a Rank Math-style SEO score gate after the static
+build. It scores every built page from 0-100 across technical metadata, focus
+keyword placement, content structure, links/images, and AI visibility signals.
+Reports are written to `.seo/reports/seo-score.json` and
+`.seo/reports/seo-score.md`. CI fails when the homepage, any post, or the site
+average falls below the configured thresholds.
+
 For social drafts, run:
 
 ```bash

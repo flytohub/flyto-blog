@@ -37,6 +37,11 @@ Current state on 2026-07-18:
   sitemap coverage, robots policy, llms files, keyword matrix freshness,
   Flyto2 brand hygiene, `@flyto2.com` email hygiene, manifest source hash, and
   keyword evidence.
+- `npm run seo:score` adds a Rank Math-style 100-point scoring gate for every
+  built page. It scores technical metadata, focus keyword placement, content
+  structure, links/images, and AI visibility signals, writes reports under
+  `.seo/reports/`, and fails CI when homepage, page, or site-average thresholds
+  are missed.
 - `npm run social:check` verifies the social publisher dry-run, required
   channels, environment guards, GitHub Action guardrails, and no committed
   tokens.
