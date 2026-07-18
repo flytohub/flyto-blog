@@ -101,12 +101,16 @@ secrets, the action records a dry-run artifact instead of failing or posting.
 For YouTube/video drafts, run:
 
 ```bash
+npm run video:from-post -- posts/community-growth-open-source-ai-workflow-automation.md --out video/plans/community-growth-open-source-ai-workflow-automation.json --force
 npm run video:check
+npm run video:qa
 npm run video:storyboard
 ```
 
 The manual `Video Render` GitHub Action installs render tools, turns a reviewed
-plan under `video/plans/` into an MP4 artifact, and never reads YouTube tokens.
+plan under `video/plans/` into YouTube 16:9, Shorts 9:16, and LinkedIn 1:1 MP4
+artifacts, and never reads YouTube tokens. Use its `variant` input to render
+one output instead of all outputs.
 
 ## Contributing a post
 
@@ -114,8 +118,8 @@ plan under `video/plans/` into an MP4 artifact, and never reads YouTube tokens.
 2. Add `posts/YYYY-MM-DD-your-slug.md`.
 3. If the post should be promoted, add or update a plan under `social/posts/`
    and verify it with `npm run social:check`.
-4. If the post should become a video, add or update a plan under `video/plans/`
-   and verify it with `npm run video:check`.
+4. If the post should become a video, generate or update a plan under
+   `video/plans/` and verify it with `npm run video:qa`.
 5. Open PR; tag `@flytohub/editors` for review.
 
 Not a team member but want to contribute a guest post? Open a

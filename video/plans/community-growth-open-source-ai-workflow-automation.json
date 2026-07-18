@@ -1,16 +1,79 @@
 {
   "id": "community-growth-open-source-ai-workflow-automation",
   "title": "Flyto2 community growth for open-source AI workflow automation",
-  "description": "A short engineering video that turns the Flyto2 community post into a clear YouTube-ready walkthrough for contributors and builders.",
+  "description": "A short engineering video that turns the Flyto2 community post into a clear YouTube, Shorts, and LinkedIn-ready walkthrough.",
   "sourceUrl": "https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation",
   "format": "short",
   "aspectRatio": "16:9",
   "durationSeconds": 45,
   "humanReviewRequired": true,
   "aiDisclosureRequired": false,
+  "seo": {
+    "primaryKeyword": "open-source AI workflow automation",
+    "longTailKeywords": [
+      "open-source AI workflow automation for contributors",
+      "MCP server automation examples for AI agents",
+      "reviewable workflow automation with replay evidence",
+      "how to grow an open-source AI automation community",
+      "Flyto2 community loop for workflow automation",
+      "good first issues for AI workflow automation projects"
+    ],
+    "titleCandidates": [
+      "Flyto2 community growth for open-source AI workflow automation",
+      "Open-source AI workflow automation needs proof, not hype",
+      "How Flyto2 turns docs, issues, and recipes into community growth"
+    ],
+    "hashtags": [
+      "#Flyto2",
+      "#AIAutomation",
+      "#OpenSource",
+      "#MCP",
+      "#WorkflowAutomation"
+    ]
+  },
+  "outputs": [
+    {
+      "id": "youtube-landscape",
+      "platform": "youtube",
+      "aspectRatio": "16:9",
+      "width": 1280,
+      "height": 720,
+      "label": "YouTube 16:9 draft"
+    },
+    {
+      "id": "youtube-shorts",
+      "platform": "youtube-shorts",
+      "aspectRatio": "9:16",
+      "width": 1080,
+      "height": 1920,
+      "label": "YouTube Shorts 9:16 draft"
+    },
+    {
+      "id": "linkedin-square",
+      "platform": "linkedin",
+      "aspectRatio": "1:1",
+      "width": 1080,
+      "height": 1080,
+      "label": "LinkedIn square draft"
+    }
+  ],
+  "thumbnails": [
+    {
+      "headline": "Open-source AI automation, with proof",
+      "subhead": "A Flyto2 community loop built from docs, issues, recipes, and replayable evidence."
+    },
+    {
+      "headline": "One source, many useful surfaces",
+      "subhead": "Flyto2 links blog, docs, GitHub, package pages, and video back to one canonical post."
+    },
+    {
+      "headline": "Flyto2 good-first issues that help",
+      "subhead": "Small recipes and MCP examples help contributors ship useful work without guessing."
+    }
+  ],
   "assets": [
     {
-      "name": "Flyto2 generated title cards",
+      "name": "Flyto2 generated title cards and thumbnails",
       "license": "owned"
     },
     {
@@ -22,32 +85,44 @@
     {
       "durationSeconds": 5,
       "title": "Open-source AI workflow automation should be easy to trust.",
-      "body": "Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop."
+      "body": "Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop.",
+      "narration": "Open-source AI workflow automation should be easy to trust. Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop.",
+      "visualCue": "Show the canonical post and Flyto2 community hub."
     },
     {
       "durationSeconds": 7,
       "title": "One source, many useful surfaces.",
-      "body": "A blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story."
+      "body": "A blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story.",
+      "narration": "One source can support many useful surfaces. The blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story.",
+      "visualCue": "Map blog, docs, GitHub, PyPI, and YouTube around one URL."
     },
     {
       "durationSeconds": 7,
       "title": "Good-first work matters.",
-      "body": "Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing."
+      "body": "Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing.",
+      "narration": "Good-first work matters. Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing.",
+      "visualCue": "Show issue labels, recipe files, and expected output."
     },
     {
       "durationSeconds": 8,
       "title": "Social posts should be reviewed, not sprayed.",
-      "body": "Flyto2 drafts LinkedIn, Facebook, GitHub, YouTube, and package-page copy from one plan, then keeps live publishing behind maintainer approval."
+      "body": "Flyto2 drafts LinkedIn, Facebook, GitHub, YouTube, and package-page copy from one plan, then keeps live publishing behind maintainer approval.",
+      "narration": "Social posts should be reviewed, not sprayed. Flyto2 drafts channel copy from one plan, then keeps live publishing behind maintainer approval.",
+      "visualCue": "Show dry-run payloads and private-first review status."
     },
     {
       "durationSeconds": 8,
       "title": "Every claim points back to evidence.",
-      "body": "The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool."
+      "body": "The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool.",
+      "narration": "Every claim points back to evidence. The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool.",
+      "visualCue": "Show canonical URL, docs link, and GitHub repository link."
     },
     {
       "durationSeconds": 10,
       "title": "Join the Flyto2 community.",
-      "body": "Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked."
+      "body": "Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked.",
+      "narration": "Join the Flyto2 community. Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked.",
+      "visualCue": "Close with the Flyto2 community URL and one clear contribution path."
     }
   ],
   "youtube": {
@@ -60,6 +135,6 @@
       "AI agents",
       "workflow automation"
     ],
-    "description": "A short Flyto2 community walkthrough for open-source AI workflow automation builders. Canonical post: https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation"
+    "description": "A short Flyto2 community walkthrough for open-source AI workflow automation builders. Canonical post: https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation\n\nLong-tail topics: open-source AI workflow automation for contributors, MCP server automation examples for AI agents, reviewable workflow automation with replay evidence.\n\n#Flyto2 #AIAutomation #OpenSource"
   }
 }

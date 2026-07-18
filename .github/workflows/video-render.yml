@@ -7,6 +7,10 @@ on:
         description: Video plan path
         required: true
         default: video/plans/community-growth-open-source-ai-workflow-automation.json
+      variant:
+        description: Output variant id, or all
+        required: true
+        default: all
 
 permissions:
   contents: read
@@ -21,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       VIDEO_PLAN: ${{ github.event.inputs.plan || 'video/plans/community-growth-open-source-ai-workflow-automation.json' }}
+      VIDEO_VARIANT: ${{ github.event.inputs.variant || 'all' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,10 +37,18 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y ffmpeg librsvg2-bin
       - name: Validate video plan
         run: npm run video:check -- --plan "${VIDEO_PLAN}"
+      - name: QA video metadata
+        run: npm run video:qa -- --plan "${VIDEO_PLAN}"
       - name: Render MP4 draft
-        run: npm run video:render -- --plan "${VIDEO_PLAN}" --mp4
+        run: |
+          if [ "${VIDEO_VARIANT}" = "all" ]; then
+            npm run video:render -- --plan "${VIDEO_PLAN}" --mp4
+          else
+            npm run video:render -- --plan "${VIDEO_PLAN}" --variant "${VIDEO_VARIANT}" --mp4
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: flyto2-video-draft
           path: video/dist/**
           if-no-files-found: error
+          retention-days: 14

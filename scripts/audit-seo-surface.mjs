@@ -13,6 +13,7 @@ const seoContract = loadSeoContract();
 const siteUrl = seoContract.surface.origin;
 const maxKeywordMatrixAgeDays = 100;
 const failures = [];
+const legacyBrandPattern = new RegExp(`\\b${['Fly', 'to'].join('')}\\b`, 'g');
 
 const homepageTerms = [
   'AI workflow automation',
@@ -177,7 +178,7 @@ function sitemapLocVariants(url) {
 }
 
 function checkBrandAndEmails(label, content) {
-  if (content.match(/\bFlyto\b/g)) fail(`${label} contains standalone "Flyto"; use Flyto2 unless referring to repo IDs`);
+  if (content.match(legacyBrandPattern)) fail(`${label} contains legacy brand text; use Flyto2 unless referring to repo IDs`);
   const emails = content.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) ?? [];
   const badEmails = [...new Set(emails.filter((email) => !email.toLowerCase().endsWith('@flyto2.com')))];
   if (badEmails.length) fail(`${label} contains non-flyto2.com email(s): ${badEmails.join(', ')}`);

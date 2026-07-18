@@ -48,11 +48,14 @@ Supported live environment variables are documented in `social/README.md`.
 
 When a post should become a YouTube or Shorts draft:
 
-1. Add a plan under `video/plans/<slug>.json`.
+1. Generate a first plan with `npm run video:from-post -- posts/<slug>.md`
+   or add a reviewed plan under `video/plans/<slug>.json`.
 2. Keep the blog post as the canonical source URL.
-3. Run `npm run video:check`.
-4. Run `npm run video:storyboard` for review artifacts.
-5. Use the manual `Video Render` GitHub Action to produce an MP4 artifact.
+3. Run `npm run video:qa`.
+4. Run `npm run video:storyboard` for review artifacts, captions,
+   thumbnails, voiceover draft, and platform metadata.
+5. Use the manual `Video Render` GitHub Action to produce MP4 artifacts for
+   all variants or one selected variant.
 6. Keep YouTube upload/publish separate from blog deployment and social
    syndication.
 

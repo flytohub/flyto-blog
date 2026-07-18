@@ -14,6 +14,9 @@
 - Added an open-source-safe video production starter with video plans,
   storyboard rendering, private-first YouTube metadata, and a manual MP4 render
   workflow.
+- Upgraded video production with Markdown-to-plan generation, release-style
+  video QA, long-tail keyword fields, thumbnail candidates, narration drafts,
+  and 16:9 / 9:16 / 1:1 output variants.
 - Added four long-form SEO/AEO/GEO blog posts for AI search visibility,
   zero-person company agents, data workflow automation, and intelligence
   workflow automation.

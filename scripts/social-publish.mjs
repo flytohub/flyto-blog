@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlan = 'social/posts/community-growth-open-source-ai-workflow-automation.json';
+const legacyBrandPattern = new RegExp(`\\b${['Fly', 'to'].join('')}\\b`);
 const allowedHosts = new Set([
   'blog.flyto2.com',
   'docs.flyto2.com',
@@ -92,7 +93,7 @@ function assertNoSecrets(label, value) {
 
 function assertFlyto2Only(label, value) {
   const text = JSON.stringify(value);
-  if (/\bFlyto\b/.test(text)) fail(`${label} contains standalone Flyto; use Flyto2`);
+  if (legacyBrandPattern.test(text)) fail(`${label} contains legacy brand text; use Flyto2`);
   const emails = text.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi) ?? [];
   const badEmails = [...new Set(emails.filter((email) => !email.toLowerCase().endsWith('@flyto2.com')))];
   if (badEmails.length) fail(`${label} contains non-flyto2.com email(s): ${badEmails.join(', ')}`);

@@ -10,3 +10,5 @@
 - [x] Add review-first social syndication tooling for community posts.
 - [x] Add GitHub Action automation for reviewed social publishing.
 - [x] Add video plan, storyboard, and manual render workflow for YouTube drafts.
+- [x] Upgrade video production with post-to-plan generation, QA, thumbnails,
+  narration drafts, and multi-platform render variants.

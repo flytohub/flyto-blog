@@ -29,3 +29,9 @@ Shorts drafts.
 - Source metadata keeps YouTube drafts private-first.
 - The render workflow uploads artifacts only; it does not publish to YouTube.
 - Generated video artifacts under `video/dist/` are review outputs, not source.
+
+## Follow-up
+
+- See `2026-07-18-video-pipeline-upgrade.md` for the later multi-platform
+  upgrade with post-to-plan generation, video QA, thumbnails, narration drafts,
+  and variant rendering.
