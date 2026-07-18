@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +7,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, '.vitepress', 'dist');
 const postsDir = path.join(distDir, 'posts');
 const seoDir = path.join(root, '.seo');
-const siteUrl = 'https://blog.flyto2.com';
+const seoContractPath = path.join(seoDir, 'i18n-seo-manifest.json');
+const expectedSurfaceKey = 'blog';
+const seoContract = loadSeoContract();
+const siteUrl = seoContract.surface.origin;
 const maxKeywordMatrixAgeDays = 100;
 const failures = [];
 
@@ -49,7 +53,7 @@ const forbiddenSitemapTokens = [
   '/public/blog/',
 ];
 const requiredRobotsTokens = [
-  'Sitemap: https://blog.flyto2.com/sitemap.xml',
+  `Sitemap: ${seoContract.surface.sitemap}`,
   'User-agent: OAI-SearchBot',
   'User-agent: ChatGPT-User',
   'User-agent: Claude-User',
@@ -72,6 +76,18 @@ const requiredKeywordMatrixTokens = ['Volume', 'SD', 'PD', 'CPC', 'Long-Tail Edi
 
 function fail(message) {
   failures.push(message);
+}
+
+function sha256(value) {
+  return createHash('sha256').update(value).digest('hex');
+}
+
+function loadSeoContract() {
+  if (!existsSync(seoContractPath)) {
+    throw new Error('missing .seo/i18n-seo-manifest.json; run npm run seo:sync');
+  }
+
+  return JSON.parse(readFileSync(seoContractPath, 'utf8'));
 }
 
 function decodeHtml(value) {
@@ -108,15 +124,32 @@ function findMeta(html, key, value) {
   return '';
 }
 
-function findLink(html, rel) {
+function findLink(html, rel, hrefLang = null) {
   const wanted = rel.toLowerCase();
+  const wantedLang = hrefLang?.toLowerCase();
   for (const raw of getTags(html, 'link')) {
     const attributes = attrs(raw);
     if ((attributes.rel ?? '').toLowerCase() === wanted) {
+      if (wantedLang && (attributes.hreflang ?? '').toLowerCase() !== wantedLang) continue;
       return attributes.href ?? '';
     }
   }
   return '';
+}
+
+function contractKeywordTerms() {
+  return seoContract.surface.keywordClusters.flatMap((cluster) => [
+    cluster.primary,
+    ...cluster.longTail,
+  ]);
+}
+
+function checkAlternateLinks(label, html) {
+  for (const hreflang of [seoContract.locales.en.hreflang, 'x-default']) {
+    if (!findLink(html, 'alternate', hreflang)) {
+      fail(`${label} missing alternate hreflang=${hreflang}`);
+    }
+  }
 }
 
 function titleFrom(html) {
@@ -158,6 +191,7 @@ function checkMetaBasics(label, html, canonical, { article = false } = {}) {
   if (actualCanonical !== canonical) fail(`${label} canonical mismatch: expected ${canonical}, got ${actualCanonical || '(missing)'}`);
   if (!robots.toLowerCase().includes('index')) fail(`${label} robots tag must be indexable; got ${robots || '(missing)'}`);
   if (ogUrl !== canonical) fail(`${label} og:url mismatch: expected ${canonical}, got ${ogUrl || '(missing)'}`);
+  checkAlternateLinks(label, html);
 
   for (const [metaLabel, value] of [
     ['og:title', findMeta(html, 'property', 'og:title')],
@@ -174,6 +208,42 @@ function checkMetaBasics(label, html, canonical, { article = false } = {}) {
   if (!html.includes('application/ld+json')) fail(`${label} missing JSON-LD`);
   if (article && !html.includes('BlogPosting')) fail(`${label} missing BlogPosting JSON-LD`);
   checkBrandAndEmails(label, html);
+}
+
+function checkSeoContract() {
+  if (seoContract.surfaceKey !== expectedSurfaceKey) {
+    fail(`SEO contract surface mismatch: expected ${expectedSurfaceKey}, got ${seoContract.surfaceKey || '(missing)'}`);
+  }
+  if (seoContract.surface.origin !== 'https://blog.flyto2.com') {
+    fail(`SEO contract origin mismatch: ${seoContract.surface.origin || '(missing)'}`);
+  }
+  if (seoContract.surface.sitemap !== `${seoContract.surface.origin}/sitemap.xml`) {
+    fail(`SEO contract sitemap mismatch: ${seoContract.surface.sitemap || '(missing)'}`);
+  }
+
+  const requiredSignals = new Set(seoContract.surface.requiredSignals ?? []);
+  for (const signal of ['canonical', 'hreflang-alternates', 'x-default', 'sitemap', 'localized-title', 'localized-description', 'structured-data']) {
+    if (!requiredSignals.has(signal)) fail(`SEO contract missing required signal: ${signal}`);
+  }
+  if (Object.keys(seoContract.locales ?? {}).length < 16) {
+    fail('SEO contract must expose all 16 Flyto2 locale definitions');
+  }
+  for (const cluster of seoContract.surface.keywordClusters ?? []) {
+    if (!cluster.evidence?.source || !cluster.evidence.observedAt) {
+      fail(`SEO contract keyword cluster ${cluster.id} missing evidence`);
+    }
+    if (!Array.isArray(cluster.longTail) || cluster.longTail.length < 5) {
+      fail(`SEO contract keyword cluster ${cluster.id} must include long-tail terms`);
+    }
+  }
+
+  const upstreamPath = path.resolve(root, '..', 'flyto-i18n', 'dist', 'seo-manifest.json');
+  if (existsSync(upstreamPath)) {
+    const upstreamText = readFileSync(upstreamPath, 'utf8');
+    if (seoContract.source?.sha256 !== sha256(upstreamText)) {
+      fail('.seo/i18n-seo-manifest.json is stale; run npm run seo:sync');
+    }
+  }
 }
 
 function checkHomepage() {
@@ -276,9 +346,15 @@ function checkKeywordMatrix() {
   for (const token of requiredKeywordMatrixTokens) {
     if (!content.includes(token)) fail(`${matrix.file} missing keyword evidence token: ${token}`);
   }
+  for (const term of contractKeywordTerms().slice(0, 4)) {
+    if (!content.toLowerCase().includes(term.toLowerCase())) {
+      fail(`${matrix.file} missing manifest keyword term: ${term}`);
+    }
+  }
   checkBrandAndEmails(matrix.file, content);
 }
 
+checkSeoContract();
 if (!existsSync(distDir)) {
   fail('missing .vitepress/dist; run npm run build before npm run audit:seo');
 } else {

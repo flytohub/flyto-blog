@@ -1,6 +1,6 @@
 # Flyto2 Blog SEO Keyword Matrix
 
-Date: 2026-07-16
+Date: 2026-07-18
 Locale: US / English
 Source: Ubersuggest keyword ideas and keyword overview
 Scope: `https://blog.flyto2.com`
@@ -32,6 +32,19 @@ landing page and docs.
 | CTEM framework | continuous threat exposure management ctem framework | 20 | 6 | 2 | 84.42 | Low | `/posts/what-is-ctem-continuous-threat-exposure-management` | `https://flyto2.com/ctem/` | `https://docs.flyto2.com/warroom/closed-loop` |
 | MCP education | MCP server automation | 10 | 34 | 68 | 16.50 | Low | `/posts/mcp-server-guide` | `https://flyto2.com/api-docs/` | `https://docs.flyto2.com/mcp/` |
 | Browser automation education | no code browser automation | 20 | 23 | 56 | 16.13 | Low | `/posts/no-code-browser-automation` | `https://flyto2.com/` | `https://docs.flyto2.com/modules/browser` |
+
+## flyto-i18n Manifest Addendum
+
+These terms are now carried by `.seo/i18n-seo-manifest.json`, synced from
+`flyto-i18n/dist/seo-manifest.json`, and audited with the public blog build.
+
+| Cluster | Manifest term | Volume | SD | PD | CPC | Editorial route |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| Workflow automation examples | workflow automation examples | 170 | 33 | 11 | 8.33 | Example-style posts and recipe explainers. |
+| Workflow automation examples | AI workflow automation examples | 70 | 35 | 7 | 8.33 | Practical examples routed to workflow and browser automation guides. |
+| Workflow automation examples | workflow automation use cases | 260 | 31 | 12 | 11.21 | Use-case articles linking to landing use cases and docs modules. |
+| Workflow automation examples | workflow automation for technical teams | 0 | 0 | 0 | 0.00 | Long-tail technical-team angle for future editorial expansion. |
+| Traditional Chinese workflow automation | 工作流程 自動化 | 10 | 18 | 1 | 0.00 | zh-TW discovery term for future localized blog content. |
 
 ## Long-Tail Editorial Plan
 

@@ -1,5 +1,14 @@
 # Decisions
 
+## 2026-07-18 - Blog keeps hreflang tied to published posts
+
+Decision: blog reads `.seo/i18n-seo-manifest.json` from the shared Flyto2 i18n
+SEO contract, but VitePress emits hreflang alternate links only for posts/pages
+that exist in the repository.
+
+Reason: the blog is currently English-first. The SEO contract should prepare
+for multilingual expansion without advertising non-existent localized articles.
+
 ## 2026-07-15 - Blog owns both automation and security search intent
 
 Decision: the blog homepage, metadata, and AI-readable files must cover AI

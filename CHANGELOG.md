@@ -15,6 +15,9 @@
 - Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,
   and public-link checks.
 - Added project memory files, workflow docs, and handoff registry.
+- Added `.seo/i18n-seo-manifest.json`, `.vitepress/seo-contract.ts`, and
+  `npm run seo:sync` so blog canonical/hreflang, keyword evidence, and SEO
+  audit checks stay aligned with `flyto-i18n`.
 
 ### Changed
 
@@ -24,3 +27,5 @@
   public sitemap output.
 - Updated project state and roadmap to reflect first-pass coverage for Data,
   Zero-person Agent, Big Data / Intelligence, and AI search visibility.
+- Injected manifest-derived en/x-default alternates for current English blog
+  pages while keeping future localized-post support file-existence based.

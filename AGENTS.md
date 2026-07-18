@@ -12,6 +12,10 @@ Before editing, read:
 
 Rules:
 
+- Before broad SEO, navigation, sitemap, metadata, or citation-file edits, use
+  flyto-indexer search/impact or an equivalent project scan to understand the
+  affected public surface, then run the documented verification loop after the
+  change.
 - Keep blog claims consistent with `flyto2.com` and `docs.flyto2.com`.
 - Do not publish credentials, customer data, private roadmap commitments, or
   unsupported competitor claims.
