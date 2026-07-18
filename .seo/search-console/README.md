@@ -42,3 +42,17 @@ open source AI agent framework,https://blog.flyto2.com/posts/mcp-server-guide,10
 ```
 
 Set `SEO_MANAGEMENT_REQUIRE_GSC=true` only when CI has these exports available.
+
+## Sitemaps and feeds to submit
+
+Submit or inspect these public discovery files in Google Search Console and
+Bing Webmaster Tools after deployment:
+
+- `https://blog.flyto2.com/sitemap.xml`
+- `https://blog.flyto2.com/image-sitemap.xml`
+- `https://blog.flyto2.com/rss.xml`
+- `https://blog.flyto2.com/atom.xml`
+
+`robots.txt` advertises the same files. `feed.json` is kept for RSS readers,
+automation, AI citation tooling, and social syndication workflows, but Search
+Console does not need a separate JSON Feed submission.

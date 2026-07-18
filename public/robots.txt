@@ -1,9 +1,16 @@
 User-agent: *
 Allow: /
 Sitemap: https://blog.flyto2.com/sitemap.xml
+Sitemap: https://blog.flyto2.com/image-sitemap.xml
+Sitemap: https://blog.flyto2.com/rss.xml
+Sitemap: https://blog.flyto2.com/atom.xml
 # AI-readable indexes:
 # https://blog.flyto2.com/llms.txt
 # https://blog.flyto2.com/llms-full.txt
+# Discovery feeds:
+# https://blog.flyto2.com/feed.json
+# https://blog.flyto2.com/rss.xml
+# https://blog.flyto2.com/atom.xml
 
 # AI search and user-triggered retrieval.
 User-agent: OAI-SearchBot

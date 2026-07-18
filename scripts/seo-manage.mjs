@@ -385,6 +385,27 @@ function gscSummary() {
   };
 }
 
+function discoverySummary(posts) {
+  const files = {
+    rss: path.join(root, 'public', 'rss.xml'),
+    atom: path.join(root, 'public', 'atom.xml'),
+    jsonFeed: path.join(root, 'public', 'feed.json'),
+    imageSitemap: path.join(root, 'public', 'image-sitemap.xml'),
+    ogImage: path.join(root, 'public', 'og-image.png'),
+    manifest: path.join(root, 'public', 'discovery-manifest.json'),
+  };
+  const exists = Object.fromEntries(Object.entries(files).map(([key, filePath]) => [key, existsSync(filePath)]));
+  const manifest = exists.manifest ? readJson(files.manifest) : {};
+  return {
+    exists,
+    allPresent: Object.values(exists).every(Boolean),
+    manifestPostCount: manifest.postCount ?? 0,
+    latestPostDate: manifest.latestPostDate ?? '',
+    expectedPostCount: posts.length,
+    files: Object.fromEntries(Object.entries(files).map(([key, filePath]) => [key, path.relative(root, filePath)])),
+  };
+}
+
 function rankTargets(terms, scoreReport, gsc) {
   const explicitTargets = csvRows(rankTargetsCsvPath)
     .map((row) => ({
@@ -492,7 +513,7 @@ function editorRecommendations(scoreReport, gaps, links, gsc) {
   return recommendations.slice(0, 30);
 }
 
-function managementChecks({ scoreReport, matrixInfo, posts, links, ranks, gsc }) {
+function managementChecks({ scoreReport, matrixInfo, posts, links, ranks, gsc, discovery }) {
   const checks = [];
   addCheck(checks, 'Score report present', 20, scoreReport.pages.length > 0, 'Run npm run seo:score before seo:manage.');
   addCheck(checks, 'Score gate healthy', 20, scoreReport.failures.length === 0, 'Fix failing page scores first.');
@@ -501,6 +522,7 @@ function managementChecks({ scoreReport, matrixInfo, posts, links, ranks, gsc })
   addCheck(checks, 'Editor recommendations generated', 10, scoreReport.pages.length > 0, 'Generate page-level recommendations.');
   addCheck(checks, 'Internal link map generated', 10, links.length > 0, 'Add enough related posts to generate internal link suggestions.');
   addCheck(checks, 'Rank target map generated', 10, ranks.length > 0, 'Add keyword matrix or .seo/search-console/rank-targets.csv.');
+  addCheck(checks, 'Discovery feeds generated', 10, discovery.allPresent && discovery.manifestPostCount >= posts.length, 'Run npm run seo:discovery before build.');
   addCheck(checks, 'Search Console data policy satisfied', 5, gsc.dataConnected || !requireSearchConsole, 'Export GSC CSV data or set SEO_MANAGEMENT_REQUIRE_GSC=false.');
   return checks;
 }
@@ -549,6 +571,7 @@ Generated: ${report.generatedAt}
 | Pages | ${report.score.pageCount} |
 | Search Console | ${gscNote} |
 | Keyword matrix age | ${report.keywordMatrix.exists ? `${report.keywordMatrix.ageDays} days` : 'missing'} |
+| Discovery files | ${report.discovery.allPresent ? `present for ${report.discovery.manifestPostCount} posts` : 'missing'} |
 
 ## Failures
 
@@ -653,8 +676,9 @@ function main() {
   const links = internalLinkSuggestions(posts, scoreReport);
   const gsc = gscSummary();
   const ranks = rankTargets(keywordTerms, scoreReport, gsc);
+  const discovery = discoverySummary(posts);
   const recommendations = editorRecommendations(scoreReport, gaps, links, gsc);
-  const checks = managementChecks({ scoreReport, matrixInfo, posts, links, ranks, gsc });
+  const checks = managementChecks({ scoreReport, matrixInfo, posts, links, ranks, gsc, discovery });
   const managementScore = Math.round((checks.reduce((sum, check) => sum + check.earned, 0) / checks.reduce((sum, check) => sum + check.points, 0)) * 100);
   const failures = [];
   if (managementScore < minManagementScore) failures.push(`management score ${managementScore} below ${minManagementScore}`);
@@ -681,6 +705,7 @@ function main() {
       pageCount: scoreReport.pageCount,
     },
     keywordMatrix: matrixInfo,
+    discovery,
     gsc,
     pageOpportunities,
     coverageGaps: gaps,

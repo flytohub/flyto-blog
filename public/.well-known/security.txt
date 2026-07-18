@@ -1,0 +1,6 @@
+Contact: mailto:security@flyto2.com
+Contact: https://flyto2.com/security/
+Policy: https://flyto2.com/security/
+Preferred-Languages: en, zh-TW
+Canonical: https://blog.flyto2.com/.well-known/security.txt
+Expires: 2027-07-18T00:00:00Z

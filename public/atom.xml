@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Flyto2 Blog</title>
+  <subtitle>Plain-language guides for AI workflow automation, MCP server automation, CTEM, browser automation, and open-source AI agent workflows.</subtitle>
+  <link href="https://blog.flyto2.com" />
+  <link href="https://blog.flyto2.com/atom.xml" rel="self" />
+  <link href="https://pubsubhubbub.appspot.com/" rel="hub" />
+  <id>https://blog.flyto2.com</id>
+  <updated>2026-07-18T00:00:00.000Z</updated>
+  <author><name>Flyto2 Team</name><email>team@flyto2.com</email></author>
+  <entry>
+    <title>Flyto2 community growth for open-source AI workflow automation</title>
+    <link href="https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation" />
+    <id>https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation</id>
+    <published>2026-07-18T00:00:00.000Z</published>
+    <updated>2026-07-18T00:00:00.000Z</updated>
+    <summary>Open-source AI workflow automation community growth: Flyto2 turns docs, issues, recipes, MCP examples, package pages, and reviewed social posts into one loop.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="open-source AI workflow automation" />
+  </entry>
+  <entry>
+    <title>AI Workflow Automation Alternatives: n8n, Zapier, Make, Playwright, LangGraph, and Flyto2</title>
+    <link href="https://blog.flyto2.com/posts/ai-workflow-automation-alternatives" />
+    <id>https://blog.flyto2.com/posts/ai-workflow-automation-alternatives</id>
+    <published>2026-07-17T00:00:00.000Z</published>
+    <updated>2026-07-17T00:00:00.000Z</updated>
+    <summary>AI workflow automation alternatives compared: n8n, Zapier, Make, Playwright, LangGraph, and Flyto2 for agent and browser automation.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="AI workflow automation alternatives" />
+  </entry>
+  <entry>
+    <title>AI Search Visibility for Technical Products: llms.txt, Crawler Logs, and Citation Paths</title>
+    <link href="https://blog.flyto2.com/posts/ai-search-visibility-for-technical-products" />
+    <id>https://blog.flyto2.com/posts/ai-search-visibility-for-technical-products</id>
+    <published>2026-07-16T00:00:00.000Z</published>
+    <updated>2026-07-16T00:00:00.000Z</updated>
+    <summary>Guide to AI search visibility for technical products: structure pages, llms.txt, crawler logs, and citation paths without unsupported SEO claims.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="ai-search" />
+  </entry>
+  <entry>
+    <title>Zero-Person Company Agents: How to Automate Operations Without Losing Control</title>
+    <link href="https://blog.flyto2.com/posts/zero-person-company-agent-guide" />
+    <id>https://blog.flyto2.com/posts/zero-person-company-agent-guide</id>
+    <published>2026-07-15T00:00:00.000Z</published>
+    <updated>2026-07-15T00:00:00.000Z</updated>
+    <summary>Guide to zero-person company agents: automate operations with human policy, approval gates, scoped credentials, evidence, and replay.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="zero-person-company" />
+  </entry>
+  <entry>
+    <title>Data Workflow Automation: From Scraping and Files to Clean, Auditable Pipelines</title>
+    <link href="https://blog.flyto2.com/posts/data-workflow-automation-guide" />
+    <id>https://blog.flyto2.com/posts/data-workflow-automation-guide</id>
+    <published>2026-07-14T00:00:00.000Z</published>
+    <updated>2026-07-14T00:00:00.000Z</updated>
+    <summary>A practical guide to data workflow automation for teams that need browser extraction, file processing, validation, evidence, and repeatable data pipelines.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="data-automation" />
+  </entry>
+  <entry>
+    <title>Intelligence Workflow Automation: Turning OSINT, Logs, and Signals Into Decisions</title>
+    <link href="https://blog.flyto2.com/posts/intelligence-workflow-automation-guide" />
+    <id>https://blog.flyto2.com/posts/intelligence-workflow-automation-guide</id>
+    <published>2026-07-13T00:00:00.000Z</published>
+    <updated>2026-07-13T00:00:00.000Z</updated>
+    <summary>Guide to intelligence workflow automation: collect OSINT, logs, threat feeds, and business signals, then correlate, score, and route with evidence.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="intelligence" />
+  </entry>
+  <entry>
+    <title>AI Security Platform Guide: MCP, Agents, Code, and Exposure Risk</title>
+    <link href="https://blog.flyto2.com/posts/ai-security-platform-guide" />
+    <id>https://blog.flyto2.com/posts/ai-security-platform-guide</id>
+    <published>2026-06-14T00:00:00.000Z</published>
+    <updated>2026-06-14T00:00:00.000Z</updated>
+    <summary>How to evaluate an AI security platform for MCP servers, agent tools, code risk, APIs, cloud posture, attack surface, and evidence-backed validation.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="AI security" />
+  </entry>
+  <entry>
+    <title>Bitsight Alternatives: How to Use External Ratings Inside CTEM</title>
+    <link href="https://blog.flyto2.com/posts/bitsight-alternatives" />
+    <id>https://blog.flyto2.com/posts/bitsight-alternatives</id>
+    <published>2026-06-14T00:00:00.000Z</published>
+    <updated>2026-06-14T00:00:00.000Z</updated>
+    <summary>Practical guide to Bitsight alternatives: use external ratings inside CTEM while keeping ASM, code risk, dark web, pentest, and red-team evidence.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="Bitsight" />
+  </entry>
+  <entry>
+    <title>AI Browser Automation: How It Works and When to Use It</title>
+    <link href="https://blog.flyto2.com/posts/ai-browser-automation-guide" />
+    <id>https://blog.flyto2.com/posts/ai-browser-automation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to AI browser automation: how LLM-driven and deterministic browser automation work, where each wins, common pitfalls, and a getting-started checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="AI automation" />
+  </entry>
+  <entry>
+    <title>API Security Testing: A Practical How-To Guide</title>
+    <link href="https://blog.flyto2.com/posts/api-security-testing-guide" />
+    <id>https://blog.flyto2.com/posts/api-security-testing-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical how-to guide to API security testing: the OWASP API Top 10, finding shadow and zombie APIs, a step-by-step testing approach, and a hardening checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="API security" />
+  </entry>
+  <entry>
+    <title>Asset Inventory Is the Foundation of Security Scoring</title>
+    <link href="https://blog.flyto2.com/posts/asset-inventory-security" />
+    <id>https://blog.flyto2.com/posts/asset-inventory-security</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Practical asset inventory security guide: deterministic discovery, ownership gating, BYO CMDB imports, asset maps, and reliable security scoring.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="asset inventory" />
+  </entry>
+  <entry>
+    <title>Attack Path Mapping: From Exposure to Critical Asset</title>
+    <link href="https://blog.flyto2.com/posts/attack-path-mapping-guide" />
+    <id>https://blog.flyto2.com/posts/attack-path-mapping-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to attack path mapping: how attackers chain exposures into a route to your crown jewels, why isolated CVEs mislead, MITRE ATT&amp;CK mapping, and a checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="attack path" />
+  </entry>
+  <entry>
+    <title>Attack Surface Management: A Practical Guide for 2026</title>
+    <link href="https://blog.flyto2.com/posts/attack-surface-management-guide" />
+    <id>https://blog.flyto2.com/posts/attack-surface-management-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to attack surface management in 2026: external discovery, CTEM, shadow IT, and how a war room correlates exposure with code.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="security" />
+  </entry>
+  <entry>
+    <title>The BYO MSSP: Why You Shouldn&apos;t Re-Buy Security Tools You Already Own</title>
+    <link href="https://blog.flyto2.com/posts/byo-mssp-integration-model" />
+    <id>https://blog.flyto2.com/posts/byo-mssp-integration-model</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>BYO MSSP integration model: keep existing tools, ingest external data, fill gaps, and correlate attack-surface, pentest, and red-team evidence.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="BYO MSSP" />
+  </entry>
+  <entry>
+    <title>Container and Cloud Identity Security in One Picture</title>
+    <link href="https://blog.flyto2.com/posts/container-cloud-identity-security" />
+    <id>https://blog.flyto2.com/posts/container-cloud-identity-security</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Container and cloud identity security guide: correlate image CVEs, runtime events, over-privileged roles, exposed credentials, code, and external exposure.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="container and cloud identity security" />
+  </entry>
+  <entry>
+    <title>Container Image Scanning: Secure Your Build Pipeline</title>
+    <link href="https://blog.flyto2.com/posts/container-image-scanning-guide" />
+    <id>https://blog.flyto2.com/posts/container-image-scanning-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Container image scanning explained — how it works, scanning for vulnerabilities, secrets, and misconfigurations, shifting left in CI/CD, signing, and a practical checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="container security" />
+  </entry>
+  <entry>
+    <title>CVE Prioritization with EPSS and KEV: A Practical Guide</title>
+    <link href="https://blog.flyto2.com/posts/cve-prioritization-epss-kev" />
+    <id>https://blog.flyto2.com/posts/cve-prioritization-epss-kev</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Practical CVE prioritization guide with EPSS and KEV: combine severity, exploit probability, known exploitation, triage workflow, and patch priority.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="CVE" />
+  </entry>
+  <entry>
+    <title>Darkweb Monitoring Explained: Leaked Credentials, IOCs, and Brand Abuse</title>
+    <link href="https://blog.flyto2.com/posts/darkweb-monitoring-explained" />
+    <id>https://blog.flyto2.com/posts/darkweb-monitoring-explained</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Darkweb monitoring guide: leaked credentials, IOC lookup, ransomware tracking, threat actors, brand impersonation, BYO feeds, and correlation.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="darkweb monitoring" />
+  </entry>
+  <entry>
+    <title>DMARC, SPF &amp; DKIM: Email Authentication Setup Guide</title>
+    <link href="https://blog.flyto2.com/posts/dmarc-spf-dkim-email-security-guide" />
+    <id>https://blog.flyto2.com/posts/dmarc-spf-dkim-email-security-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A step-by-step DMARC SPF DKIM setup guide: how the three records stop email spoofing, the DNS entries to publish, a safe p=none to p=reject rollout, and a verification checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="DMARC" />
+  </entry>
+  <entry>
+    <title>Email Parsing Automation: Extract Data from Inboxes</title>
+    <link href="https://blog.flyto2.com/posts/email-parsing-automation-guide" />
+    <id>https://blog.flyto2.com/posts/email-parsing-automation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Email parsing automation extracts structured data from incoming emails like orders, receipts, and leads. Learn how it works, the rules, and pitfalls.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="email parsing" />
+  </entry>
+  <entry>
+    <title>Footprint &amp; Attribution: Mapping Assets to Owners Without Guessing</title>
+    <link href="https://blog.flyto2.com/posts/footprint-attribution-osint" />
+    <id>https://blog.flyto2.com/posts/footprint-attribution-osint</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Digital footprint attribution guide: expand OSINT seeds into assets, apply ownership gating, score confidence, and keep security scoring trustworthy.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="security" />
+  </entry>
+  <entry>
+    <title>Headless Browser Automation: A Practical Guide</title>
+    <link href="https://blog.flyto2.com/posts/headless-browser-automation-guide" />
+    <id>https://blog.flyto2.com/posts/headless-browser-automation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to headless browser automation: what it is, how it works, use cases, headless vs headed, anti-bot pitfalls, and a setup checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="headless browser" />
+  </entry>
+  <entry>
+    <title>How to Choose an MSSP: A Practical Buyer&apos;s Guide</title>
+    <link href="https://blog.flyto2.com/posts/how-to-choose-an-mssp" />
+    <id>https://blog.flyto2.com/posts/how-to-choose-an-mssp</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>How to choose an MSSP: compare MSSP vs MDR vs in-house, evaluate coverage, SLAs, tooling, BYO support, transparency, red flags, and scoring.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="MSSP" />
+  </entry>
+  <entry>
+    <title>Leaked Credential Scanning and Secrets Scanning: A How-To Guide</title>
+    <link href="https://blog.flyto2.com/posts/leaked-credential-scanning-guide" />
+    <id>https://blog.flyto2.com/posts/leaked-credential-scanning-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Leaked credential scanning guide: find exposed secrets in repos, pastes, logs, and darkweb data, then rotate keys and verify remediation.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="leaked credential scanning" />
+  </entry>
+  <entry>
+    <title>MCP Security: Risks and Controls for AI Tool Servers</title>
+    <link href="https://blog.flyto2.com/posts/mcp-security-risks-and-controls" />
+    <id>https://blog.flyto2.com/posts/mcp-security-risks-and-controls</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>MCP security guide: inventory tool servers, reduce unauthenticated execution, bind exposure, and authorization risk, then simulate policy before enforcement.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="security" />
+  </entry>
+  <entry>
+    <title>No-Code API Integration: Connect Apps Without Code</title>
+    <link href="https://blog.flyto2.com/posts/no-code-api-integration-guide" />
+    <id>https://blog.flyto2.com/posts/no-code-api-integration-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical no-code API integration guide: connect REST APIs, handle auth (keys/OAuth), pagination, and field mapping without writing code — plus a build checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="API integration" />
+  </entry>
+  <entry>
+    <title>PDF Data Extraction Automation: Tables, Text &amp; Forms</title>
+    <link href="https://blog.flyto2.com/posts/pdf-data-extraction-automation" />
+    <id>https://blog.flyto2.com/posts/pdf-data-extraction-automation</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to PDF data extraction automation — pull tables, invoices, and form fields reliably, choose OCR vs native text, validate output, and ship it.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="PDF extraction" />
+  </entry>
+  <entry>
+    <title>Pentest as a Service: Recipe-Driven, Evidence-Backed Penetration Testing</title>
+    <link href="https://blog.flyto2.com/posts/pentest-as-a-service-guide" />
+    <id>https://blog.flyto2.com/posts/pentest-as-a-service-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Pentest as a service guide: use deterministic YAML recipes, evidence, replay, asset-map targets, and verified-path-only reporting.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="security" />
+  </entry>
+  <entry>
+    <title>Pentest vs Vulnerability Scan vs Red Team: Key Differences</title>
+    <link href="https://blog.flyto2.com/posts/pentest-vs-vulnerability-scan-vs-red-team" />
+    <id>https://blog.flyto2.com/posts/pentest-vs-vulnerability-scan-vs-red-team</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Pentest vs vulnerability scan vs red team explained: depth, cost, cadence, the question each answers, when to use which, and how to layer all three in one closed loop.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="penetration testing" />
+  </entry>
+  <entry>
+    <title>Price Monitoring Automation: Track Prices Automatically</title>
+    <link href="https://blog.flyto2.com/posts/price-monitoring-automation-guide" />
+    <id>https://blog.flyto2.com/posts/price-monitoring-automation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to price monitoring automation — track prices across sites, set threshold alerts, log price history, and handle dynamic pages, with a setup checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="price monitoring" />
+  </entry>
+  <entry>
+    <title>Red-Team Simulation: From Attack Paths to Validated Risk</title>
+    <link href="https://blog.flyto2.com/posts/red-team-simulation-guide" />
+    <id>https://blog.flyto2.com/posts/red-team-simulation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Red-team simulation guide: use pentest evidence and mapped attack paths to run adversary campaigns and feed validated risk into security scoring.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="security" />
+  </entry>
+  <entry>
+    <title>Report Generation Automation: From Data to Document</title>
+    <link href="https://blog.flyto2.com/posts/report-generation-automation-guide" />
+    <id>https://blog.flyto2.com/posts/report-generation-automation-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to report generation automation: pull data, template it, render to PDF or slides, schedule, distribute, and keep it reliable over time.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="report automation" />
+  </entry>
+  <entry>
+    <title>SAST vs DAST: Application Security Testing Compared</title>
+    <link href="https://blog.flyto2.com/posts/sast-vs-dast-application-security-testing" />
+    <id>https://blog.flyto2.com/posts/sast-vs-dast-application-security-testing</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>SAST vs DAST explained: how static and dynamic application security testing work, their strengths and blind spots, where each fits the SDLC, plus IAST and SCA.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="SAST" />
+  </entry>
+  <entry>
+    <title>Scheduled Web Scraping: Automate Recurring Data Pulls</title>
+    <link href="https://blog.flyto2.com/posts/scheduled-web-scraping-guide" />
+    <id>https://blog.flyto2.com/posts/scheduled-web-scraping-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>A practical guide to scheduled web scraping: cron-based recurring pulls, change detection, dedup, storage, retries, and an ethics/robots checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="web scraping" />
+  </entry>
+  <entry>
+    <title>Shadow IT Discovery: Find and Manage Unsanctioned Assets</title>
+    <link href="https://blog.flyto2.com/posts/shadow-it-discovery-guide" />
+    <id>https://blog.flyto2.com/posts/shadow-it-discovery-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Shadow IT discovery guide: find unsanctioned SaaS, DNS, certificate transparency, cloud, and SSO assets, triage risk, and govern exposure.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="shadow IT" />
+  </entry>
+  <entry>
+    <title>Subdomain Takeover: How It Works and How to Prevent It</title>
+    <link href="https://blog.flyto2.com/posts/subdomain-takeover-prevention" />
+    <id>https://blog.flyto2.com/posts/subdomain-takeover-prevention</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Subdomain takeover explained — how dangling DNS records and deprovisioned services let attackers hijack your subdomains, how to detect them, and a prevention checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="subdomain takeover" />
+  </entry>
+  <entry>
+    <title>Unified Security Scoring: One Number Across Nine Surfaces</title>
+    <link href="https://blog.flyto2.com/posts/unified-security-scoring-guide" />
+    <id>https://blog.flyto2.com/posts/unified-security-scoring-guide</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>Unified security scoring guide: compute a 250-900 score across code, attack surface, diligence vectors, modifiers, grade caps, and evidence.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="unified security scoring" />
+  </entry>
+  <entry>
+    <title>What Is a vCISO? Virtual CISO Roles, Costs, and Fit</title>
+    <link href="https://blog.flyto2.com/posts/what-is-a-vciso" />
+    <id>https://blog.flyto2.com/posts/what-is-a-vciso</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>What is a vCISO? A practical guide to the virtual CISO role, responsibilities, engagement models and cost drivers, plus how a vCISO compares to a full-time CISO and an MSSP.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="vCISO" />
+  </entry>
+  <entry>
+    <title>What Is an SBOM? Software Supply Chain Security Guide</title>
+    <link href="https://blog.flyto2.com/posts/what-is-an-sbom-software-supply-chain-security" />
+    <id>https://blog.flyto2.com/posts/what-is-an-sbom-software-supply-chain-security</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>What is an SBOM? Learn how a Software Bill of Materials works, SPDX vs CycloneDX formats, CVE matching, generation steps, and a practical supply chain checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="SBOM" />
+  </entry>
+  <entry>
+    <title>What Is CSPM? Cloud Security Posture Management Guide</title>
+    <link href="https://blog.flyto2.com/posts/what-is-cspm-cloud-security-posture-management" />
+    <id>https://blog.flyto2.com/posts/what-is-cspm-cloud-security-posture-management</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>What is CSPM? A practical guide to cloud security posture management — the misconfigurations it catches, CSPM vs CWPP vs CNAPP, and a posture-hardening checklist you can run.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="CSPM" />
+  </entry>
+  <entry>
+    <title>What Is CTEM? Continuous Threat Exposure Management Guide</title>
+    <link href="https://blog.flyto2.com/posts/what-is-ctem-continuous-threat-exposure-management" />
+    <id>https://blog.flyto2.com/posts/what-is-ctem-continuous-threat-exposure-management</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>What is CTEM? A practical guide to Continuous Threat Exposure Management — the 5 Gartner stages, how it differs from vulnerability management, and a rollout checklist.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="CTEM" />
+  </entry>
+  <entry>
+    <title>What Is EASM? External Attack Surface Management Explained</title>
+    <link href="https://blog.flyto2.com/posts/what-is-easm-external-attack-surface-management" />
+    <id>https://blog.flyto2.com/posts/what-is-easm-external-attack-surface-management</id>
+    <published>2026-06-10T00:00:00.000Z</published>
+    <updated>2026-06-10T00:00:00.000Z</updated>
+    <summary>External attack surface management (EASM) explained — continuous discovery of internet-facing assets, shadow IT, certificates and exposed services, and how EASM feeds CTEM.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="EASM" />
+  </entry>
+  <entry>
+    <title>Auto Fill Forms — How to Automate Form Filling on Any Website</title>
+    <link href="https://blog.flyto2.com/posts/auto-fill-forms" />
+    <id>https://blog.flyto2.com/posts/auto-fill-forms</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Tired of filling out the same web forms? Learn how to auto fill forms on any website using automation. Works with any form, no browser extension needed.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="form-automation" />
+  </entry>
+  <entry>
+    <title>Automa Alternative — When a Browser Extension Isn&apos;t Enough</title>
+    <link href="https://blog.flyto2.com/posts/automa-alternative" />
+    <id>https://blog.flyto2.com/posts/automa-alternative</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Looking for an Automa alternative? Flyto2 goes beyond browser extensions with 451 modules, file operations, AI agents, and cloud automation.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automation" />
+  </entry>
+  <entry>
+    <title>Desktop Automation — How to Automate Tasks on Your Own Computer</title>
+    <link href="https://blog.flyto2.com/posts/desktop-automation" />
+    <id>https://blog.flyto2.com/posts/desktop-automation</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Learn what desktop automation is and how to automate repetitive tasks on your computer. Practical guide with real examples using Flyto2.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="desktop-automation" />
+  </entry>
+  <entry>
+    <title>Make.com Alternative — Automate Without the Cloud Dependency</title>
+    <link href="https://blog.flyto2.com/posts/make-alternative" />
+    <id>https://blog.flyto2.com/posts/make-alternative</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Looking for a Make.com alternative? Flyto2 runs locally, handles browser automation, and costs nothing. See how they compare.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automation" />
+  </entry>
+  <entry>
+    <title>No Code Automation — Build Workflows Without Writing a Single Line</title>
+    <link href="https://blog.flyto2.com/posts/no-code-automation" />
+    <id>https://blog.flyto2.com/posts/no-code-automation</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>No code automation lets anyone automate repetitive tasks without programming. Learn how to build real workflows using AI and pre-built modules.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="no-code" />
+  </entry>
+  <entry>
+    <title>Free RPA — Robotic Process Automation Without the Enterprise Price Tag</title>
+    <link href="https://blog.flyto2.com/posts/rpa-free" />
+    <id>https://blog.flyto2.com/posts/rpa-free</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Free RPA without enterprise pricing: Flyto2 is an open-source RPA tool with 451 modules, browser automation, and zero licensing fees.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="Free RPA" />
+  </entry>
+  <entry>
+    <title>Workflow Automation — How to Chain Tasks Into One-Click Processes</title>
+    <link href="https://blog.flyto2.com/posts/workflow-automation" />
+    <id>https://blog.flyto2.com/posts/workflow-automation</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Workflow automation connects multiple tasks into a single process that runs itself. Learn how to build practical workflows with real examples.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="workflow-automation" />
+  </entry>
+  <entry>
+    <title>Free Zapier Alternative That Actually Runs on Your Computer</title>
+    <link href="https://blog.flyto2.com/posts/zapier-alternative-free" />
+    <id>https://blog.flyto2.com/posts/zapier-alternative-free</id>
+    <published>2026-03-25T00:00:00.000Z</published>
+    <updated>2026-03-25T00:00:00.000Z</updated>
+    <summary>Free Zapier alternative for teams avoiding monthly limits and cloud lock-in: Flyto2 automates workflows locally with 451 modules and zero subscription fees.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="Free Zapier alternative" />
+  </entry>
+  <entry>
+    <title>How to Automate Clicking on a Website — A Step-by-Step Guide</title>
+    <link href="https://blog.flyto2.com/posts/automate-clicking-on-website" />
+    <id>https://blog.flyto2.com/posts/automate-clicking-on-website</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Learn how to automate clicking on a website to eliminate repetitive tasks. Simple guide with real examples and no coding required.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automate clicking on a website" />
+  </entry>
+  <entry>
+    <title>How to Automate Website Tasks — A Complete Guide for 2026</title>
+    <link href="https://blog.flyto2.com/posts/automate-website" />
+    <id>https://blog.flyto2.com/posts/automate-website</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Learn how to automate website tasks like form filling, data extraction, and report downloads. Three approaches compared with step-by-step examples.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automate website tasks" />
+  </entry>
+  <entry>
+    <title>Batch Automation: How to Process Hundreds of Tasks at Once</title>
+    <link href="https://blog.flyto2.com/posts/batch-automation-guide" />
+    <id>https://blog.flyto2.com/posts/batch-automation-guide</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Learn how batch automation can save hours of repetitive work. Process hundreds of files, forms, or data entries in one go with Flyto2.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automation" />
+  </entry>
+  <entry>
+    <title>Computer Automation for Beginners: A Practical Guide</title>
+    <link href="https://blog.flyto2.com/posts/computer-automation-for-beginners" />
+    <id>https://blog.flyto2.com/posts/computer-automation-for-beginners</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>New to computer automation? This beginner&apos;s guide explains what it is, how it works, and how to automate your first task in minutes with Flyto2.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="automation" />
+  </entry>
+  <entry>
+    <title>Data Entry Automation — How to Stop Wasting Hours on Manual Data Entry</title>
+    <link href="https://blog.flyto2.com/posts/data-entry-automation" />
+    <id>https://blog.flyto2.com/posts/data-entry-automation</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Data entry automation eliminates repetitive typing and copying. Learn how to automate data entry across websites and forms with no code.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="data-entry" />
+  </entry>
+  <entry>
+    <title>A Simpler Automation Anywhere Alternative for Small Teams</title>
+    <link href="https://blog.flyto2.com/posts/free-alternative-to-automation-anywhere" />
+    <id>https://blog.flyto2.com/posts/free-alternative-to-automation-anywhere</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Need an automation anywhere alternative that&apos;s free and easy? Flyto2 gives small teams 451 modules, no licensing fees, and no enterprise complexity.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="Automation Anywhere alternative" />
+  </entry>
+  <entry>
+    <title>Free Power Automate Alternative That Just Works</title>
+    <link href="https://blog.flyto2.com/posts/free-alternative-to-power-automate" />
+    <id>https://blog.flyto2.com/posts/free-alternative-to-power-automate</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Looking for a power automate alternative free of Microsoft accounts? Flyto2 needs no Microsoft ecosystem, and automates workflows for free.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="Power Automate alternative" />
+  </entry>
+  <entry>
+    <title>n8n Alternative — When You Need Browser Automation, Not Just API Connections</title>
+    <link href="https://blog.flyto2.com/posts/n8n-alternative" />
+    <id>https://blog.flyto2.com/posts/n8n-alternative</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Looking for an n8n alternative? Flyto2 adds browser automation, cloud execution, and AI agents to your workflow toolkit. See a full comparison.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="n8n" />
+  </entry>
+  <entry>
+    <title>No Code Browser Automation — How Anyone Can Automate Browser Tasks</title>
+    <link href="https://blog.flyto2.com/posts/no-code-browser-automation" />
+    <id>https://blog.flyto2.com/posts/no-code-browser-automation</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Discover how no code browser automation lets anyone automate repetitive browser tasks without programming. Practical guide with examples.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="browser-automation" />
+  </entry>
+  <entry>
+    <title>Record and Replay — The Easiest Way to Automate Your Browser</title>
+    <link href="https://blog.flyto2.com/posts/record-and-replay-browser" />
+    <id>https://blog.flyto2.com/posts/record-and-replay-browser</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Record and replay is the simplest way to automate browser tasks. Learn how to record your actions once and replay them anytime.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="record-and-replay" />
+  </entry>
+  <entry>
+    <title>Selenium Alternative — Automate Browsers Without the Pain</title>
+    <link href="https://blog.flyto2.com/posts/selenium-alternative-no-code" />
+    <id>https://blog.flyto2.com/posts/selenium-alternative-no-code</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Tired of brittle Selenium tests? Compare Selenium vs Playwright vs Flyto2 and find a selenium alternative that fits your automation needs.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="selenium" />
+  </entry>
+  <entry>
+    <title>Web Scraping Tool — How to Collect Data from Any Website Without Code</title>
+    <link href="https://blog.flyto2.com/posts/web-scraping-without-code" />
+    <id>https://blog.flyto2.com/posts/web-scraping-without-code</id>
+    <published>2026-03-17T00:00:00.000Z</published>
+    <updated>2026-03-17T00:00:00.000Z</updated>
+    <summary>Learn how to use a web scraping tool to collect data from websites without writing code. Step-by-step guide with practical examples.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="web-scraping" />
+  </entry>
+  <entry>
+    <title>AI Automation Modules, Not Magic Prompts</title>
+    <link href="https://blog.flyto2.com/posts/modules-not-magic" />
+    <id>https://blog.flyto2.com/posts/modules-not-magic</id>
+    <published>2026-03-13T00:00:00.000Z</published>
+    <updated>2026-03-13T00:00:00.000Z</updated>
+    <summary>Why Flyto2 uses 451 AI automation modules instead of letting agents write code from scratch: deterministic workflows you can debug and replay.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="AI automation modules" />
+  </entry>
+  <entry>
+    <title>Template: Exchange Rate Alert — Monitor Currency Rates with Telegram, Discord &amp; Slack</title>
+    <link href="https://blog.flyto2.com/posts/exchange-rate-alert-template" />
+    <id>https://blog.flyto2.com/posts/exchange-rate-alert-template</id>
+    <published>2026-03-06T00:00:00.000Z</published>
+    <updated>2026-03-06T00:00:00.000Z</updated>
+    <summary>Use the Exchange Rate Alert community template to fetch live currency rates from a free API and notify Telegram, Discord, Slack, or LINE.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="template" />
+  </entry>
+  <entry>
+    <title>Code Intelligence with flyto-indexer</title>
+    <link href="https://blog.flyto2.com/posts/code-intelligence-with-flyto-indexer" />
+    <id>https://blog.flyto2.com/posts/code-intelligence-with-flyto-indexer</id>
+    <published>2025-03-05T00:00:00.000Z</published>
+    <updated>2025-03-05T00:00:00.000Z</updated>
+    <summary>Code intelligence with flyto-indexer gives AI agents and security teams impact analysis, references, dependency maps, dead-code detection, taint analysis, and health scoring.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="code intelligence" />
+  </entry>
+  <entry>
+    <title>Introducing Flyto2: Evidence-Backed CTEM and Security Automation</title>
+    <link href="https://blog.flyto2.com/posts/introducing-flyto2" />
+    <id>https://blog.flyto2.com/posts/introducing-flyto2</id>
+    <published>2025-03-05T00:00:00.000Z</published>
+    <updated>2025-03-05T00:00:00.000Z</updated>
+    <summary>Meet Flyto2 evidence-backed CTEM: a security war room and deterministic execution platform for attack surface, code risk, dark web, pentest, and red-team workflows.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="evidence-backed CTEM" />
+  </entry>
+  <entry>
+    <title>MCP Server Automation with Flyto2</title>
+    <link href="https://blog.flyto2.com/posts/mcp-server-guide" />
+    <id>https://blog.flyto2.com/posts/mcp-server-guide</id>
+    <published>2025-03-05T00:00:00.000Z</published>
+    <updated>2025-03-05T00:00:00.000Z</updated>
+    <summary>A practical MCP server automation guide for connecting flyto-core to Claude Desktop, Cursor, and other AI clients with secure tool-surface control.</summary>
+    <author><name>Flyto2 Team</name></author>
+    <category term="MCP server automation" />
+  </entry>
+</feed>

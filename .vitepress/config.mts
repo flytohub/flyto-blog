@@ -12,6 +12,10 @@ const CORE_CATALOG_CATEGORY_COUNT = 84
 const BUILT_IN_RECIPE_COUNT = 41
 const CORE_RUNTIME_SUMMARY = `${CORE_MODULE_COUNT} registry-backed modules across ${CORE_CATALOG_CATEGORY_COUNT} catalog categories, ${BUILT_IN_RECIPE_COUNT} built-in recipes, MCP transports, evidence capture, and replayable YAML execution`
 const SITE_DESCRIPTION = 'Plain-language Flyto2 guides for AI workflow automation tools, open-source AI agent frameworks, MCP server automation, browser automation, CTEM, ASM, and AI search visibility.'
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`
+const ORGANIZATION_ID = 'https://flyto2.com/#organization'
+const WEBSITE_ID = `${SITE_URL}/#website`
+const BLOG_ID = `${SITE_URL}/#blog`
 const SEO_KEYWORDS = [
   'Flyto2 blog',
   'AI workflow automation',
@@ -47,6 +51,11 @@ const SEO_KEYWORDS = [
   `${BUILT_IN_RECIPE_COUNT} recipes`,
   ...manifestKeywordTerms(),
 ]
+const DISCOVERY_LINKS = [
+  ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Flyto2 Blog RSS', href: `${SITE_URL}/rss.xml` }],
+  ['link', { rel: 'alternate', type: 'application/atom+xml', title: 'Flyto2 Blog Atom', href: `${SITE_URL}/atom.xml` }],
+  ['link', { rel: 'alternate', type: 'application/feed+json', title: 'Flyto2 Blog JSON Feed', href: `${SITE_URL}/feed.json` }],
+] as [string, Record<string, string>][]
 const NON_CONTENT_PATHS = new Set([
   'AGENTS.md',
   'ARCHITECTURE.md',
@@ -97,6 +106,18 @@ function isNonContentPublicPath(path: string) {
     || cleanPath.startsWith('handoffs/')
 }
 
+function arrayValue(value: unknown) {
+  return Array.isArray(value) ? value.map(String).filter(Boolean) : []
+}
+
+function keywordValues(frontmatter: Record<string, any>, tags: string[]) {
+  return [
+    frontmatter.focusKeyword,
+    ...arrayValue(frontmatter.relatedKeywords),
+    ...tags,
+  ].filter(Boolean).map(String)
+}
+
 export default defineConfig({
   title: 'Flyto2 Blog',
   titleTemplate: ':title | Flyto2',
@@ -116,19 +137,22 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ...DISCOVERY_LINKS,
     // Open Graph
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Flyto2 Blog' }],
     ['meta', { property: 'og:title', content: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides' }],
     ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
     ['meta', { property: 'og:url', content: SITE_URL }],
-    ['meta', { property: 'og:image', content: 'https://blog.flyto2.com/og-image.png' }],
+    ['meta', { property: 'og:image', content: DEFAULT_OG_IMAGE }],
+    ['meta', { property: 'og:image:alt', content: 'Flyto2 Blog - AI workflow automation, MCP, CTEM, and security guides' }],
     ['meta', { property: 'og:locale', content: defaultOgLocale }],
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides' }],
     ['meta', { name: 'twitter:description', content: SITE_DESCRIPTION }],
-    ['meta', { name: 'twitter:image', content: 'https://blog.flyto2.com/og-image.png' }],
+    ['meta', { name: 'twitter:image', content: DEFAULT_OG_IMAGE }],
+    ['meta', { name: 'twitter:image:alt', content: 'Flyto2 Blog - AI workflow automation, MCP, CTEM, and security guides' }],
     // SEO
     ['meta', { name: 'keywords', content: SEO_KEYWORDS.join(', ') }],
     ['meta', { name: 'author', content: 'Flyto2 Team' }],
@@ -136,28 +160,55 @@ export default defineConfig({
     // JSON-LD structured data
     ['script', { type: 'application/ld+json' }, JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Blog',
-      name: 'Flyto2 Blog',
-      description: SITE_DESCRIPTION,
-      url: 'https://blog.flyto2.com',
-      about: [
-        'AI workflow automation',
-        'open source AI agent framework',
-        'MCP server automation',
-        'no-code browser automation',
-        'CTEM',
-        'attack surface management',
-        'dark web monitoring',
-        'AI security',
-        'MCP security',
-        CORE_RUNTIME_SUMMARY,
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': ORGANIZATION_ID,
+          name: 'Flyto2',
+          url: 'https://flyto2.com',
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+          sameAs: [
+            'https://github.com/flytohub',
+            'https://www.youtube.com/@Flyto2',
+            'https://pypi.org/project/flyto-core/',
+          ],
+          contactPoint: [
+            { '@type': 'ContactPoint', email: 'support@flyto2.com', contactType: 'customer support' },
+            { '@type': 'ContactPoint', email: 'security@flyto2.com', contactType: 'security' },
+          ],
+        },
+        {
+          '@type': 'WebSite',
+          '@id': WEBSITE_ID,
+          name: 'Flyto2 Blog',
+          url: SITE_URL,
+          publisher: { '@id': ORGANIZATION_ID },
+          inLanguage: 'en-US',
+        },
+        {
+          '@type': 'Blog',
+          '@id': BLOG_ID,
+          name: 'Flyto2 Blog',
+          description: SITE_DESCRIPTION,
+          url: SITE_URL,
+          isPartOf: { '@id': WEBSITE_ID },
+          publisher: { '@id': ORGANIZATION_ID },
+          image: DEFAULT_OG_IMAGE,
+          inLanguage: 'en-US',
+          about: [
+            'AI workflow automation',
+            'open source AI agent framework',
+            'MCP server automation',
+            'no-code browser automation',
+            'CTEM',
+            'attack surface management',
+            'dark web monitoring',
+            'AI security',
+            'MCP security',
+            CORE_RUNTIME_SUMMARY,
+          ],
+        },
       ],
-      publisher: {
-        '@type': 'Organization',
-        name: 'Flyto2',
-        url: 'https://flyto2.com',
-        logo: { '@type': 'ImageObject', url: 'https://blog.flyto2.com/logo.png' },
-      },
     })],
   ],
 
@@ -221,10 +272,12 @@ export default defineConfig({
         ? new Date(pageData.lastUpdated).toISOString()
         : date
       const tags = pageData.frontmatter.tags || []
+      const keywords = keywordValues(pageData.frontmatter, tags)
       const author = pageData.frontmatter.author || 'Flyto2 Team'
       const url = canonicalUrl
       const cover = pageData.frontmatter.cover || '/og-image.png'
       const image = cover.startsWith('http') ? cover : `${SITE_URL}${cover}`
+      const imageAlt = `${title} - Flyto2 Blog`
 
       pageData.frontmatter.head = [
         ...(pageData.frontmatter.head || []),
@@ -233,38 +286,56 @@ export default defineConfig({
         ['meta', { property: 'og:description', content: description }],
         ['meta', { property: 'og:url', content: url }],
         ['meta', { property: 'og:image', content: image }],
+        ['meta', { property: 'og:image:alt', content: imageAlt }],
         ['meta', { property: 'article:published_time', content: date }],
         ['meta', { property: 'article:modified_time', content: dateModified }],
         ['meta', { property: 'article:author', content: author }],
+        ['meta', { property: 'article:section', content: tags[0] || 'Flyto2 guides' }],
         ...tags.map((t: string) => ['meta', { property: 'article:tag', content: t }] as [string, Record<string, string>]),
         ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
         ['meta', { name: 'twitter:title', content: title }],
         ['meta', { name: 'twitter:description', content: description }],
         ['meta', { name: 'twitter:image', content: image }],
+        ['meta', { name: 'twitter:image:alt', content: imageAlt }],
         ['script', { type: 'application/ld+json' }, JSON.stringify({
           '@context': 'https://schema.org',
           '@graph': [
             {
+              '@type': 'WebPage',
+              '@id': `${url}#webpage`,
+              url,
+              name: title,
+              description,
+              isPartOf: { '@id': WEBSITE_ID },
+              primaryImageOfPage: { '@type': 'ImageObject', url: image },
+              inLanguage: 'en-US',
+            },
+            {
               '@type': 'BlogPosting',
+              '@id': `${url}#article`,
               headline: title,
               description,
               datePublished: date,
               dateModified,
-              image,
+              image: { '@type': 'ImageObject', url: image, caption: imageAlt },
               author: { '@type': 'Organization', name: author, url: 'https://flyto2.com' },
-              publisher: {
-                '@type': 'Organization',
-                name: 'Flyto2',
-                url: 'https://flyto2.com',
-                logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
-              },
+              publisher: { '@id': ORGANIZATION_ID },
               url,
-              mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+              mainEntityOfPage: { '@id': `${url}#webpage` },
+              isPartOf: { '@id': BLOG_ID },
+              isAccessibleForFree: true,
+              inLanguage: 'en-US',
               articleSection: tags[0] || 'Security',
-              keywords: tags.join(', '),
+              keywords: keywords.join(', '),
+              about: keywords.slice(0, 8).map((name) => ({ '@type': 'Thing', name })),
+              mentions: [
+                { '@type': 'SoftwareApplication', name: 'flyto-core', url: 'https://pypi.org/project/flyto-core/' },
+                { '@type': 'SoftwareSourceCode', name: 'Flyto2 open-source repositories', url: 'https://github.com/flytohub' },
+              ],
             },
             {
               '@type': 'BreadcrumbList',
+              '@id': `${url}#breadcrumb`,
               itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Flyto2 Blog', item: `${SITE_URL}/` },
                 { '@type': 'ListItem', position: 2, name: title, item: url },

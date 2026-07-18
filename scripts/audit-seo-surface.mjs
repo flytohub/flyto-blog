@@ -58,6 +58,9 @@ const forbiddenSitemapTokens = [
 ];
 const requiredRobotsTokens = [
   `Sitemap: ${seoContract.surface.sitemap}`,
+  'Sitemap: https://blog.flyto2.com/image-sitemap.xml',
+  'Sitemap: https://blog.flyto2.com/rss.xml',
+  'Sitemap: https://blog.flyto2.com/atom.xml',
   'User-agent: OAI-SearchBot',
   'User-agent: ChatGPT-User',
   'User-agent: Claude-User',
@@ -74,6 +77,12 @@ const requiredLlmsTokens = [
   'zero-person company agent',
   'data workflow automation',
   'Community Growth',
+  'https://github.com/flytohub',
+  'https://pypi.org/project/flyto-core/',
+  'https://blog.flyto2.com/image-sitemap.xml',
+  'https://blog.flyto2.com/rss.xml',
+  'https://blog.flyto2.com/atom.xml',
+  'https://blog.flyto2.com/feed.json',
   'https://flyto2.com',
   'https://docs.flyto2.com',
 ];
@@ -142,6 +151,37 @@ function findLink(html, rel, hrefLang = null) {
   return '';
 }
 
+function findTypedLink(html, rel, type) {
+  const wantedRel = rel.toLowerCase();
+  const wantedType = type.toLowerCase();
+  for (const raw of getTags(html, 'link')) {
+    const attributes = attrs(raw);
+    if ((attributes.rel ?? '').toLowerCase() === wantedRel && (attributes.type ?? '').toLowerCase() === wantedType) {
+      return attributes.href ?? '';
+    }
+  }
+  return '';
+}
+
+function jsonLdTypes(html) {
+  const types = [];
+  const blocks = Array.from(html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi));
+  for (const block of blocks) {
+    try {
+      const parsed = JSON.parse(decodeHtml(block[1]));
+      const nodes = Array.isArray(parsed) ? parsed : [parsed, ...(parsed['@graph'] ?? [])];
+      for (const node of nodes) {
+        const type = node?.['@type'];
+        if (Array.isArray(type)) types.push(...type.map(String));
+        else if (type) types.push(String(type));
+      }
+    } catch {
+      types.push('invalid-json-ld');
+    }
+  }
+  return types;
+}
+
 function contractKeywordTerms() {
   return seoContract.surface.keywordClusters.flatMap((cluster) => [
     cluster.primary,
@@ -184,12 +224,41 @@ function checkBrandAndEmails(label, content) {
   if (badEmails.length) fail(`${label} contains non-flyto2.com email(s): ${badEmails.join(', ')}`);
 }
 
-function checkMetaBasics(label, html, canonical, { article = false } = {}) {
+function publicAssetPath(url) {
+  if (!url) return '';
+  try {
+    const parsed = new URL(url);
+    if (parsed.host !== 'blog.flyto2.com') return '';
+    return path.join(distDir, parsed.pathname.replace(/^\/+/, ''));
+  } catch {
+    return url.startsWith('/') ? path.join(distDir, url.replace(/^\/+/, '')) : '';
+  }
+}
+
+function checkPublicAsset(label, metaLabel, url) {
+  const assetPath = publicAssetPath(url);
+  if (assetPath && !existsSync(assetPath)) fail(`${label} ${metaLabel} points to missing public asset: ${url}`);
+}
+
+function checkDiscoveryLinks(label, html) {
+  for (const [type, expected] of [
+    ['application/rss+xml', 'https://blog.flyto2.com/rss.xml'],
+    ['application/atom+xml', 'https://blog.flyto2.com/atom.xml'],
+    ['application/feed+json', 'https://blog.flyto2.com/feed.json'],
+  ]) {
+    const href = findTypedLink(html, 'alternate', type);
+    if (href !== expected) fail(`${label} missing ${type} discovery link: expected ${expected}, got ${href || '(missing)'}`);
+  }
+}
+
+function checkMetaBasics(label, html, canonical, { article = false, homepage = false } = {}) {
   const title = titleFrom(html);
   const description = findMeta(html, 'name', 'description');
   const actualCanonical = findLink(html, 'canonical');
   const robots = findMeta(html, 'name', 'robots');
   const ogUrl = findMeta(html, 'property', 'og:url');
+  const ogImage = findMeta(html, 'property', 'og:image');
+  const twitterImage = findMeta(html, 'name', 'twitter:image');
 
   checkLength(`${label} title`, title, 10, 110);
   checkLength(`${label} description`, description, 50, 180);
@@ -201,17 +270,34 @@ function checkMetaBasics(label, html, canonical, { article = false } = {}) {
   for (const [metaLabel, value] of [
     ['og:title', findMeta(html, 'property', 'og:title')],
     ['og:description', findMeta(html, 'property', 'og:description')],
-    ['og:image', findMeta(html, 'property', 'og:image')],
+    ['og:image', ogImage],
+    ['og:image:alt', findMeta(html, 'property', 'og:image:alt')],
     ['twitter:card', findMeta(html, 'name', 'twitter:card')],
     ['twitter:title', findMeta(html, 'name', 'twitter:title')],
     ['twitter:description', findMeta(html, 'name', 'twitter:description')],
-    ['twitter:image', findMeta(html, 'name', 'twitter:image')],
+    ['twitter:image', twitterImage],
+    ['twitter:image:alt', findMeta(html, 'name', 'twitter:image:alt')],
   ]) {
     if (!value) fail(`${label} missing ${metaLabel}`);
   }
 
-  if (!html.includes('application/ld+json')) fail(`${label} missing JSON-LD`);
-  if (article && !html.includes('BlogPosting')) fail(`${label} missing BlogPosting JSON-LD`);
+  checkPublicAsset(label, 'og:image', ogImage);
+  checkPublicAsset(label, 'twitter:image', twitterImage);
+  checkDiscoveryLinks(label, html);
+
+  const schemaTypes = jsonLdTypes(html);
+  if (!schemaTypes.length) fail(`${label} missing JSON-LD`);
+  if (schemaTypes.includes('invalid-json-ld')) fail(`${label} has invalid JSON-LD`);
+  if (homepage) {
+    for (const type of ['Organization', 'WebSite', 'Blog']) {
+      if (!schemaTypes.includes(type)) fail(`${label} missing ${type} JSON-LD`);
+    }
+  }
+  if (article) {
+    for (const type of ['WebPage', 'BlogPosting', 'BreadcrumbList']) {
+      if (!schemaTypes.includes(type)) fail(`${label} missing ${type} JSON-LD`);
+    }
+  }
   checkBrandAndEmails(label, html);
 }
 
@@ -258,7 +344,7 @@ function checkHomepage() {
     return;
   }
   const html = readFileSync(htmlPath, 'utf8');
-  checkMetaBasics('homepage', html, siteUrl);
+  checkMetaBasics('homepage', html, siteUrl, { homepage: true });
   for (const term of homepageTerms) {
     if (!html.toLowerCase().includes(term.toLowerCase())) fail(`homepage missing intent term: ${term}`);
   }
@@ -323,6 +409,47 @@ function checkSitemapRobotsLlms(postFiles) {
   checkBrandAndEmails('llms-full.txt', full);
 }
 
+function checkDiscoveryFiles(postFiles) {
+  const paths = {
+    rss: path.join(distDir, 'rss.xml'),
+    atom: path.join(distDir, 'atom.xml'),
+    jsonFeed: path.join(distDir, 'feed.json'),
+    imageSitemap: path.join(distDir, 'image-sitemap.xml'),
+    ogImage: path.join(distDir, 'og-image.png'),
+    securityTxt: path.join(distDir, '.well-known', 'security.txt'),
+  };
+  for (const [label, filePath] of Object.entries(paths)) {
+    if (!existsSync(filePath)) fail(`missing discovery file: ${label} (${path.relative(distDir, filePath)})`);
+  }
+  if (!Object.values(paths).every((filePath) => existsSync(filePath))) return;
+
+  const rss = readFileSync(paths.rss, 'utf8');
+  const atom = readFileSync(paths.atom, 'utf8');
+  const jsonFeed = JSON.parse(readFileSync(paths.jsonFeed, 'utf8'));
+  const imageSitemap = readFileSync(paths.imageSitemap, 'utf8');
+  const securityTxt = readFileSync(paths.securityTxt, 'utf8');
+
+  if ((rss.match(/<item>/g) ?? []).length < postFiles.length) fail('rss.xml must include every built post');
+  if ((atom.match(/<entry>/g) ?? []).length < postFiles.length) fail('atom.xml must include every built post');
+  if (!Array.isArray(jsonFeed.items) || jsonFeed.items.length < postFiles.length) fail('feed.json must include every built post');
+  if ((imageSitemap.match(/<image:image>/g) ?? []).length < postFiles.length) fail('image-sitemap.xml must include every built post image');
+
+  for (const url of postFiles.map(canonicalFor)) {
+    if (!rss.includes(url)) fail(`rss.xml missing ${url}`);
+    if (!atom.includes(url)) fail(`atom.xml missing ${url}`);
+    if (!imageSitemap.includes(url)) fail(`image-sitemap.xml missing ${url}`);
+    if (!jsonFeed.items.some((item) => item.url === url)) fail(`feed.json missing ${url}`);
+  }
+  for (const token of ['Contact: mailto:security@flyto2.com', 'Canonical: https://blog.flyto2.com/.well-known/security.txt']) {
+    if (!securityTxt.includes(token)) fail(`security.txt missing ${token}`);
+  }
+  checkBrandAndEmails('rss.xml', rss);
+  checkBrandAndEmails('atom.xml', atom);
+  checkBrandAndEmails('feed.json', JSON.stringify(jsonFeed));
+  checkBrandAndEmails('image-sitemap.xml', imageSitemap);
+  checkBrandAndEmails('security.txt', securityTxt);
+}
+
 function newestKeywordMatrix() {
   if (!existsSync(seoDir)) return null;
   return readdirSync(seoDir)
@@ -367,6 +494,7 @@ if (!existsSync(distDir)) {
   const postFiles = checkPosts();
   if (existsSync(path.join(distDir, 'sitemap.xml'))) {
     checkSitemapRobotsLlms(postFiles);
+    checkDiscoveryFiles(postFiles);
   } else {
     fail('missing built sitemap.xml; run npm run build before npm run audit:seo');
   }

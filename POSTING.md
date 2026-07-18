@@ -46,6 +46,9 @@ a CI version of a WordPress SEO panel:
 - Give every image descriptive alt text.
 - Keep body copy answer-shaped so search engines and AI answer engines can
   extract the topic, entity, and next step.
+- Do not hand-edit `public/rss.xml`, `public/atom.xml`, `public/feed.json`, or
+  `public/image-sitemap.xml`; they are generated from post frontmatter by
+  `npm run seo:discovery` during `npm run build`.
 - Run `npm run seo:manage` after `npm run seo:score` to review keyword gaps,
   internal-link suggestions, rank targets, and Search Console opportunities.
   If Google Search Console CSV exports are unavailable, the report still gives

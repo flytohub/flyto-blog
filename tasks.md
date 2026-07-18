@@ -17,3 +17,5 @@
   recommendations.
 - [x] Harden low-scoring posts with explicit focus keywords and reach 100/100
   local SEO score coverage.
+- [x] Add generated RSS, Atom, JSON Feed, image sitemap, OG fallback image, and
+  CI checks for discovery surfaces.

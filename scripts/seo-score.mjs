@@ -83,6 +83,18 @@ function findLink(html, rel, hrefLang = null) {
   return '';
 }
 
+function findTypedLink(html, rel, type) {
+  const wantedRel = rel.toLowerCase();
+  const wantedType = type.toLowerCase();
+  for (const raw of getTags(html, 'link')) {
+    const attributes = attrs(raw);
+    if ((attributes.rel ?? '').toLowerCase() === wantedRel && (attributes.type ?? '').toLowerCase() === wantedType) {
+      return attributes.href ?? '';
+    }
+  }
+  return '';
+}
+
 function titleFrom(html) {
   const match = html.match(/<title>([\s\S]*?)<\/title>/i);
   return match ? decodeHtml(match[1]) : '';
@@ -239,6 +251,24 @@ function sitemapSet() {
   return new Set(Array.from(sitemap.matchAll(/<loc>([\s\S]*?)<\/loc>/g), (match) => decodeHtml(match[1]).replace(/\/$/, '')));
 }
 
+function imageSitemapSet() {
+  const sitemapPath = path.join(distDir, 'image-sitemap.xml');
+  if (!existsSync(sitemapPath)) return new Set();
+  const sitemap = readFileSync(sitemapPath, 'utf8');
+  return new Set(Array.from(sitemap.matchAll(/<image:loc>([\s\S]*?)<\/image:loc>/g), (match) => decodeHtml(match[1]).replace(/\/$/, '')));
+}
+
+function publicAssetExists(url) {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    if (parsed.host !== 'blog.flyto2.com') return true;
+    return existsSync(path.join(distDir, parsed.pathname.replace(/^\/+/, '')));
+  } catch {
+    return url.startsWith('/') && existsSync(path.join(distDir, url.replace(/^\/+/, '')));
+  }
+}
+
 function linkStats(html) {
   const links = getTags(html, 'a').map(attrs).map((attributes) => attributes.href).filter(Boolean);
   const internal = links.filter((href) => href.startsWith('/') || href.startsWith(siteUrl));
@@ -298,12 +328,14 @@ function keywordDensity(text, term) {
   return Number(((matches / words.length) * 100).toFixed(2));
 }
 
-function scorePage(relativePath, html, sitemapUrls) {
+function scorePage(relativePath, html, sitemapUrls, imageSitemapImages) {
   const meta = sourceMeta(relativePath);
   const title = titleFrom(html);
   const description = findMeta(html, 'name', 'description');
   const canonical = findLink(html, 'canonical');
   const robots = findMeta(html, 'name', 'robots');
+  const ogImage = findMeta(html, 'property', 'og:image');
+  const twitterImage = findMeta(html, 'name', 'twitter:image');
   const h1s = textFromTag(html, 'h1');
   const h2s = textFromTag(html, 'h2');
   const text = visibleText(html);
@@ -328,7 +360,16 @@ function scorePage(relativePath, html, sitemapUrls) {
   scoreItem(items, 'technical', 'Twitter card complete', 3, ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'].every((name) => findMeta(html, 'name', name)), 'Add complete Twitter card metadata.');
   scoreItem(items, 'technical', 'JSON-LD present', 4, schemaTypes.length > 0 && !schemaTypes.includes('invalid-json-ld'), 'Add valid JSON-LD structured data.', { schemaTypes });
   scoreItem(items, 'technical', 'Article schema for posts', 3, !isPost || schemaTypes.includes('BlogPosting'), 'Use BlogPosting schema for posts.', { schemaTypes });
+  scoreItem(items, 'technical', 'Schema graph depth', 4, isHomepage
+    ? ['Organization', 'WebSite', 'Blog'].every((type) => schemaTypes.includes(type))
+    : !isPost || ['WebPage', 'BlogPosting', 'BreadcrumbList'].every((type) => schemaTypes.includes(type)),
+  'Expose Organization/WebSite/Blog on the homepage and WebPage/BlogPosting/BreadcrumbList on posts.', { schemaTypes });
   scoreItem(items, 'technical', 'Hreflang alternates', 3, Boolean(findLink(html, 'alternate', 'en') && findLink(html, 'alternate', 'x-default')), 'Add en and x-default hreflang links.');
+  scoreItem(items, 'technical', 'Feed discovery links', 3, [
+    ['application/rss+xml', 'https://blog.flyto2.com/rss.xml'],
+    ['application/atom+xml', 'https://blog.flyto2.com/atom.xml'],
+    ['application/feed+json', 'https://blog.flyto2.com/feed.json'],
+  ].every(([type, href]) => findTypedLink(html, 'alternate', type) === href), 'Expose RSS, Atom, and JSON Feed alternate links.');
   scoreItem(items, 'technical', 'Sitemap inclusion', 3, sitemapUrls.has(sitemapUrl), 'Include the canonical URL in sitemap.xml.', { sitemapUrl });
 
   scoreItem(items, 'keyword', 'Focus keyword in title', 5, includesTerm(title, focusKeyword), `Use focus keyword in the SEO title: ${focusKeyword}.`);
@@ -352,7 +393,9 @@ function scorePage(relativePath, html, sitemapUrls) {
   scoreItem(items, 'links_images', 'Internal links', 4, links.internal >= (isPost ? 2 : 6), 'Add relevant internal links to docs, related posts, or product pages.', links);
   scoreItem(items, 'links_images', 'External authority links', 3, !isPost || links.external >= 1, 'Add at least one useful external authority link when the topic benefits from evidence.', links);
   scoreItem(items, 'links_images', 'Image alt text', 4, images.missingAlt === 0, 'Add descriptive alt text to every image.', images);
-  scoreItem(items, 'links_images', 'Social image present', 4, Boolean(findMeta(html, 'property', 'og:image') && findMeta(html, 'name', 'twitter:image')), 'Add share image metadata.');
+  scoreItem(items, 'links_images', 'Social image present', 4, Boolean(ogImage && twitterImage), 'Add share image metadata.');
+  scoreItem(items, 'links_images', 'Social image reachable', 4, publicAssetExists(ogImage) && publicAssetExists(twitterImage), 'Point social image metadata to an existing public asset.', { ogImage, twitterImage });
+  scoreItem(items, 'links_images', 'Image sitemap coverage', 3, !isPost || imageSitemapImages.has(ogImage.replace(/\/$/, '')), 'Include post social images in image-sitemap.xml.', { ogImage });
 
   scoreItem(items, 'ai_visibility', 'LLM-friendly entity clarity', 4, includesTerm(text, 'Flyto2') && includesTerm(text, focusKeyword), 'Make the entity and topic explicit in body copy.');
   scoreItem(items, 'ai_visibility', 'Canonical evidence path', 3, includesTerm(text, 'docs') || includesTerm(text, 'GitHub') || includesTerm(text, 'source'), 'Point readers and AI systems to durable evidence: docs, GitHub, source, or canonical pages.');
@@ -456,9 +499,10 @@ ${rows}
 
 function main() {
   const sitemapUrls = sitemapSet();
+  const imageSitemapImages = imageSitemapSet();
   const pages = pageFiles().map((relativePath) => {
     const html = readFileSync(path.join(distDir, relativePath), 'utf8');
-    return scorePage(relativePath, html, sitemapUrls);
+    return scorePage(relativePath, html, sitemapUrls, imageSitemapImages);
   });
   const averageScore = Math.round(pages.reduce((sum, page) => sum + page.score, 0) / pages.length);
   const lowestScore = Math.min(...pages.map((page) => page.score));

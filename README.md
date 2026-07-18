@@ -102,6 +102,13 @@ opportunities when CSV exports are present, and editor recommendations for the
 next content pass. Raw Search Console CSV files stay local under
 `.seo/search-console/` and are ignored by Git.
 
+`npm run build` runs `npm run seo:discovery` before VitePress. That generator
+keeps public discovery surfaces in sync with Markdown posts: `rss.xml`,
+`atom.xml`, `feed.json`, `image-sitemap.xml`, `discovery-manifest.json`, and a
+real `og-image.png` fallback for social previews. `npm run audit:seo` fails if
+these files are missing, stale, or not advertised from page metadata and
+`robots.txt`.
+
 For social drafts, run:
 
 ```bash

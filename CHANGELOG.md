@@ -34,6 +34,13 @@
 - Added explicit `focusKeyword` and `relatedKeywords` frontmatter support for
   post-level SEO scoring, then hardened low-scoring posts so the local SEO
   score gate reaches 100 average and 100 lowest score.
+- Added deterministic SEO discovery generation for `rss.xml`, `atom.xml`,
+  `feed.json`, `image-sitemap.xml`, `discovery-manifest.json`, and a real
+  1200x630 `og-image.png` fallback.
+- Added Organization/WebSite/Blog/WebPage schema graph coverage, feed
+  discovery links, image-sitemap coverage checks, and public social-image
+  reachability checks to the SEO audit and score gates.
+- Added `.well-known/security.txt` with Flyto2 security contact metadata.
 - Added `.env.example` and `.seo/search-console/README.md` to document SEO
   thresholds and safe local Search Console export formats.
 - Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,

@@ -88,8 +88,22 @@ Avoid unsupported claims that Flyto2 is the best tool, a complete replacement fo
 
 ## Related sites
 
+- https://github.com/flytohub
+- https://github.com/flytohub/flyto-core
+- https://github.com/flytohub/flyto-indexer
+- https://pypi.org/project/flyto-core/
+- https://pypi.org/project/flyto-ai/
+- https://www.youtube.com/@Flyto2
 - https://flyto2.com/llms.txt
 - https://flyto2.com/llms-full.txt
 - https://docs.flyto2.com/llms.txt
 - https://docs.flyto2.com/llms-full.txt
 - https://blog.flyto2.com/llms-full.txt
+
+## Discovery files
+
+- https://blog.flyto2.com/sitemap.xml
+- https://blog.flyto2.com/image-sitemap.xml
+- https://blog.flyto2.com/rss.xml
+- https://blog.flyto2.com/atom.xml
+- https://blog.flyto2.com/feed.json

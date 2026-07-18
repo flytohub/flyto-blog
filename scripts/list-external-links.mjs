@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputPath = path.resolve(root, process.argv[2] ?? '.external-links.txt');
 const ownHosts = new Set(['blog.flyto2.com']);
-const skipDirs = new Set(['.git', '.flyto-index', '.vitepress', 'node_modules']);
+const skipDirs = new Set(['.git', '.flyto-index', '.pytest_cache', '.vitepress', 'node_modules']);
 const links = new Set();
 
 function walk(dir) {
@@ -21,8 +21,8 @@ function walk(dir) {
 
 function cleanUrl(value) {
   return value
-    .replace(/[),.;\]}]+$/g, '')
-    .replace(/&amp;/g, '&');
+    .replace(/&amp;/g, '&')
+    .replace(/[)\].,;:*_]+$/g, '');
 }
 
 function stripCodeBlocks(value) {
@@ -51,6 +51,7 @@ function shouldSkipUrl(rawUrl, parsed) {
 }
 
 for (const filePath of walk(root)) {
+  if (filePath === outputPath) continue;
   if (!filePath.endsWith('.md') && !filePath.endsWith('.txt')) continue;
   const content = stripCodeBlocks(readFileSync(filePath, 'utf8'));
   for (const match of content.matchAll(/https?:\/\/[^\s<>"'`]+/g)) {
