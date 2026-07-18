@@ -42,6 +42,11 @@ Current state on 2026-07-18:
   structure, links/images, and AI visibility signals, writes reports under
   `.seo/reports/`, and fails CI when homepage, page, or site-average thresholds
   are missed.
+- `npm run seo:manage` adds the Rank Math-style management layer: it writes
+  keyword gaps, rank targets, Search Console CSV opportunities, internal-link
+  suggestions, focus-keyword cannibalization, and editor recommendations to
+  `.seo/reports/seo-management.*`. It is local-data friendly by default and
+  only requires Search Console exports when `SEO_MANAGEMENT_REQUIRE_GSC=true`.
 - `npm run social:check` verifies the social publisher dry-run, required
   channels, environment guards, GitHub Action guardrails, and no committed
   tokens.
@@ -63,6 +68,9 @@ Known gaps:
 - Cloudflare/GitHub builds use the committed `.seo/i18n-seo-manifest.json`
   cache; run `npm run seo:sync` locally after changing `flyto-i18n` SEO source
   data.
+- Search Console CSV exports are not committed. Place local exports in
+  `.seo/search-console/` when reviewing real impressions, CTR, and position
+  opportunities.
 - GitHub Pages deploy still depends on GitHub Actions availability. If Actions
   is blocked by account or billing state, local `npm run verify` can validate
   the site but production will not update until the deployment runner is

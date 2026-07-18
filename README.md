@@ -95,6 +95,13 @@ Reports are written to `.seo/reports/seo-score.json` and
 `.seo/reports/seo-score.md`. CI fails when the homepage, any post, or the site
 average falls below the configured thresholds.
 
+`npm run verify` also runs `npm run seo:manage`. That management pass creates
+`.seo/reports/seo-management.json` and `.seo/reports/seo-management.md` with
+rank targets, keyword gaps, internal-link suggestions, Search Console
+opportunities when CSV exports are present, and editor recommendations for the
+next content pass. Raw Search Console CSV files stay local under
+`.seo/search-console/` and are ignored by Git.
+
 For social drafts, run:
 
 ```bash

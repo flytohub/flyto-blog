@@ -28,8 +28,13 @@
 - Added `npm run seo:score`, a Rank Math-style page scoring gate with JSON and
   Markdown reports for technical SEO, focus keywords, readability, links/images,
   and AI visibility signals.
+- Added `npm run seo:manage`, a Rank Math-style SEO management report for
+  keyword gaps, rank targets, optional Search Console CSV opportunities,
+  internal links, focus-keyword cannibalization, and editor recommendations.
+- Added `.env.example` and `.seo/search-console/README.md` to document SEO
+  thresholds and safe local Search Console export formats.
 - Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,
-  and public-link checks.
+  public-link checks, and SEO report artifacts.
 - Added project memory files, workflow docs, and handoff registry.
 - Added `.seo/i18n-seo-manifest.json`, `.vitepress/seo-contract.ts`, and
   `npm run seo:sync` so blog canonical/hreflang, keyword evidence, and SEO

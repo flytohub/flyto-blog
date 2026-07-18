@@ -13,3 +13,5 @@
 - [x] Upgrade video production with post-to-plan generation, QA, thumbnails,
   narration drafts, and multi-platform render variants.
 - [x] Add Rank Math-style SEO scoring reports and CI thresholds.
+- [x] Add Rank Math-style SEO management reports, rank targets, and editor
+  recommendations.
