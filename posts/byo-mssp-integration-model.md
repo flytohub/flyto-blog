@@ -1,6 +1,7 @@
 ---
 title: "The BYO MSSP: Why You Shouldn't Re-Buy Security Tools You Already Own"
-description: "Bring-your-own MSSP integration model: keep existing tools, ingest external data, fill gaps, and correlate attack-surface, pentest, and red-team evidence."
+description: "BYO MSSP integration model: keep existing tools, ingest external data, fill gaps, and correlate attack-surface, pentest, and red-team evidence."
+focusKeyword: "BYO MSSP"
 date: 2026-06-10
 tags: [security, mssp, integration]
 author: Flyto2 Team

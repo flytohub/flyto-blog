@@ -1,13 +1,15 @@
 ---
 title: "AI Automation Modules, Not Magic Prompts"
 description: "Why Flyto2 uses 451 AI automation modules instead of letting agents write code from scratch: deterministic workflows you can debug and replay."
+focusKeyword: "AI automation modules"
+relatedKeywords: ["deterministic workflows", "schema-validated modules", "AI agent automation"]
 date: 2026-03-13
 tags: [engineering, announcement]
 author: Flyto2 Team
 cover: /modules-not-magic.svg
 ---
 
-Flyto2 uses AI automation modules instead of magic prompts. Most AI automation tools sell you a dream: *"Just tell the AI what you want and it figures it out."*
+Flyto2 uses AI automation modules instead of magic prompts. AI agent automation should run through deterministic workflows and schema-validated modules, not improvised code on every request. Most AI automation tools sell you a dream: *"Just tell the AI what you want and it figures it out."*
 
 We tried that. It doesn't work.
 

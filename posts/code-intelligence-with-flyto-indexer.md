@@ -1,6 +1,7 @@
 ---
 title: "Code Intelligence with flyto-indexer"
-description: "How flyto-indexer gives AI agents and security teams codebase context with impact analysis, references, dependency maps, dead-code detection, taint analysis, and health scoring."
+description: "Code intelligence with flyto-indexer gives AI agents and security teams impact analysis, references, dependency maps, dead-code detection, taint analysis, and health scoring."
+focusKeyword: "code intelligence"
 date: 2025-03-05
 tags: [tutorial, indexer, mcp, code security]
 author: Flyto2 Team

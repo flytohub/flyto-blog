@@ -1,13 +1,15 @@
 ---
 title: "MCP Server Automation with Flyto2"
 description: "A practical MCP server automation guide for connecting flyto-core to Claude Desktop, Cursor, and other AI clients with secure tool-surface control."
+focusKeyword: "MCP server automation"
+relatedKeywords: ["MCP automation tools", "MCP tools for AI agents", "MCP server automation testing"]
 date: 2025-03-05
 tags: [tutorial, mcp, agent security]
 author: Flyto2 Team
 cover: /mcp-server.svg
 ---
 
-Flyto2 MCP server automation exposes deterministic workflow modules through the Model Context Protocol (MCP). That means an MCP-compatible client can call Flyto2 tools for browser automation, HTTP requests, file operations, data transforms, validation, reporting, and other workflow steps.
+Flyto2 MCP server automation exposes deterministic workflow modules through the Model Context Protocol (MCP). This tutorial treats MCP automation tools as both an implementation pattern and an agent security boundary for MCP tools for AI agents, including MCP server automation testing before teams expose real workflows.
 
 <!-- more -->
 

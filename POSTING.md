@@ -21,6 +21,8 @@ cover: /slug.svg                # optional; 1200×630 image in public/
 |-------|------|-------------|
 | `cover` | string (path) | Hero image. Place under `public/`. Falls back to the default OG image if omitted. |
 | `layout` | `"doc"` | Override the VitePress layout. Rarely needed. |
+| `focusKeyword` | string | Preferred SEO focus phrase for `npm run seo:score`; use this when the title is broader than the search phrase. |
+| `relatedKeywords` | string[] | Optional supporting long-tail phrases to check in the body. Keep this short and natural. |
 
 ## Content rules
 
@@ -36,6 +38,8 @@ a CI version of a WordPress SEO panel:
 
 - Put the focus keyword or long-tail phrase in the title, description, H1, and
   opening paragraph.
+- Use `focusKeyword` when the best search phrase is shorter or clearer than the
+  post title.
 - Use at least three useful H2 sections.
 - Add relevant internal links and at least one evidence link when the topic
   benefits from a source.

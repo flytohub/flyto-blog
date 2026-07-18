@@ -1,13 +1,14 @@
 ---
 title: "Asset Inventory Is the Foundation of Security Scoring"
 description: "Practical asset inventory security guide: deterministic discovery, ownership gating, BYO CMDB imports, asset maps, and reliable security scoring."
+focusKeyword: "asset inventory"
 date: 2026-06-10
 tags: [security, asset-management]
 author: Flyto2 Team
 cover: /security/attack-surface-management.jpg
 ---
 
-Every security score is a claim about a set of things you own. Get the set wrong and the score is fiction — confident, precise, and pointed at the wrong hosts. That is why asset inventory is not a housekeeping task you do before the real security work starts; it *is* the foundation the real work stands on. You cannot score risk on assets you cannot see, defend a host you do not know you own, or trust a number that floats on an inventory that drifts. This post is about IT asset discovery as a security primitive: why the inventory has to be deterministic, why ownership gating is non-negotiable, and how bringing your existing CMDB into the loop turns "what do we have?" from a quarterly fire drill into a continuously-correct map.
+Every security score is a claim about a set of things you own. Get the set wrong and the score is fiction — confident, precise, and pointed at the wrong hosts. That is why asset inventory is not a housekeeping task you do before the real security work starts; it *is* the foundation the real work stands on. You cannot score risk on assets you cannot see, defend a host you do not know you own, or trust a number that floats on an inventory that drifts. This post is about IT asset discovery and asset management as a security primitive: why the inventory has to be deterministic, why ownership gating is non-negotiable, and how bringing your existing CMDB into the loop turns "what do we have?" from a quarterly fire drill into a continuously-correct map.
 
 <!-- more -->
 

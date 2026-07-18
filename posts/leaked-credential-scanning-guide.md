@@ -1,6 +1,7 @@
 ---
-title: "Leaked Credential & Secrets Scanning: A How-To Guide"
+title: "Leaked Credential Scanning and Secrets Scanning: A How-To Guide"
 description: "Leaked credential scanning guide: find exposed secrets in repos, pastes, logs, and darkweb data, then rotate keys and verify remediation."
+focusKeyword: "leaked credential scanning"
 date: 2026-06-10
 tags: ["secrets scanning","leaked credentials","credential exposure","darkweb"]
 author: Flyto2 Team

@@ -47,6 +47,10 @@ Current state on 2026-07-18:
   suggestions, focus-keyword cannibalization, and editor recommendations to
   `.seo/reports/seo-management.*`. It is local-data friendly by default and
   only requires Search Console exports when `SEO_MANAGEMENT_REQUIRE_GSC=true`.
+- Blog posts can now set explicit `focusKeyword` and `relatedKeywords`
+  frontmatter so the SEO gate checks real search phrases instead of guessing
+  from broad titles. Current local SEO score is 100 average / 100 lowest across
+  68 built pages.
 - `npm run social:check` verifies the social publisher dry-run, required
   channels, environment guards, GitHub Action guardrails, and no committed
   tokens.

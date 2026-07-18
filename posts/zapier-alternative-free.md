@@ -1,6 +1,7 @@
 ---
 title: "Free Zapier Alternative That Actually Runs on Your Computer"
-description: "Looking for a Zapier alternative free of monthly limits and cloud lock-in? Flyto2 automates workflows locally with 451 modules and zero subscription fees."
+description: "Free Zapier alternative for teams avoiding monthly limits and cloud lock-in: Flyto2 automates workflows locally with 451 modules and zero subscription fees."
+focusKeyword: "Free Zapier alternative"
 date: 2026-03-25
 tags: [automation, alternative, free, workflow-automation]
 author: Flyto2 Team

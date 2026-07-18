@@ -1,6 +1,7 @@
 ---
 title: "Introducing Flyto2: Evidence-Backed CTEM and Security Automation"
-description: "Meet Flyto2, a security war room and deterministic execution platform for CTEM, attack surface, code risk, dark web, pentest, red-team, and evidence-backed workflows."
+description: "Meet Flyto2 evidence-backed CTEM: a security war room and deterministic execution platform for attack surface, code risk, dark web, pentest, and red-team workflows."
+focusKeyword: "evidence-backed CTEM"
 date: 2025-03-05
 tags: [announcement, platform, CTEM]
 author: Flyto2 Team

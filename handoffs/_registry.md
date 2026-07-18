@@ -2,6 +2,7 @@
 
 | Date | Topic | File |
 | --- | --- | --- |
+| 2026-07-18 | SEO content hardening | `2026-07-18-seo-content-hardening.md` |
 | 2026-07-18 | Rank Math-style SEO management | `2026-07-18-rank-math-style-seo-management.md` |
 | 2026-07-18 | Rank Math-style SEO score | `2026-07-18-rank-math-style-seo-score.md` |
 | 2026-07-18 | Video pipeline upgrade | `2026-07-18-video-pipeline-upgrade.md` |

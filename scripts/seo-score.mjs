@@ -170,6 +170,7 @@ function contractKeywordTerms() {
 
 function inferFocusKeyword(relativePath, meta, html) {
   if (relativePath === 'index.html') return homepageFocusTerms[0];
+  if (typeof meta.focusKeyword === 'string' && meta.focusKeyword.trim()) return meta.focusKeyword.trim();
   if (focusKeywordOverrides.has(relativePath)) return focusKeywordOverrides.get(relativePath);
 
   const titleKeyword = inferTitleKeyword(meta.title);
@@ -213,11 +214,16 @@ function cleanupKeyword(value) {
 
 function relatedTerms(relativePath, focusKeyword, meta) {
   const terms = new Set([focusKeyword]);
+  for (const term of Array.isArray(meta.relatedKeywords) ? meta.relatedKeywords : []) terms.add(String(term));
   for (const term of contractKeywordTerms()) {
     if (includesTerm(term, focusKeyword) || includesTerm(focusKeyword, term)) terms.add(term);
   }
   if (focusKeywordOverrides.has(relativePath)) terms.add(focusKeywordOverrides.get(relativePath));
-  for (const tag of Array.isArray(meta.tags) ? meta.tags : []) terms.add(String(tag).replace(/-/g, ' '));
+  for (const tag of Array.isArray(meta.tags) ? meta.tags : []) {
+    const normalizedTag = normalizeTerm(tag);
+    if (['announcement', 'engineering', 'tutorial'].includes(normalizedTag)) continue;
+    terms.add(String(tag).replace(/-/g, ' '));
+  }
   return [...terms].filter((term) => normalizeTerm(term).length > 2).slice(0, 10);
 }
 

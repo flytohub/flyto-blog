@@ -1,13 +1,14 @@
 ---
 title: "Container and Cloud Identity Security in One Picture"
 description: "Container and cloud identity security guide: correlate image CVEs, runtime events, over-privileged roles, exposed credentials, code, and external exposure."
+focusKeyword: "container and cloud identity security"
 date: 2026-06-10
 tags: [security, container, cloud]
 author: Flyto2 Team
 cover: /security/byo-mssp.jpg
 ---
 
-Container security and cloud identity security are usually bought, run, and read as two separate disciplines: a scanner tells you which images carry CVEs, a CSPM tells you which roles are over-privileged, and the two reports never meet. The problem is that attackers don't respect that boundary. A CVE in an image only matters in proportion to what the workload running it can reach — and what it can reach is decided by the cloud identity it assumes. This post explains container CVE posture, runtime events, and cloud-identity risk as they actually behave, and why correlating them with each other (and with your code and external exposure) is what turns three scanner outputs into one operational picture.
+Container security and cloud identity security are usually bought, run, and read as two separate disciplines: a scanner tells you which images carry CVEs, a CSPM tells you which roles are over-privileged, and the two reports never meet. The problem is that attackers don't respect that boundary. A CVE in an image only matters in proportion to what the workload running it can reach — and what it can reach is decided by the cloud identity it assumes. This post explains container CVE posture, runtime events, and cloud-identity risk as they actually behave, and why container and cloud identity security has to correlate them with code and external exposure to turn three scanner outputs into one operational picture.
 
 <!-- more -->
 

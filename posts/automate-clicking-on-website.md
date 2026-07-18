@@ -1,6 +1,7 @@
 ---
 title: "How to Automate Clicking on a Website — A Step-by-Step Guide"
 description: "Learn how to automate clicking on a website to eliminate repetitive tasks. Simple guide with real examples and no coding required."
+focusKeyword: "automate clicking on a website"
 date: 2026-03-17
 tags: [automation, clicking, browser-automation, productivity]
 author: Flyto2 Team

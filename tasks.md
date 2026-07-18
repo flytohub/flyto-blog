@@ -15,3 +15,5 @@
 - [x] Add Rank Math-style SEO scoring reports and CI thresholds.
 - [x] Add Rank Math-style SEO management reports, rank targets, and editor
   recommendations.
+- [x] Harden low-scoring posts with explicit focus keywords and reach 100/100
+  local SEO score coverage.

@@ -1,6 +1,7 @@
 ---
 title: "AI Workflow Automation Alternatives: n8n, Zapier, Make, Playwright, LangGraph, and Flyto2"
-description: "A practical guide to choosing between n8n, Zapier, Make, Playwright, LangGraph, and Flyto2 for AI workflow automation and browser automation."
+description: "AI workflow automation alternatives compared: n8n, Zapier, Make, Playwright, LangGraph, and Flyto2 for agent and browser automation."
+focusKeyword: "AI workflow automation alternatives"
 date: 2026-07-17
 tags: [ai-workflow-automation, alternatives, browser-automation, mcp, agents]
 author: Flyto2 Team

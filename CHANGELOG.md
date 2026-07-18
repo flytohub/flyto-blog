@@ -31,6 +31,9 @@
 - Added `npm run seo:manage`, a Rank Math-style SEO management report for
   keyword gaps, rank targets, optional Search Console CSV opportunities,
   internal links, focus-keyword cannibalization, and editor recommendations.
+- Added explicit `focusKeyword` and `relatedKeywords` frontmatter support for
+  post-level SEO scoring, then hardened low-scoring posts so the local SEO
+  score gate reaches 100 average and 100 lowest score.
 - Added `.env.example` and `.seo/search-console/README.md` to document SEO
   thresholds and safe local Search Console export formats.
 - Added a dedicated SEO workflow with local audit, Lighthouse SEO assertions,

@@ -1,6 +1,7 @@
 ---
 title: "What Is CSPM? Cloud Security Posture Management Guide"
 description: "What is CSPM? A practical guide to cloud security posture management — the misconfigurations it catches, CSPM vs CWPP vs CNAPP, and a posture-hardening checklist you can run."
+focusKeyword: "CSPM"
 date: 2026-06-10
 author: Flyto2 Team
 tags: ["CSPM","cloud security","misconfiguration","posture management"]

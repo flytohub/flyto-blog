@@ -1,6 +1,7 @@
 ---
 title: "Flyto2 community growth for open-source AI workflow automation"
-description: "How Flyto2 turns docs, good-first issues, reusable recipes, MCP examples, package pages, and reviewed social posts into one community loop."
+description: "Open-source AI workflow automation community growth: Flyto2 turns docs, issues, recipes, MCP examples, package pages, and reviewed social posts into one loop."
+focusKeyword: "open-source AI workflow automation"
 date: 2026-07-18
 tags: [community, open-source, workflow-automation, mcp]
 author: "Flyto2 Team"

@@ -1,6 +1,7 @@
 ---
 title: "Free Power Automate Alternative That Just Works"
 description: "Looking for a power automate alternative free of Microsoft accounts? Flyto2 needs no Microsoft ecosystem, and automates workflows for free."
+focusKeyword: "Power Automate alternative"
 date: 2026-03-17
 tags: [automation, alternative, free]
 author: Flyto2 Team

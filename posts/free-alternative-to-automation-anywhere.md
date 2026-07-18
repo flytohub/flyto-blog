@@ -1,6 +1,7 @@
 ---
 title: "A Simpler Automation Anywhere Alternative for Small Teams"
 description: "Need an automation anywhere alternative that's free and easy? Flyto2 gives small teams 451 modules, no licensing fees, and no enterprise complexity."
+focusKeyword: "Automation Anywhere alternative"
 date: 2026-03-17
 tags: [automation, alternative, free, small-teams]
 author: Flyto2 Team

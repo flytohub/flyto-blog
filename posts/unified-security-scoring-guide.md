@@ -1,13 +1,14 @@
 ---
 title: "Unified Security Scoring: One Number Across Nine Surfaces"
 description: "Unified security scoring guide: compute a 250-900 score across code, attack surface, diligence vectors, modifiers, grade caps, and evidence."
+focusKeyword: "unified security scoring"
 date: 2026-06-10
 tags: [security, scoring]
 author: Flyto2 Team
 cover: /security/unified-scoring.jpg
 ---
 
-A security rating is only useful if a board member can read one number and a security engineer can trace that number all the way back to the finding that moved it. Most tools give you one or the other: a tidy grade with no evidence, or a flood of findings with no grade. A unified security score has to do both — collapse nine independently-closed-loop surfaces into a single value on a **250–900** band, and keep every point on the curve reproducible from its inputs.
+A security rating is only useful if a board member can read one number and a security engineer can trace that number all the way back to the finding that moved it. Most tools give you one or the other: a tidy grade with no evidence, or a flood of findings with no grade. Unified security scoring has to do both — collapse nine independently-closed-loop surfaces into a single value on a **250–900** band, and keep every point on the curve reproducible from its inputs.
 
 <!-- more -->
 

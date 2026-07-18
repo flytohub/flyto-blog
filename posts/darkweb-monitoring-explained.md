@@ -1,6 +1,7 @@
 ---
 title: "Darkweb Monitoring Explained: Leaked Credentials, IOCs, and Brand Abuse"
 description: "Darkweb monitoring guide: leaked credentials, IOC lookup, ransomware tracking, threat actors, brand impersonation, BYO feeds, and correlation."
+focusKeyword: "darkweb monitoring"
 date: 2026-06-10
 tags: [security, darkweb, threat-intel]
 author: Flyto2 Team
