@@ -56,6 +56,20 @@ function main() {
       throw new Error(`${output.id}: duration ${duration} does not match ${plan.durationSeconds}s plan`);
     }
     if (result.production?.captionsBurned !== true) throw new Error(`${output.id}: burned-caption contract is missing`);
+    const burnedCaptions = result.production?.burnedCaptions;
+    if (!burnedCaptions || !existsSync(insideRoot(burnedCaptions))) throw new Error(`${output.id}: resolution-aware ASS captions are missing`);
+    const ass = readFileSync(insideRoot(burnedCaptions), 'utf8');
+    if (!ass.includes(`PlayResX: ${output.width}`) || !ass.includes(`PlayResY: ${output.height}`)) {
+      throw new Error(`${output.id}: ASS captions do not match output resolution`);
+    }
+    if ((result.production?.captionCueCount ?? 0) < 12) throw new Error(`${output.id}: production captions are not sufficiently chunked`);
+    const maxCaptionChars = output.aspectRatio === '9:16' ? 28 : output.aspectRatio === '1:1' ? 36 : 48;
+    const captionLines = readFileSync(insideRoot(result.captions), 'utf8')
+      .split(/\r?\n/)
+      .filter((line) => line && !/^\d+$/.test(line) && !line.includes('-->'));
+    if (captionLines.some((line) => line.length > maxCaptionChars)) {
+      throw new Error(`${output.id}: a production caption exceeds the ${maxCaptionChars}-character visual limit`);
+    }
     if ((result.production?.templates ?? []).length < 6) throw new Error(`${output.id}: scene template coverage is incomplete`);
     const verificationFrames = result.production?.verificationFrames ?? [];
     if (verificationFrames.length !== 4) throw new Error(`${output.id}: expected four final-video verification frames`);

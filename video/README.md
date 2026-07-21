@@ -66,7 +66,8 @@ Production MP4s include:
 - a live public Flyto2 product capture;
 - neural voiceover, generated low-volume ambient audio, and final loudness
   limiting;
-- burned captions sized for 16:9, 9:16, and 1:1 output;
+- TTS-timed captions split into short reading units and burned from
+  resolution-aware ASS files for 16:9, 9:16, and 1:1 output;
 - four final-video verification frames per output so CI reviews the composed
   MP4, not only source cards and codec metadata.
 

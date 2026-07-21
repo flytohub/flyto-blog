@@ -130,11 +130,27 @@ function pad(value) {
 }
 
 function srtTime(seconds) {
-  const whole = Math.floor(seconds);
-  const hours = Math.floor(whole / 3600);
-  const minutes = Math.floor((whole % 3600) / 60);
-  const secs = whole % 60;
-  return `${pad(hours)}:${pad(minutes)}:${pad(secs)},000`;
+  const totalMilliseconds = Math.max(0, Math.round(seconds * 1000));
+  const hours = Math.floor(totalMilliseconds / 3_600_000);
+  const minutes = Math.floor((totalMilliseconds % 3_600_000) / 60_000);
+  const secs = Math.floor((totalMilliseconds % 60_000) / 1000);
+  const milliseconds = totalMilliseconds % 1000;
+  return `${pad(hours)}:${pad(minutes)}:${pad(secs)},${String(milliseconds).padStart(3, '0')}`;
+}
+
+function parseSrtTime(value) {
+  const match = String(value).trim().match(/^(\d+):(\d{2}):(\d{2})[,.](\d{3})$/);
+  if (!match) throw new Error(`invalid SRT timestamp: ${value}`);
+  return Number(match[1]) * 3600 + Number(match[2]) * 60 + Number(match[3]) + Number(match[4]) / 1000;
+}
+
+function assTime(seconds) {
+  const totalCentiseconds = Math.max(0, Math.round(seconds * 100));
+  const hours = Math.floor(totalCentiseconds / 360_000);
+  const minutes = Math.floor((totalCentiseconds % 360_000) / 6000);
+  const secs = Math.floor((totalCentiseconds % 6000) / 100);
+  const centiseconds = totalCentiseconds % 100;
+  return `${hours}:${pad(minutes)}:${pad(secs)}.${String(centiseconds).padStart(2, '0')}`;
 }
 
 function outputSpec(output) {
@@ -402,6 +418,91 @@ function writeCaptions(plan, outputDir) {
   return captionsPath;
 }
 
+function parseSrt(filePath) {
+  return readFileSync(filePath, 'utf8')
+    .trim()
+    .split(/\r?\n\s*\r?\n/)
+    .map((block) => block.split(/\r?\n/))
+    .map((lines) => {
+      const timingIndex = lines.findIndex((line) => line.includes('-->'));
+      if (timingIndex < 0) return null;
+      const [start, end] = lines[timingIndex].split('-->').map((value) => value.trim());
+      return {
+        start: parseSrtTime(start),
+        end: parseSrtTime(end),
+        text: lines.slice(timingIndex + 1).join(' ').replaceAll(/<[^>]+>/g, '').trim(),
+      };
+    })
+    .filter((cue) => cue?.text && cue.end > cue.start);
+}
+
+function chunkCaption(text, maxChars, maxWords) {
+  const chunks = [];
+  let words = [];
+  for (const word of String(text).split(/\s+/).filter(Boolean)) {
+    const candidate = [...words, word].join(' ');
+    if (words.length && (words.length >= maxWords || candidate.length > maxChars)) {
+      chunks.push(words.join(' '));
+      words = [word];
+    } else {
+      words.push(word);
+    }
+  }
+  if (words.length) chunks.push(words.join(' '));
+  return chunks;
+}
+
+function productionCaptionSpec(output) {
+  if (output.aspectRatio === '9:16') return { fontSize: 44, marginV: 180, maxChars: 28, maxWords: 5 };
+  if (output.aspectRatio === '1:1') return { fontSize: 36, marginV: 88, maxChars: 36, maxWords: 7 };
+  return { fontSize: 30, marginV: 58, maxChars: 48, maxWords: 8 };
+}
+
+function writeProductionCaptions(sourcePath, normalizedSrtPath, assPath, output, tempo, durationSeconds) {
+  const spec = productionCaptionSpec(output);
+  const cues = [];
+  for (const source of parseSrt(sourcePath)) {
+    const start = Math.max(0, source.start / tempo);
+    const end = Math.min(durationSeconds, source.end / tempo);
+    if (start >= durationSeconds || end <= start) continue;
+    const chunks = chunkCaption(source.text, spec.maxChars, spec.maxWords);
+    const totalWords = chunks.reduce((total, chunk) => total + chunk.split(/\s+/).length, 0);
+    let cursor = start;
+    for (const [index, chunk] of chunks.entries()) {
+      const words = chunk.split(/\s+/).length;
+      const chunkEnd = index === chunks.length - 1 ? end : cursor + ((end - start) * words) / totalWords;
+      cues.push({ start: cursor, end: chunkEnd, text: chunk });
+      cursor = chunkEnd;
+    }
+  }
+  if (!cues.length) throw new Error(`no production caption cues found in ${sourcePath}`);
+
+  const srt = cues.map((cue, index) => `${index + 1}\n${srtTime(cue.start)} --> ${srtTime(cue.end)}\n${cue.text}\n`).join('\n');
+  writeFileSync(normalizedSrtPath, `${srt}\n`);
+
+  const events = cues.map((cue) => {
+    const text = cue.text.replaceAll('{', '\\{').replaceAll('}', '\\}');
+    return `Dialogue: 0,${assTime(cue.start)},${assTime(cue.end)},Default,,0,0,0,,${text}`;
+  }).join('\n');
+  const ass = `[Script Info]
+ScriptType: v4.00+
+PlayResX: ${output.width}
+PlayResY: ${output.height}
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,DejaVu Sans,${spec.fontSize},&H00FFFFFF,&H00FFFFFF,&H00101824,&H00000000,-1,0,0,0,100,100,0,0,1,3,0,2,72,72,${spec.marginV},1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+${events}
+`;
+  writeFileSync(assPath, ass);
+  return cues.length;
+}
+
 function writeVoiceover(plan, outputDir) {
   const script = plan.scenes
     .map((scene, index) => `${index + 1}. ${scene.narration ?? `${scene.title} ${scene.body}`}`)
@@ -555,12 +656,9 @@ function renderAmbientAudio(plan, outputPath) {
   ], { stdio: 'inherit' });
 }
 
-function subtitleFilter(captionsPath, output) {
+function subtitleFilter(captionsPath) {
   const escaped = captionsPath.replaceAll('\\', '\\\\').replaceAll(':', '\\:').replaceAll("'", "\\'");
-  const fontSize = output.aspectRatio === '9:16' ? 30 : output.aspectRatio === '1:1' ? 26 : 22;
-  const margin = output.aspectRatio === '9:16' ? 150 : 55;
-  const style = `FontName=DejaVu Sans,FontSize=${fontSize},PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BackColour=&H99000000,BorderStyle=3,Outline=1,Shadow=0,MarginV=${margin},Alignment=2`;
-  return `subtitles=filename='${escaped}':force_style='${style}'`;
+  return `subtitles=filename='${escaped}'`;
 }
 
 function muxProductionAudio(plan, output, visualPath, captionsPath, voiceoverPath, backgroundPath, mp4Path) {
@@ -570,6 +668,17 @@ function muxProductionAudio(plan, output, visualPath, captionsPath, voiceoverPat
   if (tempo > 1.35) {
     throw new Error(`voiceover is too long (${voiceDuration.toFixed(1)}s for ${plan.durationSeconds}s); shorten narration`);
   }
+  const timedCaptionPath = path.join(path.dirname(voiceoverPath), 'voiceover-captions.srt');
+  const hasTimedCaptions = existsSync(timedCaptionPath);
+  const burnedCaptionsPath = path.join(path.dirname(mp4Path), 'captions.ass');
+  const captionCount = writeProductionCaptions(
+    hasTimedCaptions ? timedCaptionPath : captionsPath,
+    captionsPath,
+    burnedCaptionsPath,
+    output,
+    hasTimedCaptions ? tempo : 1,
+    plan.durationSeconds,
+  );
   const backgroundVolume = Number(plan.audio?.backgroundVolume ?? 0.12);
   const audio = [
     `[1:a]atempo=${tempo.toFixed(4)},loudnorm=I=-18:TP=-2:LRA=11,apad=pad_dur=${plan.durationSeconds}[voice]`,
@@ -578,13 +687,13 @@ function muxProductionAudio(plan, output, visualPath, captionsPath, voiceoverPat
   ].join(';');
   execFileSync('ffmpeg', [
     '-y', '-i', visualPath, '-i', voiceoverPath, '-i', backgroundPath,
-    '-filter_complex', audio, '-vf', subtitleFilter(captionsPath, output),
+    '-filter_complex', audio, '-vf', subtitleFilter(burnedCaptionsPath),
     '-map', '0:v', '-map', '[a]', '-t', String(plan.durationSeconds),
     '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p',
     '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart',
     mp4Path,
   ], { stdio: 'inherit' });
-  return { voiceDuration, tempo };
+  return { voiceDuration, tempo, burnedCaptionsPath, captionCount };
 }
 
 function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverPath, productDemoPath) {
@@ -663,6 +772,8 @@ function renderOutput(plan, output, baseOutDir, args) {
       templates: [...new Set(plan.scenes.map((scene) => scene.template))],
       transitions: ['fade', 'smoothleft', 'circleopen', 'wipeleft'],
       captionsBurned: false,
+      burnedCaptions: '',
+      captionCueCount: 0,
       productDemo: path.relative(root, productDemoPath),
       voiceoverAudio: path.relative(root, voiceoverPath),
       backgroundAudio: 'generated-ambient',
@@ -677,6 +788,8 @@ function renderOutput(plan, output, baseOutDir, args) {
     result.production.captionsBurned = true;
     result.production.voiceoverDurationSeconds = Number(rendered.audio.voiceDuration.toFixed(3));
     result.production.voiceTempo = Number(rendered.audio.tempo.toFixed(4));
+    result.production.burnedCaptions = path.relative(root, rendered.audio.burnedCaptionsPath);
+    result.production.captionCueCount = rendered.audio.captionCount;
     result.production.verificationFrames = rendered.verificationFrames.map((framePath) => path.relative(root, framePath));
   }
   return result;
