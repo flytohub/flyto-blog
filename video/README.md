@@ -10,6 +10,8 @@ npm run video:check
 npm run video:qa
 npm run video:from-post -- posts/community-growth-open-source-ai-workflow-automation.md --out video/plans/community-growth-open-source-ai-workflow-automation.json --force
 npm run video:storyboard
+npm run video:capture -- --plan video/plans/community-growth-open-source-ai-workflow-automation.json
+npm run video:voiceover -- --plan video/plans/community-growth-open-source-ai-workflow-automation.json --required
 npm run video:render -- --variant youtube-shorts
 ```
 
@@ -40,11 +42,28 @@ Frames and thumbnail candidates embed the official transparent Flyto2 logo from
 `video/assets/flyto2-logo.png`. Keep that owned brand asset in the repository so
 local rendering and the GitHub Action produce identical branded output.
 
+`video:capture` records the configured public Flyto2 product URL with
+Playwright. The capture allowlist is restricted to `flyto2.com` and its
+subdomains. It does not read credentials or browser profile data.
+
+`video:voiceover` turns the reviewed scene narration into audio with
+`edge-tts`. The generated YouTube metadata must disclose synthetic narration.
+The command needs network access but no committed token or API key.
+
 `video:render` additionally requires `ffmpeg` and `rsvg-convert` to create an
 MP4. The manual `Video Render` GitHub Action installs those tools and uploads
 the generated artifact. By default it renders every output. Use `--variant` to
 render one output, such as `youtube-landscape`, `youtube-shorts`, or
 `linkedin-square`.
+
+Production MP4s include:
+
+- `editorial`, `signal`, `proof`, and `product-demo` scene templates;
+- subtle pan motion and deterministic cross-scene transitions;
+- a live public Flyto2 product capture;
+- neural voiceover, generated low-volume ambient audio, and final loudness
+  limiting;
+- burned captions sized for 16:9, 9:16, and 1:1 output.
 
 ## Plan Shape
 
@@ -62,6 +81,7 @@ Every plan should include:
 - Do not commit YouTube OAuth tokens, refresh tokens, cookies, app secrets, or
   generated API responses.
 - Keep generated videos private-first until a maintainer reviews them.
+- Disclose synthetic narration in platform metadata.
 - Use owned screenshots, original diagrams, permissively licensed assets, or
   generated title cards only.
 - Mark `aiDisclosureRequired` truthfully when a video uses realistic synthetic

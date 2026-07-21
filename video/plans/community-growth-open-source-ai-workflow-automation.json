@@ -7,7 +7,22 @@
   "aspectRatio": "16:9",
   "durationSeconds": 45,
   "humanReviewRequired": true,
-  "aiDisclosureRequired": false,
+  "aiDisclosureRequired": true,
+  "audio": {
+    "voice": "en-US-AndrewMultilingualNeural",
+    "voiceRate": "+10%",
+    "background": "generated-ambient",
+    "backgroundVolume": 0.12
+  },
+  "productDemo": {
+    "url": "https://flyto2.com/cloud/",
+    "actions": [
+      { "type": "wait", "durationMs": 1800 },
+      { "type": "scroll", "y": 760, "durationMs": 2200 },
+      { "type": "scroll", "y": 1520, "durationMs": 2200 },
+      { "type": "scroll", "y": 2280, "durationMs": 2200 }
+    ]
+  },
   "seo": {
     "primaryKeyword": "open-source AI workflow automation",
     "longTailKeywords": [
@@ -88,6 +103,7 @@
   "scenes": [
     {
       "durationSeconds": 5,
+      "template": "editorial",
       "title": "Open-source AI workflow automation should be easy to trust.",
       "body": "Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop.",
       "narration": "Open-source AI workflow automation should be easy to trust. Flyto2 keeps the runtime, docs, issues, and examples visible so contributors can inspect the loop.",
@@ -95,6 +111,7 @@
     },
     {
       "durationSeconds": 7,
+      "template": "product-demo",
       "title": "One source, many useful surfaces.",
       "body": "A blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story.",
       "narration": "One source can support many useful surfaces. The blog post links to docs, GitHub issues, package pages, and the community hub instead of scattering the story.",
@@ -102,6 +119,7 @@
     },
     {
       "durationSeconds": 7,
+      "template": "signal",
       "title": "Good-first work matters.",
       "body": "Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing.",
       "narration": "Good-first work matters. Small issues, reproducible recipes, and showcase prompts help new contributors do real work without guessing.",
@@ -109,6 +127,7 @@
     },
     {
       "durationSeconds": 8,
+      "template": "proof",
       "title": "Social posts should be reviewed, not sprayed.",
       "body": "Flyto2 drafts LinkedIn, Facebook, GitHub, YouTube, and package-page copy from one plan, then keeps live publishing behind maintainer approval.",
       "narration": "Social posts should be reviewed, not sprayed. Flyto2 drafts channel copy from one plan, then keeps live publishing behind maintainer approval.",
@@ -116,6 +135,7 @@
     },
     {
       "durationSeconds": 8,
+      "template": "signal",
       "title": "Every claim points back to evidence.",
       "body": "The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool.",
       "narration": "Every claim points back to evidence. The canonical article, docs, and open-source repositories stay linked so viewers can verify details before trying the tool.",
@@ -123,6 +143,7 @@
     },
     {
       "durationSeconds": 10,
+      "template": "editorial",
       "title": "Join the Flyto2 community.",
       "body": "Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked.",
       "narration": "Join the Flyto2 community. Start from flyto2.com/community, pick one issue, share one recipe, or show one automation that worked.",
@@ -139,6 +160,6 @@
       "AI agents",
       "workflow automation"
     ],
-    "description": "A short Flyto2 community walkthrough for open-source AI workflow automation builders. Canonical post: https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation\n\nLong-tail topics: open-source AI workflow automation for contributors, MCP server automation examples for AI agents, reviewable workflow automation with replay evidence.\n\n#Flyto2 #AIAutomation #OpenSource"
+    "description": "A short Flyto2 community walkthrough for open-source AI workflow automation builders. Narration uses a synthetic voice. Canonical post: https://blog.flyto2.com/posts/community-growth-open-source-ai-workflow-automation\n\nLong-tail topics: open-source AI workflow automation for contributors, MCP server automation examples for AI agents, reviewable workflow automation with replay evidence.\n\n#Flyto2 #AIAutomation #OpenSource"
   }
 }

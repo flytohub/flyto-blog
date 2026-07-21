@@ -171,8 +171,10 @@ function makeScenes(title, description, sections, durationSeconds) {
     { heading: 'Try it with Flyto2', body: 'Start from the canonical article, follow the linked docs, and keep every automation reviewable before sharing it.' },
   ].slice(0, 6);
   const durations = distributeDurations(selected.length, durationSeconds);
+  const templates = ['editorial', 'product-demo', 'signal', 'proof', 'signal', 'editorial'];
   return selected.map((section, index) => ({
     durationSeconds: durations[index],
+    template: templates[index % templates.length],
     title: sentenceClip(section.heading, 98),
     body: sentenceClip(section.body, 185),
     narration: sentenceClip(`${section.heading}. ${section.body}`, 240),
@@ -200,7 +202,21 @@ function makePlan(args) {
     aspectRatio: '16:9',
     durationSeconds: args.duration,
     humanReviewRequired: true,
-    aiDisclosureRequired: false,
+    aiDisclosureRequired: true,
+    audio: {
+      voice: 'en-US-AndrewMultilingualNeural',
+      voiceRate: '+10%',
+      background: 'generated-ambient',
+      backgroundVolume: 0.12,
+    },
+    productDemo: {
+      url: 'https://flyto2.com/cloud/',
+      actions: [
+        { type: 'wait', durationMs: 1800 },
+        { type: 'scroll', y: 760, durationMs: 2200 },
+        { type: 'scroll', y: 1520, durationMs: 2200 },
+      ],
+    },
     seo: {
       primaryKeyword,
       longTailKeywords: makeLongTailKeywords(primaryKeyword, title),
@@ -253,6 +269,10 @@ function makePlan(args) {
     ],
     assets: [
       {
+        name: 'Flyto2 official logo',
+        license: 'owned',
+      },
+      {
         name: 'Flyto2 generated title cards and thumbnails',
         license: 'owned',
       },
@@ -272,7 +292,7 @@ function makePlan(args) {
         'MCP server automation',
         'AI agents',
       ],
-      description: `${description}\n\nCanonical post: ${sourceUrl}`,
+      description: `${description}\n\nNarration uses a synthetic voice.\n\nCanonical post: ${sourceUrl}`,
     },
   };
 }

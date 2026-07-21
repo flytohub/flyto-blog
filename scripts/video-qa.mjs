@@ -59,6 +59,10 @@ function qaPlan(relativePath) {
   if (!hasOutput(plan, 'youtube', '16:9')) fail(`${relativePath}: missing YouTube 16:9 output`);
   if (!hasOutput(plan, 'youtube-shorts', '9:16')) fail(`${relativePath}: missing YouTube Shorts 9:16 output`);
   if (!hasOutput(plan, 'linkedin', '1:1')) fail(`${relativePath}: missing LinkedIn 1:1 output`);
+  const templates = new Set((plan.scenes ?? []).map((scene) => scene.template));
+  for (const template of ['editorial', 'signal', 'proof', 'product-demo']) {
+    if (!templates.has(template)) fail(`${relativePath}: missing ${template} scene template`);
+  }
 
   if (plan.format === 'short' && plan.durationSeconds > 60) {
     fail(`${relativePath}: short videos should stay at or under 60 seconds`);
@@ -109,6 +113,17 @@ function qaPlan(relativePath) {
   }
 }
 
+function qaProductionPipeline() {
+  const renderer = readFileSync(path.join(root, 'scripts/render-video.mjs'), 'utf8');
+  const workflow = readFileSync(path.join(root, '.github/workflows/video-render.yml'), 'utf8');
+  for (const token of ['xfade=', 'subtitles=filename=', 'amix=inputs=2', 'loudnorm=', 'renderProductClip', 'generated-ambient']) {
+    if (!renderer.includes(token)) fail(`production renderer is missing ${token}`);
+  }
+  for (const token of ['video:capture', 'video:voiceover', 'video:artifact-qa', 'edge-tts==7.2.8', 'playwright install']) {
+    if (!workflow.includes(token)) fail(`video workflow is missing ${token}`);
+  }
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const files = planFiles(args);
@@ -116,6 +131,7 @@ function main() {
   execFileSync(process.execPath, checkArgs, { cwd: root, stdio: 'inherit' });
 
   for (const file of files) qaPlan(file);
+  qaProductionPipeline();
   if (warnings.length) {
     console.warn('video qa warnings:');
     for (const warning of warnings) console.warn(`- ${warning}`);

@@ -79,9 +79,14 @@ When a post should become a YouTube or Shorts draft:
 3. Run `npm run video:qa`.
 4. Run `npm run video:storyboard` for review artifacts, captions,
    thumbnails, voiceover draft, and platform metadata.
-5. Use the manual `Video Render` GitHub Action to produce MP4 artifacts for
+5. Run `npm run video:capture -- --plan video/plans/<slug>.json` and
+   `npm run video:voiceover -- --plan video/plans/<slug>.json --required` when
+   producing locally. The GitHub Action runs both steps automatically.
+6. Use the manual `Video Render` GitHub Action to produce branded MP4 artifacts
+   with transitions, product capture, synthetic narration, generated ambient
+   audio, and burned captions for
    all variants or one selected variant.
-6. Keep YouTube upload/publish separate from blog deployment and social
+7. Keep YouTube upload/publish separate from blog deployment and social
    syndication.
 
 Video plan rules live in `video/README.md`.

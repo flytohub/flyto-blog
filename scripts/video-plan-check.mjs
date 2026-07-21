@@ -19,6 +19,8 @@ const allowedHosts = new Set([
 const supportedFormats = new Set(['short', 'explainer', 'tutorial']);
 const supportedAspectRatios = new Set(['16:9', '9:16', '1:1']);
 const supportedPlatforms = new Set(['youtube', 'youtube-shorts', 'linkedin', 'facebook', 'x', 'web']);
+const supportedTemplates = new Set(['editorial', 'signal', 'proof', 'product-demo']);
+const supportedDemoActions = new Set(['wait', 'scroll', 'hover', 'goto']);
 const failures = [];
 const legacyBrandPattern = new RegExp(`\\b${['Fly', 'to'].join('')}\\b`);
 
@@ -165,6 +167,55 @@ function validateThumbnails(relativePath, plan) {
   }
 }
 
+function validateProduction(relativePath, plan) {
+  if (!plan.audio || typeof plan.audio !== 'object') {
+    fail(`${relativePath}: audio configuration is required`);
+  } else {
+    assertString(`${relativePath}: audio.voice`, plan.audio.voice, 8, 100);
+    if (!/^[+-]\d{1,2}%$/.test(String(plan.audio.voiceRate))) {
+      fail(`${relativePath}: audio.voiceRate must look like +10% or -5%`);
+    }
+    if (plan.audio.background !== 'generated-ambient') {
+      fail(`${relativePath}: audio.background must be generated-ambient`);
+    }
+    if (typeof plan.audio.backgroundVolume !== 'number' || plan.audio.backgroundVolume < 0.02 || plan.audio.backgroundVolume > 0.3) {
+      fail(`${relativePath}: audio.backgroundVolume must be 0.02-0.3`);
+    }
+  }
+
+  if (!plan.productDemo || typeof plan.productDemo !== 'object') {
+    fail(`${relativePath}: productDemo configuration is required`);
+    return;
+  }
+  try {
+    const url = new URL(plan.productDemo.url);
+    if (url.protocol !== 'https:' || (url.hostname !== 'flyto2.com' && !url.hostname.endsWith('.flyto2.com'))) {
+      fail(`${relativePath}: productDemo.url must be a public flyto2.com HTTPS URL`);
+    }
+  } catch {
+    fail(`${relativePath}: productDemo.url must be a valid URL`);
+  }
+  if (!Array.isArray(plan.productDemo.actions) || plan.productDemo.actions.length < 1 || plan.productDemo.actions.length > 12) {
+    fail(`${relativePath}: productDemo.actions must contain 1-12 actions`);
+  }
+  for (const [index, action] of (plan.productDemo.actions ?? []).entries()) {
+    if (!supportedDemoActions.has(action.type)) fail(`${relativePath}: unsupported product demo action ${index + 1}`);
+    if (action.durationMs !== undefined && (!Number.isInteger(action.durationMs) || action.durationMs < 250 || action.durationMs > 8000)) {
+      fail(`${relativePath}: product demo action ${index + 1} durationMs must be 250-8000`);
+    }
+    if (action.type === 'goto') {
+      try {
+        const url = new URL(action.url);
+        if (url.protocol !== 'https:' || (url.hostname !== 'flyto2.com' && !url.hostname.endsWith('.flyto2.com'))) {
+          fail(`${relativePath}: product demo goto ${index + 1} must stay on flyto2.com`);
+        }
+      } catch {
+        fail(`${relativePath}: product demo goto ${index + 1} has an invalid URL`);
+      }
+    }
+  }
+}
+
 function validatePlan(relativePath) {
   const plan = readJson(relativePath);
   const id = assertKebabId(`${relativePath}: id`, plan.id);
@@ -204,6 +255,9 @@ function validatePlan(relativePath) {
     }
     assertString(`${relativePath}: scene ${index + 1} title`, scene.title, 8, 110);
     assertString(`${relativePath}: scene ${index + 1} body`, scene.body, 20, 220);
+    if (!supportedTemplates.has(scene.template)) {
+      fail(`${relativePath}: scene ${index + 1} has unsupported template ${scene.template}`);
+    }
     if (scene.narration !== undefined) assertString(`${relativePath}: scene ${index + 1} narration`, scene.narration, 20, 260);
     if (scene.visualCue !== undefined) assertString(`${relativePath}: scene ${index + 1} visualCue`, scene.visualCue, 8, 120);
   }
@@ -226,6 +280,7 @@ function validatePlan(relativePath) {
   validateSeo(relativePath, plan);
   validateOutputs(relativePath, plan);
   validateThumbnails(relativePath, plan);
+  validateProduction(relativePath, plan);
   assertNoSecrets(relativePath, plan);
   assertFlyto2Only(relativePath, plan);
 }
