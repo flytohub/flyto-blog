@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "provider": "Flyto2",
+  "provenance": "Original layouts rendered from repository-owned code and assets; no paid template dependency.",
+  "templates": [
+    {
+      "id": "editorial",
+      "name": "Editorial Brief",
+      "useCase": "Clear opening claims and concise explanations",
+      "motion": "slow-drift"
+    },
+    {
+      "id": "product-demo",
+      "name": "Product Capture",
+      "useCase": "Real Flyto2 website or product walkthrough footage",
+      "motion": "live-capture"
+    },
+    {
+      "id": "signal",
+      "name": "Signal Number",
+      "useCase": "Key ideas, numbered steps, and memorable claims",
+      "motion": "push-left"
+    },
+    {
+      "id": "proof",
+      "name": "Evidence Panel",
+      "useCase": "Evidence, review gates, and verification details",
+      "motion": "push-right"
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal Proof",
+      "useCase": "Commands, technical evidence, and reproducible output",
+      "motion": "rise"
+    },
+    {
+      "id": "community",
+      "name": "Community Callout",
+      "useCase": "Calls to action, contribution paths, and closing scenes",
+      "motion": "settle"
+    }
+  ],
+  "packs": {
+    "balanced": [
+      "editorial",
+      "product-demo",
+      "signal",
+      "proof",
+      "terminal",
+      "community"
+    ],
+    "technical": [
+      "terminal",
+      "product-demo",
+      "proof",
+      "signal",
+      "editorial",
+      "community"
+    ],
+    "launch": [
+      "community",
+      "product-demo",
+      "editorial",
+      "signal",
+      "proof",
+      "community"
+    ]
+  }
+}

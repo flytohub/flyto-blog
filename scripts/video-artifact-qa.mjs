@@ -56,9 +56,15 @@ function main() {
       throw new Error(`${output.id}: duration ${duration} does not match ${plan.durationSeconds}s plan`);
     }
     if (result.production?.captionsBurned !== true) throw new Error(`${output.id}: burned-caption contract is missing`);
-    if ((result.production?.templates ?? []).length < 4) throw new Error(`${output.id}: scene template coverage is incomplete`);
+    if ((result.production?.templates ?? []).length < 6) throw new Error(`${output.id}: scene template coverage is incomplete`);
+    const verificationFrames = result.production?.verificationFrames ?? [];
+    if (verificationFrames.length !== 4) throw new Error(`${output.id}: expected four final-video verification frames`);
+    for (const frame of verificationFrames) {
+      const framePath = path.resolve(root, frame);
+      if (!framePath.startsWith(root) || !existsSync(framePath)) throw new Error(`${output.id}: missing verification frame ${frame}`);
+    }
   }
-  console.log(`video artifact qa passed: ${expected.length} MP4(s) with video, audio, duration, dimensions, and burned-caption contract`);
+  console.log(`video artifact qa passed: ${expected.length} MP4(s) with video, audio, duration, dimensions, burned captions, and final-frame evidence`);
 }
 
 main();

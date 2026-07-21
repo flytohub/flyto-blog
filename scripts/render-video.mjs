@@ -8,6 +8,9 @@ const defaultPlan = 'video/plans/community-growth-open-source-ai-workflow-automa
 const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
 const brandLogoPath = path.join(root, brandLogoRelativePath);
 const brandLogoDataUri = `data:image/png;base64,${readFileSync(path.join(root, brandLogoRelativePath)).toString('base64')}`;
+const templateCatalogRelativePath = 'video/templates/catalog.json';
+const templateCatalog = JSON.parse(readFileSync(path.join(root, templateCatalogRelativePath), 'utf8'));
+const defaultTemplateSequence = templateCatalog.packs.balanced;
 const transitionSeconds = 0.45;
 const aspectSpecs = {
   '16:9': {
@@ -185,7 +188,7 @@ function logoImage(x, y, size) {
 
 function writeFrame(plan, output, scene, index, outputDir) {
   const spec = outputSpec(output);
-  const template = scene.template ?? ['editorial', 'product-demo', 'signal', 'proof'][index % 4];
+  const template = scene.template ?? defaultTemplateSequence[index % defaultTemplateSequence.length];
   const titleLines = wrapWords(scene.title, spec.titleLimit).slice(0, 4);
   const bodyLines = wrapWords(scene.body, spec.bodyLimit).slice(0, output.aspectRatio === '9:16' ? 7 : 5);
   const bodyY = spec.titleY + titleLines.length * (spec.titleSize + 13) + 42;
@@ -198,6 +201,8 @@ function writeFrame(plan, output, scene, index, outputDir) {
     signal: { bg: '#0b1020', panel: '#111827', stroke: '#334155', title: '#f8fafc', body: '#cbd5e1', small: '#94a3b8', cue: '#67e8f9', label: '#c4b5fd' },
     proof: { bg: '#ecfdf5', panel: '#f8fafc', stroke: '#99f6e4', title: '#102a2a', body: '#334155', small: '#476368', cue: '#047857', label: '#6d28d9' },
     'product-demo': { bg: '#0b1020', panel: '#111827', stroke: '#475569', title: '#f8fafc', body: '#cbd5e1', small: '#94a3b8', cue: '#67e8f9', label: '#c4b5fd' },
+    terminal: { bg: '#07111b', panel: '#0d1b2a', stroke: '#294052', title: '#f8fafc', body: '#cbd5e1', small: '#8da5b8', cue: '#5eead4', label: '#a7f3d0' },
+    community: { bg: '#f0fdfa', panel: '#ffffff', stroke: '#99f6e4', title: '#102a2a', body: '#334155', small: '#476368', cue: '#6d28d9', label: '#0f766e' },
   };
   const palette = palettes[template] ?? palettes.editorial;
   const panelX = spec.marginX - 30;
@@ -207,7 +212,27 @@ function writeFrame(plan, output, scene, index, outputDir) {
   const cueText = scene.visualCue ? escapeHtml(scene.visualCue) : '';
   let content;
 
-  if (template === 'signal') {
+  if (template === 'terminal') {
+    const terminalY = Math.min(bodyY + bodyLines.length * (spec.bodySize + 12) + 34, spec.height - 230);
+    const terminalHeight = output.aspectRatio === '9:16' ? 250 : 126;
+    const command = output.aspectRatio === '9:16' ? '$ flyto2 verify' : '$ flyto2 verify --evidence';
+    content = `
+  ${lineTexts(titleLines.slice(0, 3), spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
+  ${lineTexts(bodyLines.slice(0, 4), spec.marginX, bodyY, 'body', spec.bodySize + 12)}
+  <rect x="${panelX}" y="${terminalY}" width="${panelWidth}" height="${terminalHeight}" rx="8" class="terminal"/>
+  <circle cx="${panelX + 30}" cy="${terminalY + 28}" r="6" class="dot-a"/>
+  <circle cx="${panelX + 50}" cy="${terminalY + 28}" r="6" class="dot-b"/>
+  <circle cx="${panelX + 70}" cy="${terminalY + 28}" r="6" class="dot-c"/>
+  <text x="${panelX + 28}" y="${terminalY + 82}" class="command">${command}</text>
+  ${cueText ? `<text x="${panelX + 28}" y="${terminalY + 116}" class="terminal-cue">PASS · ${cueText}</text>` : ''}`;
+  } else if (template === 'community') {
+    content = `
+  <rect x="${spec.marginX}" y="${spec.titleY - 64}" width="14" height="${Math.round(spec.height * 0.48)}" rx="7" class="community-bar"/>
+  ${lineTexts(titleLines.slice(0, 4), spec.marginX + 42, spec.titleY, 'title', spec.titleSize + 13)}
+  ${lineTexts(bodyLines.slice(0, 5), spec.marginX + 42, bodyY, 'body', spec.bodySize + 12)}
+  <line x1="${spec.marginX + 42}" y1="${spec.height - 152}" x2="${spec.width - spec.marginX}" y2="${spec.height - 152}" class="community-line"/>
+  ${cueText ? `<text x="${spec.marginX + 42}" y="${spec.height - 108}" class="community-cue">${cueText}</text>` : ''}`;
+  } else if (template === 'signal') {
     content = `
   <text x="${spec.width - spec.marginX}" y="${spec.height - 115}" class="number" text-anchor="end">${String(index + 1).padStart(2, '0')}</text>
   <rect x="${spec.marginX}" y="${spec.titleY - 64}" width="92" height="8" rx="4" class="accent"/>
@@ -258,6 +283,12 @@ function writeFrame(plan, output, scene, index, outputDir) {
       .number { font: 900 ${Math.round(spec.titleSize * 3.2)}px Inter, Arial, sans-serif; fill: #1e293b; }
       .demo { fill: #020617; stroke: #475569; stroke-width: 2; }
       .demo-label { font: 760 22px Inter, Arial, sans-serif; letter-spacing: 3px; fill: #94a3b8; }
+      .terminal { fill: #020617; stroke: #294052; stroke-width: 2; }
+      .command { font: 650 24px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #f8fafc; }
+      .terminal-cue { font: 560 18px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #5eead4; }
+      .community-bar { fill: #7c3aed; }
+      .community-line { stroke: #14b8a6; stroke-width: 3; }
+      .community-cue { font: 700 23px Inter, Arial, sans-serif; fill: #6d28d9; }
       .dot-a { fill: #fb7185; } .dot-b { fill: #fbbf24; } .dot-c { fill: #34d399; }
     </style>
   </defs>
@@ -419,17 +450,40 @@ function mediaDuration(filePath) {
   return duration;
 }
 
-function renderStaticClip(output, pngPath, clipPath, duration) {
+function renderStaticClip(output, pngPath, clipPath, duration, template) {
   const spec = outputSpec(output);
   const scaledWidth = Math.ceil(spec.width * 1.04 / 2) * 2;
   const scaledHeight = Math.ceil(spec.height * 1.04 / 2) * 2;
-  const motion = `scale=${scaledWidth}:${scaledHeight},crop=${spec.width}:${spec.height}:x='(in_w-out_w)/2+6*sin(t*0.7)':y='(in_h-out_h)/2+4*cos(t*0.5)',fps=30,format=yuv420p`;
+  const progress = `t/${Math.max(0.1, duration).toFixed(3)}`;
+  const motions = {
+    editorial: { x: `(in_w-out_w)/2+6*sin(t*0.7)`, y: `(in_h-out_h)/2+4*cos(t*0.5)` },
+    signal: { x: `(in_w-out_w)/2+10*(${progress}-0.5)`, y: `(in_h-out_h)/2` },
+    proof: { x: `(in_w-out_w)/2-10*(${progress}-0.5)`, y: `(in_h-out_h)/2` },
+    terminal: { x: `(in_w-out_w)/2`, y: `(in_h-out_h)/2+8*(0.5-${progress})` },
+    community: { x: `(in_w-out_w)/2`, y: `(in_h-out_h)/2+5*sin(t*0.55)` },
+  };
+  const movement = motions[template] ?? motions.editorial;
+  const motion = `scale=${scaledWidth}:${scaledHeight},crop=${spec.width}:${spec.height}:x='${movement.x}':y='${movement.y}',fps=30,format=yuv420p`;
   execFileSync('ffmpeg', [
     '-y', '-loop', '1', '-framerate', '30', '-i', pngPath,
     '-t', duration.toFixed(3), '-vf', motion,
     '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p',
     clipPath,
   ], { stdio: 'inherit' });
+}
+
+function writeVerificationFrames(plan, mp4Path, outputDir) {
+  const verificationDir = path.join(outputDir, 'verification');
+  mkdirSync(verificationDir, { recursive: true });
+  const timestamps = [0.08, 0.28, 0.55, 0.86].map((ratio) => Math.min(plan.durationSeconds - 0.5, plan.durationSeconds * ratio));
+  return timestamps.map((timestamp, index) => {
+    const verificationPath = path.join(verificationDir, `final-${String(index + 1).padStart(2, '0')}.jpg`);
+    execFileSync('ffmpeg', [
+      '-y', '-ss', timestamp.toFixed(3), '-i', mp4Path,
+      '-frames:v', '1', '-q:v', '2', verificationPath,
+    ], { stdio: 'inherit' });
+    return verificationPath;
+  });
 }
 
 function renderProductClip(output, demoPath, clipPath, duration) {
@@ -553,7 +607,7 @@ function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverP
     if (scene.template === 'product-demo') {
       renderProductClip(output, productDemoPath, clipPath, clipDurations[index]);
     } else {
-      renderStaticClip(output, pngPaths[index], clipPath, clipDurations[index]);
+      renderStaticClip(output, pngPaths[index], clipPath, clipDurations[index], scene.template);
     }
     return clipPath;
   });
@@ -565,8 +619,9 @@ function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverP
 
   const mp4Path = path.join(outputDir, `${plan.id}-${output.id}.mp4`);
   const audio = muxProductionAudio(plan, output, visualPath, captionsPath, voiceoverPath, backgroundPath, mp4Path);
+  const verificationFrames = writeVerificationFrames(plan, mp4Path, outputDir);
   rmSync(workDir, { recursive: true, force: true });
-  return { mp4Path, audio };
+  return { mp4Path, audio, verificationFrames };
 }
 
 function renderOutput(plan, output, baseOutDir, args) {
@@ -611,6 +666,8 @@ function renderOutput(plan, output, baseOutDir, args) {
       productDemo: path.relative(root, productDemoPath),
       voiceoverAudio: path.relative(root, voiceoverPath),
       backgroundAudio: 'generated-ambient',
+      templateCatalog: templateCatalogRelativePath,
+      verificationFrames: [],
     },
   };
 
@@ -620,6 +677,7 @@ function renderOutput(plan, output, baseOutDir, args) {
     result.production.captionsBurned = true;
     result.production.voiceoverDurationSeconds = Number(rendered.audio.voiceDuration.toFixed(3));
     result.production.voiceTempo = Number(rendered.audio.tempo.toFixed(4));
+    result.production.verificationFrames = rendered.verificationFrames.map((framePath) => path.relative(root, framePath));
   }
   return result;
 }

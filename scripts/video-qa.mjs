@@ -60,7 +60,7 @@ function qaPlan(relativePath) {
   if (!hasOutput(plan, 'youtube-shorts', '9:16')) fail(`${relativePath}: missing YouTube Shorts 9:16 output`);
   if (!hasOutput(plan, 'linkedin', '1:1')) fail(`${relativePath}: missing LinkedIn 1:1 output`);
   const templates = new Set((plan.scenes ?? []).map((scene) => scene.template));
-  for (const template of ['editorial', 'signal', 'proof', 'product-demo']) {
+  for (const template of ['editorial', 'signal', 'proof', 'product-demo', 'terminal', 'community']) {
     if (!templates.has(template)) fail(`${relativePath}: missing ${template} scene template`);
   }
 

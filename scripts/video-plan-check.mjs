@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlanDir = 'video/plans';
 const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
+const templateCatalog = JSON.parse(readFileSync(path.join(root, 'video/templates/catalog.json'), 'utf8'));
 const allowedHosts = new Set([
   'blog.flyto2.com',
   'docs.flyto2.com',
@@ -19,7 +20,7 @@ const allowedHosts = new Set([
 const supportedFormats = new Set(['short', 'explainer', 'tutorial']);
 const supportedAspectRatios = new Set(['16:9', '9:16', '1:1']);
 const supportedPlatforms = new Set(['youtube', 'youtube-shorts', 'linkedin', 'facebook', 'x', 'web']);
-const supportedTemplates = new Set(['editorial', 'signal', 'proof', 'product-demo']);
+const supportedTemplates = new Set(templateCatalog.templates.map((template) => template.id));
 const supportedDemoActions = new Set(['wait', 'scroll', 'hover', 'goto']);
 const failures = [];
 const legacyBrandPattern = new RegExp(`\\b${['Fly', 'to'].join('')}\\b`);
@@ -294,8 +295,29 @@ function planFiles(args) {
     .map((file) => path.join(defaultPlanDir, file));
 }
 
+function validateTemplateCatalog() {
+  if (templateCatalog.provider !== 'Flyto2') fail('video/templates/catalog.json: provider must be Flyto2');
+  const ids = templateCatalog.templates?.map((template) => template.id) ?? [];
+  if (ids.length < 6 || new Set(ids).size !== ids.length) {
+    fail('video/templates/catalog.json: templates must contain at least six unique entries');
+  }
+  for (const [packName, sequence] of Object.entries(templateCatalog.packs ?? {})) {
+    if (!Array.isArray(sequence) || sequence.length < 4) {
+      fail(`video/templates/catalog.json: ${packName} pack must contain at least four templates`);
+      continue;
+    }
+    for (const template of sequence) {
+      if (!supportedTemplates.has(template)) fail(`video/templates/catalog.json: ${packName} references unknown template ${template}`);
+    }
+  }
+  for (const requiredPack of ['balanced', 'technical', 'launch']) {
+    if (!templateCatalog.packs?.[requiredPack]) fail(`video/templates/catalog.json: missing ${requiredPack} pack`);
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const files = planFiles(args);
+validateTemplateCatalog();
 const brandLogoPath = path.join(root, brandLogoRelativePath);
 if (!existsSync(brandLogoPath)) {
   fail(`${brandLogoRelativePath} is required`);

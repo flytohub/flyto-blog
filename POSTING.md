@@ -86,7 +86,9 @@ When a post should become a YouTube or Shorts draft:
    with transitions, product capture, synthetic narration, generated ambient
    audio, and burned captions for
    all variants or one selected variant.
-7. Keep YouTube upload/publish separate from blog deployment and social
+7. Review the four `verification/final-*.jpg` images in each output for burned
+   caption placement, product framing, template rotation, and text clipping.
+8. Keep YouTube upload/publish separate from blog deployment and social
    syndication.
 
 Video plan rules live in `video/README.md`.

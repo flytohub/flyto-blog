@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const templateCatalog = JSON.parse(readFileSync(path.join(root, 'video/templates/catalog.json'), 'utf8'));
 const defaultDuration = 45;
 
 function parseArgs(argv) {
@@ -171,7 +172,7 @@ function makeScenes(title, description, sections, durationSeconds) {
     { heading: 'Try it with Flyto2', body: 'Start from the canonical article, follow the linked docs, and keep every automation reviewable before sharing it.' },
   ].slice(0, 6);
   const durations = distributeDurations(selected.length, durationSeconds);
-  const templates = ['editorial', 'product-demo', 'signal', 'proof', 'signal', 'editorial'];
+  const templates = templateCatalog.packs.balanced;
   return selected.map((section, index) => ({
     durationSeconds: durations[index],
     template: templates[index % templates.length],
