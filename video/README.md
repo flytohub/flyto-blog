@@ -72,12 +72,16 @@ Production MP4s include:
   in `video/templates/catalog.json`;
 - per-template camera motion and deterministic cross-scene transitions;
 - a live public Flyto2 product capture;
+- aspect-aware product framing that fills square and vertical outputs instead of
+  shrinking a desktop recording into a narrow horizontal strip;
 - licensed footage of real people working with computers, with machine-checked
   source and license provenance;
 - neural voiceover, generated low-volume ambient audio, and final loudness
   limiting;
 - TTS-timed captions split into short reading units and burned from
   resolution-aware ASS files for 16:9, 9:16, and 1:1 output;
+- enforced caption bottom-safe margins for each output ratio so subtitles do
+  not cover calls to action, source URLs, or platform controls;
 - one final-video verification frame per scene so CI reviews every template,
   live capture, and caption composition rather than only codec metadata.
 

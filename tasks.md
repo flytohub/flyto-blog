@@ -12,6 +12,8 @@
 - [x] Add video plan, storyboard, and manual render workflow for YouTube drafts.
 - [x] Upgrade video production with post-to-plan generation, QA, thumbnails,
   narration drafts, and multi-platform render variants.
+- [x] Add licensed real-human B-roll, product recording, voiceover, audio,
+  transitions, caption-safe rendering, and final-frame artifact QA.
 - [x] Add Rank Math-style SEO scoring reports and CI thresholds.
 - [x] Add Rank Math-style SEO management reports, rank targets, and editor
   recommendations.

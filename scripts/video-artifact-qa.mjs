@@ -62,6 +62,12 @@ function main() {
     if (!ass.includes(`PlayResX: ${output.width}`) || !ass.includes(`PlayResY: ${output.height}`)) {
       throw new Error(`${output.id}: ASS captions do not match output resolution`);
     }
+    const styleLine = ass.split(/\r?\n/).find((line) => line.startsWith('Style: Default,'));
+    const captionMarginV = Number(styleLine?.slice('Style: '.length).split(',')[21]);
+    const minCaptionMarginV = output.aspectRatio === '9:16' ? 160 : output.aspectRatio === '1:1' ? 150 : 50;
+    if (!Number.isFinite(captionMarginV) || captionMarginV < minCaptionMarginV) {
+      throw new Error(`${output.id}: caption bottom margin must be at least ${minCaptionMarginV}px`);
+    }
     if ((result.production?.captionCueCount ?? 0) < 12) throw new Error(`${output.id}: production captions are not sufficiently chunked`);
     const maxCaptionChars = output.aspectRatio === '9:16' ? 28 : output.aspectRatio === '1:1' ? 36 : 48;
     const captionLines = readFileSync(insideRoot(result.captions), 'utf8')

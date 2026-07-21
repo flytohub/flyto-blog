@@ -461,7 +461,7 @@ function chunkCaption(text, maxChars, maxWords) {
 
 function productionCaptionSpec(output) {
   if (output.aspectRatio === '9:16') return { fontSize: 44, marginV: 180, maxChars: 28, maxWords: 5 };
-  if (output.aspectRatio === '1:1') return { fontSize: 36, marginV: 88, maxChars: 36, maxWords: 7 };
+  if (output.aspectRatio === '1:1') return { fontSize: 36, marginV: 170, maxChars: 36, maxWords: 7 };
   return { fontSize: 30, marginV: 58, maxChars: 48, maxWords: 8 };
 }
 
@@ -605,11 +605,11 @@ function renderProductClip(output, demoPath, clipPath, duration) {
   const logoX = output.aspectRatio === '9:16' ? 70 : 56;
   const logoY = output.aspectRatio === '9:16' ? 54 : 34;
   const headerHeight = output.aspectRatio === '9:16' ? 180 : 124;
+  const composition = output.aspectRatio === '16:9'
+    ? `[0:v]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=decrease,pad=${spec.width}:${spec.height}:(ow-iw)/2:(oh-ih)/2:color=0x020617[base]`
+    : `[0:v]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=increase,crop=${spec.width}:${spec.height}[base]`;
   const filter = [
-    `[0:v]split=2[bgsrc][fgsrc]`,
-    `[bgsrc]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=increase,crop=${spec.width}:${spec.height},gblur=sigma=26,eq=brightness=-0.30[bg]`,
-    `[fgsrc]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=decrease[fg]`,
-    `[bg][fg]overlay=(W-w)/2:(H-h)/2[base]`,
+    composition,
     `[1:v]scale=${logoWidth}:-1[logo]`,
     `[base]drawbox=x=0:y=0:w=iw:h=${headerHeight}:color=0x0b1020@0.78:t=fill[bar]`,
     `[bar][logo]overlay=${logoX}:${logoY},fps=30,format=yuv420p[out]`,

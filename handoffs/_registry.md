@@ -2,6 +2,7 @@
 
 | Date | Topic | File |
 | --- | --- | --- |
+| 2026-07-21 | Human video production | `2026-07-21-human-video-production.md` |
 | 2026-07-18 | SEO discovery surfaces | `2026-07-18-seo-discovery-surfaces.md` |
 | 2026-07-18 | SEO content hardening | `2026-07-18-seo-content-hardening.md` |
 | 2026-07-18 | Rank Math-style SEO management | `2026-07-18-rank-math-style-seo-management.md` |
