@@ -49,6 +49,8 @@ jobs:
         run: npm run video:qa -- --plan "${VIDEO_PLAN}"
       - name: Capture live Flyto2 product demo
         run: npm run video:capture -- --plan "${VIDEO_PLAN}"
+      - name: Fetch licensed human B-roll
+        run: npm run video:assets -- --plan "${VIDEO_PLAN}" --required
       - name: Generate neural voiceover
         run: npm run video:voiceover -- --plan "${VIDEO_PLAN}" --required
       - name: Render MP4 draft

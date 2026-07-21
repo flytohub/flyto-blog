@@ -60,7 +60,7 @@ function qaPlan(relativePath) {
   if (!hasOutput(plan, 'youtube-shorts', '9:16')) fail(`${relativePath}: missing YouTube Shorts 9:16 output`);
   if (!hasOutput(plan, 'linkedin', '1:1')) fail(`${relativePath}: missing LinkedIn 1:1 output`);
   const templates = new Set((plan.scenes ?? []).map((scene) => scene.template));
-  for (const template of ['editorial', 'signal', 'proof', 'product-demo', 'terminal', 'community']) {
+  for (const template of ['editorial', 'product-demo', 'human-broll', 'proof', 'terminal', 'community']) {
     if (!templates.has(template)) fail(`${relativePath}: missing ${template} scene template`);
   }
 
@@ -116,10 +116,10 @@ function qaPlan(relativePath) {
 function qaProductionPipeline() {
   const renderer = readFileSync(path.join(root, 'scripts/render-video.mjs'), 'utf8');
   const workflow = readFileSync(path.join(root, '.github/workflows/video-render.yml'), 'utf8');
-  for (const token of ['xfade=', 'subtitles=filename=', 'PlayResX:', 'chunkCaption', 'amix=inputs=2', 'loudnorm=', 'renderProductClip', 'generated-ambient']) {
+  for (const token of ['xfade=', 'subtitles=filename=', 'PlayResX:', 'chunkCaption', 'amix=inputs=2', 'loudnorm=', 'renderProductClip', 'renderHumanClip', 'generated-ambient']) {
     if (!renderer.includes(token)) fail(`production renderer is missing ${token}`);
   }
-  for (const token of ['video:capture', 'video:voiceover', 'video:artifact-qa', 'edge-tts==7.2.8', 'playwright install']) {
+  for (const token of ['video:capture', 'video:assets', 'video:voiceover', 'video:artifact-qa', 'edge-tts==7.2.8', 'playwright install']) {
     if (!workflow.includes(token)) fail(`video workflow is missing ${token}`);
   }
 }

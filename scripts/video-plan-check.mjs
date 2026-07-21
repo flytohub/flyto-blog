@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlanDir = 'video/plans';
 const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
 const templateCatalog = JSON.parse(readFileSync(path.join(root, 'video/templates/catalog.json'), 'utf8'));
+const stockCatalog = JSON.parse(readFileSync(path.join(root, 'video/assets/stock-sources.json'), 'utf8'));
 const allowedHosts = new Set([
   'blog.flyto2.com',
   'docs.flyto2.com',
@@ -215,6 +216,19 @@ function validateProduction(relativePath, plan) {
       }
     }
   }
+
+  if (!plan.humanBroll || typeof plan.humanBroll !== 'object') {
+    fail(`${relativePath}: humanBroll configuration is required`);
+  } else {
+    const source = stockCatalog.assets.find((asset) => asset.id === plan.humanBroll.assetId);
+    if (!source) fail(`${relativePath}: humanBroll.assetId is not in the reviewed stock catalog`);
+    if (!(plan.assets ?? []).some((asset) => asset.sourceId === plan.humanBroll.assetId && asset.license === 'licensed')) {
+      fail(`${relativePath}: assets must record the licensed human B-roll sourceId`);
+    }
+    if (typeof plan.humanBroll.trimStartSeconds !== 'number' || plan.humanBroll.trimStartSeconds < 0 || plan.humanBroll.trimStartSeconds > 5) {
+      fail(`${relativePath}: humanBroll.trimStartSeconds must be 0-5`);
+    }
+  }
 }
 
 function validatePlan(relativePath) {
@@ -261,6 +275,7 @@ function validatePlan(relativePath) {
     }
     if (scene.narration !== undefined) assertString(`${relativePath}: scene ${index + 1} narration`, scene.narration, 20, 260);
     if (scene.visualCue !== undefined) assertString(`${relativePath}: scene ${index + 1} visualCue`, scene.visualCue, 8, 120);
+    if (scene.onScreenText !== undefined) assertString(`${relativePath}: scene ${index + 1} onScreenText`, scene.onScreenText, 3, 72);
   }
   if (sceneDuration !== plan.durationSeconds) {
     fail(`${relativePath}: scene durations total ${sceneDuration}, expected ${plan.durationSeconds}`);
@@ -315,9 +330,29 @@ function validateTemplateCatalog() {
   }
 }
 
+function validateStockCatalog() {
+  const ids = stockCatalog.assets?.map((asset) => asset.id) ?? [];
+  if (!ids.length || new Set(ids).size !== ids.length) fail('video/assets/stock-sources.json: asset ids must be present and unique');
+  for (const asset of stockCatalog.assets ?? []) {
+    try {
+      const pageUrl = new URL(asset.pageUrl);
+      const downloadUrl = new URL(asset.downloadUrl);
+      const licenseUrl = new URL(asset.licenseUrl);
+      if (pageUrl.hostname !== 'mixkit.co' || licenseUrl.hostname !== 'mixkit.co' || downloadUrl.hostname !== 'assets.mixkit.co') {
+        fail(`video/assets/stock-sources.json: ${asset.id} uses an unapproved host`);
+      }
+    } catch {
+      fail(`video/assets/stock-sources.json: ${asset.id} has invalid source URLs`);
+    }
+    if (asset.commercialUse !== true) fail(`video/assets/stock-sources.json: ${asset.id} must permit commercial use`);
+    if (!/^[a-f0-9]{64}$/.test(String(asset.sha256))) fail(`video/assets/stock-sources.json: ${asset.id} needs a SHA-256 checksum`);
+  }
+}
+
 const args = parseArgs(process.argv.slice(2));
 const files = planFiles(args);
 validateTemplateCatalog();
+validateStockCatalog();
 const brandLogoPath = path.join(root, brandLogoRelativePath);
 if (!existsSync(brandLogoPath)) {
   fail(`${brandLogoRelativePath} is required`);

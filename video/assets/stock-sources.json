@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "assets": [
+    {
+      "id": "mixkit-people-working-laptops-42620",
+      "title": "People working on laptops",
+      "provider": "Mixkit",
+      "creator": "Mixkit",
+      "pageUrl": "https://mixkit.co/free-stock-video/people-working-on-laptops-42620/",
+      "downloadUrl": "https://assets.mixkit.co/videos/42620/42620-720.mp4",
+      "licenseName": "Mixkit Stock Video Free License",
+      "licenseUrl": "https://mixkit.co/license/#videoFree",
+      "commercialUse": true,
+      "attributionRequired": false,
+      "sha256": "4e26b16f9f85ac6843b07290b1c2cbf96d4cb4b6c640b9e47da57b30ca4b48cc",
+      "durationSeconds": 10,
+      "width": 1080,
+      "height": 720
+    }
+  ]
+}

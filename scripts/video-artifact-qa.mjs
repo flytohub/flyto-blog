@@ -71,8 +71,17 @@ function main() {
       throw new Error(`${output.id}: a production caption exceeds the ${maxCaptionChars}-character visual limit`);
     }
     if ((result.production?.templates ?? []).length < 6) throw new Error(`${output.id}: scene template coverage is incomplete`);
+    if (!(result.production?.templates ?? []).includes('human-broll')) throw new Error(`${output.id}: human B-roll scene is missing`);
+    const humanBrollPath = insideRoot(result.production?.humanBroll ?? '');
+    if (!existsSync(humanBrollPath) || statSync(humanBrollPath).size < 200_000) throw new Error(`${output.id}: licensed human B-roll is missing`);
+    const provenancePath = insideRoot(result.production?.humanBrollProvenance ?? '');
+    if (!existsSync(provenancePath)) throw new Error(`${output.id}: human B-roll provenance is missing`);
+    const provenance = JSON.parse(readFileSync(provenancePath, 'utf8'));
+    if (provenance.checksumVerified !== true || provenance.commercialUse !== true || !provenance.licenseUrl) {
+      throw new Error(`${output.id}: human B-roll license provenance is incomplete`);
+    }
     const verificationFrames = result.production?.verificationFrames ?? [];
-    if (verificationFrames.length !== 4) throw new Error(`${output.id}: expected four final-video verification frames`);
+    if (verificationFrames.length !== plan.scenes.length) throw new Error(`${output.id}: expected one final-video verification frame per scene`);
     for (const frame of verificationFrames) {
       const framePath = path.resolve(root, frame);
       if (!framePath.startsWith(root) || !existsSync(framePath)) throw new Error(`${output.id}: missing verification frame ${frame}`);

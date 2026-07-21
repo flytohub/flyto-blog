@@ -55,6 +55,7 @@ function parseArgs(argv) {
     variant: 'all',
     voiceover: '',
     productDemo: '',
+    humanBroll: '',
     mp4: false,
     storyboardOnly: false,
   };
@@ -65,6 +66,7 @@ function parseArgs(argv) {
     else if (arg === '--variant') args.variant = argv[++index] ?? '';
     else if (arg === '--voiceover') args.voiceover = argv[++index] ?? '';
     else if (arg === '--product-demo') args.productDemo = argv[++index] ?? '';
+    else if (arg === '--human-broll') args.humanBroll = argv[++index] ?? '';
     else if (arg === '--mp4') args.mp4 = true;
     else if (arg === '--storyboard-only') args.storyboardOnly = true;
     else if (arg === '--help' || arg === '-h') {
@@ -82,7 +84,7 @@ function printHelp() {
   node scripts/render-video.mjs --plan <plan.json> --storyboard-only
   node scripts/render-video.mjs --plan <plan.json> --mp4
   node scripts/render-video.mjs --plan <plan.json> --variant youtube-shorts --mp4
-  node scripts/render-video.mjs --plan <plan.json> --voiceover <voice.mp3> --product-demo <demo.webm> --mp4
+  node scripts/render-video.mjs --plan <plan.json> --voiceover <voice.mp3> --product-demo <demo.webm> --human-broll <people.mp4> --mp4
 `);
 }
 
@@ -217,6 +219,7 @@ function writeFrame(plan, output, scene, index, outputDir) {
     signal: { bg: '#0b1020', panel: '#111827', stroke: '#334155', title: '#f8fafc', body: '#cbd5e1', small: '#94a3b8', cue: '#67e8f9', label: '#c4b5fd' },
     proof: { bg: '#ecfdf5', panel: '#f8fafc', stroke: '#99f6e4', title: '#102a2a', body: '#334155', small: '#476368', cue: '#047857', label: '#6d28d9' },
     'product-demo': { bg: '#0b1020', panel: '#111827', stroke: '#475569', title: '#f8fafc', body: '#cbd5e1', small: '#94a3b8', cue: '#67e8f9', label: '#c4b5fd' },
+    'human-broll': { bg: '#07111b', panel: '#111827', stroke: '#475569', title: '#f8fafc', body: '#cbd5e1', small: '#94a3b8', cue: '#67e8f9', label: '#c4b5fd' },
     terminal: { bg: '#07111b', panel: '#0d1b2a', stroke: '#294052', title: '#f8fafc', body: '#cbd5e1', small: '#8da5b8', cue: '#5eead4', label: '#a7f3d0' },
     community: { bg: '#f0fdfa', panel: '#ffffff', stroke: '#99f6e4', title: '#102a2a', body: '#334155', small: '#476368', cue: '#6d28d9', label: '#0f766e' },
   };
@@ -225,7 +228,7 @@ function writeFrame(plan, output, scene, index, outputDir) {
   const panelY = spec.labelY + 45;
   const panelWidth = spec.width - panelX * 2;
   const panelHeight = spec.height - spec.labelY - 145;
-  const cueText = scene.visualCue ? escapeHtml(scene.visualCue) : '';
+  const cueText = scene.onScreenText ? escapeHtml(scene.onScreenText) : '';
   let content;
 
   if (template === 'terminal') {
@@ -262,6 +265,11 @@ function writeFrame(plan, output, scene, index, outputDir) {
   ${lineTexts(titleLines, spec.marginX + 18, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines, spec.marginX + 18, bodyY, 'body', spec.bodySize + 12)}
   ${cueText ? `<rect x="${spec.marginX + 18}" y="${spec.height - 158}" width="${spec.width - (spec.marginX + 18) * 2}" height="58" rx="6" class="cue-panel"/><text x="${spec.marginX + 40}" y="${spec.height - 120}" class="cue">${cueText}</text>` : ''}`;
+  } else if (template === 'human-broll') {
+    content = `
+  <rect x="${panelX}" y="${panelY}" width="${panelWidth}" height="${panelHeight}" rx="10" class="demo"/>
+  ${lineTexts(titleLines.slice(0, 3), spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
+  <text x="${spec.marginX}" y="${spec.height - 120}" class="cue">LICENSED HUMAN WORKFLOW B-ROLL</text>`;
   } else if (template === 'product-demo') {
     const demoY = output.aspectRatio === '16:9' ? 245 : output.aspectRatio === '1:1' ? 390 : 710;
     const demoHeight = output.aspectRatio === '16:9' ? 360 : output.aspectRatio === '1:1' ? 520 : 720;
@@ -314,9 +322,8 @@ function writeFrame(plan, output, scene, index, outputDir) {
   <rect x="${Math.round(spec.width * 0.67)}" y="0" width="${Math.round(spec.width * 0.33)}" height="12" class="stripe-c"/>
   ${logoImage(spec.marginX, logoY, logoSize)}
   <text x="${brandX}" y="${spec.labelY}" class="label">FLYTO2</text>
-  <text x="${spec.width - spec.marginX}" y="${spec.labelY}" class="small" text-anchor="end">${escapeHtml(output.label)} ${sceneNo}</text>
+  <text x="${spec.width - spec.marginX}" y="${spec.labelY}" class="small" text-anchor="end">${escapeHtml(sourceLabel(plan.sourceUrl))} / ${sceneNo}</text>
   ${content}
-  <text x="${spec.marginX}" y="${spec.height - 58}" class="mono">${escapeHtml(sourceLabel(plan.sourceUrl))}</text>
 </svg>
 `;
   const framePath = path.join(outputDir, 'frames', `scene-${String(index + 1).padStart(2, '0')}.svg`);
@@ -576,7 +583,12 @@ function renderStaticClip(output, pngPath, clipPath, duration, template) {
 function writeVerificationFrames(plan, mp4Path, outputDir) {
   const verificationDir = path.join(outputDir, 'verification');
   mkdirSync(verificationDir, { recursive: true });
-  const timestamps = [0.08, 0.28, 0.55, 0.86].map((ratio) => Math.min(plan.durationSeconds - 0.5, plan.durationSeconds * ratio));
+  let cursor = 0;
+  const timestamps = plan.scenes.map((scene) => {
+    const timestamp = cursor + scene.durationSeconds / 2;
+    cursor += scene.durationSeconds;
+    return Math.min(plan.durationSeconds - 0.5, timestamp);
+  });
   return timestamps.map((timestamp, index) => {
     const verificationPath = path.join(verificationDir, `final-${String(index + 1).padStart(2, '0')}.jpg`);
     execFileSync('ffmpeg', [
@@ -604,6 +616,30 @@ function renderProductClip(output, demoPath, clipPath, duration) {
   ].join(';');
   execFileSync('ffmpeg', [
     '-y', '-stream_loop', '-1', '-i', demoPath,
+    '-loop', '1', '-framerate', '30', '-i', brandLogoPath,
+    '-t', duration.toFixed(3), '-filter_complex', filter, '-map', '[out]',
+    '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p',
+    clipPath,
+  ], { stdio: 'inherit' });
+}
+
+function renderHumanClip(output, brollPath, clipPath, duration, trimStartSeconds) {
+  const spec = outputSpec(output);
+  const logoWidth = output.aspectRatio === '9:16' ? 112 : 82;
+  const logoX = output.aspectRatio === '9:16' ? 70 : 56;
+  const logoY = output.aspectRatio === '9:16' ? 54 : 34;
+  const headerHeight = output.aspectRatio === '9:16' ? 180 : 124;
+  const filter = [
+    '[0:v]split=2[bgsrc][fgsrc]',
+    `[bgsrc]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=increase,crop=${spec.width}:${spec.height},gblur=sigma=30,eq=brightness=-0.22:saturation=0.72[bg]`,
+    `[fgsrc]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=decrease,eq=contrast=1.04:saturation=0.88[fg]`,
+    '[bg][fg]overlay=(W-w)/2:(H-h)/2[base]',
+    `[1:v]scale=${logoWidth}:-1[logo]`,
+    `[base]drawbox=x=0:y=0:w=iw:h=${headerHeight}:color=0x07111b@0.82:t=fill,drawbox=x=0:y=0:w=14:h=ih:color=0x14b8a6@0.92:t=fill[brand]`,
+    `[brand][logo]overlay=${logoX}:${logoY},fps=30,format=yuv420p[out]`,
+  ].join(';');
+  execFileSync('ffmpeg', [
+    '-y', '-stream_loop', '-1', '-ss', String(trimStartSeconds), '-i', brollPath,
     '-loop', '1', '-framerate', '30', '-i', brandLogoPath,
     '-t', duration.toFixed(3), '-filter_complex', filter, '-map', '[out]',
     '-an', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '19', '-pix_fmt', 'yuv420p',
@@ -696,12 +732,13 @@ function muxProductionAudio(plan, output, visualPath, captionsPath, voiceoverPat
   return { voiceDuration, tempo, burnedCaptionsPath, captionCount };
 }
 
-function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverPath, productDemoPath) {
+function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverPath, productDemoPath, humanBrollPath) {
   for (const command of ['rsvg-convert', 'ffmpeg', 'ffprobe']) {
     if (!hasCommand(command)) throw new Error(`${command} is required for --mp4`);
   }
   if (!existsSync(voiceoverPath)) throw new Error(`voiceover is required: ${voiceoverPath}`);
   if (!existsSync(productDemoPath)) throw new Error(`product demo is required: ${productDemoPath}`);
+  if (!existsSync(humanBrollPath)) throw new Error(`human B-roll is required: ${humanBrollPath}`);
 
   const workDir = path.join(outputDir, '.work');
   mkdirSync(workDir, { recursive: true });
@@ -715,6 +752,8 @@ function renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverP
     const clipPath = path.join(workDir, `scene-${String(index + 1).padStart(2, '0')}.mp4`);
     if (scene.template === 'product-demo') {
       renderProductClip(output, productDemoPath, clipPath, clipDurations[index]);
+    } else if (scene.template === 'human-broll') {
+      renderHumanClip(output, humanBrollPath, clipPath, clipDurations[index], plan.humanBroll?.trimStartSeconds ?? 1);
     } else {
       renderStaticClip(output, pngPaths[index], clipPath, clipDurations[index], scene.template);
     }
@@ -753,7 +792,8 @@ function renderOutput(plan, output, baseOutDir, args) {
   const sharedDir = path.join(baseOutDir, 'shared');
   const voiceoverPath = args.voiceover ? path.resolve(root, args.voiceover) : path.join(sharedDir, 'voiceover.mp3');
   const productDemoPath = args.productDemo ? path.resolve(root, args.productDemo) : path.join(sharedDir, 'product-demo.webm');
-  if (!voiceoverPath.startsWith(root) || !productDemoPath.startsWith(root)) {
+  const humanBrollPath = args.humanBroll ? path.resolve(root, args.humanBroll) : path.join(sharedDir, 'human-broll.mp4');
+  if (!voiceoverPath.startsWith(root) || !productDemoPath.startsWith(root) || !humanBrollPath.startsWith(root)) {
     throw new Error('production media paths must stay inside the repository');
   }
 
@@ -775,6 +815,8 @@ function renderOutput(plan, output, baseOutDir, args) {
       burnedCaptions: '',
       captionCueCount: 0,
       productDemo: path.relative(root, productDemoPath),
+      humanBroll: path.relative(root, humanBrollPath),
+      humanBrollProvenance: path.relative(root, path.join(sharedDir, 'human-broll-provenance.json')),
       voiceoverAudio: path.relative(root, voiceoverPath),
       backgroundAudio: 'generated-ambient',
       templateCatalog: templateCatalogRelativePath,
@@ -783,7 +825,7 @@ function renderOutput(plan, output, baseOutDir, args) {
   };
 
   if (args.mp4 && !args.storyboardOnly) {
-    const rendered = renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverPath, productDemoPath);
+    const rendered = renderMp4(plan, output, outputDir, framePaths, captionsPath, voiceoverPath, productDemoPath, humanBrollPath);
     result.mp4 = path.relative(root, rendered.mp4Path);
     result.production.captionsBurned = true;
     result.production.voiceoverDurationSeconds = Number(rendered.audio.voiceDuration.toFixed(3));

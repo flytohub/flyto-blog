@@ -16,6 +16,12 @@
       "motion": "live-capture"
     },
     {
+      "id": "human-broll",
+      "name": "Human Workflow",
+      "useCase": "Licensed footage of real people collaborating or using computers",
+      "motion": "live-broll"
+    },
+    {
       "id": "signal",
       "name": "Signal Number",
       "useCase": "Key ideas, numbered steps, and memorable claims",
@@ -44,7 +50,7 @@
     "balanced": [
       "editorial",
       "product-demo",
-      "signal",
+      "human-broll",
       "proof",
       "terminal",
       "community"
@@ -53,15 +59,16 @@
       "terminal",
       "product-demo",
       "proof",
+      "human-broll",
       "signal",
       "editorial",
       "community"
     ],
     "launch": [
       "community",
+      "human-broll",
       "product-demo",
       "editorial",
-      "signal",
       "proof",
       "community"
     ]

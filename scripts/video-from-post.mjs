@@ -173,12 +173,21 @@ function makeScenes(title, description, sections, durationSeconds) {
   ].slice(0, 6);
   const durations = distributeDurations(selected.length, durationSeconds);
   const templates = templateCatalog.packs.balanced;
+  const onScreenText = [
+    'Runtime | Docs | Evidence',
+    'Live Flyto2 product capture',
+    'Reproducible work',
+    'Private first | Maintainer reviewed',
+    'Canonical links | Verifiable claims',
+    'flyto2.com/community',
+  ];
   return selected.map((section, index) => ({
     durationSeconds: durations[index],
     template: templates[index % templates.length],
     title: sentenceClip(section.heading, 98),
     body: sentenceClip(section.body, 185),
     narration: sentenceClip(`${section.heading}. ${section.body}`, 240),
+    onScreenText: onScreenText[index % onScreenText.length],
     visualCue: index === 0 ? 'Show the problem and the exact Flyto2 path.' : 'Use title cards, screenshots, or evidence from the source post.',
   }));
 }
@@ -217,6 +226,10 @@ function makePlan(args) {
         { type: 'scroll', y: 760, durationMs: 2200 },
         { type: 'scroll', y: 1520, durationMs: 2200 },
       ],
+    },
+    humanBroll: {
+      assetId: 'mixkit-people-working-laptops-42620',
+      trimStartSeconds: 1,
     },
     seo: {
       primaryKeyword,
@@ -281,6 +294,11 @@ function makePlan(args) {
         name: data.cover ? `Flyto2 blog cover asset ${data.cover}` : 'Flyto2 source article text',
         license: 'owned',
       },
+      {
+        name: 'Mixkit people working on laptops B-roll',
+        license: 'licensed',
+        sourceId: 'mixkit-people-working-laptops-42620',
+      },
     ],
     scenes: makeScenes(title, description, sections, args.duration),
     youtube: {
@@ -293,7 +311,7 @@ function makePlan(args) {
         'MCP server automation',
         'AI agents',
       ],
-      description: `${description}\n\nNarration uses a synthetic voice.\n\nCanonical post: ${sourceUrl}`,
+      description: `${description}\n\nNarration uses a synthetic voice. Licensed human B-roll: https://mixkit.co/free-stock-video/people-working-on-laptops-42620/\n\nCanonical post: ${sourceUrl}`,
     },
   };
 }
