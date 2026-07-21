@@ -62,7 +62,7 @@ jobs:
           fi
       - name: Verify rendered media streams
         run: npm run video:artifact-qa -- --plan "${VIDEO_PLAN}" --variant "${VIDEO_VARIANT}"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: flyto2-video-draft
           path: video/dist/**

@@ -68,7 +68,7 @@ jobs:
           fi
 
           npm run social:publish -- --plan "${SOCIAL_PLAN}" --live --out artifacts/social-live-result.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: social-publish-output
