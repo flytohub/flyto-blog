@@ -20,7 +20,8 @@ footage.
 - Added a real public `flyto2.com/cloud/` product recording, neural narration,
   generated ambient audio, transitions, timed burned captions, and six
   final-video verification frames per platform output.
-- Added aspect-aware product framing for 16:9, 9:16, and 1:1 renders.
+- Added separate responsive product recordings for 16:9, 9:16, and 1:1
+  renders so vertical video never hard-crops a desktop page.
 - Raised square-video captions above the footer and enforced per-ratio caption
   bottom margins in artifact QA.
 

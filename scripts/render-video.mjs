@@ -245,12 +245,14 @@ function writeFrame(plan, output, scene, index, outputDir) {
   <text x="${panelX + 28}" y="${terminalY + 82}" class="command">${command}</text>
   ${cueText ? `<text x="${panelX + 28}" y="${terminalY + 116}" class="terminal-cue">PASS · ${cueText}</text>` : ''}`;
   } else if (template === 'community') {
+    const footerLineY = output.aspectRatio === '16:9' ? spec.height - 205 : spec.height - 152;
+    const footerTextY = output.aspectRatio === '16:9' ? spec.height - 160 : spec.height - 108;
     content = `
   <rect x="${spec.marginX}" y="${spec.titleY - 64}" width="14" height="${Math.round(spec.height * 0.48)}" rx="7" class="community-bar"/>
   ${lineTexts(titleLines.slice(0, 4), spec.marginX + 42, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines.slice(0, 5), spec.marginX + 42, bodyY, 'body', spec.bodySize + 12)}
-  <line x1="${spec.marginX + 42}" y1="${spec.height - 152}" x2="${spec.width - spec.marginX}" y2="${spec.height - 152}" class="community-line"/>
-  ${cueText ? `<text x="${spec.marginX + 42}" y="${spec.height - 108}" class="community-cue">${cueText}</text>` : ''}`;
+  <line x1="${spec.marginX + 42}" y1="${footerLineY}" x2="${spec.width - spec.marginX}" y2="${footerLineY}" class="community-line"/>
+  ${cueText ? `<text x="${spec.marginX + 42}" y="${footerTextY}" class="community-cue">${cueText}</text>` : ''}`;
   } else if (template === 'signal') {
     content = `
   <text x="${spec.width - spec.marginX}" y="${spec.height - 115}" class="number" text-anchor="end">${String(index + 1).padStart(2, '0')}</text>
@@ -465,6 +467,12 @@ function productionCaptionSpec(output) {
   return { fontSize: 30, marginV: 58, maxChars: 48, maxWords: 8 };
 }
 
+function productDemoFileName(output) {
+  if (output.aspectRatio === '9:16') return 'product-demo-portrait.webm';
+  if (output.aspectRatio === '1:1') return 'product-demo-square.webm';
+  return 'product-demo.webm';
+}
+
 function writeProductionCaptions(sourcePath, normalizedSrtPath, assPath, output, tempo, durationSeconds) {
   const spec = productionCaptionSpec(output);
   const cues = [];
@@ -605,9 +613,7 @@ function renderProductClip(output, demoPath, clipPath, duration) {
   const logoX = output.aspectRatio === '9:16' ? 70 : 56;
   const logoY = output.aspectRatio === '9:16' ? 54 : 34;
   const headerHeight = output.aspectRatio === '9:16' ? 180 : 124;
-  const composition = output.aspectRatio === '16:9'
-    ? `[0:v]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=decrease,pad=${spec.width}:${spec.height}:(ow-iw)/2:(oh-ih)/2:color=0x020617[base]`
-    : `[0:v]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=increase,crop=${spec.width}:${spec.height}[base]`;
+  const composition = `[0:v]scale=${spec.width}:${spec.height}:force_original_aspect_ratio=decrease,pad=${spec.width}:${spec.height}:(ow-iw)/2:(oh-ih)/2:color=0x020617[base]`;
   const filter = [
     composition,
     `[1:v]scale=${logoWidth}:-1[logo]`,
@@ -791,7 +797,9 @@ function renderOutput(plan, output, baseOutDir, args) {
 
   const sharedDir = path.join(baseOutDir, 'shared');
   const voiceoverPath = args.voiceover ? path.resolve(root, args.voiceover) : path.join(sharedDir, 'voiceover.mp3');
-  const productDemoPath = args.productDemo ? path.resolve(root, args.productDemo) : path.join(sharedDir, 'product-demo.webm');
+  const productDemoPath = args.productDemo
+    ? path.resolve(root, args.productDemo)
+    : path.join(sharedDir, productDemoFileName(output));
   const humanBrollPath = args.humanBroll ? path.resolve(root, args.humanBroll) : path.join(sharedDir, 'human-broll.mp4');
   if (!voiceoverPath.startsWith(root) || !productDemoPath.startsWith(root) || !humanBrollPath.startsWith(root)) {
     throw new Error('production media paths must stay inside the repository');

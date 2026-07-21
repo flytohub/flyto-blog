@@ -31,11 +31,12 @@ Current state on 2026-07-18:
   installs `ffmpeg` plus `rsvg-convert`, produces MP4 drafts for all variants
   or one selected variant, keeps artifacts for 14 days, and does not upload to
   YouTube.
-- Review videos now combine original Flyto2 layouts, a real public product-page
-  recording, checksum-verified licensed footage of people working on laptops,
-  neural narration, generated ambient audio, transitions, and burned captions.
-  Artifact QA checks all three dimensions, media streams, source provenance,
-  per-ratio caption margins, and one final-video frame for every scene.
+- Review videos now combine original Flyto2 layouts, separate responsive public
+  product-page recordings for all three ratios, checksum-verified licensed
+  footage of people working on laptops, neural narration, generated ambient
+  audio, transitions, and burned captions. Artifact QA checks output dimensions,
+  product-capture ratios, media streams, source provenance, per-ratio caption
+  margins, and one final-video frame for every scene.
 - `public/robots.txt`, `public/llms.txt`, and `public/llms-full.txt` exist.
 - `public/rss.xml`, `public/atom.xml`, `public/feed.json`,
   `public/image-sitemap.xml`, `public/discovery-manifest.json`, and

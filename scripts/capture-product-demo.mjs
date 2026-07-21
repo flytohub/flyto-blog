@@ -5,6 +5,11 @@ import { chromium } from 'playwright';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlan = 'video/plans/community-growth-open-source-ai-workflow-automation.json';
+const captureSpecs = [
+  { id: 'landscape', width: 1280, height: 720, suffix: '' },
+  { id: 'portrait', width: 720, height: 1280, suffix: '-portrait' },
+  { id: 'square', width: 1080, height: 1080, suffix: '-square' },
+];
 
 function parseArgs(argv) {
   const args = { plan: defaultPlan, out: '' };
@@ -74,24 +79,22 @@ async function runAction(page, action) {
   throw new Error(`unsupported product demo action: ${action.type}`);
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
-  const plan = JSON.parse(readFileSync(insideRoot(args.plan), 'utf8'));
-  const demo = plan.productDemo;
-  if (!demo || typeof demo !== 'object') throw new Error(`${args.plan} is missing productDemo`);
+function suffixedPath(basePath, suffix) {
+  const extension = path.extname(basePath);
+  return path.join(path.dirname(basePath), `${path.basename(basePath, extension)}${suffix}${extension}`);
+}
 
-  const sourceUrl = assertPublicFlyto2Url(demo.url);
-  const output = insideRoot(args.out || `video/dist/${plan.id}/shared/product-demo.webm`);
-  const posterPath = path.join(path.dirname(output), 'product-demo-poster.png');
-  const captureDir = path.join(path.dirname(output), '.capture');
+async function captureVariant(browser, demo, sourceUrl, baseOutput, spec) {
+  const output = suffixedPath(baseOutput, spec.suffix);
+  const posterPath = suffixedPath(baseOutput.replace(/\.webm$/, '-poster.png'), spec.suffix);
+  const captureDir = path.join(path.dirname(baseOutput), `.capture-${spec.id}`);
+  rmSync(captureDir, { recursive: true, force: true });
   mkdirSync(captureDir, { recursive: true });
 
-  const channel = process.env.FLYTO2_VIDEO_BROWSER_CHANNEL;
-  const browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
   const context = await browser.newContext({
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: spec.width, height: spec.height },
     colorScheme: 'dark',
-    recordVideo: { dir: captureDir, size: { width: 1280, height: 720 } },
+    recordVideo: { dir: captureDir, size: { width: spec.width, height: spec.height } },
   });
   const page = await context.newPage();
   const video = page.video();
@@ -101,7 +104,7 @@ async function main() {
     await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
     await page.addStyleTag({ content: 'html { scroll-behavior: smooth !important; } * { caret-color: transparent !important; }' });
     await dismissConsent(page);
-    await page.mouse.move(1090, 120);
+    await page.mouse.move(Math.max(40, spec.width - 140), 100);
     const actions = Array.isArray(demo.actions) && demo.actions.length
       ? demo.actions
       : [{ type: 'wait', durationMs: 1500 }, { type: 'scroll', y: 900, durationMs: 2200 }];
@@ -111,19 +114,45 @@ async function main() {
     await context.close();
   }
 
-  mkdirSync(path.dirname(output), { recursive: true });
   await video.saveAs(output);
-  await browser.close();
   rmSync(captureDir, { recursive: true, force: true });
-  writeFileSync(path.join(path.dirname(output), 'product-demo.json'), `${JSON.stringify({
-    sourceUrl,
+  return {
+    id: spec.id,
     output: path.relative(root, output),
     poster: path.relative(root, posterPath),
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: spec.width, height: spec.height },
+  };
+}
+
+async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  const plan = JSON.parse(readFileSync(insideRoot(args.plan), 'utf8'));
+  const demo = plan.productDemo;
+  if (!demo || typeof demo !== 'object') throw new Error(`${args.plan} is missing productDemo`);
+
+  const sourceUrl = assertPublicFlyto2Url(demo.url);
+  const baseOutput = insideRoot(args.out || `video/dist/${plan.id}/shared/product-demo.webm`);
+  mkdirSync(path.dirname(baseOutput), { recursive: true });
+
+  const channel = process.env.FLYTO2_VIDEO_BROWSER_CHANNEL;
+  const browser = await chromium.launch({ headless: true, ...(channel ? { channel } : {}) });
+  let captures;
+  try {
+    captures = [];
+    for (const spec of captureSpecs) {
+      captures.push(await captureVariant(browser, demo, sourceUrl, baseOutput, spec));
+    }
+  } finally {
+    await browser.close();
+  }
+
+  writeFileSync(path.join(path.dirname(baseOutput), 'product-demo.json'), `${JSON.stringify({
+    sourceUrl,
+    captures,
     actions: demo.actions ?? [],
     capturedAt: new Date().toISOString(),
   }, null, 2)}\n`);
-  process.stdout.write(`${path.relative(root, output)}\n`);
+  process.stdout.write(`${captures.map((capture) => capture.output).join('\n')}\n`);
 }
 
 await main();

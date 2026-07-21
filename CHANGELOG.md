@@ -19,8 +19,9 @@
   and 16:9 / 9:16 / 1:1 output variants.
 - Upgraded rendered videos with a live public Flyto2 product recording,
   checksum-verified licensed footage of real people, neural narration,
-  transitions, generated ambient audio, burned captions, aspect-aware framing,
-  and one final-video verification frame per scene and output ratio.
+  transitions, generated ambient audio, burned captions, separate responsive
+  product recordings for each ratio, and one final-video verification frame
+  per scene and output ratio.
 - Added four long-form SEO/AEO/GEO blog posts for AI search visibility,
   zero-person company agents, data workflow automation, and intelligence
   workflow automation.

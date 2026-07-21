@@ -77,6 +77,23 @@ function main() {
       throw new Error(`${output.id}: a production caption exceeds the ${maxCaptionChars}-character visual limit`);
     }
     if ((result.production?.templates ?? []).length < 6) throw new Error(`${output.id}: scene template coverage is incomplete`);
+    const productDemoPath = insideRoot(result.production?.productDemo ?? '');
+    if (!existsSync(productDemoPath) || statSync(productDemoPath).size < 200_000) throw new Error(`${output.id}: responsive product recording is missing`);
+    const productData = probe(productDemoPath);
+    const productVideo = productData.streams.find((stream) => stream.codec_type === 'video');
+    const expectedProductRatio = output.width / output.height;
+    const actualProductRatio = Number(productVideo?.width) / Number(productVideo?.height);
+    if (!Number.isFinite(actualProductRatio) || Math.abs(actualProductRatio - expectedProductRatio) > 0.02) {
+      throw new Error(`${output.id}: product recording does not match the output aspect ratio`);
+    }
+    const minProductSize = output.aspectRatio === '9:16'
+      ? { width: 720, height: 1280 }
+      : output.aspectRatio === '1:1'
+        ? { width: 1080, height: 1080 }
+        : { width: 1280, height: 720 };
+    if (Number(productVideo.width) < minProductSize.width || Number(productVideo.height) < minProductSize.height) {
+      throw new Error(`${output.id}: product recording resolution is below ${minProductSize.width}x${minProductSize.height}`);
+    }
     if (!(result.production?.templates ?? []).includes('human-broll')) throw new Error(`${output.id}: human B-roll scene is missing`);
     const humanBrollPath = insideRoot(result.production?.humanBroll ?? '');
     if (!existsSync(humanBrollPath) || statSync(humanBrollPath).size < 200_000) throw new Error(`${output.id}: licensed human B-roll is missing`);

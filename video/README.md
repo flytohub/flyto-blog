@@ -44,8 +44,10 @@ Frames and thumbnail candidates embed the official transparent Flyto2 logo from
 local rendering and the GitHub Action produce identical branded output.
 
 `video:capture` records the configured public Flyto2 product URL with
-Playwright. The capture allowlist is restricted to `flyto2.com` and its
-subdomains. It does not read credentials or browser profile data.
+Playwright at 16:9, 9:16, and 1:1 responsive viewports. Each renderer output
+uses its matching source recording instead of cropping a desktop capture. The
+capture allowlist is restricted to `flyto2.com` and its subdomains. It does not
+read credentials or browser profile data.
 
 `video:assets` downloads the single reviewed human B-roll asset selected by the
 plan. The source catalog records the official item page, direct provider URL,
