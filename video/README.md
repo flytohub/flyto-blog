@@ -84,6 +84,8 @@ Production MP4s include:
   resolution-aware ASS files for 16:9, 9:16, and 1:1 output;
 - enforced caption bottom-safe margins for each output ratio so subtitles do
   not cover calls to action, source URLs, or platform controls;
+- a shared per-ratio content boundary that keeps card labels, proof strips, and
+  terminal panels out of the burned-caption band;
 - one final-video verification frame per scene so CI reviews every template,
   live capture, and caption composition rather than only codec metadata.
 

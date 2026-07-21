@@ -204,6 +204,12 @@ function logoImage(x, y, size) {
   return `<image href="${brandLogoDataUri}" x="${x}" y="${y}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet"/>`;
 }
 
+function frameCueY(output, spec) {
+  if (output.aspectRatio === '9:16') return spec.height - 310;
+  if (output.aspectRatio === '1:1') return spec.height - 260;
+  return spec.height - 155;
+}
+
 function writeFrame(plan, output, scene, index, outputDir) {
   const spec = outputSpec(output);
   const template = scene.template ?? defaultTemplateSequence[index % defaultTemplateSequence.length];
@@ -229,11 +235,17 @@ function writeFrame(plan, output, scene, index, outputDir) {
   const panelWidth = spec.width - panelX * 2;
   const panelHeight = spec.height - spec.labelY - 145;
   const cueText = scene.onScreenText ? escapeHtml(scene.onScreenText) : '';
+  const cueY = frameCueY(output, spec);
   let content;
 
   if (template === 'terminal') {
-    const terminalY = Math.min(bodyY + bodyLines.length * (spec.bodySize + 12) + 34, spec.height - 230);
-    const terminalHeight = output.aspectRatio === '9:16' ? 250 : 126;
+    const terminalMaxY = output.aspectRatio === '9:16'
+      ? spec.height - 425
+      : output.aspectRatio === '1:1'
+        ? spec.height - 380
+        : spec.height - 270;
+    const terminalY = Math.min(bodyY + bodyLines.length * (spec.bodySize + 12) + 34, terminalMaxY);
+    const terminalHeight = 130;
     const command = output.aspectRatio === '9:16' ? '$ flyto2 verify' : '$ flyto2 verify --evidence';
     content = `
   ${lineTexts(titleLines.slice(0, 3), spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
@@ -255,23 +267,23 @@ function writeFrame(plan, output, scene, index, outputDir) {
   ${cueText ? `<text x="${spec.marginX + 42}" y="${footerTextY}" class="community-cue">${cueText}</text>` : ''}`;
   } else if (template === 'signal') {
     content = `
-  <text x="${spec.width - spec.marginX}" y="${spec.height - 115}" class="number" text-anchor="end">${String(index + 1).padStart(2, '0')}</text>
+  <text x="${spec.width - spec.marginX}" y="${cueY}" class="number" text-anchor="end">${String(index + 1).padStart(2, '0')}</text>
   <rect x="${spec.marginX}" y="${spec.titleY - 64}" width="92" height="8" rx="4" class="accent"/>
   ${lineTexts(titleLines, spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines, spec.marginX, bodyY, 'body', spec.bodySize + 12)}
-  ${cueText ? `<text x="${spec.marginX}" y="${spec.height - 120}" class="cue">${cueText}</text>` : ''}`;
+  ${cueText ? `<text x="${spec.marginX}" y="${cueY}" class="cue">${cueText}</text>` : ''}`;
   } else if (template === 'proof') {
     content = `
   <rect x="${panelX}" y="${panelY}" width="${panelWidth}" height="${panelHeight}" rx="10" class="panel"/>
   <rect x="${panelX}" y="${panelY}" width="14" height="${panelHeight}" rx="7" class="accent"/>
   ${lineTexts(titleLines, spec.marginX + 18, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines, spec.marginX + 18, bodyY, 'body', spec.bodySize + 12)}
-  ${cueText ? `<rect x="${spec.marginX + 18}" y="${spec.height - 158}" width="${spec.width - (spec.marginX + 18) * 2}" height="58" rx="6" class="cue-panel"/><text x="${spec.marginX + 40}" y="${spec.height - 120}" class="cue">${cueText}</text>` : ''}`;
+  ${cueText ? `<rect x="${spec.marginX + 18}" y="${cueY - 38}" width="${spec.width - (spec.marginX + 18) * 2}" height="58" rx="6" class="cue-panel"/><text x="${spec.marginX + 40}" y="${cueY}" class="cue">${cueText}</text>` : ''}`;
   } else if (template === 'human-broll') {
     content = `
   <rect x="${panelX}" y="${panelY}" width="${panelWidth}" height="${panelHeight}" rx="10" class="demo"/>
   ${lineTexts(titleLines.slice(0, 3), spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
-  <text x="${spec.marginX}" y="${spec.height - 120}" class="cue">LICENSED HUMAN WORKFLOW B-ROLL</text>`;
+  <text x="${spec.marginX}" y="${cueY}" class="cue">LICENSED HUMAN WORKFLOW B-ROLL</text>`;
   } else if (template === 'product-demo') {
     const demoY = output.aspectRatio === '16:9' ? 245 : output.aspectRatio === '1:1' ? 390 : 710;
     const demoHeight = output.aspectRatio === '16:9' ? 360 : output.aspectRatio === '1:1' ? 520 : 720;
@@ -287,7 +299,7 @@ function writeFrame(plan, output, scene, index, outputDir) {
   <rect x="${panelX}" y="${panelY}" width="${panelWidth}" height="${panelHeight}" rx="10" class="panel"/>
   ${lineTexts(titleLines, spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines, spec.marginX, bodyY, 'body', spec.bodySize + 12)}
-  ${cueText ? `<text x="${spec.marginX}" y="${spec.height - 120}" class="cue">${cueText}</text>` : ''}`;
+  ${cueText ? `<text x="${spec.marginX}" y="${cueY}" class="cue">${cueText}</text>` : ''}`;
   }
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${spec.width}" height="${spec.height}" viewBox="0 0 ${spec.width} ${spec.height}">

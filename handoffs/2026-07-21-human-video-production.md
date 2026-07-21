@@ -24,6 +24,8 @@ footage.
   renders so vertical video never hard-crops a desktop page.
 - Raised square-video captions above the footer and enforced per-ratio caption
   bottom margins in artifact QA.
+- Added a shared per-ratio frame boundary so audience labels, proof strips, and
+  terminal panels end before the burned-caption band.
 
 ## Verification Plan
 

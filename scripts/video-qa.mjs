@@ -117,7 +117,7 @@ function qaProductionPipeline() {
   const renderer = readFileSync(path.join(root, 'scripts/render-video.mjs'), 'utf8');
   const capture = readFileSync(path.join(root, 'scripts/capture-product-demo.mjs'), 'utf8');
   const workflow = readFileSync(path.join(root, '.github/workflows/video-render.yml'), 'utf8');
-  for (const token of ['xfade=', 'subtitles=filename=', 'PlayResX:', 'chunkCaption', 'amix=inputs=2', 'loudnorm=', 'renderProductClip', 'renderHumanClip', 'generated-ambient']) {
+  for (const token of ['xfade=', 'subtitles=filename=', 'PlayResX:', 'chunkCaption', 'frameCueY', 'amix=inputs=2', 'loudnorm=', 'renderProductClip', 'renderHumanClip', 'generated-ambient']) {
     if (!renderer.includes(token)) fail(`production renderer is missing ${token}`);
   }
   for (const token of ['video:capture', 'video:assets', 'video:voiceover', 'video:artifact-qa', 'edge-tts==7.2.8', 'playwright install']) {

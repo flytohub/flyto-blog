@@ -36,7 +36,7 @@ Current state on 2026-07-18:
   footage of people working on laptops, neural narration, generated ambient
   audio, transitions, and burned captions. Artifact QA checks output dimensions,
   product-capture ratios, media streams, source provenance, per-ratio caption
-  margins, and one final-video frame for every scene.
+  margins and content boundaries, and one final-video frame for every scene.
 - `public/robots.txt`, `public/llms.txt`, and `public/llms-full.txt` exist.
 - `public/rss.xml`, `public/atom.xml`, `public/feed.json`,
   `public/image-sitemap.xml`, `public/discovery-manifest.json`, and
