@@ -73,6 +73,10 @@
   ],
   "assets": [
     {
+      "name": "Flyto2 official logo",
+      "license": "owned"
+    },
+    {
       "name": "Flyto2 generated title cards and thumbnails",
       "license": "owned"
     },

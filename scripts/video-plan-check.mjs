@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlanDir = 'video/plans';
+const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
 const allowedHosts = new Set([
   'blog.flyto2.com',
   'docs.flyto2.com',
@@ -187,6 +188,9 @@ function validatePlan(relativePath) {
       fail(`${relativePath}: asset license must be owned, open, generated, or licensed`);
     }
   }
+  if (!(plan.assets ?? []).some((asset) => /flyto2.*logo/i.test(asset.name))) {
+    fail(`${relativePath}: assets must list the owned Flyto2 logo`);
+  }
 
   if (!Array.isArray(plan.scenes) || plan.scenes.length < 3 || plan.scenes.length > 12) {
     fail(`${relativePath}: scenes must contain 3-12 entries`);
@@ -237,6 +241,13 @@ function planFiles(args) {
 
 const args = parseArgs(process.argv.slice(2));
 const files = planFiles(args);
+const brandLogoPath = path.join(root, brandLogoRelativePath);
+if (!existsSync(brandLogoPath)) {
+  fail(`${brandLogoRelativePath} is required`);
+} else {
+  const signature = readFileSync(brandLogoPath).subarray(0, 8).toString('hex');
+  if (signature !== '89504e470d0a1a0a') fail(`${brandLogoRelativePath} must be a PNG file`);
+}
 for (const file of files) validatePlan(file);
 
 if (failures.length) {

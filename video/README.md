@@ -36,6 +36,10 @@ the three default outputs.
 - `youtube-metadata.json`
 - `manifest.json`
 
+Frames and thumbnail candidates embed the official transparent Flyto2 logo from
+`video/assets/flyto2-logo.png`. Keep that owned brand asset in the repository so
+local rendering and the GitHub Action produce identical branded output.
+
 `video:render` additionally requires `ffmpeg` and `rsvg-convert` to create an
 MP4. The manual `Video Render` GitHub Action installs those tools and uploads
 the generated artifact. By default it renders every output. Use `--variant` to

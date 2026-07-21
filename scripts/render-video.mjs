@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlan = 'video/plans/community-growth-open-source-ai-workflow-automation.json';
+const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
+const brandLogoDataUri = `data:image/png;base64,${readFileSync(path.join(root, brandLogoRelativePath)).toString('base64')}`;
 const aspectSpecs = {
   '16:9': {
     width: 1280,
@@ -105,6 +107,14 @@ function wrapWords(text, limit) {
   return lines;
 }
 
+function sourceLabel(value) {
+  try {
+    return `${new URL(value).hostname} · canonical source`;
+  } catch {
+    return 'Flyto2 · canonical source';
+  }
+}
+
 function pad(value) {
   return String(value).padStart(2, '0');
 }
@@ -166,6 +176,10 @@ function lineTexts(lines, x, y, className, step) {
     .join('\n');
 }
 
+function logoImage(x, y, size) {
+  return `<image href="${brandLogoDataUri}" x="${x}" y="${y}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet"/>`;
+}
+
 function writeFrame(plan, output, scene, index, outputDir) {
   const spec = outputSpec(output);
   const titleLines = wrapWords(scene.title, spec.titleLimit).slice(0, 4);
@@ -173,6 +187,9 @@ function writeFrame(plan, output, scene, index, outputDir) {
   const bodyY = spec.titleY + titleLines.length * (spec.titleSize + 13) + 42;
   const sceneNo = `${String(index + 1).padStart(2, '0')}/${String(plan.scenes.length).padStart(2, '0')}`;
   const visualCue = scene.visualCue ? `<text x="${spec.marginX}" y="${spec.height - 120}" class="cue">${escapeHtml(scene.visualCue)}</text>` : '';
+  const logoSize = output.aspectRatio === '9:16' ? 54 : output.aspectRatio === '1:1' ? 46 : 42;
+  const logoY = spec.labelY - logoSize + 4;
+  const brandX = spec.marginX + logoSize + 14;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${spec.width}" height="${spec.height}" viewBox="0 0 ${spec.width} ${spec.height}">
   <defs>
@@ -195,12 +212,13 @@ function writeFrame(plan, output, scene, index, outputDir) {
   <rect x="0" y="0" width="${spec.width}" height="12" class="stripe-a"/>
   <rect x="${Math.round(spec.width * 0.34)}" y="0" width="${Math.round(spec.width * 0.33)}" height="12" class="stripe-b"/>
   <rect x="${Math.round(spec.width * 0.67)}" y="0" width="${Math.round(spec.width * 0.33)}" height="12" class="stripe-c"/>
-  <text x="${spec.marginX}" y="${spec.labelY}" class="label">FLYTO2 VIDEO DRAFT</text>
+  ${logoImage(spec.marginX, logoY, logoSize)}
+  <text x="${brandX}" y="${spec.labelY}" class="label">FLYTO2</text>
   <text x="${spec.width - spec.marginX}" y="${spec.labelY}" class="small" text-anchor="end">${escapeHtml(output.label)} ${sceneNo}</text>
   ${lineTexts(titleLines, spec.marginX, spec.titleY, 'title', spec.titleSize + 13)}
   ${lineTexts(bodyLines, spec.marginX, bodyY, 'body', spec.bodySize + 12)}
   ${visualCue}
-  <text x="${spec.marginX}" y="${spec.height - 58}" class="mono">${escapeHtml(plan.sourceUrl)}</text>
+  <text x="${spec.marginX}" y="${spec.height - 58}" class="mono">${escapeHtml(sourceLabel(plan.sourceUrl))}</text>
 </svg>
 `;
   const framePath = path.join(outputDir, 'frames', `scene-${String(index + 1).padStart(2, '0')}.svg`);
@@ -210,20 +228,25 @@ function writeFrame(plan, output, scene, index, outputDir) {
 
 function writeThumbnail(plan, output, thumbnail, index, outputDir) {
   const spec = outputSpec(output);
-  const headlineLines = wrapWords(thumbnail.headline, output.aspectRatio === '9:16' ? 20 : 30).slice(0, 4);
-  const subheadLines = wrapWords(thumbnail.subhead, output.aspectRatio === '9:16' ? 26 : 42).slice(0, 3);
+  const headlineLimit = output.aspectRatio === '9:16' ? 17 : output.aspectRatio === '1:1' ? 20 : 28;
+  const subheadLimit = output.aspectRatio === '9:16' ? 24 : output.aspectRatio === '1:1' ? 32 : 38;
+  const headlineLines = wrapWords(thumbnail.headline, headlineLimit).slice(0, 4);
+  const subheadLines = wrapWords(thumbnail.subhead, subheadLimit).slice(0, 4);
   const titleSize = output.aspectRatio === '9:16' ? 82 : output.aspectRatio === '1:1' ? 72 : 64;
   const subheadSize = output.aspectRatio === '9:16' ? 36 : 30;
   const startY = output.aspectRatio === '9:16' ? 430 : output.aspectRatio === '1:1' ? 300 : 220;
   const subheadY = startY + headlineLines.length * (titleSize + 10) + 38;
   const keyword = plan.seo?.primaryKeyword ?? 'open-source AI workflow automation';
+  const logoSize = output.aspectRatio === '9:16' ? 92 : 66;
+  const logoY = output.aspectRatio === '9:16' ? 98 : 40;
+  const kickerY = output.aspectRatio === '9:16' ? 176 : 100;
+  const contentX = Math.round(spec.width * 0.08) + 32;
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${spec.width}" height="${spec.height}" viewBox="0 0 ${spec.width} ${spec.height}">
   <defs>
     <style>
       .bg { fill: #ffffff; }
       .shadow { fill: #eef2ff; }
-      .mark { font: 900 ${output.aspectRatio === '9:16' ? 96 : 82}px Inter, Arial, sans-serif; fill: #7c3aed; }
       .kicker { font: 800 22px Inter, Arial, sans-serif; letter-spacing: 4px; fill: #0891b2; }
       .headline { font: 850 ${titleSize}px Inter, Arial, sans-serif; fill: #0f172a; }
       .subhead { font: 520 ${subheadSize}px Inter, Arial, sans-serif; fill: #334155; }
@@ -232,11 +255,11 @@ function writeThumbnail(plan, output, thumbnail, index, outputDir) {
   </defs>
   <rect width="${spec.width}" height="${spec.height}" class="bg"/>
   <rect x="${Math.round(spec.width * 0.08)}" y="${Math.round(spec.height * 0.12)}" width="${Math.round(spec.width * 0.84)}" height="${Math.round(spec.height * 0.76)}" rx="12" class="shadow"/>
-  <text x="${spec.marginX}" y="${output.aspectRatio === '9:16' ? 190 : 110}" class="mark">F</text>
-  <text x="${spec.marginX + 88}" y="${output.aspectRatio === '9:16' ? 176 : 100}" class="kicker">FLYTO2 ${String(index + 1).padStart(2, '0')}</text>
-  ${lineTexts(headlineLines, spec.marginX, startY, 'headline', titleSize + 10)}
-  ${lineTexts(subheadLines, spec.marginX, subheadY, 'subhead', subheadSize + 10)}
-  <text x="${spec.marginX}" y="${spec.height - 92}" class="tag">${escapeHtml(keyword)}</text>
+  ${logoImage(contentX, logoY, logoSize)}
+  <text x="${contentX + logoSize + 18}" y="${kickerY}" class="kicker">FLYTO2 ${String(index + 1).padStart(2, '0')}</text>
+  ${lineTexts(headlineLines, contentX, startY, 'headline', titleSize + 10)}
+  ${lineTexts(subheadLines, contentX, subheadY, 'subhead', subheadSize + 10)}
+  <text x="${contentX}" y="${spec.height - 92}" class="tag">${escapeHtml(keyword)}</text>
 </svg>
 `;
   const thumbnailPath = path.join(outputDir, 'thumbnails', `thumbnail-${String(index + 1).padStart(2, '0')}.svg`);
@@ -401,6 +424,10 @@ function writeManifest(plan, outDir, outputs) {
     plan: plan.id,
     title: plan.title,
     sourceUrl: plan.sourceUrl,
+    brand: {
+      name: 'Flyto2',
+      logo: brandLogoRelativePath,
+    },
     durationSeconds: plan.durationSeconds,
     humanReviewRequired: plan.humanReviewRequired,
     outputs,
