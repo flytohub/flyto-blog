@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-
-const visible = ref(false)
 const clusters = [
   { label: 'AI Workflow Automation', href: '/posts/ai-browser-automation-guide' },
   { label: 'Open Source Automation', href: '/posts/modules-not-magic' },
@@ -13,13 +10,10 @@ const clusters = [
   { label: 'MSSP / BYO', href: '/posts/byo-mssp-integration-model' },
   { label: 'Pentest / Red Team', href: '/posts/pentest-vs-vulnerability-scan-vs-red-team' },
 ]
-onMounted(() => {
-  requestAnimationFrame(() => { visible.value = true })
-})
 </script>
 
 <template>
-  <div class="blog-hero" :class="{ visible }">
+  <div class="blog-hero visible">
     <!-- Animated mesh gradient background -->
     <div class="hero-mesh" />
 
@@ -32,8 +26,7 @@ onMounted(() => {
         Flyto2 Blog
       </div>
       <h1 class="hero-title">
-        <span class="title-line">AI workflow automation, MCP,</span>
-        <span class="title-line title-gradient">CTEM, and security guides</span>
+        <span class="title-line">AI workflow automation, MCP,</span>{{ ' ' }}<span class="title-line title-gradient">CTEM, and security guides</span>
       </h1>
       <p class="hero-desc">Practical guides for open-source AI agent automation, MCP server tooling, no-code browser workflows, evidence-backed CTEM, BYO integrations, and red-team validation.</p>
       <div class="topic-grid">

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://docs.flyto2.com/schemas/documentation-contract-v1.json",
+  "schema_version": 1,
+  "repository": "flyto-blog",
+  "status": "active",
+  "documentation": {
+    "index": "docs/README.md",
+    "architecture": "ARCHITECTURE.md",
+    "state": "STATE.md",
+    "whitepaper": "docs/WHITEPAPER.md",
+    "source_reference": ["docs/reference/source-*.md"],
+    "content_reference": ["docs/reference/posts-*.md"],
+    "automation_reference": "docs/reference/automation.md",
+    "distribution_reference": "docs/reference/distribution.md",
+    "discovery_reference": "docs/reference/discovery-assets.md"
+  },
+  "source_areas": [
+    {
+      "id": "vitepress-runtime",
+      "paths": [".vitepress/**"],
+      "documentation": ["ARCHITECTURE.md", "docs/WHITEPAPER.md", "docs/reference/source-vitepress-*.md", "docs/reference/source-theme-*.md"]
+    },
+    {
+      "id": "verification-and-generation",
+      "paths": ["scripts/**"],
+      "documentation": ["docs/WHITEPAPER.md", "docs/reference/source-scripts-*.md", "docs/reference/automation.md"]
+    },
+    {
+      "id": "editorial-content",
+      "paths": ["posts/**", "index.md", "tags.md", "POSTING.md", "CONTRIBUTING.md"],
+      "documentation": ["POSTING.md", "CONTRIBUTING.md", "docs/reference/posts-*.md"]
+    },
+    {
+      "id": "social-distribution",
+      "paths": ["social/**"],
+      "documentation": ["social/README.md", "docs/reference/distribution.md"]
+    },
+    {
+      "id": "video-production",
+      "paths": ["video/**"],
+      "documentation": ["video/README.md", "docs/reference/distribution.md"]
+    },
+    {
+      "id": "public-assets-and-discovery",
+      "paths": ["public/**"],
+      "documentation": ["docs/WHITEPAPER.md", "docs/reference/discovery-assets.md", "public/blog/CREDITS.md"]
+    },
+    {
+      "id": "delivery-and-runtime-configuration",
+      "paths": [".github/**", ".env.example", ".seo/i18n-seo-manifest.json", "lighthouserc.cjs", "package.json", "package-lock.json"],
+      "documentation": ["ARCHITECTURE.md", "docs/reference/automation.md", "docs/reference/source-runtime-*.md"]
+    }
+  ]
+}

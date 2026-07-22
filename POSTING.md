@@ -26,7 +26,8 @@ cover: /slug.svg                # optional; 1200×630 image in public/
 
 ## Content rules
 
-- **File name**: `posts/YYYY-MM-DD-slug.md` where slug matches the URL path.
+- **File name**: `posts/stable-kebab-slug.md`; the slug is the public URL path
+  and the publication date belongs in frontmatter.
 - **Excerpt marker**: place `<!-- more -->` after the opening paragraph to control what appears in the index listing.
 - **Links**: use root-relative paths (`/tags`) for internal links so they resolve correctly in production.
 - **Images**: store in `public/` and reference as `/image-name.ext`.

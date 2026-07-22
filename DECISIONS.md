@@ -1,5 +1,37 @@
 # Decisions
 
+## 2026-07-23 - Repository documentation is not public blog content
+
+Decision: durable repository documentation remains tracked and source-linked,
+but `docs/**` is excluded from the public blog sitemap and receives `noindex`.
+The public homepage hero must render its content without waiting for client
+hydration.
+
+Reason: engineering references support maintainers, not blog search intent.
+Publishing them dilutes the sitemap, while hiding the homepage headline until
+JavaScript runs creates an avoidable first-paint and no-script failure.
+
+## 2026-07-22 - Blog documentation is generated from source and content inputs
+
+Decision: parse JavaScript, TypeScript, and Vue script blocks with the
+TypeScript compiler AST; parse article frontmatter with `gray-matter`; generate
+declaration, content, automation, distribution, and public-asset references;
+and assign all maintained surfaces in `docs/documentation-manifest.json`.
+
+Reason: public SEO and build checks were strong, but they did not make the
+implementation of 18 scripts, custom VitePress behavior, 67 articles, social
+plans, video plans, and public assets traceable to documentation. A generated
+contract closes that maintenance gap without duplicating source by hand.
+
+## 2026-07-22 - Article routes use stable slugs
+
+Decision: article files use `posts/<stable-kebab-slug>.md`; publication dates
+remain frontmatter data and do not become part of the route.
+
+Reason: all published articles and internal links already use stable slugs.
+The previous dated-filename guidance described a different URL contract and
+would have created inconsistent future routes.
+
 ## 2026-07-18 - Social publishing is review-first
 
 Decision: social syndication plans live under `social/posts/`; the publisher

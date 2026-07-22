@@ -24,6 +24,11 @@ Rules:
 - Do not say Flyto2 fully replaces a named competitor unless that claim is
   backed by an approved product page.
 - Run `npm run build` before publishing VitePress config or navigation changes.
+- Run `npm run docs:reference` after changing executable source, a post,
+  package scripts, environment inputs, workflows, social/video plans, or public
+  assets. Commit the generated `docs/reference/` drift.
+- Keep `npm run docs:check` in `npm run verify` and the strict Indexer scan in
+  the SEO workflow.
 
 ## Flyto2 Project Memory Contract
 

@@ -10,7 +10,9 @@ Workflow:
 3. Align product claims with landing and docs.
 4. Update `public/llms.txt` or `public/llms-full.txt` when adding a major
    citation post.
-5. Run `npm run build`.
+5. Regenerate `docs/reference/` after changing source, posts, automation,
+   distribution plans, or public assets.
+6. Run `npm run verify`.
 
 Never infer or reuse login credentials from docs or handoffs.
 

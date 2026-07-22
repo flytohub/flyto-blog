@@ -3,6 +3,8 @@
 ## P0 before production release
 
 - Keep article metadata, canonical links, and sitemap output valid.
+- Keep the documentation ownership manifest and generated source/content
+  reference current.
 - Run `npm run build`.
 - Ensure major product-line claims link to landing or docs sources.
 
@@ -18,3 +20,5 @@
 
 - Add multilingual article strategy once docs and landing hreflang strategy is
   settled.
+- Add reviewed social/video plans only when there is an owner for final human
+  approval and platform publication.

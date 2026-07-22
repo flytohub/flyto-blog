@@ -44,7 +44,7 @@ reader is ready to implement.
 
 ```
 posts/
-└── YYYY-MM-DD-slug.md      # frontmatter + markdown body
+└── stable-kebab-slug.md    # frontmatter + markdown body
 ```
 
 Frontmatter schema lives in [`POSTING.md`](./POSTING.md) (or
@@ -95,6 +95,11 @@ Reports are written to `.seo/reports/seo-score.json` and
 `.seo/reports/seo-score.md`. CI fails when the homepage, any post, or the site
 average falls below the configured thresholds.
 
+The verification loop begins with `npm run docs:check`, which requires every
+maintained executable source, article, workflow, configuration input,
+distribution plan, and public asset to have a documentation owner and rejects
+stale generated references. Regenerate with `npm run docs:reference`.
+
 `npm run verify` also runs `npm run seo:manage`. That management pass creates
 `.seo/reports/seo-management.json` and `.seo/reports/seo-management.md` with
 rank targets, keyword gaps, internal-link suggestions, Search Console
@@ -136,7 +141,8 @@ one output instead of all outputs.
 ## Contributing a post
 
 1. Fork + branch.
-2. Add `posts/YYYY-MM-DD-your-slug.md`.
+2. Add `posts/your-stable-kebab-slug.md`; keep the publication date in
+   frontmatter so the public URL does not change when editorial dates change.
 3. If the post should be promoted, add or update a plan under `social/posts/`
    and verify it with `npm run social:check`.
 4. If the post should become a video, generate or update a plan under
@@ -154,3 +160,11 @@ with an outline first.
 - [flyto-landing-page](https://github.com/flytohub/flyto-landing-page)
 - [flyto-indexer](https://github.com/flytohub/flyto-indexer) — code intelligence MCP for AI-assisted engineering
 - [Flyto2 community hub](https://flyto2.com/community/)
+
+## Documentation
+
+- [Technical and editorial whitepaper](./docs/WHITEPAPER.md)
+- [Generated source and content reference](./docs/reference/README.md)
+- [Posting contract](./POSTING.md)
+- [Social distribution](./social/README.md)
+- [Video production](./video/README.md)

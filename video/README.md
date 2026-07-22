@@ -131,3 +131,7 @@ Every plan should include:
   maintainer-controlled workflow.
 - Keep generated artifacts under `video/dist/`; do not commit rendered MP4s or
   generated review files.
+
+The generated [distribution reference](../docs/reference/distribution.md)
+inventories each video plan, output, scene, template pack, and stock-media
+source.

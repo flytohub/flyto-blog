@@ -4,6 +4,12 @@
 
 ### Added
 
+- Added a technical/editorial whitepaper, documentation ownership manifest,
+  and generated declaration, article, automation, distribution, environment,
+  and public-asset references.
+- Added `npm run docs:reference` and `npm run docs:check`; local verification
+  and CI now reject generated documentation and ownership drift.
+- Added strict Flyto2 Indexer full-scan verification to the SEO workflow.
 - Added the community growth post and social syndication plan for Flyto2
   open-source AI workflow automation.
 - Added `scripts/social-publish.mjs`, `npm run social:dry-run`,
@@ -57,6 +63,14 @@
 
 ### Changed
 
+- Kept internal documentation pages out of the public sitemap and marked them
+  `noindex` while retaining the repository-local documentation contract.
+- Made homepage hero content visible in the server-rendered page instead of
+  depending on client hydration, and corrected the split H1 text boundary.
+- Corrected README, posting, and contribution guidance to use the stable
+  `posts/<slug>.md` route convention already used by every published article.
+- Expanded architecture and project memory to document editorial, discovery,
+  social, video, deployment, credential, and verification boundaries.
 - Re-enabled GitHub Pages in Actions workflow mode, restored the
   `blog.flyto2.com` custom domain, and republished the verified blog after the
   disabled Pages configuration caused public 404 responses.

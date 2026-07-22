@@ -51,3 +51,6 @@ or generated live API responses that expose private identifiers.
 - Manual channels such as GitHub Discussions, YouTube descriptions, package
   pages, Reddit, or Hacker News remain checklist items until a maintainer
   chooses a dedicated integration.
+
+The generated [distribution reference](../docs/reference/distribution.md) lists
+every committed social plan and its canonical source article.

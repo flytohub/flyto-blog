@@ -21,3 +21,7 @@
   local SEO score coverage.
 - [x] Add generated RSS, Atom, JSON Feed, image sitemap, OG fallback image, and
   CI checks for discovery surfaces.
+- [x] Add source-backed declaration, article, automation, distribution, and
+  public-asset documentation with a fail-closed ownership check.
+- [x] Correct article filename guidance to match stable deployed slugs.
+- [x] Add strict Flyto2 Indexer verification to the SEO workflow.

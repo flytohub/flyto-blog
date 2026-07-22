@@ -1,7 +1,19 @@
 # State
 
-Current state on 2026-07-22:
+Current state on 2026-07-23:
 
+- Blog documentation is source-backed. The generated reference inventories
+  executable declarations, all 67 articles, package scripts, workflows,
+  environment inputs, social/video plans, and public assets. `npm run
+  docs:check` and CI reject ownership or generated-reference drift.
+- Article filenames use stable `posts/<slug>.md` routes; publication date lives
+  in frontmatter. README, posting, and contribution guidance now match the
+  deployed URL contract.
+- The current npm dependency graph reports zero known vulnerabilities.
+- Strict Flyto2 Indexer verification passes 17/17 checks against 27 authored
+  source files and 211 scanned symbols. Generated source references cover 100%
+  of indexed documentable symbols; VitePress dependency-cache bundles are
+  excluded by Indexer rather than counted as product code.
 - GitHub Pages is enabled in Actions workflow mode, the custom domain is
   `blog.flyto2.com`, and deployment run `29890358620` passed after the Pages
   site had been disabled. The homepage, both llms indexes, and all public blog
@@ -91,6 +103,8 @@ Current state on 2026-07-22:
 
 Known gaps:
 
+- Search Console and crawler evidence remain external inputs; local 100-point
+  SEO scores do not prove rankings, citations, backlinks, clicks, or traffic.
 - GitHub still reports the custom domain as unverified and has not issued its
   own Pages origin certificate, so the Pages `https_enforced` flag cannot yet
   be enabled. Cloudflare currently provides the public TLS certificate and

@@ -10,7 +10,7 @@ Thank you for writing for the Flyto2 Blog!
 ## How to submit
 
 1. Fork the repo and create a branch: `post/YYYY-MM-DD-your-slug`.
-2. Add `posts/YYYY-MM-DD-your-slug.md` following the schema in [`POSTING.md`](./POSTING.md).
+2. Add `posts/your-stable-kebab-slug.md` following the schema in [`POSTING.md`](./POSTING.md).
 3. Run `npm install && npm run build` locally to confirm the build passes (especially dead-link checking).
 4. Open a PR and tag `@flytohub/editors` for review.
 
@@ -18,7 +18,8 @@ Thank you for writing for the Flyto2 Blog!
 
 - Accurate and tested — every command or step should work.
 - SEO-friendly title and description (see [`POSTING.md`](./POSTING.md)).
-- No competitor brand names in user-facing copy.
+- Named competitors are allowed only for factual, balanced comparison intent;
+  do not make unsupported replacement, benchmark, or disparaging claims.
 - English only (the blog is English-first).
 
 ## Review SLA

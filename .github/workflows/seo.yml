@@ -25,6 +25,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Flyto2 Indexer
+        run: python -m pip install "git+https://github.com/flytohub/flyto-indexer.git@main"
+      - name: Verify source and documentation graph
+        run: flyto-index verify . --full-scan --strict --json
       - run: npm run verify
       - name: Upload SEO score report
         if: always()

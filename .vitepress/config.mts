@@ -80,6 +80,7 @@ function toPublicPath(url: string) {
 
 function isNonContentPath(relativePath: string) {
   return NON_CONTENT_PATHS.has(relativePath)
+    || relativePath.startsWith('docs/')
     || relativePath.startsWith('public/')
     || relativePath.startsWith('social/')
     || relativePath.startsWith('video/')
@@ -99,6 +100,7 @@ function isNonContentPublicPath(path: string) {
   const asMarkdownPath = `${cleanPath}.md`
 
   return NON_CONTENT_PATHS.has(asMarkdownPath)
+    || cleanPath.startsWith('docs/')
     || cleanPath.startsWith('public/')
     || cleanPath.startsWith('social/')
     || cleanPath.startsWith('video/')
