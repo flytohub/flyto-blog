@@ -13,7 +13,7 @@ Flyto2 MCP server automation exposes deterministic workflow modules through the 
 
 <!-- more -->
 
-![451 Modules as MCP Tools](/mcp-server.svg)
+![452 Modules as MCP Tools](/mcp-server.svg)
 
 ## What is MCP?
 

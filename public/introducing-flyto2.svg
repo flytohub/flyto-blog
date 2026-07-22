@@ -26,12 +26,12 @@
 
   <!-- Title -->
   <text x="480" y="50" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="24" font-weight="700">The Flyto2 Ecosystem</text>
-  <text x="480" y="76" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="14">451 modules — deterministic execution — full audit trail</text>
+  <text x="480" y="76" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="14">452 modules — deterministic execution — full audit trail</text>
 
   <!-- Center node: flyto-core -->
   <rect x="370" y="160" width="220" height="80" rx="14" fill="#1e293b" stroke="url(#blue)" stroke-width="2"/>
   <text x="480" y="195" text-anchor="middle" fill="url(#blue)" font-family="system-ui,sans-serif" font-size="18" font-weight="700">flyto-core</text>
-  <text x="480" y="218" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Execution Engine — 451 Modules</text>
+  <text x="480" y="218" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Execution Engine — 452 Modules</text>
 
   <!-- Top-left: flyto-ai -->
   <rect x="60" y="100" width="200" height="70" rx="12" fill="#1e293b" stroke="url(#purple)" stroke-width="1.5"/>

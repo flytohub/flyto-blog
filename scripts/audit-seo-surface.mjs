@@ -87,7 +87,16 @@ const requiredLlmsTokens = [
   'https://flyto2.com',
   'https://docs.flyto2.com',
 ];
-const requiredKeywordMatrixTokens = ['Volume', 'SD', 'PD', 'CPC', 'Long-Tail Editorial Plan', 'Ubersuggest'];
+const requiredKeywordMatrixTokens = [
+  'Volume',
+  'SD',
+  'PD',
+  'CPC',
+  'Long-Tail Editorial Plan',
+  'Evidence Caveats',
+  'MCP security',
+  'Ubersuggest',
+];
 
 function fail(message) {
   failures.push(message);

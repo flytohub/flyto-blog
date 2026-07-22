@@ -47,9 +47,9 @@ pip install flyto-core
 
 That's it. No credit card. No Microsoft account.
 
-### 451 Ready-to-Use Modules
+### 452 Ready-to-Use Modules
 
-Flyto2 comes with 451 pre-built modules that cover the most common automation needs:
+Flyto2 comes with 452 pre-built modules that cover the most common automation needs:
 
 - **Browser automation** — open pages, click buttons, fill forms, take screenshots
 - **File operations** — rename, move, copy, convert, and organize files in bulk
@@ -88,7 +88,7 @@ Three steps. No drag-and-drop designer. No connectors to configure. Just tell it
 | Account required | Microsoft 365 | Free sign-up |
 | Enterprise self-hosted | No | Yes |
 | Data control | Limited | Full (enterprise self-hosted available) |
-| Pre-built modules | Varies | 451 |
+| Pre-built modules | Varies | 452 |
 | Open source engine | No | [Yes](https://github.com/flytohub/flyto-core) |
 
 The biggest difference is flexibility. With Flyto2, you are not locked into the Microsoft ecosystem, and enterprise teams can deploy on their own infrastructure for full data control.

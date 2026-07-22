@@ -103,7 +103,7 @@ This is where deterministic modules come in. Instead of writing imperative brows
 
 ## How Flyto2 Fits
 
-The Flyto2 automation engine is built on **451 deterministic modules** — composable, MCP-native building blocks that drive a real browser under the hood and produce evidence and replayable runs for every execution. Rather than hand-rolling headless scripts, you assemble modules into a recipe: open a page, wait for the content, extract the fields, capture a screenshot or PDF, and move on. Because each module is deterministic and produces an evidence trail, runs are repeatable and auditable — the same inputs give the same outputs, and you can replay exactly what happened when something changes.
+The Flyto2 automation engine is built on **452 deterministic modules** — composable, MCP-native building blocks that drive a real browser under the hood and produce evidence and replayable runs for every execution. Rather than hand-rolling headless scripts, you assemble modules into a recipe: open a page, wait for the content, extract the fields, capture a screenshot or PDF, and move on. Because each module is deterministic and produces an evidence trail, runs are repeatable and auditable — the same inputs give the same outputs, and you can replay exactly what happened when something changes.
 
 That same engine underpins the Flyto2 Warroom security platform, where browser-driven steps feed closed-loop surfaces like external attack surface and footprint analysis. Whether you're scraping data, validating a web app, or capturing screenshots at scale, the principle is the same: get the reliability of headless automation without inheriting the maintenance burden of the code behind it.
 

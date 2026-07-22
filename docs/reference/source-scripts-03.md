@@ -2,10 +2,11 @@
 
 # Scripts Source Reference 3
 
-Source-backed contracts for **21 declarations**.
+Source-backed contracts for **22 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `validatePlan(relativePath)` | Validates validate plan. | [scripts/video-plan-check.mjs:234](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L234) |
 | function | `planFiles(args)` | Implements plan files. | [scripts/video-plan-check.mjs:304](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L304) |
 | function | `validateTemplateCatalog()` | Validates validate template catalog. | [scripts/video-plan-check.mjs:313](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L313) |
 | function | `validateStockCatalog()` | Validates validate stock catalog. | [scripts/video-plan-check.mjs:333](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L333) |

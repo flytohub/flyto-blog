@@ -26,7 +26,7 @@ If any of these sound familiar, you are not alone. These are the exact pain poin
 
 ## What Flyto2 Does Differently
 
-Flyto2 is an open-source automation platform with 451 pre-built modules. It takes a fundamentally different approach from n8n:
+Flyto2 is an open-source automation platform with 452 pre-built modules. It takes a fundamentally different approach from n8n:
 
 ### 1. Real Browser Automation Built In
 

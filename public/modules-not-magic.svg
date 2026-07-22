@@ -49,7 +49,7 @@
   <!-- Right: Module approach -->
   <rect x="510" y="80" width="410" height="320" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
   <rect x="510" y="80" width="410" height="44" rx="12" fill="url(#green)" opacity="0.15"/>
-  <text x="715" y="108" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Flyto2 — 451 Validated Modules</text>
+  <text x="715" y="108" text-anchor="middle" fill="#34d399" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Flyto2 — 452 Validated Modules</text>
 
   <!-- Right flow -->
   <rect x="550" y="145" width="330" height="36" rx="8" fill="#334155"/>

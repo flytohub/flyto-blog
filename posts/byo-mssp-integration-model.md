@@ -79,7 +79,7 @@ Finally, the loop closes into red-team simulation — exercising the validated a
 
 ## Why this works: one engine underneath
 
-The reason the Warroom can run this loop deterministically is that it rides the same execution substrate as Flyto2's automation line. Flyto2 is one brand with two product lines: the automation engine (flyto-core) — 451 deterministic modules, MCP-native over stdio and streamable-http, with evidence capture, replay, YAML recipes, and human-in-the-loop control — and the security MSSP Warroom.
+The reason the Warroom can run this loop deterministically is that it rides the same execution substrate as Flyto2's automation line. Flyto2 is one brand with two product lines: the automation engine (flyto-core) — 452 deterministic modules, MCP-native over stdio and streamable-http, with evidence capture, replay, YAML recipes, and human-in-the-loop control — and the security MSSP Warroom.
 
 The deterministic modules, YAML recipes, and evidence/replay that run automation are literally the layer that runs scans, collects evidence, and drives red-team. Automation is the *how*; the war-room is the *what and why*. That shared substrate is why integration is cheap and the loop is auditable: every scan, every correlation, every pentest step, and every red-team move executes as the same kind of replayable, evidence-backed module that powers the automation funnel.
 

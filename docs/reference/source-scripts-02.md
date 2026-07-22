@@ -6,6 +6,7 @@ Source-backed contracts for **220 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `writeProductionCaptions(sourcePath, normalizedSrtPath, assPath, output, tempo, durationSeconds)` | Builds write production captions. | [scripts/render-video.mjs:488](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L488) |
 | function | `writeVoiceover(plan, outputDir)` | Builds write voiceover. | [scripts/render-video.mjs:533](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L533) |
 | function | `writeMetadata(plan, output, outputDir)` | Builds write metadata. | [scripts/render-video.mjs:542](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L542) |
 | function | `hasCommand(name)` | Validates has command. | [scripts/render-video.mjs:560](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L560) |
@@ -90,47 +91,47 @@ Source-backed contracts for **220 declarations**.
 | constant | `homepageThreshold` | Defines the homepage threshold source-of-truth value. | [scripts/seo-score.mjs:15](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L15) |
 | constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/seo-score.mjs:16](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L16) |
 | constant | `focusKeywordOverrides` | Defines the focus keyword overrides source-of-truth value. | [scripts/seo-score.mjs:18](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L18) |
-| constant | `homepageFocusTerms` | Defines the homepage focus terms source-of-truth value. | [scripts/seo-score.mjs:34](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L34) |
-| function | `decodeHtml(value)` | Transforms decode html. | [scripts/seo-score.mjs:42](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L42) |
-| function | `getTags(html, tagName)` | Retrieves get tags. | [scripts/seo-score.mjs:53](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L53) |
-| function | `attrs(rawAttrs)` | Implements attrs. | [scripts/seo-score.mjs:57](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L57) |
-| function | `findMeta(html, key, value)` | Retrieves find meta. | [scripts/seo-score.mjs:65](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L65) |
-| function | `findLink(html, rel, hrefLang)` | Retrieves find link. | [scripts/seo-score.mjs:74](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L74) |
-| function | `findTypedLink(html, rel, type)` | Retrieves find typed link. | [scripts/seo-score.mjs:86](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L86) |
-| function | `titleFrom(html)` | Implements title from. | [scripts/seo-score.mjs:98](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L98) |
-| function | `textFromTag(html, tagName)` | Implements text from tag. | [scripts/seo-score.mjs:103](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L103) |
-| function | `stripHtml(html)` | Transforms strip html. | [scripts/seo-score.mjs:109](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L109) |
-| function | `visibleText(html)` | Implements visible text. | [scripts/seo-score.mjs:117](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L117) |
-| function | `wordList(text)` | Implements word list. | [scripts/seo-score.mjs:122](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L122) |
-| function | `wordCount(text)` | Implements word count. | [scripts/seo-score.mjs:126](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L126) |
-| function | `normalizeTerm(value)` | Transforms normalize term. | [scripts/seo-score.mjs:130](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L130) |
-| function | `includesTerm(haystack, term)` | Implements includes term. | [scripts/seo-score.mjs:134](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L134) |
-| function | `parseYamlValue(value)` | Transforms parse yaml value. | [scripts/seo-score.mjs:138](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L138) |
-| function | `parseFrontmatter(raw)` | Transforms parse frontmatter. | [scripts/seo-score.mjs:150](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L150) |
-| function | `sourceForPage(relativePath)` | Implements source for page. | [scripts/seo-score.mjs:162](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L162) |
-| function | `sourceMeta(relativePath)` | Implements source meta. | [scripts/seo-score.mjs:168](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L168) |
-| function | `contractKeywordTerms()` | Implements contract keyword terms. | [scripts/seo-score.mjs:174](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L174) |
-| function | `inferFocusKeyword(relativePath, meta, html)` | Implements infer focus keyword. | [scripts/seo-score.mjs:183](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L183) |
-| function | `inferTitleKeyword(title)` | Implements infer title keyword. | [scripts/seo-score.mjs:202](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L202) |
-| function | `cleanupKeyword(value)` | Transforms cleanup keyword. | [scripts/seo-score.mjs:213](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L213) |
-| function | `relatedTerms(relativePath, focusKeyword, meta)` | Implements related terms. | [scripts/seo-score.mjs:227](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L227) |
-| function | `canonicalFor(relativePath)` | Implements canonical for. | [scripts/seo-score.mjs:242](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L242) |
-| function | `sitemapSet()` | Implements sitemap set. | [scripts/seo-score.mjs:247](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L247) |
-| function | `imageSitemapSet()` | Implements image sitemap set. | [scripts/seo-score.mjs:254](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L254) |
-| function | `publicAssetExists(url)` | Implements public asset exists. | [scripts/seo-score.mjs:261](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L261) |
-| function | `linkStats(html)` | Implements link stats. | [scripts/seo-score.mjs:272](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L272) |
-| function | `imageStats(html)` | Implements image stats. | [scripts/seo-score.mjs:279](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L279) |
-| function | `jsonLdTypes(html)` | Implements json ld types. | [scripts/seo-score.mjs:287](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L287) |
-| function | `scoreItem(items, category, name, points, pass, recommendation, details)` | Implements score item. | [scripts/seo-score.mjs:306](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L306) |
-| function | `scoreRange(items, category, name, points, value, min, max, recommendation)` | Implements score range. | [scripts/seo-score.mjs:318](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L318) |
-| function | `keywordDensity(text, term)` | Implements keyword density. | [scripts/seo-score.mjs:322](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L322) |
-| function | `scorePage(relativePath, html, sitemapUrls, imageSitemapImages)` | Implements score page. | [scripts/seo-score.mjs:331](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L331) |
-| function | `averageParagraphWords(html)` | Implements average paragraph words. | [scripts/seo-score.mjs:438](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L438) |
-| function | `hasAnswerIntent(h2s, text)` | Validates has answer intent. | [scripts/seo-score.mjs:445](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L445) |
-| function | `noBadEmails(html)` | Implements no bad emails. | [scripts/seo-score.mjs:450](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L450) |
-| function | `pageFiles()` | Implements page files. | [scripts/seo-score.mjs:455](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L455) |
-| function | `writeReports(report)` | Builds write reports. | [scripts/seo-score.mjs:464](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L464) |
-| function | `main()` | Implements main. | [scripts/seo-score.mjs:500](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L500) |
+| constant | `homepageFocusTerms` | Defines the homepage focus terms source-of-truth value. | [scripts/seo-score.mjs:35](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L35) |
+| function | `decodeHtml(value)` | Transforms decode html. | [scripts/seo-score.mjs:43](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L43) |
+| function | `getTags(html, tagName)` | Retrieves get tags. | [scripts/seo-score.mjs:54](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L54) |
+| function | `attrs(rawAttrs)` | Implements attrs. | [scripts/seo-score.mjs:58](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L58) |
+| function | `findMeta(html, key, value)` | Retrieves find meta. | [scripts/seo-score.mjs:66](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L66) |
+| function | `findLink(html, rel, hrefLang)` | Retrieves find link. | [scripts/seo-score.mjs:75](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L75) |
+| function | `findTypedLink(html, rel, type)` | Retrieves find typed link. | [scripts/seo-score.mjs:87](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L87) |
+| function | `titleFrom(html)` | Implements title from. | [scripts/seo-score.mjs:99](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L99) |
+| function | `textFromTag(html, tagName)` | Implements text from tag. | [scripts/seo-score.mjs:104](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L104) |
+| function | `stripHtml(html)` | Transforms strip html. | [scripts/seo-score.mjs:110](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L110) |
+| function | `visibleText(html)` | Implements visible text. | [scripts/seo-score.mjs:118](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L118) |
+| function | `wordList(text)` | Implements word list. | [scripts/seo-score.mjs:123](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L123) |
+| function | `wordCount(text)` | Implements word count. | [scripts/seo-score.mjs:127](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L127) |
+| function | `normalizeTerm(value)` | Transforms normalize term. | [scripts/seo-score.mjs:131](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L131) |
+| function | `includesTerm(haystack, term)` | Implements includes term. | [scripts/seo-score.mjs:135](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L135) |
+| function | `parseYamlValue(value)` | Transforms parse yaml value. | [scripts/seo-score.mjs:139](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L139) |
+| function | `parseFrontmatter(raw)` | Transforms parse frontmatter. | [scripts/seo-score.mjs:151](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L151) |
+| function | `sourceForPage(relativePath)` | Implements source for page. | [scripts/seo-score.mjs:163](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L163) |
+| function | `sourceMeta(relativePath)` | Implements source meta. | [scripts/seo-score.mjs:169](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L169) |
+| function | `contractKeywordTerms()` | Implements contract keyword terms. | [scripts/seo-score.mjs:175](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L175) |
+| function | `inferFocusKeyword(relativePath, meta, html)` | Implements infer focus keyword. | [scripts/seo-score.mjs:184](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L184) |
+| function | `inferTitleKeyword(title)` | Implements infer title keyword. | [scripts/seo-score.mjs:203](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L203) |
+| function | `cleanupKeyword(value)` | Transforms cleanup keyword. | [scripts/seo-score.mjs:214](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L214) |
+| function | `relatedTerms(relativePath, focusKeyword, meta)` | Implements related terms. | [scripts/seo-score.mjs:228](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L228) |
+| function | `canonicalFor(relativePath)` | Implements canonical for. | [scripts/seo-score.mjs:243](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L243) |
+| function | `sitemapSet()` | Implements sitemap set. | [scripts/seo-score.mjs:248](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L248) |
+| function | `imageSitemapSet()` | Implements image sitemap set. | [scripts/seo-score.mjs:255](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L255) |
+| function | `publicAssetExists(url)` | Implements public asset exists. | [scripts/seo-score.mjs:262](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L262) |
+| function | `linkStats(html)` | Implements link stats. | [scripts/seo-score.mjs:273](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L273) |
+| function | `imageStats(html)` | Implements image stats. | [scripts/seo-score.mjs:280](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L280) |
+| function | `jsonLdTypes(html)` | Implements json ld types. | [scripts/seo-score.mjs:288](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L288) |
+| function | `scoreItem(items, category, name, points, pass, recommendation, details)` | Implements score item. | [scripts/seo-score.mjs:307](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L307) |
+| function | `scoreRange(items, category, name, points, value, min, max, recommendation)` | Implements score range. | [scripts/seo-score.mjs:319](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L319) |
+| function | `keywordDensity(text, term)` | Implements keyword density. | [scripts/seo-score.mjs:323](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L323) |
+| function | `scorePage(relativePath, html, sitemapUrls, imageSitemapImages)` | Implements score page. | [scripts/seo-score.mjs:332](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L332) |
+| function | `averageParagraphWords(html)` | Implements average paragraph words. | [scripts/seo-score.mjs:439](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L439) |
+| function | `hasAnswerIntent(h2s, text)` | Validates has answer intent. | [scripts/seo-score.mjs:446](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L446) |
+| function | `noBadEmails(html)` | Implements no bad emails. | [scripts/seo-score.mjs:451](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L451) |
+| function | `pageFiles()` | Implements page files. | [scripts/seo-score.mjs:456](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L456) |
+| function | `writeReports(report)` | Builds write reports. | [scripts/seo-score.mjs:465](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L465) |
+| function | `main()` | Implements main. | [scripts/seo-score.mjs:501](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-score.mjs#L501) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/social-publish.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/social-publish.mjs#L5) |
 | constant | `defaultPlan` | Defines the default plan source-of-truth value. | [scripts/social-publish.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/social-publish.mjs#L6) |
 | constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/social-publish.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/social-publish.mjs#L7) |
@@ -225,4 +226,3 @@ Source-backed contracts for **220 declarations**.
 | function | `validateOutputs(relativePath, plan)` | Validates validate outputs. | [scripts/video-plan-check.mjs:137](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L137) |
 | function | `validateThumbnails(relativePath, plan)` | Validates validate thumbnails. | [scripts/video-plan-check.mjs:161](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L161) |
 | function | `validateProduction(relativePath, plan)` | Validates validate production. | [scripts/video-plan-check.mjs:172](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L172) |
-| function | `validatePlan(relativePath)` | Validates validate plan. | [scripts/video-plan-check.mjs:234](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L234) |

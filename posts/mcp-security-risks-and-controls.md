@@ -1,6 +1,8 @@
 ---
 title: "MCP Security: Risks and Controls for AI Tool Servers"
 description: "MCP security guide: inventory tool servers, reduce unauthenticated execution, bind exposure, and authorization risk, then simulate policy before enforcement."
+focusKeyword: "MCP security"
+relatedKeywords: ["MCP security best practices", "MCP security risks", "MCP security issues", "MCP security vulnerabilities"]
 date: 2026-06-10
 tags: [security, mcp]
 author: Flyto2 Team
@@ -11,7 +13,7 @@ The Model Context Protocol (MCP) turned "give the AI a tool" into production plu
 
 <!-- more -->
 
-This post is grounded in a real MCP server. flyto-core is itself MCP-native — it exposes 451 deterministic modules as tools over both stdio and streamable HTTP — so the controls here aren't a generic checklist. They're the failure modes we found and closed on our own published server first, then encoded into the [MCP security surface](https://docs.flyto2.com/warroom/surfaces/mcp-security) of the Flyto2 war-room. We talk about *classes* of weakness rather than catalogued CVE numbers, because the job is to find the class in *your* deployment regardless of which advisory it eventually maps to.
+This post is grounded in a real MCP server. flyto-core is itself MCP-native — it exposes 452 deterministic modules as tools over both stdio and streamable HTTP — so the controls here aren't a generic checklist. They're the failure modes we found and closed on our own published server first, then encoded into the [MCP security surface](https://docs.flyto2.com/warroom/surfaces/mcp-security) of the Flyto2 war-room. We talk about *classes* of weakness rather than catalogued CVE numbers, because the job is to find the class in *your* deployment regardless of which advisory it eventually maps to.
 
 ## The MCP attack surface, in three classes
 

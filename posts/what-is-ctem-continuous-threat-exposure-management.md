@@ -1,6 +1,8 @@
 ---
 title: "What Is CTEM? Continuous Threat Exposure Management Guide"
 description: "What is CTEM? A practical guide to Continuous Threat Exposure Management — the 5 Gartner stages, how it differs from vulnerability management, and a rollout checklist."
+focusKeyword: "what is CTEM"
+relatedKeywords: ["CTEM cybersecurity", "continuous threat exposure management", "CTEM framework", "what is CTEM in cyber security"]
 date: 2026-06-10
 author: Flyto2 Team
 tags: ["CTEM", "exposure management", "vulnerability management", "security operations"]

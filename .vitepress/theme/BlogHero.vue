@@ -1,8 +1,9 @@
 <script setup lang="ts">
 const clusters = [
-  { label: 'AI Workflow Automation', href: '/posts/ai-browser-automation-guide' },
+  { label: 'AI Workflow Automation', href: '/posts/workflow-automation' },
   { label: 'Open Source Automation', href: '/posts/modules-not-magic' },
   { label: 'MCP Server Automation', href: '/posts/mcp-server-guide' },
+  { label: 'MCP Security', href: '/posts/mcp-security-risks-and-controls' },
   { label: 'CTEM', href: '/posts/what-is-ctem-continuous-threat-exposure-management' },
   { label: 'ASM / EASM', href: '/posts/attack-surface-management-guide' },
   { label: 'Dark Web Monitoring', href: '/posts/darkweb-monitoring-explained' },
@@ -26,7 +27,7 @@ const clusters = [
         Flyto2 Blog
       </div>
       <h1 class="hero-title">
-        <span class="title-line">AI workflow automation, MCP,</span>{{ ' ' }}<span class="title-line title-gradient">CTEM, and security guides</span>
+        <span class="title-line">AI workflow automation, MCP, </span><span class="title-line title-gradient">CTEM, and security guides</span>
       </h1>
       <p class="hero-desc">Practical guides for open-source AI agent automation, MCP server tooling, no-code browser workflows, evidence-backed CTEM, BYO integrations, and red-team validation.</p>
       <div class="topic-grid">
@@ -36,7 +37,7 @@ const clusters = [
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">451</span>
+          <span class="stat-num">452</span>
           <span class="stat-label">Modules</span>
         </div>
         <div class="stat-divider" />

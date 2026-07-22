@@ -1,21 +1,23 @@
 ---
-title: "Workflow Automation — How to Chain Tasks Into One-Click Processes"
-description: "Workflow automation connects multiple tasks into a single process that runs itself. Learn how to build practical workflows with real examples."
+title: "What Is AI Workflow Automation? Examples and How It Works"
+description: "What is AI workflow automation? Learn how AI and deterministic steps work together, see practical examples, and choose a workflow automation tool."
+focusKeyword: "what is AI workflow automation"
+relatedKeywords: ["AI workflow automation examples", "AI workflow automation tools", "agentic AI workflow automation", "open source AI workflow automation"]
 date: 2026-03-25
 tags: [workflow-automation, automation, productivity, guide]
 author: Flyto2 Team
 cover: /automation-concept.svg
 ---
 
-Automating a single task is useful. Automating an entire workflow is transformative. The difference between "save me 2 minutes" and "save me 2 hours" comes down to chaining tasks together — turning a multi-step process into something that runs with one click.
+**AI workflow automation** uses AI to understand intent or changing inputs, then combines that judgment with repeatable steps that execute the work. The useful version is not an agent improvising forever. It is a workflow you can inspect, test, replay, and improve after AI helps resolve the parts that vary.
 
 <!-- more -->
 
 That is what **workflow automation** is about. Not just automating one action, but connecting a whole sequence: gather data, process it, move it somewhere, notify someone. The entire chain, hands-free.
 
-## What Is Workflow Automation?
+## What Is AI Workflow Automation?
 
-A workflow is a series of steps that accomplish a goal. Workflow automation means turning those steps into a process that runs without manual intervention.
+A workflow is a series of steps that accomplish a goal. AI workflow automation turns those steps into a process that can interpret natural-language goals or messy inputs while keeping important actions deterministic and auditable.
 
 Here is a simple example. Every Monday, you:
 
@@ -43,7 +45,7 @@ For workflows that involve your actual computer and real websites, you need a di
 
 ## Building Workflows With Flyto2
 
-Flyto2 is an open-source automation platform with 451 modules. It runs on your computer and handles the full range of workflow tasks — browser automation, file operations, data processing, and system commands.
+Flyto2 is an open-source automation platform with 452 modules. It runs on your computer and handles the full range of workflow tasks — browser automation, file operations, data processing, and system commands.
 
 ### A Real Workflow: Weekly Report
 
@@ -92,7 +94,7 @@ One file. Seven modules. Runs in under a minute. And you can schedule it to run 
 
 ### Workflow Building Blocks
 
-Flyto2's 451 modules cover everything you need to build complete workflows:
+Flyto2's 452 modules cover everything you need to build complete workflows:
 
 | Category | What It Does | Example Modules |
 |----------|-------------|----------------|

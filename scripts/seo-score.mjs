@@ -19,6 +19,7 @@ const focusKeywordOverrides = new Map([
   ['posts/ai-browser-automation-guide.html', 'AI browser automation'],
   ['posts/workflow-automation.html', 'workflow automation'],
   ['posts/mcp-server-guide.html', 'MCP server automation'],
+  ['posts/mcp-security-risks-and-controls.html', 'MCP security'],
   ['posts/modules-not-magic.html', 'AI automation modules'],
   ['posts/attack-surface-management-guide.html', 'attack surface management'],
   ['posts/what-is-ctem-continuous-threat-exposure-management.html', 'Continuous Threat Exposure Management'],

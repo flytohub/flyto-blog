@@ -1,6 +1,6 @@
 {
   "generatedFrom": "scripts/generate-discovery-feeds.mjs",
-  "sourceHash": "b9fa05a818056877cf36d3a20fdb0c214ad10a1ad9b07857f3fc6273ca9b85a0",
+  "sourceHash": "bf948250615a7867e1801f892c8fd91bf621d8b304c6f29d51bef9166ef3bec7",
   "outputs": [
     "/rss.xml",
     "/atom.xml",

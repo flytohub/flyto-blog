@@ -1,6 +1,8 @@
 ---
 title: "AI Browser Automation: How It Works and When to Use It"
 description: "A practical guide to AI browser automation: how LLM-driven and deterministic browser automation work, where each wins, common pitfalls, and a getting-started checklist."
+focusKeyword: "AI browser automation"
+relatedKeywords: ["AI browser automation framework", "AI browser automation tools", "open source AI browser automation", "AI browser automation GitHub"]
 date: 2026-06-10
 tags: ["AI automation", "browser automation", "LLM", "no-code"]
 author: Flyto2 Team
@@ -77,7 +79,7 @@ If you're not ready to write code, you don't have to. A [no-code browser automat
 
 ## How Flyto2 Approaches This
 
-The Flyto2 automation engine is built on a library of **451 deterministic modules** — discrete, inspectable building blocks for browser and web actions like navigate, click, fill, extract, and wait. Each run produces an **evidence trail you can replay**, so you can re-execute a flow and verify exactly what happened, step by step. That is the determinism half of the equation: repeatable, auditable, cheap to run at volume.
+The Flyto2 automation engine is built on a library of **452 deterministic modules** — discrete, inspectable building blocks for browser and web actions like navigate, click, fill, extract, and wait. Each run produces an **evidence trail you can replay**, so you can re-execute a flow and verify exactly what happened, step by step. That is the determinism half of the equation: repeatable, auditable, cheap to run at volume.
 
 The AI layer sits *on top* of those modules. An LLM (including via MCP, which the engine speaks natively) is excellent at intent resolution and recovering from layout change — but instead of letting the model free-form click around in production, it composes and parameterizes deterministic modules. You get the adaptability of AI where pages are messy or changing, and the reproducibility of explicit modules where it counts. When a page changes and a step needs re-resolving, the model adapts the relevant module rather than discarding the whole replayable flow.
 

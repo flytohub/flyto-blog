@@ -103,7 +103,7 @@ Most web scraping tools require you to learn selectors, write configuration file
 - **Real browser sessions** — No fake requests that get blocked
 - **Built-in error handling** — The tool adapts when pages look different than expected
 - **Evidence trail** — Every action is logged with screenshots, so you know exactly what happened
-- **451 modules** — Scraping is just one thing Flyto2 can do. You can connect it to file operations, data transformation, notifications, and more
+- **452 modules** — Scraping is just one thing Flyto2 can do. You can connect it to file operations, data transformation, notifications, and more
 
 ## Try Flyto2
 

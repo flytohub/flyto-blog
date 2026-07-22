@@ -72,7 +72,7 @@ This is also where the MSSP / bring-your-own model becomes concrete. The first t
 
 You should not have to re-buy an attribution engine to get this. You bring the assets you already track; the surface supplements what you are missing and runs the correlation and scoring on the union. We charge for the **integration and the closed loop** — not for re-running attribution you could have run yourself — because the *honest, gated, de-correlated* graph is what makes everything downstream worth trusting.
 
-And it is the same execution substrate throughout. The deterministic engine that powers our automation product line ([flyto-core](https://docs.flyto2.com/): 451 deterministic modules, MCP-native, YAML recipes, evidence and replay) is literally what runs the footprint expansion, collects the per-entity evidence, and drives the downstream pentest and red-team. Automation is the *how*; the war-room is the *what and why*.
+And it is the same execution substrate throughout. The deterministic engine that powers our automation product line ([flyto-core](https://docs.flyto2.com/): 452 deterministic modules, MCP-native, YAML recipes, evidence and replay) is literally what runs the footprint expansion, collects the per-entity evidence, and drives the downstream pentest and red-team. Automation is the *how*; the war-room is the *what and why*.
 
 ## Where to go next
 

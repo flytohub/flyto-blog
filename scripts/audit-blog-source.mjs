@@ -12,6 +12,7 @@ const requiredPosts = [
   'ai-browser-automation-guide.md',
   'workflow-automation.md',
   'mcp-server-guide.md',
+  'mcp-security-risks-and-controls.md',
   'modules-not-magic.md',
   'attack-surface-management-guide.md',
   'what-is-ctem-continuous-threat-exposure-management.md',
@@ -23,6 +24,15 @@ const requiredPosts = [
   'intelligence-workflow-automation-guide.md',
   'community-growth-open-source-ai-workflow-automation.md',
 ];
+
+const requiredKeywordProfiles = new Map([
+  ['workflow-automation.md', 'what is AI workflow automation'],
+  ['ai-browser-automation-guide.md', 'AI browser automation'],
+  ['mcp-server-guide.md', 'MCP server automation'],
+  ['mcp-security-risks-and-controls.md', 'MCP security'],
+  ['attack-surface-management-guide.md', 'attack surface management'],
+  ['what-is-ctem-continuous-threat-exposure-management.md', 'what is CTEM'],
+]);
 
 function fail(message) {
   failures.push(message);
@@ -64,6 +74,8 @@ function checkPost(file) {
   const tags = field(frontmatter, 'tags');
   const author = field(frontmatter, 'author');
   const cover = field(frontmatter, 'cover');
+  const focusKeyword = field(frontmatter, 'focusKeyword');
+  const relatedKeywords = field(frontmatter, 'relatedKeywords');
 
   if (title.length < 10 || title.length > 110) fail(`${relativePath} title length ${title.length} outside 10-110`);
   if (description.length < 50 || description.length > 180) {
@@ -76,6 +88,19 @@ function checkPost(file) {
     fail(`${relativePath} missing cover`);
   } else if (cover.startsWith('/') && !existsSync(path.join(publicDir, cover.slice(1)))) {
     fail(`${relativePath} cover file missing: public${cover}`);
+  }
+
+  const expectedFocusKeyword = requiredKeywordProfiles.get(file);
+  if (expectedFocusKeyword && focusKeyword !== expectedFocusKeyword) {
+    fail(`${relativePath} focusKeyword must be ${expectedFocusKeyword}`);
+  }
+  if (expectedFocusKeyword) {
+    const relatedCount = relatedKeywords
+      .replace(/^\[|\]$/g, '')
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean).length;
+    if (relatedCount < 3) fail(`${relativePath} needs at least three relatedKeywords`);
   }
 
   checkBrandAndEmails(relativePath, content);

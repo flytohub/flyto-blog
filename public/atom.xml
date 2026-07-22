@@ -96,7 +96,7 @@
     <updated>2026-06-10T00:00:00.000Z</updated>
     <summary>A practical guide to AI browser automation: how LLM-driven and deterministic browser automation work, where each wins, common pitfalls, and a getting-started checklist.</summary>
     <author><name>Flyto2 Team</name></author>
-    <category term="AI automation" />
+    <category term="AI browser automation" />
   </entry>
   <entry>
     <title>API Security Testing: A Practical How-To Guide</title>
@@ -136,7 +136,7 @@
     <updated>2026-06-10T00:00:00.000Z</updated>
     <summary>A practical guide to attack surface management in 2026: external discovery, CTEM, shadow IT, and how a war room correlates exposure with code.</summary>
     <author><name>Flyto2 Team</name></author>
-    <category term="security" />
+    <category term="attack surface management" />
   </entry>
   <entry>
     <title>The BYO MSSP: Why You Shouldn&apos;t Re-Buy Security Tools You Already Own</title>
@@ -256,7 +256,7 @@
     <updated>2026-06-10T00:00:00.000Z</updated>
     <summary>MCP security guide: inventory tool servers, reduce unauthenticated execution, bind exposure, and authorization risk, then simulate policy before enforcement.</summary>
     <author><name>Flyto2 Team</name></author>
-    <category term="security" />
+    <category term="MCP security" />
   </entry>
   <entry>
     <title>No-Code API Integration: Connect Apps Without Code</title>
@@ -416,7 +416,7 @@
     <updated>2026-06-10T00:00:00.000Z</updated>
     <summary>What is CTEM? A practical guide to Continuous Threat Exposure Management — the 5 Gartner stages, how it differs from vulnerability management, and a rollout checklist.</summary>
     <author><name>Flyto2 Team</name></author>
-    <category term="CTEM" />
+    <category term="what is CTEM" />
   </entry>
   <entry>
     <title>What Is EASM? External Attack Surface Management Explained</title>
@@ -444,7 +444,7 @@
     <id>https://blog.flyto2.com/posts/automa-alternative</id>
     <published>2026-03-25T00:00:00.000Z</published>
     <updated>2026-03-25T00:00:00.000Z</updated>
-    <summary>Looking for an Automa alternative? Flyto2 goes beyond browser extensions with 451 modules, file operations, AI agents, and cloud automation.</summary>
+    <summary>Looking for an Automa alternative? Flyto2 goes beyond browser extensions with 452 modules, file operations, AI agents, and cloud automation.</summary>
     <author><name>Flyto2 Team</name></author>
     <category term="automation" />
   </entry>
@@ -484,19 +484,19 @@
     <id>https://blog.flyto2.com/posts/rpa-free</id>
     <published>2026-03-25T00:00:00.000Z</published>
     <updated>2026-03-25T00:00:00.000Z</updated>
-    <summary>Free RPA without enterprise pricing: Flyto2 is an open-source RPA tool with 451 modules, browser automation, and zero licensing fees.</summary>
+    <summary>Free RPA without enterprise pricing: Flyto2 is an open-source RPA tool with 452 modules, browser automation, and zero licensing fees.</summary>
     <author><name>Flyto2 Team</name></author>
     <category term="Free RPA" />
   </entry>
   <entry>
-    <title>Workflow Automation — How to Chain Tasks Into One-Click Processes</title>
+    <title>What Is AI Workflow Automation? Examples and How It Works</title>
     <link href="https://blog.flyto2.com/posts/workflow-automation" />
     <id>https://blog.flyto2.com/posts/workflow-automation</id>
     <published>2026-03-25T00:00:00.000Z</published>
     <updated>2026-03-25T00:00:00.000Z</updated>
-    <summary>Workflow automation connects multiple tasks into a single process that runs itself. Learn how to build practical workflows with real examples.</summary>
+    <summary>What is AI workflow automation? Learn how AI and deterministic steps work together, see practical examples, and choose a workflow automation tool.</summary>
     <author><name>Flyto2 Team</name></author>
-    <category term="workflow-automation" />
+    <category term="what is AI workflow automation" />
   </entry>
   <entry>
     <title>Free Zapier Alternative That Actually Runs on Your Computer</title>
@@ -504,7 +504,7 @@
     <id>https://blog.flyto2.com/posts/zapier-alternative-free</id>
     <published>2026-03-25T00:00:00.000Z</published>
     <updated>2026-03-25T00:00:00.000Z</updated>
-    <summary>Free Zapier alternative for teams avoiding monthly limits and cloud lock-in: Flyto2 automates workflows locally with 451 modules and zero subscription fees.</summary>
+    <summary>Free Zapier alternative for teams avoiding monthly limits and cloud lock-in: Flyto2 automates workflows locally with 452 modules and zero subscription fees.</summary>
     <author><name>Flyto2 Team</name></author>
     <category term="Free Zapier alternative" />
   </entry>
@@ -564,7 +564,7 @@
     <id>https://blog.flyto2.com/posts/free-alternative-to-automation-anywhere</id>
     <published>2026-03-17T00:00:00.000Z</published>
     <updated>2026-03-17T00:00:00.000Z</updated>
-    <summary>Need an automation anywhere alternative that&apos;s free and easy? Flyto2 gives small teams 451 modules, no licensing fees, and no enterprise complexity.</summary>
+    <summary>Need an automation anywhere alternative that&apos;s free and easy? Flyto2 gives small teams 452 modules, no licensing fees, and no enterprise complexity.</summary>
     <author><name>Flyto2 Team</name></author>
     <category term="Automation Anywhere alternative" />
   </entry>
@@ -634,7 +634,7 @@
     <id>https://blog.flyto2.com/posts/modules-not-magic</id>
     <published>2026-03-13T00:00:00.000Z</published>
     <updated>2026-03-13T00:00:00.000Z</updated>
-    <summary>Why Flyto2 uses 451 AI automation modules instead of letting agents write code from scratch: deterministic workflows you can debug and replay.</summary>
+    <summary>Why Flyto2 uses 452 AI automation modules instead of letting agents write code from scratch: deterministic workflows you can debug and replay.</summary>
     <author><name>Flyto2 Team</name></author>
     <category term="AI automation modules" />
   </entry>

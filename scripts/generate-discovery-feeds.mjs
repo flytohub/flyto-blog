@@ -323,7 +323,7 @@ function ogImagePng() {
   drawText(pixels, width, 'FLYTO2 BLOG', 84, 224, 11, [18, 24, 38, 255]);
   drawText(pixels, width, 'AI WORKFLOW AUTOMATION', 88, 366, 5, [74, 85, 104, 255]);
   drawText(pixels, width, 'MCP CTEM AGENT GUIDES', 88, 440, 5, [74, 85, 104, 255]);
-  drawText(pixels, width, '451 MODULES', 88, 524, 6, [126, 58, 242, 255]);
+  drawText(pixels, width, '452 MODULES', 88, 524, 6, [126, 58, 242, 255]);
 
   const rawRows = Buffer.alloc((width * 4 + 1) * height);
   for (let y = 0; y < height; y += 1) {

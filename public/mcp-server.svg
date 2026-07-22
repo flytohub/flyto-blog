@@ -21,7 +21,7 @@
   <rect width="960" height="440" rx="16" fill="url(#bg)"/>
 
   <!-- Title -->
-  <text x="480" y="48" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="24" font-weight="700">451 Modules as MCP Tools</text>
+  <text x="480" y="48" text-anchor="middle" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="24" font-weight="700">452 Modules as MCP Tools</text>
   <text x="480" y="74" text-anchor="middle" fill="#64748b" font-family="system-ui,sans-serif" font-size="14">Connect flyto-core to any MCP-compatible AI client</text>
 
   <!-- Left: AI Clients -->
@@ -58,7 +58,7 @@
 
   <line x1="410" y1="215" x2="550" y2="215" stroke="#334155" stroke-width="1"/>
 
-  <text x="480" y="240" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">451 tools exposed</text>
+  <text x="480" y="240" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">452 tools exposed</text>
   <text x="480" y="260" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Schema-validated</text>
   <text x="480" y="280" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="12">Full trace on every call</text>
 
@@ -89,5 +89,5 @@
   <text x="710" y="363" fill="#34d399" font-family="monospace" font-size="12">84 catalog categories</text>
 
   <!-- Footer -->
-  <text x="480" y="425" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">pip install flyto-core — one command, 451 MCP tools</text>
+  <text x="480" y="425" text-anchor="middle" fill="#475569" font-family="system-ui,sans-serif" font-size="13">pip install flyto-core — one command, 452 MCP tools</text>
 </svg>

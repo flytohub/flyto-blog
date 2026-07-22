@@ -70,7 +70,7 @@ Flyto2 is an MSSP / BYO platform. The first thing you do on entry is **integrate
 2. **We supplement what you lack.** Missing brand sensors, or no stealer-log coverage? Those surfaces fill in around your existing feed instead of duplicating it.
 3. **We run the loop.** A leaked credential gets seeded into footprint; an IOC gets cross-checked against runtime events; a lookalike domain gets promoted toward pentest. All the way through to evidence collection and red-team simulation, unified in one war-room.
 
-We charge for the **integration and the closed loop**, not for re-running an algorithm you already paid for. That is the structural reason these signals are worth more together than apart — and it's the same deterministic engine that powers our automation product line ([flyto-core](https://docs.flyto2.com/): 451 deterministic modules, MCP-native, YAML recipes, evidence and replay) that literally runs the scans, collects the evidence, and drives the red-team here. Automation is the *how*; the war-room is the *what and why*.
+We charge for the **integration and the closed loop**, not for re-running an algorithm you already paid for. That is the structural reason these signals are worth more together than apart — and it's the same deterministic engine that powers our automation product line ([flyto-core](https://docs.flyto2.com/): 452 deterministic modules, MCP-native, YAML recipes, evidence and replay) that literally runs the scans, collects the evidence, and drives the red-team here. Automation is the *how*; the war-room is the *what and why*.
 
 ## Where to go next
 

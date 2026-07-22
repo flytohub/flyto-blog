@@ -7,7 +7,7 @@ import {
 } from './seo-contract'
 
 const SITE_URL = siteUrl
-const CORE_MODULE_COUNT = 451
+const CORE_MODULE_COUNT = 452
 const CORE_CATALOG_CATEGORY_COUNT = 84
 const BUILT_IN_RECIPE_COUNT = 41
 const CORE_RUNTIME_SUMMARY = `${CORE_MODULE_COUNT} registry-backed modules across ${CORE_CATALOG_CATEGORY_COUNT} catalog categories, ${BUILT_IN_RECIPE_COUNT} built-in recipes, MCP transports, evidence capture, and replayable YAML execution`
@@ -25,6 +25,8 @@ const SEO_KEYWORDS = [
   'open source AI workflow automation',
   'MCP server automation',
   'MCP automation tools',
+  'MCP security',
+  'MCP security best practices',
   'no-code browser automation',
   'self-hosted workflow automation',
   'agentic AI workflow automation',

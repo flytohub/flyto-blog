@@ -18,7 +18,7 @@ Flyto2 should be described as complementing and integrating existing tools, not 
 
 The product and examples should treat flyto-core as the shared execution kernel. Current public facts:
 
-- 451 registry-backed modules.
+- 452 registry-backed modules.
 - 84 catalog categories.
 - 41 built-in recipes.
 - 54 browser automation modules.

@@ -117,7 +117,7 @@ Flyto2 takes a different approach:
 - **Real browser** — Uses the same browser you would use, so websites behave normally
 - **Smart detection** — Finds elements intelligently instead of relying on fragile selectors
 - **Evidence trail** — Screenshots and logs at every step for accountability
-- **451 modules** — Clicking is just the start. Combine it with typing, downloading, file operations, and notifications in a single workflow
+- **452 modules** — Clicking is just the start. Combine it with typing, downloading, file operations, and notifications in a single workflow
 
 ## Try Flyto2
 

@@ -67,7 +67,7 @@
     <rect x="20" y="170" width="140" height="36" rx="8" fill="#1e293b" stroke="url(#blue)" stroke-width="1.5"/>
     <text x="90" y="193" text-anchor="middle" fill="#60a5fa" font-family="system-ui,sans-serif" font-size="12">API Call</text>
 
-    <text x="110" y="235" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="12">451 modules — browser &amp; API</text>
+    <text x="110" y="235" text-anchor="middle" fill="#10b981" font-family="system-ui,sans-serif" font-size="12">452 modules — browser &amp; API</text>
   </g>
 
   <!-- Bottom comparison -->

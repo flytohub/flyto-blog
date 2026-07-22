@@ -92,7 +92,7 @@ The principle: extract optimistically, but never accept output you have not chec
 
 ## Where Flyto2 Fits
 
-PDF extraction is rarely the whole job — it is the first step in a larger process. The Flyto2 automation engine is built around **451 deterministic, MCP-native modules** that you chain into evidence-backed, replayable workflows. That design fits document automation well: the same extracted record can flow straight into the next step without manual handoffs.
+PDF extraction is rarely the whole job — it is the first step in a larger process. The Flyto2 automation engine is built around **452 deterministic, MCP-native modules** that you chain into evidence-backed, replayable workflows. That design fits document automation well: the same extracted record can flow straight into the next step without manual handoffs.
 
 In practice, that means extraction connects cleanly to the work on either side of it. Pulling structured fields out of an invoice is the front half of [data-entry automation](/posts/data-entry-automation) — once the values are validated, they populate the destination system instead of someone keying them in. And because every module run produces evidence and is replayable, you can audit exactly what was read from which document, which is essential when the data feeds finance or compliance.
 
