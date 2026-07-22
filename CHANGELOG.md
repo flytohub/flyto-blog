@@ -57,6 +57,9 @@
 
 ### Changed
 
+- Re-enabled GitHub Pages in Actions workflow mode, restored the
+  `blog.flyto2.com` custom domain, and republished the verified blog after the
+  disabled Pages configuration caused public 404 responses.
 - Fixed blog reading-time calculation so long posts use Markdown word count
   instead of falling back to `1 min read`.
 - Updated VitePress non-content path handling so project memory does not enter

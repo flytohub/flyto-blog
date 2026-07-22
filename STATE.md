@@ -1,6 +1,12 @@
 # State
 
-Current state on 2026-07-18:
+Current state on 2026-07-22:
+
+- GitHub Pages is enabled in Actions workflow mode, the custom domain is
+  `blog.flyto2.com`, and deployment run `29890358620` passed after the Pages
+  site had been disabled. The homepage, both llms indexes, and all public blog
+  routes referenced by the docs SEO gate return HTTP 200 over HTTPS; HTTP
+  redirects to HTTPS at Cloudflare.
 
 - Blog SEO now consumes `.seo/i18n-seo-manifest.json`, synced from
   `flyto-i18n/dist/seo-manifest.json`. VitePress injects manifest-derived
@@ -85,6 +91,10 @@ Current state on 2026-07-18:
 
 Known gaps:
 
+- GitHub still reports the custom domain as unverified and has not issued its
+  own Pages origin certificate, so the Pages `https_enforced` flag cannot yet
+  be enabled. Cloudflare currently provides the public TLS certificate and
+  HTTPS redirect. Recheck domain verification and origin certificate issuance.
 - Data, Zero-person Agent, Big Data / Intelligence, and AI search visibility now
   have first-pass canonical posts; next work should add follow-up examples,
   templates, and multilingual strategy after docs and landing hreflang strategy
