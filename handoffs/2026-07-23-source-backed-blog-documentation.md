@@ -16,8 +16,8 @@ experience at mobile and desktop sizes.
   posts, 27 npm scripts, five workflows, 19 environment inputs, social/video
   plans, template and stock catalogs, and 74 public files.
 - `scripts/check-documentation.mjs` rejects generated drift, unowned paths,
-  malformed post metadata, dated route guidance, stale module counts, bare
-  Flyto branding, and unapproved email domains.
+  malformed post metadata, dated route guidance, stale module counts, retired
+  standalone product naming, and unapproved email domains.
 - README, architecture, project memory, posting guidance, contribution
   guidance, social/video guides, and the technical whitepaper now describe the
   implemented contracts and boundaries.

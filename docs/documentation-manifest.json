@@ -3,13 +3,18 @@
   "schema_version": 1,
   "repository": "flyto-blog",
   "status": "active",
+  "audiences": ["readers", "contributors", "search and distribution maintainers"],
   "documentation": {
     "index": "docs/README.md",
     "architecture": "ARCHITECTURE.md",
     "state": "STATE.md",
+    "security": "SECURITY.md",
+    "changelog": "CHANGELOG.md",
+    "feature_reference": "docs/WHITEPAPER.md",
     "whitepaper": "docs/WHITEPAPER.md",
     "source_reference": ["docs/reference/source-*.md"],
     "content_reference": ["docs/reference/posts-*.md"],
+    "module_roots": ["scripts"],
     "automation_reference": "docs/reference/automation.md",
     "distribution_reference": "docs/reference/distribution.md",
     "discovery_reference": "docs/reference/discovery-assets.md"

@@ -50,6 +50,15 @@ posts/
 Frontmatter schema lives in [`POSTING.md`](./POSTING.md) (or
 [`CONTRIBUTING.md`](./CONTRIBUTING.md) if you're writing a post).
 
+## Architecture
+
+VitePress renders `posts/` into the public article surface. Repository scripts
+validate frontmatter and links, generate discovery feeds, score built SEO
+output, prepare reviewed social plans, and render video assets. The generated
+[source and content reference](./docs/reference/README.md) is the method-level
+index; [the technical whitepaper](./docs/WHITEPAPER.md) explains the editorial,
+search, social, and video boundaries.
+
 ## API / Content Model
 
 Each post is a Markdown file with frontmatter metadata for title, summary,
@@ -168,3 +177,11 @@ with an outline first.
 - [Posting contract](./POSTING.md)
 - [Social distribution](./social/README.md)
 - [Video production](./video/README.md)
+
+## License And Reuse
+
+This repository does not currently declare one blanket license for editorial
+copy, Flyto2 trademarks, screenshots, generated media, and third-party assets.
+Each stock or image asset keeps the provenance recorded in its credits or
+catalog entry. Contact `team@flyto2.com` before reusing material whose license
+is not explicit.
