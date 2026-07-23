@@ -4,6 +4,25 @@
   --vp-font-family-base: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+.dark .blog-list .post-date,
+.dark .blog-list .reading-time,
+.dark .blog-list .meta-dot,
+.dark .blog-list .section-text,
+.dark .blog-list .list-status,
+.dark .blog-list .card-excerpt {
+  color: #b8b8c2;
+}
+
+.dark .blog-list .post-tag {
+  border: 1px solid #454650;
+  color: #d0d0d8;
+  background: #292a31;
+}
+
+.dark .blog-list .post-card:hover .post-tag {
+  background: #32333b;
+}
+
 /* Keep the nav logo footprint stable before the image finishes loading. */
 .VPNavBarTitle .VPImage.logo {
   width: 27px;

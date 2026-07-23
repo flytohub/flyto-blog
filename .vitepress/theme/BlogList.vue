@@ -292,23 +292,6 @@ function formatDate(dateStr: string) {
 }
 .post-card:hover .post-tag { background: color-mix(in srgb, var(--tag-color) 18%, transparent); }
 
-:global(.dark) .post-date,
-:global(.dark) .reading-time,
-:global(.dark) .meta-dot,
-:global(.dark) .section-text,
-:global(.dark) .list-status,
-:global(.dark) .card-excerpt {
-  color: #b8b8c2;
-}
-:global(.dark) .post-tag {
-  border: 1px solid #454650;
-  color: #d0d0d8;
-  background: #292a31;
-}
-:global(.dark) .post-card:hover .post-tag {
-  background: #32333b;
-}
-
 .empty { text-align: center; color: var(--vp-c-text-3); padding: 4rem 0; line-height: 2; }
 .load-more-row {
   display: flex;
