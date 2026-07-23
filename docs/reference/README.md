@@ -4,9 +4,9 @@
 
 This reference is generated from repository source with the TypeScript compiler AST and from article frontmatter with `gray-matter`. It maps executable declarations, posts, automation, distribution plans, and public assets back to maintained files.
 
-Inventory: **521 declarations**, **27 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **74 public files**.
+Inventory: **521 declarations**, **27 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
 
-Source fingerprint: `38a10a3081907516bbc0ae008f810400a67c1097075aa1afa494b5bb7df7bc9c`.
+Source fingerprint: `524094775030ae8448dec9ab0e11b9d8ad6f658437ac920ba985aadccb13a6ac`.
 
 ## Source Areas
 

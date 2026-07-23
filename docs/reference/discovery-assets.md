@@ -2,7 +2,7 @@
 
 # Public Discovery And Asset Reference
 
-The public tree contains **74 tracked files**. Generated feeds and discovery manifests are release artifacts; article covers, diagrams, logo, favicon, crawler policy, CNAME, and security contact are durable inputs.
+The public tree contains **75 tracked files**. Generated feeds and discovery manifests are release artifacts; article covers, diagrams, logo, favicon, crawler policy, CNAME, and security contact are durable inputs.
 
 | Public file | Purpose |
 |---|---|
@@ -58,6 +58,7 @@ The public tree contains **74 tracked files**. Generated feeds and discovery man
 | [public/llms-full.txt](https://github.com/flytohub/flyto-blog/blob/main/public/llms-full.txt) | AI-readable content index. |
 | [public/llms.txt](https://github.com/flytohub/flyto-blog/blob/main/public/llms.txt) | AI-readable content index. |
 | [public/logo.png](https://github.com/flytohub/flyto-blog/blob/main/public/logo.png) | Article, social, diagram, or brand image. |
+| [public/logo.webp](https://github.com/flytohub/flyto-blog/blob/main/public/logo.webp) | Article, social, diagram, or brand image. |
 | [public/mcp-server.svg](https://github.com/flytohub/flyto-blog/blob/main/public/mcp-server.svg) | Article, social, diagram, or brand image. |
 | [public/modules-not-magic.svg](https://github.com/flytohub/flyto-blog/blob/main/public/modules-not-magic.svg) | Article, social, diagram, or brand image. |
 | [public/n8n-alternative.svg](https://github.com/flytohub/flyto-blog/blob/main/public/n8n-alternative.svg) | Article, social, diagram, or brand image. |

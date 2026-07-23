@@ -181,7 +181,7 @@ function jsonFeed(posts) {
     home_page_url: siteUrl,
     feed_url: `${siteUrl}/feed.json`,
     description: siteDescription,
-    icon: `${siteUrl}/logo.png`,
+    icon: `${siteUrl}/logo.webp`,
     favicon: `${siteUrl}/favicon.ico`,
     authors: [feedAuthor],
     language: 'en-US',

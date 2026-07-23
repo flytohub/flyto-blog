@@ -172,7 +172,7 @@ export default defineConfig({
           '@id': ORGANIZATION_ID,
           name: 'Flyto2',
           url: 'https://flyto2.com',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.webp` },
           sameAs: [
             'https://github.com/flytohub',
             'https://www.youtube.com/@Flyto2',
@@ -219,7 +219,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/logo.webp',
     siteTitle: 'Flyto2 Blog',
 
     nav: [

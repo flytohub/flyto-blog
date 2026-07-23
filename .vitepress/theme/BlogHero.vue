@@ -174,13 +174,6 @@ const clusters = [
   background: var(--vp-c-brand-soft);
   border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 15%, transparent);
   margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(12px);
-}
-.blog-hero.visible .hero-badge {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
 .badge-dot {
@@ -207,16 +200,6 @@ const clusters = [
 
 .title-line {
   display: block;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.blog-hero.visible .title-line {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
-}
-.blog-hero.visible .title-line:nth-child(2) {
-  transition-delay: 0.35s;
 }
 
 .title-gradient {
@@ -242,13 +225,6 @@ const clusters = [
   max-width: 520px;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0;
-  transform: translateY(16px);
-}
-.blog-hero.visible .hero-desc {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.45s;
 }
 
 .topic-grid {
@@ -258,13 +234,6 @@ const clusters = [
   gap: 0.65rem;
   margin: 0 auto 2rem;
   max-width: 680px;
-  opacity: 0;
-  transform: translateY(16px);
-}
-.blog-hero.visible .topic-grid {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s;
 }
 .topic-chip {
   display: inline-flex;
@@ -296,13 +265,6 @@ const clusters = [
   background: color-mix(in srgb, var(--vp-c-bg-soft) 80%, transparent);
   border: 1px solid var(--vp-c-divider);
   backdrop-filter: blur(8px);
-  opacity: 0;
-  transform: translateY(16px);
-}
-.blog-hero.visible .hero-stats {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
 }
 
 .stat {
