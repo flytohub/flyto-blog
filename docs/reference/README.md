@@ -6,7 +6,7 @@ This reference is generated from repository source with the TypeScript compiler 
 
 Inventory: **524 declarations**, **27 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
 
-Source fingerprint: `842a1e67847a2b8d47afdf6e56c1fc45f59e127bfa9c36d27e6728b721db18f3`.
+Source fingerprint: `a8420b2f3fb1ee4c84d0082bbc43e8eb8bd7b79612eb9f822597a789813c34c3`.
 
 ## Source Areas
 
