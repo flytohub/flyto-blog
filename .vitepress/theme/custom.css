@@ -91,3 +91,42 @@
   color: var(--vp-c-brand-1);
   text-decoration: none;
 }
+
+.blog-post-context {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+}
+
+.blog-post-context-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--vp-c-brand-1);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.blog-post-context h2 {
+  margin: 0 0 0.5rem;
+  border: 0;
+  font-size: 1.25rem;
+}
+
+.blog-post-context > p:not(.blog-post-context-kicker) {
+  margin: 0;
+  color: var(--vp-c-text-2);
+}
+
+.blog-post-context-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.blog-post-context-links a {
+  font-size: 0.9rem;
+  font-weight: 650;
+}
