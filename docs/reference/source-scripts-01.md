@@ -31,38 +31,40 @@ Source-backed contracts for **220 declarations**.
 | constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/audit-seo-surface.mjs:16](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L16) |
 | constant | `homepageTerms` | Defines the homepage terms source-of-truth value. | [scripts/audit-seo-surface.mjs:18](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L18) |
 | constant | `requiredPostTerms` | Defines the required post terms source-of-truth value. | [scripts/audit-seo-surface.mjs:27](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L27) |
-| constant | `forbiddenSitemapTokens` | Defines the forbidden sitemap tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:42](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L42) |
-| constant | `requiredRobotsTokens` | Defines the required robots tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:60](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L60) |
-| constant | `requiredLlmsTokens` | Defines the required llms tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:72](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L72) |
-| constant | `requiredKeywordMatrixTokens` | Defines the required keyword matrix tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:90](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L90) |
-| function | `fail(message)` | Implements fail. | [scripts/audit-seo-surface.mjs:101](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L101) |
-| function | `sha256(value)` | Implements sha256. | [scripts/audit-seo-surface.mjs:105](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L105) |
-| function | `loadSeoContract()` | Retrieves load seo contract. | [scripts/audit-seo-surface.mjs:109](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L109) |
-| function | `decodeHtml(value)` | Transforms decode html. | [scripts/audit-seo-surface.mjs:117](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L117) |
-| function | `getTags(html, tagName)` | Retrieves get tags. | [scripts/audit-seo-surface.mjs:128](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L128) |
-| function | `attrs(rawAttrs)` | Implements attrs. | [scripts/audit-seo-surface.mjs:132](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L132) |
-| function | `findMeta(html, key, value)` | Retrieves find meta. | [scripts/audit-seo-surface.mjs:140](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L140) |
-| function | `findLink(html, rel, hrefLang)` | Retrieves find link. | [scripts/audit-seo-surface.mjs:151](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L151) |
-| function | `findTypedLink(html, rel, type)` | Retrieves find typed link. | [scripts/audit-seo-surface.mjs:164](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L164) |
-| function | `jsonLdTypes(html)` | Implements json ld types. | [scripts/audit-seo-surface.mjs:176](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L176) |
-| function | `contractKeywordTerms()` | Implements contract keyword terms. | [scripts/audit-seo-surface.mjs:195](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L195) |
-| function | `checkAlternateLinks(label, html)` | Validates check alternate links. | [scripts/audit-seo-surface.mjs:202](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L202) |
-| function | `titleFrom(html)` | Implements title from. | [scripts/audit-seo-surface.mjs:210](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L210) |
-| function | `checkLength(label, value, min, max)` | Validates check length. | [scripts/audit-seo-surface.mjs:215](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L215) |
-| function | `canonicalFor(relativeHtmlPath)` | Implements canonical for. | [scripts/audit-seo-surface.mjs:221](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L221) |
-| function | `sitemapLocVariants(url)` | Implements sitemap loc variants. | [scripts/audit-seo-surface.mjs:226](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L226) |
-| function | `checkBrandAndEmails(label, content)` | Validates check brand and emails. | [scripts/audit-seo-surface.mjs:230](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L230) |
-| function | `publicAssetPath(url)` | Implements public asset path. | [scripts/audit-seo-surface.mjs:237](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L237) |
-| function | `checkPublicAsset(label, metaLabel, url)` | Validates check public asset. | [scripts/audit-seo-surface.mjs:248](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L248) |
-| function | `checkDiscoveryLinks(label, html)` | Validates check discovery links. | [scripts/audit-seo-surface.mjs:253](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L253) |
-| function | `checkMetaBasics(label, html, canonical, { article = false, homepage = false })` | Validates check meta basics. | [scripts/audit-seo-surface.mjs:264](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L264) |
-| function | `checkSeoContract()` | Validates check seo contract. | [scripts/audit-seo-surface.mjs:314](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L314) |
-| function | `checkHomepage()` | Validates check homepage. | [scripts/audit-seo-surface.mjs:350](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L350) |
-| function | `checkPosts()` | Validates check posts. | [scripts/audit-seo-surface.mjs:369](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L369) |
-| function | `checkSitemapRobotsLlms(postFiles)` | Validates check sitemap robots llms. | [scripts/audit-seo-surface.mjs:398](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L398) |
-| function | `checkDiscoveryFiles(postFiles)` | Validates check discovery files. | [scripts/audit-seo-surface.mjs:428](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L428) |
-| function | `newestKeywordMatrix()` | Implements newest keyword matrix. | [scripts/audit-seo-surface.mjs:469](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L469) |
-| function | `checkKeywordMatrix()` | Validates check keyword matrix. | [scripts/audit-seo-surface.mjs:481](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L481) |
+| constant | `requiredCollectionTerms` | Defines the required collection terms source-of-truth value. | [scripts/audit-seo-surface.mjs:42](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L42) |
+| constant | `forbiddenSitemapTokens` | Defines the forbidden sitemap tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:46](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L46) |
+| constant | `requiredRobotsTokens` | Defines the required robots tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:64](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L64) |
+| constant | `requiredLlmsTokens` | Defines the required llms tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:76](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L76) |
+| constant | `requiredKeywordMatrixTokens` | Defines the required keyword matrix tokens source-of-truth value. | [scripts/audit-seo-surface.mjs:94](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L94) |
+| function | `fail(message)` | Implements fail. | [scripts/audit-seo-surface.mjs:105](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L105) |
+| function | `sha256(value)` | Implements sha256. | [scripts/audit-seo-surface.mjs:109](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L109) |
+| function | `loadSeoContract()` | Retrieves load seo contract. | [scripts/audit-seo-surface.mjs:113](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L113) |
+| function | `decodeHtml(value)` | Transforms decode html. | [scripts/audit-seo-surface.mjs:121](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L121) |
+| function | `getTags(html, tagName)` | Retrieves get tags. | [scripts/audit-seo-surface.mjs:132](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L132) |
+| function | `attrs(rawAttrs)` | Implements attrs. | [scripts/audit-seo-surface.mjs:136](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L136) |
+| function | `findMeta(html, key, value)` | Retrieves find meta. | [scripts/audit-seo-surface.mjs:144](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L144) |
+| function | `findLink(html, rel, hrefLang)` | Retrieves find link. | [scripts/audit-seo-surface.mjs:155](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L155) |
+| function | `findTypedLink(html, rel, type)` | Retrieves find typed link. | [scripts/audit-seo-surface.mjs:168](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L168) |
+| function | `jsonLdTypes(html)` | Implements json ld types. | [scripts/audit-seo-surface.mjs:180](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L180) |
+| function | `contractKeywordTerms()` | Implements contract keyword terms. | [scripts/audit-seo-surface.mjs:199](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L199) |
+| function | `checkAlternateLinks(label, html)` | Validates check alternate links. | [scripts/audit-seo-surface.mjs:206](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L206) |
+| function | `titleFrom(html)` | Implements title from. | [scripts/audit-seo-surface.mjs:214](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L214) |
+| function | `checkLength(label, value, min, max)` | Validates check length. | [scripts/audit-seo-surface.mjs:219](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L219) |
+| function | `canonicalFor(relativeHtmlPath)` | Implements canonical for. | [scripts/audit-seo-surface.mjs:225](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L225) |
+| function | `sitemapLocVariants(url)` | Implements sitemap loc variants. | [scripts/audit-seo-surface.mjs:233](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L233) |
+| function | `checkBrandAndEmails(label, content)` | Validates check brand and emails. | [scripts/audit-seo-surface.mjs:237](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L237) |
+| function | `publicAssetPath(url)` | Implements public asset path. | [scripts/audit-seo-surface.mjs:244](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L244) |
+| function | `checkPublicAsset(label, metaLabel, url)` | Validates check public asset. | [scripts/audit-seo-surface.mjs:255](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L255) |
+| function | `checkDiscoveryLinks(label, html)` | Validates check discovery links. | [scripts/audit-seo-surface.mjs:260](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L260) |
+| function | `checkMetaBasics(label, html, canonical, { article = false, homepage = false })` | Validates check meta basics. | [scripts/audit-seo-surface.mjs:271](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L271) |
+| function | `checkSeoContract()` | Validates check seo contract. | [scripts/audit-seo-surface.mjs:321](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L321) |
+| function | `checkHomepage()` | Validates check homepage. | [scripts/audit-seo-surface.mjs:357](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L357) |
+| function | `checkPosts()` | Validates check posts. | [scripts/audit-seo-surface.mjs:376](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L376) |
+| function | `checkCollections()` | Validates check collections. | [scripts/audit-seo-surface.mjs:405](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L405) |
+| function | `checkSitemapRobotsLlms(postFiles, collectionFiles)` | Validates check sitemap robots llms. | [scripts/audit-seo-surface.mjs:429](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L429) |
+| function | `checkDiscoveryFiles(postFiles)` | Validates check discovery files. | [scripts/audit-seo-surface.mjs:461](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L461) |
+| function | `newestKeywordMatrix()` | Implements newest keyword matrix. | [scripts/audit-seo-surface.mjs:502](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L502) |
+| function | `checkKeywordMatrix()` | Validates check keyword matrix. | [scripts/audit-seo-surface.mjs:514](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L514) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/audit-social-publisher.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L6) |
 | constant | `planPath` | Defines the plan path source-of-truth value. | [scripts/audit-social-publisher.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L7) |
 | constant | `failures` | Defines the failures source-of-truth value. | [scripts/audit-social-publisher.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L8) |
@@ -224,5 +226,3 @@ Source-backed contracts for **220 declarations**.
 | function | `writeCaptions(plan, outputDir)` | Builds write captions. | [scripts/render-video.mjs:430](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L430) |
 | function | `parseSrt(filePath)` | Transforms parse srt. | [scripts/render-video.mjs:442](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L442) |
 | function | `chunkCaption(text, maxChars, maxWords)` | Implements chunk caption. | [scripts/render-video.mjs:460](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L460) |
-| function | `productionCaptionSpec(output)` | Implements production caption spec. | [scripts/render-video.mjs:476](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L476) |
-| function | `productDemoFileName(output)` | Implements product demo file name. | [scripts/render-video.mjs:482](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L482) |

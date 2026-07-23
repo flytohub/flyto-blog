@@ -2,27 +2,32 @@
 
 # Theme Source Reference
 
-Source-backed contracts for **24 declarations**.
+Source-backed contracts for **29 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
-| constant | `clusters` | Defines the clusters source-of-truth value. | [.vitepress/theme/BlogHero.vue:2](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogHero.vue#L2) |
 | constant | `props` | Defines the props source-of-truth value. | [.vitepress/theme/BlogList.vue:5](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L5) |
-| constant | `filtered` | Defines the filtered source-of-truth value. | [.vitepress/theme/BlogList.vue:9](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L9) |
-| constant | `PAGE_SIZE` | Defines the page size source-of-truth value. | [.vitepress/theme/BlogList.vue:13](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L13) |
-| constant | `firstGridIndex` | Defines the first grid index source-of-truth value. | [.vitepress/theme/BlogList.vue:14](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L14) |
-| constant | `visibleCount` | Defines the visible count source-of-truth value. | [.vitepress/theme/BlogList.vue:15](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L15) |
-| constant | `visiblePosts` | Defines the visible posts source-of-truth value. | [.vitepress/theme/BlogList.vue:16](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L16) |
-| constant | `remainingCount` | Defines the remaining count source-of-truth value. | [.vitepress/theme/BlogList.vue:17](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L17) |
-| function | `showMore()` | Implements show more. | [.vitepress/theme/BlogList.vue:19](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L19) |
-| constant | `TAG_COLORS` | Defines the tag colors source-of-truth value. | [.vitepress/theme/BlogList.vue:23](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L23) |
-| function | `tagColor(tag)` | Implements tag color. | [.vitepress/theme/BlogList.vue:32](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L32) |
-| function | `formatDate(dateStr)` | Transforms format date. | [.vitepress/theme/BlogList.vue:36](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L36) |
-| constant | `BlogPostTitle` | Defines the blog post title source-of-truth value. | [.vitepress/theme/index.mts:8](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L8) |
-| method | `setup()` | Implements setup. | [.vitepress/theme/index.mts:10](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L10) |
-| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/theme/index.mts:26](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L26) |
-| method | `Layout()` | Implements layout. | [.vitepress/theme/index.mts:28](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L28) |
-| method | `enhanceApp({ app })` | Implements enhance app. | [.vitepress/theme/index.mts:33](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L33) |
+| constant | `requestedTags` | Defines the requested tags source-of-truth value. | [.vitepress/theme/BlogList.vue:11](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L11) |
+| constant | `hasFilter` | Defines the has filter source-of-truth value. | [.vitepress/theme/BlogList.vue:12](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L12) |
+| constant | `filtered` | Defines the filtered source-of-truth value. | [.vitepress/theme/BlogList.vue:13](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L13) |
+| constant | `PAGE_SIZE` | Defines the page size source-of-truth value. | [.vitepress/theme/BlogList.vue:17](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L17) |
+| constant | `firstGridIndex` | Defines the first grid index source-of-truth value. | [.vitepress/theme/BlogList.vue:18](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L18) |
+| constant | `visibleCount` | Defines the visible count source-of-truth value. | [.vitepress/theme/BlogList.vue:19](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L19) |
+| constant | `visiblePosts` | Defines the visible posts source-of-truth value. | [.vitepress/theme/BlogList.vue:20](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L20) |
+| constant | `remainingCount` | Defines the remaining count source-of-truth value. | [.vitepress/theme/BlogList.vue:21](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L21) |
+| function | `showMore()` | Implements show more. | [.vitepress/theme/BlogList.vue:23](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L23) |
+| constant | `TAG_COLORS` | Defines the tag colors source-of-truth value. | [.vitepress/theme/BlogList.vue:27](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L27) |
+| function | `tagColor(tag)` | Implements tag color. | [.vitepress/theme/BlogList.vue:36](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L36) |
+| function | `formatDate(dateStr)` | Transforms format date. | [.vitepress/theme/BlogList.vue:40](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/BlogList.vue#L40) |
+| constant | `SECURITY_TAGS` | Defines the security tags source-of-truth value. | [.vitepress/theme/index.mts:8](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L8) |
+| function | `postTrack(tags)` | Implements post track. | [.vitepress/theme/index.mts:20](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L20) |
+| constant | `BlogPostTitle` | Defines the blog post title source-of-truth value. | [.vitepress/theme/index.mts:25](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L25) |
+| method | `setup()` | Implements setup. | [.vitepress/theme/index.mts:27](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L27) |
+| constant | `BlogPostContext` | Defines the blog post context source-of-truth value. | [.vitepress/theme/index.mts:46](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L46) |
+| method | `setup()` | Implements setup. | [.vitepress/theme/index.mts:48](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L48) |
+| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/theme/index.mts:73](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L73) |
+| method | `Layout()` | Implements layout. | [.vitepress/theme/index.mts:75](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L75) |
+| method | `enhanceApp({ app })` | Implements enhance app. | [.vitepress/theme/index.mts:81](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/index.mts#L81) |
 | interface | `PostData` | Defines the post data data contract. | [.vitepress/theme/posts.data.mts:4](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/posts.data.mts#L4) |
 | constant | `data` | Defines the data source-of-truth value. | [.vitepress/theme/posts.data.mts:15](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/posts.data.mts#L15) |
 | interface | `RawPost` | Defines the raw post data contract. | [.vitepress/theme/posts.data.mts:18](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/theme/posts.data.mts#L18) |

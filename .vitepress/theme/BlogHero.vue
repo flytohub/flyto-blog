@@ -1,44 +1,32 @@
-<script setup lang="ts">
-const clusters = [
-  { label: 'AI Workflow Automation', href: '/posts/workflow-automation' },
-  { label: 'Open Source Automation', href: '/posts/modules-not-magic' },
-  { label: 'MCP Server Automation', href: '/posts/mcp-server-guide' },
-  { label: 'MCP Security', href: '/posts/mcp-security-risks-and-controls' },
-  { label: 'CTEM', href: '/posts/what-is-ctem-continuous-threat-exposure-management' },
-  { label: 'ASM / EASM', href: '/posts/attack-surface-management-guide' },
-  { label: 'Dark Web Monitoring', href: '/posts/darkweb-monitoring-explained' },
-  { label: 'AI Security', href: '/posts/ai-security-platform-guide' },
-  { label: 'MSSP / BYO', href: '/posts/byo-mssp-integration-model' },
-  { label: 'Pentest / Red Team', href: '/posts/pentest-vs-vulnerability-scan-vs-red-team' },
-]
-</script>
-
 <template>
   <div class="blog-hero visible">
-    <!-- Subtle mesh background -->
-    <div class="hero-mesh" />
-
-    <!-- Grid pattern overlay -->
-    <div class="hero-grid" />
-
     <div class="hero-inner">
       <div class="hero-badge">
         <span class="badge-dot" />
         Flyto2 Blog
       </div>
       <h1 class="hero-title">
-        <span class="title-line">AI workflow automation, MCP, </span><span class="title-line title-gradient">CTEM, and security guides</span>
+        Field guides for AI automation and continuous security
       </h1>
-      <p class="hero-desc">Practical guides for open-source AI agent automation, MCP server tooling, no-code browser workflows, evidence-backed CTEM, BYO integrations, and red-team validation.</p>
-      <div class="topic-grid">
-        <a v-for="cluster in clusters" :key="cluster.href" :href="cluster.href" class="topic-chip">
-          {{ cluster.label }}
+      <p class="hero-desc">Choose one problem space, then follow practical guides backed by workflows, source code, execution evidence, and honest implementation limits.</p>
+      <div class="topic-grid" aria-label="Flyto2 content centers">
+        <a href="/flow/" class="topic-card topic-flow">
+          <span class="topic-kicker">Flyto2 Flow</span>
+          <strong>AI workflow automation</strong>
+          <span>Visual MCP tools, local browser automation, replay, and self-hosted workflow engineering.</span>
+          <span class="topic-link">Explore Flow guides <span aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a href="/security/" class="topic-card topic-security">
+          <span class="topic-kicker">Flyto2 Warroom</span>
+          <strong>Continuous security operations</strong>
+          <span>CTEM, attack surface management, security validation, and evidence-backed remediation.</span>
+          <span class="topic-link">Explore security guides <span aria-hidden="true">&rarr;</span></span>
         </a>
       </div>
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">452</span>
-          <span class="stat-label">Modules</span>
+          <span class="stat-label">Core modules</span>
         </div>
         <div class="stat-divider" />
         <div class="stat">
@@ -59,45 +47,11 @@ const clusters = [
 .blog-hero {
   position: relative;
   overflow: hidden;
-  padding: 5rem 1.5rem 4rem;
+  padding: 4.5rem 1.5rem 3.5rem;
   text-align: center;
   border-bottom: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-}
-
-/* Animated mesh gradient */
-.hero-mesh {
-  position: absolute;
-  inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 80% at 50% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-}
-
-.dark .hero-mesh {
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 80% at 50% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-}
-
-/* Subtle grid pattern */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
-}
-
-.dark .hero-grid {
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+    linear-gradient(180deg, color-mix(in srgb, var(--vp-c-bg-soft) 66%, var(--vp-c-bg)) 0%, var(--vp-c-bg) 100%);
 }
 
 /* Content */
@@ -139,24 +93,13 @@ const clusters = [
 
 /* Title */
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 800;
   line-height: 1.15;
-  margin: 0 0 1.25rem;
+  margin: 0 auto 1.25rem;
   letter-spacing: 0;
   color: var(--vp-c-text-1);
-}
-
-.title-line {
-  display: block;
-}
-
-.title-gradient {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
+  max-width: 820px;
 }
 
 /* Description */
@@ -165,37 +108,62 @@ const clusters = [
   line-height: 1.7;
   color: var(--vp-c-text-2);
   margin: 0 0 2rem;
-  max-width: 520px;
+  max-width: 660px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .topic-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.65rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
   margin: 0 auto 2rem;
-  max-width: 680px;
+  max-width: 820px;
 }
-.topic-chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.1rem;
-  padding: 0.4rem 0.75rem;
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 13rem;
+  padding: 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-1);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 82%, transparent);
-  font-size: 0.82rem;
-  font-weight: 600;
+  background: var(--vp-c-bg);
+  text-align: left;
   text-decoration: none;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.topic-chip:hover {
+.topic-card:hover {
   border-color: var(--vp-c-brand-1);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+.topic-card strong {
+  margin: 0.35rem 0 0.65rem;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+.topic-card > span:not(.topic-kicker):not(.topic-link) {
+  color: var(--vp-c-text-2);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.topic-kicker {
   color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.topic-security .topic-kicker {
+  color: #0f766e;
+}
+.topic-link {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--vp-c-text-1);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 /* Stats */
@@ -235,10 +203,11 @@ const clusters = [
 }
 
 @media (max-width: 640px) {
-  .blog-hero { padding: 3rem 1rem 2.5rem; }
-  .hero-title { font-size: 2rem; }
+  .blog-hero { padding: 2.75rem 1rem 2.25rem; }
+  .hero-title { font-size: 1.9rem; }
   .hero-desc { font-size: 0.95rem; }
-  .topic-grid { justify-content: flex-start; }
+  .topic-grid { grid-template-columns: 1fr; }
+  .topic-card { min-height: 11rem; padding: 1.2rem; }
   .hero-stats { gap: 1rem; padding: 0.6rem 1rem; }
 }
 </style>

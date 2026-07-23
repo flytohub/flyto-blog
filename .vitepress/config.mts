@@ -13,7 +13,7 @@ const CORE_MODULE_COUNT = 452
 const CORE_CATALOG_CATEGORY_COUNT = 84
 const BUILT_IN_RECIPE_COUNT = 41
 const CORE_RUNTIME_SUMMARY = `${CORE_MODULE_COUNT} registry-backed modules across ${CORE_CATALOG_CATEGORY_COUNT} catalog categories, ${BUILT_IN_RECIPE_COUNT} built-in recipes, MCP transports, evidence capture, and replayable YAML execution`
-const SITE_DESCRIPTION = 'Plain-language Flyto2 guides for AI workflow automation tools, open-source AI agent frameworks, MCP server automation, browser automation, CTEM, ASM, and AI search visibility.'
+const SITE_DESCRIPTION = 'Evidence-backed Flyto2 guides organized into two focused centers: AI workflow automation and MCP tooling for Flow, plus CTEM and security validation for Warroom.'
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`
 const ORGANIZATION_ID = 'https://flyto2.com/#organization'
 const WEBSITE_ID = `${SITE_URL}/#website`
@@ -196,7 +196,7 @@ export default defineConfig({
     // Open Graph
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Flyto2 Blog' }],
-    ['meta', { property: 'og:title', content: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides' }],
+    ['meta', { property: 'og:title', content: 'Flyto2 Blog - Flow and Security Engineering Guides' }],
     ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
     ['meta', { property: 'og:url', content: SITE_URL }],
     ['meta', { property: 'og:image', content: DEFAULT_OG_IMAGE }],
@@ -204,7 +204,7 @@ export default defineConfig({
     ['meta', { property: 'og:locale', content: defaultOgLocale }],
     // Twitter Card
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'Flyto2 Blog - AI Workflow Automation, MCP, CTEM, and Security Guides' }],
+    ['meta', { name: 'twitter:title', content: 'Flyto2 Blog - Flow and Security Engineering Guides' }],
     ['meta', { name: 'twitter:description', content: SITE_DESCRIPTION }],
     ['meta', { name: 'twitter:image', content: DEFAULT_OG_IMAGE }],
     ['meta', { name: 'twitter:image:alt', content: 'Flyto2 Blog - AI workflow automation, MCP, CTEM, and security guides' }],
@@ -272,9 +272,9 @@ export default defineConfig({
     siteTitle: 'Flyto2 Blog',
 
     nav: [
-      { text: 'Blog', link: '/' },
-      { text: 'Tags', link: '/tags' },
-      { text: 'Community', link: 'https://flyto2.com/community/' },
+      { text: 'Flow Guides', link: '/flow/' },
+      { text: 'Security Guides', link: '/security/' },
+      { text: 'All Articles', link: '/' },
       { text: 'Docs', link: 'https://docs.flyto2.com' },
       { text: 'Flyto2', link: 'https://flyto2.com' },
     ],
@@ -327,6 +327,9 @@ export default defineConfig({
         ? new Date(pageData.lastUpdated).toISOString()
         : date
       const tags = pageData.frontmatter.tags || []
+      const securityTags = new Set(['security', 'ctem', 'attack-surface', 'easm', 'mcp-security', 'pentest', 'red-team', 'dark-web', 'mssp'])
+      const topicPath = tags.some((tag: string) => securityTags.has(tag)) ? 'security' : 'flow'
+      const topicName = topicPath === 'security' ? 'Security Guides' : 'Flow Guides'
       const keywords = keywordValues(pageData.frontmatter, tags)
       const author = pageData.frontmatter.author || 'Flyto2 Team'
       const url = canonicalUrl
@@ -393,7 +396,45 @@ export default defineConfig({
               '@id': `${url}#breadcrumb`,
               itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Flyto2 Blog', item: `${SITE_URL}/` },
-                { '@type': 'ListItem', position: 2, name: title, item: url },
+                { '@type': 'ListItem', position: 2, name: topicName, item: `${SITE_URL}/${topicPath}/` },
+                { '@type': 'ListItem', position: 3, name: title, item: url },
+              ],
+            },
+          ],
+        })],
+      ]
+    } else if (pageData.relativePath === 'flow/index.md' || pageData.relativePath === 'security/index.md') {
+      const topicPath = pageData.relativePath.startsWith('security/') ? 'security' : 'flow'
+      const title = pageData.frontmatter.title || pageData.title
+      const description = pageData.frontmatter.description || pageData.description || ''
+      const url = canonicalUrl
+
+      pageData.frontmatter.head = [
+        ...(pageData.frontmatter.head || []),
+        ['meta', { property: 'og:type', content: 'website' }],
+        ['meta', { property: 'og:title', content: title }],
+        ['meta', { property: 'og:description', content: description }],
+        ['meta', { property: 'og:url', content: url }],
+        ['meta', { name: 'twitter:title', content: title }],
+        ['meta', { name: 'twitter:description', content: description }],
+        ['script', { type: 'application/ld+json' }, JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'CollectionPage',
+              '@id': `${url}#collection`,
+              name: title,
+              description,
+              url,
+              isPartOf: { '@id': BLOG_ID },
+              inLanguage: 'en-US',
+            },
+            {
+              '@type': 'BreadcrumbList',
+              '@id': `${url}#breadcrumb`,
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Flyto2 Blog', item: `${SITE_URL}/` },
+                { '@type': 'ListItem', position: 2, name: topicPath === 'security' ? 'Security Guides' : 'Flow Guides', item: url },
               ],
             },
           ],

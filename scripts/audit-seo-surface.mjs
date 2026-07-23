@@ -39,6 +39,10 @@ const requiredPostTerms = new Map([
   ['posts/intelligence-workflow-automation-guide.html', ['intelligence workflow automation']],
   ['posts/community-growth-open-source-ai-workflow-automation.html', ['open-source AI workflow automation', 'MCP server automation examples']],
 ]);
+const requiredCollectionTerms = new Map([
+  ['flow/index.html', ['AI workflow automation', 'visual MCP builder', 'self-hosted browser automation']],
+  ['security/index.html', ['CTEM', 'security validation', 'attack surface management']],
+]);
 const forbiddenSitemapTokens = [
   '/AGENTS',
   '/ARCHITECTURE',
@@ -220,6 +224,9 @@ function checkLength(label, value, min, max) {
 
 function canonicalFor(relativeHtmlPath) {
   if (relativeHtmlPath === 'index.html') return siteUrl;
+  if (relativeHtmlPath.endsWith('/index.html')) {
+    return `${siteUrl}/${relativeHtmlPath.replace(/\/index\.html$/, '')}`;
+  }
   return `${siteUrl}/${relativeHtmlPath.replace(/\.html$/, '')}`;
 }
 
@@ -395,16 +402,42 @@ function checkPosts() {
   return postFiles;
 }
 
-function checkSitemapRobotsLlms(postFiles) {
+function checkCollections() {
+  const collectionFiles = [...requiredCollectionTerms.keys()];
+  for (const relativePath of collectionFiles) {
+    const htmlPath = path.join(distDir, relativePath);
+    if (!existsSync(htmlPath)) {
+      fail(`topic collection build output missing: ${relativePath}`);
+      continue;
+    }
+
+    const html = readFileSync(htmlPath, 'utf8');
+    checkMetaBasics(relativePath, html, canonicalFor(relativePath));
+    const schemaTypes = jsonLdTypes(html);
+    for (const type of ['CollectionPage', 'BreadcrumbList']) {
+      if (!schemaTypes.includes(type)) fail(`${relativePath} missing ${type} JSON-LD`);
+    }
+    for (const term of requiredCollectionTerms.get(relativePath) ?? []) {
+      if (!html.toLowerCase().includes(term.toLowerCase())) {
+        fail(`${relativePath} missing topic-center intent term: ${term}`);
+      }
+    }
+  }
+  return collectionFiles;
+}
+
+function checkSitemapRobotsLlms(postFiles, collectionFiles) {
   const sitemap = readFileSync(path.join(distDir, 'sitemap.xml'), 'utf8');
   const robots = readFileSync(path.join(distDir, 'robots.txt'), 'utf8');
   const llms = readFileSync(path.join(distDir, 'llms.txt'), 'utf8');
   const full = readFileSync(path.join(distDir, 'llms-full.txt'), 'utf8');
 
   const locCount = (sitemap.match(/<loc>/g) ?? []).length;
-  if (locCount < postFiles.length + 1) fail(`sitemap has too few URLs: ${locCount} for ${postFiles.length} posts plus homepage`);
+  if (locCount < postFiles.length + collectionFiles.length + 1) {
+    fail(`sitemap has too few URLs: ${locCount} for posts, topic collections, and homepage`);
+  }
 
-  const requiredUrls = [siteUrl, ...postFiles.map(canonicalFor)];
+  const requiredUrls = [siteUrl, ...collectionFiles.map(canonicalFor), ...postFiles.map(canonicalFor)];
   for (const url of requiredUrls) {
     const variants = sitemapLocVariants(url);
     if (!variants.some((token) => sitemap.includes(token))) {
@@ -507,9 +540,10 @@ if (!existsSync(distDir)) {
   fail('missing .vitepress/dist; run npm run build before npm run audit:seo');
 } else {
   checkHomepage();
+  const collectionFiles = checkCollections();
   const postFiles = checkPosts();
   if (existsSync(path.join(distDir, 'sitemap.xml'))) {
-    checkSitemapRobotsLlms(postFiles);
+    checkSitemapRobotsLlms(postFiles, collectionFiles);
     checkDiscoveryFiles(postFiles);
   } else {
     fail('missing built sitemap.xml; run npm run build before npm run audit:seo');
@@ -523,4 +557,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('blog SEO surface audit passed: homepage, all posts, sitemap, robots, llms, keyword matrix');
+console.log('blog SEO surface audit passed: homepage, topic collections, all posts, sitemap, robots, llms, keyword matrix');

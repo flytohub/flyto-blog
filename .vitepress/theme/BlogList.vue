@@ -4,14 +4,18 @@ import { data as posts } from './posts.data.mts'
 
 const props = defineProps<{
   tag?: string
+  tags?: string[]
+  heading?: string
 }>()
 
-const filtered = props.tag
-  ? posts.filter(p => p.tags.includes(props.tag!))
+const requestedTags = props.tags || (props.tag ? [props.tag] : [])
+const hasFilter = requestedTags.length > 0
+const filtered = hasFilter
+  ? posts.filter(post => requestedTags.some(tag => post.tags.includes(tag)))
   : posts
 
 const PAGE_SIZE = 12
-const firstGridIndex = props.tag ? 0 : 1
+const firstGridIndex = hasFilter ? 0 : 1
 const visibleCount = ref(firstGridIndex + PAGE_SIZE)
 const visiblePosts = computed(() => filtered.slice(firstGridIndex, visibleCount.value))
 const remainingCount = computed(() => Math.max(0, filtered.length - visibleCount.value))
@@ -53,7 +57,7 @@ function formatDate(dateStr: string) {
     </div>
 
     <!-- Featured post -->
-    <a v-if="!tag && filtered.length" :href="filtered[0].url" class="featured-card">
+    <a v-if="!hasFilter && filtered.length" :href="filtered[0].url" class="featured-card">
       <div class="featured-cover">
         <img
           v-if="filtered[0].cover"
@@ -90,9 +94,9 @@ function formatDate(dateStr: string) {
     </a>
 
     <!-- Section label -->
-    <div v-if="!tag && filtered.length > 1" class="section-label">
+    <div v-if="filtered.length" class="section-label">
       <span class="section-line" />
-      <span class="section-text">Latest Guides</span>
+      <span class="section-text">{{ heading || (hasFilter ? 'Guides in this collection' : 'Latest Guides') }}</span>
       <span class="section-line" />
     </div>
 

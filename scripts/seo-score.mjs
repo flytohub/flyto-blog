@@ -16,6 +16,8 @@ const homepageThreshold = Number(process.env.SEO_HOMEPAGE_SCORE_THRESHOLD ?? 88)
 const legacyBrandPattern = new RegExp(`\\b${['Fly', 'to'].join('')}\\b`);
 
 const focusKeywordOverrides = new Map([
+  ['flow/index.html', 'AI workflow automation'],
+  ['security/index.html', 'CTEM'],
   ['posts/ai-browser-automation-guide.html', 'AI browser automation'],
   ['posts/workflow-automation.html', 'workflow automation'],
   ['posts/mcp-server-guide.html', 'MCP server automation'],
@@ -162,6 +164,9 @@ function parseFrontmatter(raw) {
 
 function sourceForPage(relativePath) {
   if (relativePath === 'index.html') return path.join(root, 'index.md');
+  if (relativePath.endsWith('/index.html')) {
+    return path.join(root, relativePath.replace(/\.html$/, '.md'));
+  }
   const slug = path.basename(relativePath, '.html');
   return path.join(postsSourceDir, `${slug}.md`);
 }
@@ -242,6 +247,9 @@ function relatedTerms(relativePath, focusKeyword, meta) {
 
 function canonicalFor(relativePath) {
   if (relativePath === 'index.html') return siteUrl;
+  if (relativePath.endsWith('/index.html')) {
+    return `${siteUrl}/${relativePath.replace(/\/index\.html$/, '')}`;
+  }
   return `${siteUrl}/${relativePath.replace(/\.html$/, '')}`;
 }
 
@@ -351,6 +359,7 @@ function scorePage(relativePath, html, sitemapUrls, imageSitemapImages) {
   const sitemapUrl = expectedCanonical.replace(/\/$/, '');
   const isPost = relativePath.startsWith('posts/');
   const isHomepage = relativePath === 'index.html';
+  const isCollection = relativePath === 'flow/index.html' || relativePath === 'security/index.html';
   const items = [];
 
   scoreRange(items, 'technical', 'SEO title length', 5, title.length, isHomepage ? 20 : 30, 110, 'Set a clear title between 30 and 110 characters.');
@@ -361,10 +370,13 @@ function scorePage(relativePath, html, sitemapUrls, imageSitemapImages) {
   scoreItem(items, 'technical', 'Twitter card complete', 3, ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'].every((name) => findMeta(html, 'name', name)), 'Add complete Twitter card metadata.');
   scoreItem(items, 'technical', 'JSON-LD present', 4, schemaTypes.length > 0 && !schemaTypes.includes('invalid-json-ld'), 'Add valid JSON-LD structured data.', { schemaTypes });
   scoreItem(items, 'technical', 'Article schema for posts', 3, !isPost || schemaTypes.includes('BlogPosting'), 'Use BlogPosting schema for posts.', { schemaTypes });
-  scoreItem(items, 'technical', 'Schema graph depth', 4, isHomepage
-    ? ['Organization', 'WebSite', 'Blog'].every((type) => schemaTypes.includes(type))
-    : !isPost || ['WebPage', 'BlogPosting', 'BreadcrumbList'].every((type) => schemaTypes.includes(type)),
-  'Expose Organization/WebSite/Blog on the homepage and WebPage/BlogPosting/BreadcrumbList on posts.', { schemaTypes });
+  scoreItem(items, 'technical', 'Schema graph depth', 4,
+    isHomepage
+      ? ['Organization', 'WebSite', 'Blog'].every((type) => schemaTypes.includes(type))
+      : isCollection
+        ? ['CollectionPage', 'BreadcrumbList'].every((type) => schemaTypes.includes(type))
+        : !isPost || ['WebPage', 'BlogPosting', 'BreadcrumbList'].every((type) => schemaTypes.includes(type)),
+  'Expose the expected schema graph for the homepage, topic collections, and posts.', { schemaTypes });
   scoreItem(items, 'technical', 'Hreflang alternates', 3, Boolean(findLink(html, 'alternate', 'en') && findLink(html, 'alternate', 'x-default')), 'Add en and x-default hreflang links.');
   scoreItem(items, 'technical', 'Feed discovery links', 3, [
     ['application/rss+xml', 'https://blog.flyto2.com/rss.xml'],
@@ -387,7 +399,7 @@ function scorePage(relativePath, html, sitemapUrls, imageSitemapImages) {
 
   scoreItem(items, 'content', 'Word count', 4, isHomepage ? wc >= 350 : wc >= 500, 'Add enough useful body copy for the search intent.', { wordCount: wc });
   scoreItem(items, 'content', 'Heading structure', 4, h1s.length === 1 && h2s.length >= (isHomepage ? 1 : isPost ? 3 : 2), 'Use exactly one H1 and enough H2 sections for scanability.', { h1s: h1s.length, h2s: h2s.length });
-  scoreItem(items, 'content', 'Readable paragraphs', 4, isHomepage || averageParagraphWords(html) <= 95, 'Break long paragraphs into smaller sections.', { averageParagraphWords: averageParagraphWords(html) });
+  scoreItem(items, 'content', 'Readable paragraphs', 4, isHomepage || isCollection || averageParagraphWords(html) <= 95, 'Break long paragraphs into smaller sections.', { averageParagraphWords: averageParagraphWords(html) });
   scoreItem(items, 'content', 'Answer-shaped sections', 4, hasAnswerIntent(h2s, text), 'Add sections that answer what/how/why/when/bottom-line style queries.');
   scoreItem(items, 'content', 'Fresh publication metadata', 4, !isPost || Boolean(meta.date && meta.author), 'Keep post date and author in frontmatter.', { date: meta.date, author: meta.author });
 
@@ -455,7 +467,7 @@ function noBadEmails(html) {
 
 function pageFiles() {
   if (!existsSync(distDir)) throw new Error('missing .vitepress/dist; run npm run build first');
-  const files = ['index.html'];
+  const files = ['index.html', 'flow/index.html', 'security/index.html'];
   if (existsSync(postsDistDir)) {
     files.push(...readdirSync(postsDistDir).filter((file) => file.endsWith('.html')).sort().map((file) => `posts/${file}`));
   }
