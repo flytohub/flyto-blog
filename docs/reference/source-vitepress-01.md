@@ -2,34 +2,39 @@
 
 # Vitepress Source Reference
 
-Source-backed contracts for **39 declarations**.
+Source-backed contracts for **44 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
-| constant | `SITE_URL` | Defines the site url source-of-truth value. | [.vitepress/config.mts:9](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L9) |
-| constant | `CORE_MODULE_COUNT` | Defines the core module count source-of-truth value. | [.vitepress/config.mts:10](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L10) |
-| constant | `CORE_CATALOG_CATEGORY_COUNT` | Defines the core catalog category count source-of-truth value. | [.vitepress/config.mts:11](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L11) |
-| constant | `BUILT_IN_RECIPE_COUNT` | Defines the built in recipe count source-of-truth value. | [.vitepress/config.mts:12](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L12) |
-| constant | `CORE_RUNTIME_SUMMARY` | Defines the core runtime summary source-of-truth value. | [.vitepress/config.mts:13](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L13) |
-| constant | `SITE_DESCRIPTION` | Defines the site description source-of-truth value. | [.vitepress/config.mts:14](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L14) |
-| constant | `DEFAULT_OG_IMAGE` | Defines the default og image source-of-truth value. | [.vitepress/config.mts:15](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L15) |
-| constant | `ORGANIZATION_ID` | Defines the organization id source-of-truth value. | [.vitepress/config.mts:16](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L16) |
-| constant | `WEBSITE_ID` | Defines the website id source-of-truth value. | [.vitepress/config.mts:17](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L17) |
-| constant | `BLOG_ID` | Defines the blog id source-of-truth value. | [.vitepress/config.mts:18](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L18) |
-| constant | `SEO_KEYWORDS` | Defines the seo keywords source-of-truth value. | [.vitepress/config.mts:19](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L19) |
-| constant | `DISCOVERY_LINKS` | Defines the discovery links source-of-truth value. | [.vitepress/config.mts:56](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L56) |
-| constant | `NON_CONTENT_PATHS` | Defines the non content paths source-of-truth value. | [.vitepress/config.mts:61](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L61) |
-| function | `toPublicPath(url)` | Implements to public path. | [.vitepress/config.mts:79](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L79) |
-| function | `isNonContentPath(relativePath)` | Validates is non content path. | [.vitepress/config.mts:83](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L83) |
-| function | `cleanContentPath(path)` | Transforms clean content path. | [.vitepress/config.mts:94](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L94) |
-| function | `isNonContentPublicPath(path)` | Validates is non content public path. | [.vitepress/config.mts:101](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L101) |
-| function | `arrayValue(value)` | Implements array value. | [.vitepress/config.mts:115](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L115) |
-| function | `keywordValues(frontmatter, tags)` | Implements keyword values. | [.vitepress/config.mts:119](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L119) |
-| function | `systemFontOnlyPlugin()` | Implements system font only plugin. | [.vitepress/config.mts:127](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L127) |
-| method | `transform(_code, id)` | Implements transform. | [.vitepress/config.mts:131](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L131) |
-| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/config.mts:140](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L140) |
-| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:148](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L148) |
-| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:267](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L267) |
+| constant | `SITE_URL` | Defines the site url source-of-truth value. | [.vitepress/config.mts:11](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L11) |
+| constant | `CORE_MODULE_COUNT` | Defines the core module count source-of-truth value. | [.vitepress/config.mts:12](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L12) |
+| constant | `CORE_CATALOG_CATEGORY_COUNT` | Defines the core catalog category count source-of-truth value. | [.vitepress/config.mts:13](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L13) |
+| constant | `BUILT_IN_RECIPE_COUNT` | Defines the built in recipe count source-of-truth value. | [.vitepress/config.mts:14](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L14) |
+| constant | `CORE_RUNTIME_SUMMARY` | Defines the core runtime summary source-of-truth value. | [.vitepress/config.mts:15](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L15) |
+| constant | `SITE_DESCRIPTION` | Defines the site description source-of-truth value. | [.vitepress/config.mts:16](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L16) |
+| constant | `DEFAULT_OG_IMAGE` | Defines the default og image source-of-truth value. | [.vitepress/config.mts:17](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L17) |
+| constant | `ORGANIZATION_ID` | Defines the organization id source-of-truth value. | [.vitepress/config.mts:18](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L18) |
+| constant | `WEBSITE_ID` | Defines the website id source-of-truth value. | [.vitepress/config.mts:19](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L19) |
+| constant | `BLOG_ID` | Defines the blog id source-of-truth value. | [.vitepress/config.mts:20](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L20) |
+| constant | `SEO_KEYWORDS` | Defines the seo keywords source-of-truth value. | [.vitepress/config.mts:21](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L21) |
+| constant | `DISCOVERY_LINKS` | Defines the discovery links source-of-truth value. | [.vitepress/config.mts:58](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L58) |
+| constant | `NON_CONTENT_PATHS` | Defines the non content paths source-of-truth value. | [.vitepress/config.mts:63](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L63) |
+| constant | `RENDER_BLOCKING_STYLESHEET` | Defines the render blocking stylesheet source-of-truth value. | [.vitepress/config.mts:80](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L80) |
+| function | `toPublicPath(url)` | Implements to public path. | [.vitepress/config.mts:82](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L82) |
+| function | `isNonContentPath(relativePath)` | Validates is non content path. | [.vitepress/config.mts:86](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L86) |
+| function | `cleanContentPath(path)` | Transforms clean content path. | [.vitepress/config.mts:97](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L97) |
+| function | `isNonContentPublicPath(path)` | Validates is non content public path. | [.vitepress/config.mts:104](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L104) |
+| function | `arrayValue(value)` | Implements array value. | [.vitepress/config.mts:118](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L118) |
+| function | `keywordValues(frontmatter, tags)` | Implements keyword values. | [.vitepress/config.mts:122](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L122) |
+| function | `systemFontOnlyPlugin()` | Implements system font only plugin. | [.vitepress/config.mts:130](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L130) |
+| method | `transform(_code, id)` | Implements transform. | [.vitepress/config.mts:134](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L134) |
+| function | `inlineRenderBlockingStyles(code, outDir)` | Implements inline render blocking styles. | [.vitepress/config.mts:143](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L143) |
+| function | `inlineDeferredStyles(outDir, directory)` | Implements inline deferred styles. | [.vitepress/config.mts:155](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L155) |
+| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/config.mts:167](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L167) |
+| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:175](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L175) |
+| method | `transformHtml(code, _id, { siteConfig })` | Implements transform html. | [.vitepress/config.mts:186](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L186) |
+| method | `buildEnd({ outDir })` | Builds build end. | [.vitepress/config.mts:189](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L189) |
+| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:300](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L300) |
 | interface | `SeoLocale` | Defines the seo locale data contract. | [.vitepress/seo-contract.ts:5](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L5) |
 | interface | `SeoContract` | Defines the seo contract data contract. | [.vitepress/seo-contract.ts:10](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L10) |
 | constant | `configDir` | Defines the config dir source-of-truth value. | [.vitepress/seo-contract.ts:23](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L23) |

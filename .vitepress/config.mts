@@ -1,3 +1,5 @@
+import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+import path from 'node:path'
 import { defineConfig } from 'vitepress'
 import {
   defaultOgLocale,
@@ -75,6 +77,7 @@ const NON_CONTENT_PATHS = new Set([
   'docs/README.md',
   'public/blog/CREDITS.md',
 ])
+const RENDER_BLOCKING_STYLESHEET = /<link rel="preload stylesheet" href="([^"]+)" as="style">/g
 
 function toPublicPath(url: string) {
   return url.startsWith('http') ? new URL(url).pathname : url
@@ -137,6 +140,30 @@ function systemFontOnlyPlugin() {
   }
 }
 
+function inlineRenderBlockingStyles(code: string, outDir: string) {
+  return code.replace(RENDER_BLOCKING_STYLESHEET, (link, href: string) => {
+    const publicPath = new URL(href, SITE_URL).pathname.replace(/^\/+/, '')
+    const stylesheetPath = path.resolve(outDir, decodeURIComponent(publicPath))
+    if (!existsSync(stylesheetPath)) return link
+
+    const css = readFileSync(stylesheetPath, 'utf8')
+
+    return `<style data-flyto2-inline-style="${publicPath}">${css}</style>`
+  })
+}
+
+function inlineDeferredStyles(outDir: string, directory = outDir) {
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    const entryPath = path.join(directory, entry.name)
+    if (entry.isDirectory()) {
+      inlineDeferredStyles(outDir, entryPath)
+    } else if (entry.name.endsWith('.html')) {
+      const html = readFileSync(entryPath, 'utf8')
+      writeFileSync(entryPath, inlineRenderBlockingStyles(html, outDir))
+    }
+  }
+}
+
 export default defineConfig({
   title: 'Flyto2 Blog',
   titleTemplate: ':title | Flyto2',
@@ -155,6 +182,12 @@ export default defineConfig({
   lastUpdated: true,
   vite: {
     plugins: [systemFontOnlyPlugin()],
+  },
+  transformHtml(code, _id, { siteConfig }) {
+    return inlineRenderBlockingStyles(code, siteConfig.outDir)
+  },
+  buildEnd({ outDir }) {
+    inlineDeferredStyles(outDir)
   },
 
   head: [

@@ -58,11 +58,11 @@ Source-backed contracts for **220 declarations**.
 | function | `checkMetaBasics(label, html, canonical, { article = false, homepage = false })` | Validates check meta basics. | [scripts/audit-seo-surface.mjs:264](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L264) |
 | function | `checkSeoContract()` | Validates check seo contract. | [scripts/audit-seo-surface.mjs:314](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L314) |
 | function | `checkHomepage()` | Validates check homepage. | [scripts/audit-seo-surface.mjs:350](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L350) |
-| function | `checkPosts()` | Validates check posts. | [scripts/audit-seo-surface.mjs:363](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L363) |
-| function | `checkSitemapRobotsLlms(postFiles)` | Validates check sitemap robots llms. | [scripts/audit-seo-surface.mjs:392](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L392) |
-| function | `checkDiscoveryFiles(postFiles)` | Validates check discovery files. | [scripts/audit-seo-surface.mjs:422](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L422) |
-| function | `newestKeywordMatrix()` | Implements newest keyword matrix. | [scripts/audit-seo-surface.mjs:463](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L463) |
-| function | `checkKeywordMatrix()` | Validates check keyword matrix. | [scripts/audit-seo-surface.mjs:475](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L475) |
+| function | `checkPosts()` | Validates check posts. | [scripts/audit-seo-surface.mjs:369](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L369) |
+| function | `checkSitemapRobotsLlms(postFiles)` | Validates check sitemap robots llms. | [scripts/audit-seo-surface.mjs:398](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L398) |
+| function | `checkDiscoveryFiles(postFiles)` | Validates check discovery files. | [scripts/audit-seo-surface.mjs:428](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L428) |
+| function | `newestKeywordMatrix()` | Implements newest keyword matrix. | [scripts/audit-seo-surface.mjs:469](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L469) |
+| function | `checkKeywordMatrix()` | Validates check keyword matrix. | [scripts/audit-seo-surface.mjs:481](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-seo-surface.mjs#L481) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/audit-social-publisher.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L6) |
 | constant | `planPath` | Defines the plan path source-of-truth value. | [scripts/audit-social-publisher.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L7) |
 | constant | `failures` | Defines the failures source-of-truth value. | [scripts/audit-social-publisher.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/audit-social-publisher.mjs#L8) |

@@ -355,6 +355,12 @@ function checkHomepage() {
   }
   const html = readFileSync(htmlPath, 'utf8');
   checkMetaBasics('homepage', html, siteUrl, { homepage: true });
+  if (html.includes('<link rel="preload stylesheet"')) {
+    fail('homepage contains render-blocking stylesheet requests');
+  }
+  if ((html.match(/data-flyto2-inline-style=/g) ?? []).length < 2) {
+    fail('homepage must inline the VitePress theme and icon stylesheets');
+  }
   for (const term of homepageTerms) {
     if (!html.toLowerCase().includes(term.toLowerCase())) fail(`homepage missing intent term: ${term}`);
   }
