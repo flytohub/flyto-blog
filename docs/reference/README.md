@@ -4,15 +4,15 @@
 
 This reference is generated from repository source with the TypeScript compiler AST and from article frontmatter with `gray-matter`. It maps executable declarations, posts, automation, distribution plans, and public assets back to maintained files.
 
-Inventory: **524 declarations**, **27 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
+Inventory: **526 declarations**, **27 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
 
-Source fingerprint: `842a1e67847a2b8d47afdf6e56c1fc45f59e127bfa9c36d27e6728b721db18f3`.
+Source fingerprint: `ed0fc7635ffbe4d5ff5e79dfbaeda03569dadff548a9e4c0fba8bc700e434aa7`.
 
 ## Source Areas
 
 | Area | Declarations | Reference |
 |---|---:|---|
-| Vitepress | 37 | [source-vitepress-01.md](source-vitepress-01.md) |
+| Vitepress | 39 | [source-vitepress-01.md](source-vitepress-01.md) |
 | Theme | 24 | [source-theme-01.md](source-theme-01.md) |
 | Scripts | 220 | [source-scripts-01.md](source-scripts-01.md) |
 | Scripts | 220 | [source-scripts-02.md](source-scripts-02.md) |

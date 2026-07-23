@@ -124,6 +124,19 @@ function keywordValues(frontmatter: Record<string, any>, tags: string[]) {
   ].filter(Boolean).map(String)
 }
 
+function systemFontOnlyPlugin() {
+  return {
+    name: 'flyto2-system-font-only',
+    enforce: 'pre' as const,
+    transform(_code: string, id: string) {
+      const normalizedId = id.replaceAll('\\', '/')
+      if (normalizedId.endsWith('/vitepress/dist/client/theme-default/styles/fonts.css')) {
+        return { code: '', map: null }
+      }
+    },
+  }
+}
+
 export default defineConfig({
   title: 'Flyto2 Blog',
   titleTemplate: ':title | Flyto2',
@@ -140,6 +153,9 @@ export default defineConfig({
     },
   },
   lastUpdated: true,
+  vite: {
+    plugins: [systemFontOnlyPlugin()],
+  },
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],

@@ -2,7 +2,7 @@
 
 # Vitepress Source Reference
 
-Source-backed contracts for **37 declarations**.
+Source-backed contracts for **39 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
@@ -25,9 +25,11 @@ Source-backed contracts for **37 declarations**.
 | function | `isNonContentPublicPath(path)` | Validates is non content public path. | [.vitepress/config.mts:101](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L101) |
 | function | `arrayValue(value)` | Implements array value. | [.vitepress/config.mts:115](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L115) |
 | function | `keywordValues(frontmatter, tags)` | Implements keyword values. | [.vitepress/config.mts:119](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L119) |
-| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/config.mts:127](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L127) |
-| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:135](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L135) |
-| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:251](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L251) |
+| function | `systemFontOnlyPlugin()` | Implements system font only plugin. | [.vitepress/config.mts:127](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L127) |
+| method | `transform(_code, id)` | Implements transform. | [.vitepress/config.mts:131](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L131) |
+| constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/config.mts:140](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L140) |
+| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:148](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L148) |
+| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:267](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L267) |
 | interface | `SeoLocale` | Defines the seo locale data contract. | [.vitepress/seo-contract.ts:5](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L5) |
 | interface | `SeoContract` | Defines the seo contract data contract. | [.vitepress/seo-contract.ts:10](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L10) |
 | constant | `configDir` | Defines the config dir source-of-truth value. | [.vitepress/seo-contract.ts:23](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L23) |
