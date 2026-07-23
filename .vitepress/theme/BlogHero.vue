@@ -15,7 +15,7 @@ const clusters = [
 
 <template>
   <div class="blog-hero visible">
-    <!-- Animated mesh gradient background -->
+    <!-- Subtle mesh background -->
     <div class="hero-mesh" />
 
     <!-- Grid pattern overlay -->
@@ -73,7 +73,6 @@ const clusters = [
     radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.08) 0%, transparent 70%),
     radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.06) 0%, transparent 70%),
     radial-gradient(ellipse 50% 80% at 50% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 70%);
-  animation: meshShift 12s ease-in-out infinite alternate;
 }
 
 .dark .hero-mesh {
@@ -81,56 +80,6 @@ const clusters = [
     radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 70%),
     radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 70%),
     radial-gradient(ellipse 50% 80% at 50% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-}
-
-@keyframes meshShift {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-2%, 3%); }
-  100% { transform: scale(1.05) translate(2%, -2%); }
-}
-
-/* Floating orbs */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-  opacity: 0;
-  animation: orbFloat 8s ease-in-out infinite alternate;
-}
-.blog-hero.visible .orb { opacity: 1; transition: opacity 1.5s ease; }
-
-.orb-1 {
-  width: 300px; height: 300px;
-  top: -60px; right: -80px;
-  background: rgba(99, 102, 241, 0.12);
-  animation-delay: 0s;
-  animation-duration: 10s;
-}
-.orb-2 {
-  width: 200px; height: 200px;
-  bottom: -40px; left: -60px;
-  background: rgba(59, 130, 246, 0.1);
-  animation-delay: -3s;
-  animation-duration: 8s;
-}
-.orb-3 {
-  width: 150px; height: 150px;
-  top: 40%; left: 60%;
-  background: rgba(139, 92, 246, 0.08);
-  animation-delay: -5s;
-  animation-duration: 12s;
-}
-
-.dark .orb-1 { background: rgba(99, 102, 241, 0.2); }
-.dark .orb-2 { background: rgba(59, 130, 246, 0.15); }
-.dark .orb-3 { background: rgba(139, 92, 246, 0.12); }
-
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(15px, -20px) scale(1.05); }
-  66% { transform: translate(-10px, 10px) scale(0.95); }
-  100% { transform: translate(5px, -5px) scale(1.02); }
 }
 
 /* Subtle grid pattern */
@@ -208,12 +157,6 @@ const clusters = [
   -webkit-text-fill-color: transparent;
   background-clip: text;
   background-size: 200% 200%;
-  animation: gradientShift 4s ease-in-out infinite alternate;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
 }
 
 /* Description */

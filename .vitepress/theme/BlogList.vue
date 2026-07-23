@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { data as posts } from './posts.data.mts'
 
 const props = defineProps<{
@@ -9,6 +9,16 @@ const props = defineProps<{
 const filtered = props.tag
   ? posts.filter(p => p.tags.includes(props.tag!))
   : posts
+
+const PAGE_SIZE = 12
+const firstGridIndex = props.tag ? 0 : 1
+const visibleCount = ref(firstGridIndex + PAGE_SIZE)
+const visiblePosts = computed(() => filtered.slice(firstGridIndex, visibleCount.value))
+const remainingCount = computed(() => Math.max(0, filtered.length - visibleCount.value))
+
+function showMore() {
+  visibleCount.value = Math.min(filtered.length, visibleCount.value + PAGE_SIZE)
+}
 
 const TAG_COLORS: Record<string, string> = {
   announcement: '#10b981',
@@ -29,58 +39,12 @@ function formatDate(dateStr: string) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-// Intersection Observer for scroll animations
-const listRef = ref<HTMLElement>()
-let animationObserver: IntersectionObserver | undefined
-let imageObserver: IntersectionObserver | undefined
-
-onMounted(() => {
-  if (!listRef.value) return
-  animationObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view')
-          animationObserver?.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-  )
-  listRef.value.querySelectorAll('.animate-item').forEach((el) => animationObserver?.observe(el))
-
-  imageObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-
-        const img = entry.target as HTMLImageElement
-        const src = img.dataset.src
-        if (src) {
-          img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true })
-          img.src = src
-          img.removeAttribute('data-src')
-        }
-        imageObserver?.unobserve(img)
-      })
-    },
-    { threshold: 0.01, rootMargin: '180px 0px' }
-  )
-  listRef.value
-    .querySelectorAll<HTMLImageElement>('.deferred-cover[data-src]')
-    .forEach((el) => imageObserver?.observe(el))
-})
-
-onBeforeUnmount(() => {
-  animationObserver?.disconnect()
-  imageObserver?.disconnect()
-})
 </script>
 
 <template>
-  <div class="blog-list" ref="listRef">
+  <div class="blog-list">
     <!-- Tag filter bar -->
-    <div v-if="tag" class="tag-filter-bar animate-item">
+    <div v-if="tag" class="tag-filter-bar">
       <div class="tag-filter-inner">
         <span class="tag-filter-label">Filtering by</span>
         <span class="tag-filter-chip" :style="{ '--tag-color': tagColor(tag) }">{{ tag }}</span>
@@ -89,7 +53,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- Featured post -->
-    <a v-if="!tag && filtered.length" :href="filtered[0].url" class="featured-card animate-item">
+    <a v-if="!tag && filtered.length" :href="filtered[0].url" class="featured-card">
       <div class="featured-cover">
         <img
           v-if="filtered[0].cover"
@@ -126,7 +90,7 @@ onBeforeUnmount(() => {
     </a>
 
     <!-- Section label -->
-    <div v-if="!tag && filtered.length > 1" class="section-label animate-item">
+    <div v-if="!tag && filtered.length > 1" class="section-label">
       <span class="section-line" />
       <span class="section-text">Latest Guides</span>
       <span class="section-line" />
@@ -135,18 +99,18 @@ onBeforeUnmount(() => {
     <!-- Post grid -->
     <div class="posts-grid">
       <a
-        v-for="(post, i) in (tag ? filtered : filtered.slice(1))"
+        v-for="(post, i) in visiblePosts"
         :key="post.url"
         :href="post.url"
-        class="post-card animate-item"
-        :style="{ '--stagger': i }"
+        class="post-card"
       >
         <div class="card-cover">
           <img
             v-if="post.cover"
-            class="cover-image deferred-cover"
-            :data-src="post.cover"
+            class="cover-image"
+            :src="post.cover"
             :alt="post.title"
+            loading="lazy"
             decoding="async"
           >
           <div v-else class="card-cover-fallback" :style="{ '--hue': (i * 47 + 200) % 360 }">
@@ -170,6 +134,13 @@ onBeforeUnmount(() => {
       </a>
     </div>
 
+    <div v-if="remainingCount" class="load-more-row">
+      <p class="list-status">Showing {{ visibleCount }} of {{ filtered.length }} guides</p>
+      <button type="button" class="load-more" @click="showMore">
+        Load {{ Math.min(PAGE_SIZE, remainingCount) }} more guides
+      </button>
+    </div>
+
     <p v-if="!filtered.length" class="empty">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.3"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
       <br>No posts found.
@@ -182,21 +153,6 @@ onBeforeUnmount(() => {
   max-width: 960px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
-}
-
-/* Scroll animation */
-.animate-item {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.animate-item.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-.post-card.animate-item {
-  transition-delay: calc(var(--stagger, 0) * 0.08s);
 }
 
 /* Tag filter bar */
@@ -248,13 +204,6 @@ onBeforeUnmount(() => {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-}
-.deferred-cover {
-  opacity: 0;
-  transition: opacity 0.22s ease;
-}
-.deferred-cover.is-loaded {
-  opacity: 1;
 }
 .featured-cover-fallback { color: var(--vp-c-brand-1); opacity: 0.25; position: relative; z-index: 1; }
 .cover-pattern {
@@ -344,10 +293,41 @@ onBeforeUnmount(() => {
 .post-card:hover .post-tag { background: color-mix(in srgb, var(--tag-color) 18%, transparent); }
 
 .empty { text-align: center; color: var(--vp-c-text-3); padding: 4rem 0; line-height: 2; }
+.load-more-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.list-status {
+  margin: 0;
+  color: var(--vp-c-text-3);
+  font-size: 0.85rem;
+}
+.load-more {
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-soft);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.load-more:hover,
+.load-more:focus-visible {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
 
 @media (max-width: 768px) {
   .featured-card { grid-template-columns: 1fr; }
   .featured-cover { min-height: 180px; }
   .posts-grid { grid-template-columns: 1fr; }
+  .load-more-row { align-items: stretch; flex-direction: column; }
+  .load-more { width: 100%; }
 }
 </style>
