@@ -25,7 +25,7 @@
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-num">452</span>
+          <span class="stat-num">466</span>
           <span class="stat-label">Core modules</span>
         </div>
         <div class="stat-divider" />
