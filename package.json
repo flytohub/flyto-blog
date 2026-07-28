@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "gray-matter": "4.0.3",
-    "playwright": "1.61.1",
+    "playwright": "1.62.0",
     "typescript": "6.0.3",
     "vitepress": "^1.6.4"
   },
