@@ -8,7 +8,6 @@ Before editing, read:
 - `ARCHITECTURE.md`
 - `STATE.md`
 - `DECISIONS.md`
-- `/Users/chester/flytohub/CODEX_HANDOFF_FLYTO_AUDIT.md`
 
 Rules:
 
@@ -63,3 +62,23 @@ Any frontend, website, dashboard, extension webview, app screen, or generated UI
 8. Hard-to-understand content: copy must be concrete, scannable, current, and consistent with Flyto2 terminology.
 
 Frontend verification must include the relevant automated checks plus manual or screenshot review for responsive layout, accessibility states, navigation clarity, loading/empty/error states, and content readability. Public pages must preserve SEO basics: canonical URL, sitemap coverage, metadata, structured data when relevant, and no broken internal or external links.
+
+## Repo notes
+
+Merged from `CLAUDE.md` so Codex and Claude read one set of rules.
+
+Flyto2 Blog owns educational search-intent content: "what is", "guide",
+"alternative", "vs", and buyer research queries.
+
+Workflow:
+
+1. Read `PROJECT.md`, `STATE.md`, and `DECISIONS.md`.
+2. Check `POSTING.md` for post format.
+3. Align product claims with landing and docs.
+4. Update `public/llms.txt` or `public/llms-full.txt` when adding a major
+   citation post.
+5. Regenerate `docs/reference/` after changing source, posts, automation,
+   distribution plans, or public assets.
+6. Run `npm run verify`.
+
+Never infer or reuse login credentials from docs or handoffs.
