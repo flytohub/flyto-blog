@@ -31,10 +31,10 @@ Source-backed contracts for **44 declarations**.
 | function | `inlineRenderBlockingStyles(code, outDir)` | Implements inline render blocking styles. | [.vitepress/config.mts:143](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L143) |
 | function | `inlineDeferredStyles(outDir, directory)` | Implements inline deferred styles. | [.vitepress/config.mts:155](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L155) |
 | constant | `default export` | Defines the default export source-of-truth value. | [.vitepress/config.mts:167](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L167) |
-| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:175](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L175) |
-| method | `transformHtml(code, _id, { siteConfig })` | Implements transform html. | [.vitepress/config.mts:186](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L186) |
-| method | `buildEnd({ outDir })` | Builds build end. | [.vitepress/config.mts:189](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L189) |
-| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:300](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L300) |
+| method | `transformItems(items)` | Implements transform items. | [.vitepress/config.mts:181](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L181) |
+| method | `transformHtml(code, _id, { siteConfig })` | Implements transform html. | [.vitepress/config.mts:192](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L192) |
+| method | `buildEnd({ outDir })` | Builds build end. | [.vitepress/config.mts:195](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L195) |
+| method | `transformPageData(pageData)` | Implements transform page data. | [.vitepress/config.mts:306](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/config.mts#L306) |
 | interface | `SeoLocale` | Defines the seo locale data contract. | [.vitepress/seo-contract.ts:5](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L5) |
 | interface | `SeoContract` | Defines the seo contract data contract. | [.vitepress/seo-contract.ts:10](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L10) |
 | constant | `configDir` | Defines the config dir source-of-truth value. | [.vitepress/seo-contract.ts:23](https://github.com/flytohub/flyto-blog/blob/main/.vitepress/seo-contract.ts#L23) |
