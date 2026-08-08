@@ -170,6 +170,12 @@ export default defineConfig({
   description: SITE_DESCRIPTION,
   lang: 'en-US',
   cleanUrls: true,
+  // Repository bookkeeping, not blog content. VitePress compiles every .md it
+  // finds as a Vue SFC, and handoffs/_template.md opens with `# <topic>` —
+  // which the Vue compiler reads as an unclosed HTML element and refuses to
+  // build. The docs gate failing first had hidden that since 2026-07-25; with
+  // the gate fixed, the build error was the next thing standing in the way.
+  srcExclude: ['handoffs/**', 'AGENTS.md', 'CLAUDE.md'],
   sitemap: {
     hostname: SITE_URL,
     transformItems(items) {
