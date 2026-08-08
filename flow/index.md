@@ -29,6 +29,6 @@ Flyto2 Flow turns visual workflows into local, replayable automation and MCP too
 - Evidence capture, deterministic replay, and failure recovery
 - Comparisons that state where Flyto2 fits and where another tool may fit better
 
-Flyto2 Flow is source-available under the [PolyForm Shield 1.0.0 license](https://github.com/flytohub/flyto-flow/blob/main/LICENSE). The underlying [`flyto-core`](https://github.com/flytohub/flyto-core) runtime is open source under Apache 2.0.
+Flyto2 Flow is source-available under the [PolyForm Shield 1.0.0 license](https://polyformproject.org/licenses/shield/1.0.0). The underlying [`flyto-core`](https://github.com/flytohub/flyto-core) runtime is open source under Apache 2.0.
 
 <BlogList :tags="['workflow-automation', 'automation', 'mcp', 'browser-automation', 'no-code', 'open-source']" heading="Latest Flow guides" />

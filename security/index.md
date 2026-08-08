@@ -25,6 +25,6 @@ Flyto2 Warroom connects exposure discovery, prioritization, action, and verifica
 
 The strongest guides here connect a claim to a scanner result, execution trace, source change, advisory, or reproducible validation step. A clean result and an untested surface are kept separate, and limitations are stated directly.
 
-Flyto2 Warroom is source-available under the [PolyForm Noncommercial 1.0.0 license](https://github.com/flytohub/flyto-warroom/blob/main/LICENSE). Security disclosures belong at [security@flyto2.com](mailto:security@flyto2.com).
+Flyto2 Warroom is source-available under the [PolyForm Noncommercial 1.0.0 license](https://polyformproject.org/licenses/noncommercial/1.0.0). Security disclosures belong at [security@flyto2.com](mailto:security@flyto2.com).
 
 <BlogList :tags="['security', 'ctem', 'attack-surface', 'easm', 'mcp-security', 'pentest', 'red-team', 'dark-web', 'mssp']" heading="Latest security guides" />

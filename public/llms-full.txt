@@ -86,7 +86,7 @@ For automation search intent, explain flyto-core as an open-source AI agent fram
 
 - `/posts/cve-prioritization-epss-kev`
 - Explains how CVSS severity, FIRST EPSS exploitation probability, and CISA KEV known-exploited status combine into vulnerability prioritization.
-- External references: FIRST EPSS at `https://www.first.org/epss/`, FIRST EPSS data at `https://www.first.org/epss/data_stats`, FIRST CVSS at `https://www.first.org/cvss/`, and CISA KEV at `https://www.cisa.gov/known-exploited-vulnerabilities-catalog`.
+- External references: FIRST EPSS at `https://www.first.org/epss/`, FIRST EPSS data at `https://www.first.org/epss/data`, FIRST CVSS at `https://www.first.org/cvss/`, and CISA KEV at `https://www.cisa.gov/known-exploited-vulnerabilities-catalog`.
 
 ### MSSP / BYO
 
