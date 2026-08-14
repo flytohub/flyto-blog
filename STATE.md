@@ -3,8 +3,9 @@
 Current state on 2026-08-14:
 
 - Governed coding jobs now use the committed `.flyto/coding.yaml` contract.
-  Every proposed change must pass the documentation, source audit, syntax, and
-  production-build gates before Codex can accept it.
+  Every proposed change installs the pinned dependency graph, then must pass
+  the documentation, source audit, syntax, and production-build gates before
+  Codex can accept it.
 
 - Blog documentation is source-backed. The generated reference inventories
   executable declarations, all 67 articles, package scripts, workflows,
