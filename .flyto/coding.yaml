@@ -1,0 +1,20 @@
+# Host-owned verification contract for governed Flyto2 coding jobs.
+version: flyto.coding-config.v1
+checks:
+  - name: documentation
+    argv: [npm, run, docs:check]
+    timeout_seconds: 180
+    required: true
+  - name: tests
+    argv: [npm, run, test]
+    timeout_seconds: 300
+    required: true
+  - name: lint
+    argv: [npm, run, lint]
+    timeout_seconds: 300
+    required: true
+  - name: build
+    argv: [npm, run, build]
+    timeout_seconds: 600
+    required: true
+capabilities: []

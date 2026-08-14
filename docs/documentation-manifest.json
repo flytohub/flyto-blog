@@ -52,7 +52,7 @@
     },
     {
       "id": "delivery-and-runtime-configuration",
-      "paths": [".github/**", ".env.example", ".seo/i18n-seo-manifest.json", "lighthouserc.cjs", "package.json", "package-lock.json"],
+      "paths": [".github/**", ".flyto/coding.yaml", ".env.example", ".seo/i18n-seo-manifest.json", "lighthouserc.cjs", "package.json", "package-lock.json"],
       "documentation": ["ARCHITECTURE.md", "docs/reference/automation.md", "docs/reference/source-runtime-*.md"]
     }
   ]

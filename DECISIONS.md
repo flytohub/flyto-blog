@@ -1,5 +1,16 @@
 # Decisions
 
+## 2026-08-14 - Public copy changes use the governed coding route
+
+Decision: keep the repository's required offline documentation, test, lint,
+and production-build checks in `.flyto/coding.yaml`. Public positioning work
+must enter through that contract and receive an independent Codex audit before
+it can land.
+
+Reason: homepage and citation copy are product behavior. A committed, bounded
+verification contract prevents a copy-only change from bypassing source-backed
+documentation or shipping a broken VitePress build.
+
 ## 2026-07-23 - Repository documentation is not public blog content
 
 Decision: durable repository documentation remains tracked and source-linked,

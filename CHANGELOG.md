@@ -4,6 +4,9 @@
 
 ### Added
 
+- Added the governed Flyto2 coding verification contract for documentation,
+  source audits, script syntax, and the production VitePress build.
+
 - Added a technical/editorial whitepaper, documentation ownership manifest,
   and generated declaration, article, automation, distribution, environment,
   and public-asset references.
