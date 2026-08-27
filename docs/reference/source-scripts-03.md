@@ -2,11 +2,19 @@
 
 # Scripts Source Reference 3
 
-Source-backed contracts for **49 declarations**.
+Source-backed contracts for **57 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
-| function | `main()` | Implements main. | [scripts/video-from-post.mjs:350](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L350) |
+| function | `sectionsFromMarkdown(markdown)` | Implements sections from markdown. | [scripts/video-from-post.mjs:141](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L141) |
+| function | `sentenceClip(text, max, min)` | Implements sentence clip. | [scripts/video-from-post.mjs:155](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L155) |
+| function | `distributeDurations(count, total)` | Implements distribute durations. | [scripts/video-from-post.mjs:168](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L168) |
+| function | `keywordBase(title, tags)` | Implements keyword base. | [scripts/video-from-post.mjs:178](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L178) |
+| function | `makeLongTailKeywords(primaryKeyword, title)` | Builds make long tail keywords. | [scripts/video-from-post.mjs:192](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L192) |
+| function | `makeScenes(title, description, sections, durationSeconds)` | Builds make scenes. | [scripts/video-from-post.mjs:204](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L204) |
+| function | `makePlan(args)` | Builds make plan. | [scripts/video-from-post.mjs:232](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L232) |
+| function | `outputPath(args)` | Implements output path. | [scripts/video-from-post.mjs:356](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L356) |
+| function | `main()` | Implements main. | [scripts/video-from-post.mjs:363](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L363) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/video-plan-check.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L5) |
 | constant | `defaultPlanDir` | Defines the default plan dir source-of-truth value. | [scripts/video-plan-check.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L6) |
 | constant | `brandLogoRelativePath` | Defines the brand logo relative path source-of-truth value. | [scripts/video-plan-check.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L7) |

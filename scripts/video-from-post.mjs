@@ -54,10 +54,23 @@ export function repositoryPath(relativePath, { forWrite = false } = {}) {
   return absolutePath;
 }
 
-function readInsideRoot(relativePath) {
+export class MissingRepositoryFileError extends Error {
+  constructor(relativePath, options) {
+    super(`${relativePath} does not exist`, options);
+    this.name = 'MissingRepositoryFileError';
+    this.code = 'ERR_REPOSITORY_FILE_MISSING';
+  }
+}
+
+export function readInsideRoot(relativePath) {
   const absolutePath = repositoryPath(relativePath);
-  if (!existsSync(absolutePath)) throw new Error(`${relativePath} does not exist`);
-  const fd = openSync(absolutePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  let fd;
+  try {
+    fd = openSync(absolutePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  } catch (error) {
+    if (error?.code === 'ENOENT') throw new MissingRepositoryFileError(relativePath, { cause: error });
+    throw error;
+  }
   try {
     if (!fstatSync(fd).isFile()) throw new Error(`${relativePath} is not a regular file`);
     return { absolutePath, content: readFileSync(fd, 'utf8') };

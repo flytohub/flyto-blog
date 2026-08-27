@@ -8,6 +8,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlan = 'video/plans/community-growth-open-source-ai-workflow-automation.json';
 const catalogPath = path.join(root, 'video/assets/stock-sources.json');
 const maxAssetBytes = 12 * 1024 * 1024;
+const approvedAsset = Object.freeze({
+  id: 'mixkit-people-working-laptops-42620',
+  downloadUrl: 'https://assets.mixkit.co/videos/42620/42620-720.mp4',
+  sha256: '4e26b16f9f85ac6843b07290b1c2cbf96d4cb4b6c640b9e47da57b30ca4b48cc',
+});
 
 function parseArgs(argv) {
   const args = { plan: defaultPlan, out: '', required: false };
@@ -79,32 +84,72 @@ export function isTrustedAssetUrl(value) {
   } catch { return false; }
 }
 
+export function resolveApprovedAsset(catalog, assetId) {
+  if (assetId !== approvedAsset.id) throw new Error(`unknown human B-roll asset: ${assetId ?? 'missing'}`);
+  const source = catalog?.assets?.find((asset) => asset.id === approvedAsset.id);
+  if (!source) throw new Error(`unknown human B-roll asset: ${assetId}`);
+  if (source.downloadUrl !== approvedAsset.downloadUrl) throw new Error('approved stock video catalog URL drifted');
+  if (source.sha256 !== approvedAsset.sha256) throw new Error('approved stock video catalog checksum drifted');
+  if (!isTrustedAssetUrl(source.downloadUrl)) throw new Error('stock video downloads must use the approved Mixkit asset host');
+  if (source.commercialUse !== true || !source.licenseUrl) throw new Error('stock video must record commercial-use license metadata');
+  return source;
+}
+
+export function verifyDownloadedAsset(bytes) {
+  if (!Buffer.isBuffer(bytes)) throw new TypeError('stock video body must be a Buffer');
+  if (bytes.length > maxAssetBytes) throw new Error(`stock video exceeds ${maxAssetBytes} bytes`);
+  if (digest(bytes) !== approvedAsset.sha256) throw new Error('stock video checksum does not match the reviewed source');
+  return bytes;
+}
+
+export function validateAssetResponse(response) {
+  if (response.redirected || response.url !== approvedAsset.downloadUrl) throw new Error('stock video redirect or final URL is not approved');
+  if (!response.ok) throw new Error(`stock video download failed: HTTP ${response.status}`);
+  const contentType = response.headers.get('content-type') ?? '';
+  if (!contentType.includes('video/mp4')) throw new Error(`unexpected stock video content type: ${contentType}`);
+}
+
+async function boundedResponseBuffer(response) {
+  const length = Number(response.headers.get('content-length'));
+  if (Number.isFinite(length) && length > maxAssetBytes) throw new Error(`stock video exceeds ${maxAssetBytes} bytes`);
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error('stock video response has no readable body');
+  const chunks = [];
+  let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxAssetBytes) {
+      await reader.cancel();
+      throw new Error(`stock video exceeds ${maxAssetBytes} bytes`);
+    }
+    chunks.push(Buffer.from(value));
+  }
+  return Buffer.concat(chunks, total);
+}
+
+export function persistVerifiedAsset(filePath, bytes) {
+  atomicWrite(filePath, verifyDownloadedAsset(bytes));
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
   const plan = JSON.parse(readRegularFile(repositoryPath(args.plan), 'utf8'));
   const catalog = JSON.parse(readRegularFile(catalogPath, 'utf8'));
-  const source = catalog.assets.find((asset) => asset.id === plan.humanBroll?.assetId);
-  if (!source) throw new Error(`unknown human B-roll asset: ${plan.humanBroll?.assetId ?? 'missing'}`);
-  const downloadUrl = new URL(source.downloadUrl);
-  if (!isTrustedAssetUrl(source.downloadUrl)) {
-    throw new Error('stock video downloads must use the approved Mixkit asset host');
-  }
-  if (source.commercialUse !== true || !source.licenseUrl) throw new Error('stock video must record commercial-use license metadata');
+  const source = resolveApprovedAsset(catalog, plan.humanBroll?.assetId);
 
   const output = repositoryPath(args.out || `video/dist/${plan.id}/shared/human-broll.mp4`, { forWrite: true });
   mkdirSync(path.dirname(output), { recursive: true });
   let buffer = existsSync(output) ? readRegularFile(output) : null;
   if (!buffer || digest(buffer) !== source.sha256) {
-    const response = await fetch(downloadUrl, {
+    const response = await fetch('https://assets.mixkit.co/videos/42620/42620-720.mp4', {
       headers: { 'User-Agent': 'Flyto2 video renderer (https://github.com/flytohub/flyto-blog)' },
+      redirect: 'manual',
     });
-    if (!response.ok) throw new Error(`stock video download failed: HTTP ${response.status}`);
-    const contentType = response.headers.get('content-type') ?? '';
-    if (!contentType.includes('video/mp4')) throw new Error(`unexpected stock video content type: ${contentType}`);
-    buffer = Buffer.from(await response.arrayBuffer());
-    if (buffer.length > maxAssetBytes) throw new Error(`stock video exceeds ${maxAssetBytes} bytes`);
-    if (digest(buffer) !== source.sha256) throw new Error('stock video checksum does not match the reviewed source');
-    atomicWrite(output, buffer);
+    validateAssetResponse(response);
+    buffer = verifyDownloadedAsset(await boundedResponseBuffer(response));
+    persistVerifiedAsset(output, buffer);
   }
 
   const provenancePath = path.join(path.dirname(output), 'human-broll-provenance.json');

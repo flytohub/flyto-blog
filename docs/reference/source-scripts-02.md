@@ -6,6 +6,12 @@ Source-backed contracts for **220 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `validateRegularFile(filePath)` | Validates validate regular file. | [scripts/render-video.mjs:110](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L110) |
+| function | `atomicWrite(filePath, data)` | Implements atomic write. | [scripts/render-video.mjs:116](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L116) |
+| function | `loadStaticAssets()` | Retrieves load static assets. | [scripts/render-video.mjs:123](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L123) |
+| function | `readPlan(relativePath)` | Retrieves read plan. | [scripts/render-video.mjs:129](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L129) |
+| function | `escapeHtml(value)` | Implements escape html. | [scripts/render-video.mjs:133](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L133) |
+| function | `stripCueTags(value)` | Transforms strip cue tags. | [scripts/render-video.mjs:142](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L142) |
 | function | `wrapWords(text, limit)` | Implements wrap words. | [scripts/render-video.mjs:160](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L160) |
 | function | `sourceLabel(value)` | Implements source label. | [scripts/render-video.mjs:177](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L177) |
 | function | `pad(value)` | Implements pad. | [scripts/render-video.mjs:185](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L185) |
@@ -46,8 +52,8 @@ Source-backed contracts for **220 declarations**.
 | constant | `presentSourceUrl` | Defines the present source url source-of-truth value. | [scripts/security-regressions.test.mjs:15](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L15) |
 | constant | `missingSourceUrl` | Defines the missing source url source-of-truth value. | [scripts/security-regressions.test.mjs:16](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L16) |
 | constant | `traversalSourceUrl` | Defines the traversal source url source-of-truth value. | [scripts/security-regressions.test.mjs:17](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L17) |
-| function | `pngChunkForTest(type, data)` | Implements png chunk for test. | [scripts/security-regressions.test.mjs:110](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L110) |
-| function | `crc32ForTest(buffer)` | Implements crc32 for test. | [scripts/security-regressions.test.mjs:119](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L119) |
+| function | `pngChunkForTest(type, data)` | Implements png chunk for test. | [scripts/security-regressions.test.mjs:137](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L137) |
+| function | `crc32ForTest(buffer)` | Implements crc32 for test. | [scripts/security-regressions.test.mjs:146](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L146) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/seo-manage.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L5) |
 | constant | `seoDir` | Defines the seo dir source-of-truth value. | [scripts/seo-manage.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L6) |
 | constant | `reportDir` | Defines the report dir source-of-truth value. | [scripts/seo-manage.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L7) |
@@ -210,19 +216,13 @@ Source-backed contracts for **220 declarations**.
 | function | `parseArgs(argv)` | Transforms parse args. | [scripts/video-from-post.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L9) |
 | function | `printHelp()` | Implements print help. | [scripts/video-from-post.mjs:37](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L37) |
 | function | `repositoryPath(relativePath, { forWrite = false })` | Implements repository path. | [scripts/video-from-post.mjs:44](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L44) |
-| function | `readInsideRoot(relativePath)` | Retrieves read inside root. | [scripts/video-from-post.mjs:57](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L57) |
-| function | `atomicWrite(filePath, data)` | Implements atomic write. | [scripts/video-from-post.mjs:67](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L67) |
-| function | `stripQuotes(value)` | Transforms strip quotes. | [scripts/video-from-post.mjs:74](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L74) |
-| function | `parseYamlValue(value)` | Transforms parse yaml value. | [scripts/video-from-post.mjs:78](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L78) |
-| function | `parseFrontmatter(raw)` | Transforms parse frontmatter. | [scripts/video-from-post.mjs:90](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L90) |
-| function | `slugFromPostPath(postPath)` | Implements slug from post path. | [scripts/video-from-post.mjs:104](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L104) |
-| function | `markdownToPlainText(markdown)` | Implements markdown to plain text. | [scripts/video-from-post.mjs:108](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L108) |
-| function | `clipAtWord(text, max)` | Implements clip at word. | [scripts/video-from-post.mjs:119](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L119) |
-| function | `sectionsFromMarkdown(markdown)` | Implements sections from markdown. | [scripts/video-from-post.mjs:128](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L128) |
-| function | `sentenceClip(text, max, min)` | Implements sentence clip. | [scripts/video-from-post.mjs:142](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L142) |
-| function | `distributeDurations(count, total)` | Implements distribute durations. | [scripts/video-from-post.mjs:155](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L155) |
-| function | `keywordBase(title, tags)` | Implements keyword base. | [scripts/video-from-post.mjs:165](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L165) |
-| function | `makeLongTailKeywords(primaryKeyword, title)` | Builds make long tail keywords. | [scripts/video-from-post.mjs:179](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L179) |
-| function | `makeScenes(title, description, sections, durationSeconds)` | Builds make scenes. | [scripts/video-from-post.mjs:191](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L191) |
-| function | `makePlan(args)` | Builds make plan. | [scripts/video-from-post.mjs:219](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L219) |
-| function | `outputPath(args)` | Implements output path. | [scripts/video-from-post.mjs:343](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L343) |
+| class | `MissingRepositoryFileError` | Implements the missing repository file error behavior. | [scripts/video-from-post.mjs:57](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L57) |
+| constructor | `MissingRepositoryFileError.constructor(relativePath, options)` | Initializes the missing repository file error instance. | [scripts/video-from-post.mjs:58](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L58) |
+| function | `readInsideRoot(relativePath)` | Retrieves read inside root. | [scripts/video-from-post.mjs:65](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L65) |
+| function | `atomicWrite(filePath, data)` | Implements atomic write. | [scripts/video-from-post.mjs:80](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L80) |
+| function | `stripQuotes(value)` | Transforms strip quotes. | [scripts/video-from-post.mjs:87](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L87) |
+| function | `parseYamlValue(value)` | Transforms parse yaml value. | [scripts/video-from-post.mjs:91](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L91) |
+| function | `parseFrontmatter(raw)` | Transforms parse frontmatter. | [scripts/video-from-post.mjs:103](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L103) |
+| function | `slugFromPostPath(postPath)` | Implements slug from post path. | [scripts/video-from-post.mjs:117](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L117) |
+| function | `markdownToPlainText(markdown)` | Implements markdown to plain text. | [scripts/video-from-post.mjs:121](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L121) |
+| function | `clipAtWord(text, max)` | Implements clip at word. | [scripts/video-from-post.mjs:132](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L132) |
