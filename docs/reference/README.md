@@ -4,9 +4,9 @@
 
 This reference is generated from repository source with the TypeScript compiler AST and from article frontmatter with `gray-matter`. It maps executable declarations, posts, automation, distribution plans, and public assets back to maintained files.
 
-Inventory: **552 declarations**, **28 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
+Inventory: **571 declarations**, **28 source files**, **67 published posts**, **24 explicit focus keywords**, **27 npm scripts**, **5 workflows**, **19 environment inputs**, **1 social plan**, **1 video plan**, and **75 public files**.
 
-Source fingerprint: `fdad8813f6672889427cb023d8fd96d71b6a5fb071e90a589c285e83657c178f`.
+Source fingerprint: `b36430bd050d56ca4c8efd2a90cd14abd7f74973cc5cb80437ae672b04bdb82d`.
 
 ## Source Areas
 
@@ -16,7 +16,7 @@ Source fingerprint: `fdad8813f6672889427cb023d8fd96d71b6a5fb071e90a589c285e83657
 | Theme | 29 | [source-theme-01.md](source-theme-01.md) |
 | Scripts | 220 | [source-scripts-01.md](source-scripts-01.md) |
 | Scripts | 220 | [source-scripts-02.md](source-scripts-02.md) |
-| Scripts | 38 | [source-scripts-03.md](source-scripts-03.md) |
+| Scripts | 57 | [source-scripts-03.md](source-scripts-03.md) |
 | Runtime | 1 | [source-runtime-01.md](source-runtime-01.md) |
 
 ## Public Contracts

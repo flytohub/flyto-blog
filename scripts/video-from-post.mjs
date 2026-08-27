@@ -1,9 +1,9 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { closeSync, constants, existsSync, fstatSync, lstatSync, mkdirSync, openSync, readFileSync, realpathSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const templateCatalog = JSON.parse(readFileSync(path.join(root, 'video/templates/catalog.json'), 'utf8'));
+let templateCatalog;
 const defaultDuration = 45;
 
 function parseArgs(argv) {
@@ -41,11 +41,47 @@ function printHelp() {
 `);
 }
 
-function readInsideRoot(relativePath) {
-  const absolutePath = path.resolve(root, relativePath);
-  if (!absolutePath.startsWith(root)) throw new Error(`${relativePath} escapes repository root`);
-  if (!existsSync(absolutePath)) throw new Error(`${relativePath} does not exist`);
-  return { absolutePath, content: readFileSync(absolutePath, 'utf8') };
+export function repositoryPath(relativePath, { forWrite = false } = {}) {
+  if (typeof relativePath !== 'string' || !relativePath || relativePath.includes('\0') || relativePath.includes('\\') || path.isAbsolute(relativePath)) throw new Error('path must be a non-empty repository-relative path');
+  let decoded = relativePath;
+  for (let count = 0; count < 4; count += 1) { const next = decodeURIComponent(decoded); if (next === decoded) break; decoded = next; }
+  if (!decoded || decoded.includes('\0') || decoded.includes('\\') || path.isAbsolute(decoded) || decoded.split('/').includes('..')) throw new Error(`${relativePath} escapes repository root`);
+  const absolutePath = path.resolve(root, decoded);
+  let parent = forWrite ? path.dirname(absolutePath) : absolutePath;
+  while (!existsSync(parent)) parent = path.dirname(parent);
+  const canonical = realpathSync(parent);
+  if (canonical !== root && !canonical.startsWith(`${root}${path.sep}`)) throw new Error(`${relativePath} escapes repository root`);
+  return absolutePath;
+}
+
+export class MissingRepositoryFileError extends Error {
+  constructor(relativePath, options) {
+    super(`${relativePath} does not exist`, options);
+    this.name = 'MissingRepositoryFileError';
+    this.code = 'ERR_REPOSITORY_FILE_MISSING';
+  }
+}
+
+export function readInsideRoot(relativePath) {
+  const absolutePath = repositoryPath(relativePath);
+  let fd;
+  try {
+    fd = openSync(absolutePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  } catch (error) {
+    if (error?.code === 'ENOENT') throw new MissingRepositoryFileError(relativePath, { cause: error });
+    throw error;
+  }
+  try {
+    if (!fstatSync(fd).isFile()) throw new Error(`${relativePath} is not a regular file`);
+    return { absolutePath, content: readFileSync(fd, 'utf8') };
+  } finally { closeSync(fd); }
+}
+
+function atomicWrite(filePath, data) {
+  if (existsSync(filePath) && lstatSync(filePath).isSymbolicLink()) throw new Error(`${filePath} is a symbolic link`);
+  const temporary = `${filePath}.${process.pid}.${Date.now()}.tmp`;
+  try { const fd = openSync(temporary, constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW, 0o600); try { writeFileSync(fd, data); } finally { closeSync(fd); } renameSync(temporary, filePath); }
+  finally { if (existsSync(temporary)) unlinkSync(temporary); }
 }
 
 function stripQuotes(value) {
@@ -172,6 +208,7 @@ function makeScenes(title, description, sections, durationSeconds) {
     { heading: 'Try it with Flyto2', body: 'Start from the canonical article, follow the linked docs, and keep every automation reviewable before sharing it.' },
   ].slice(0, 6);
   const durations = distributeDurations(selected.length, durationSeconds);
+  templateCatalog ??= JSON.parse(readFileSync(path.join(root, 'video/templates/catalog.json'), 'utf8'));
   const templates = templateCatalog.packs.balanced;
   const onScreenText = [
     'Runtime | Docs | Evidence',
@@ -319,8 +356,7 @@ function makePlan(args) {
 function outputPath(args) {
   const slug = slugFromPostPath(args.post);
   const relativePath = args.out || `video/plans/${slug}.json`;
-  const absolutePath = path.resolve(root, relativePath);
-  if (!absolutePath.startsWith(root)) throw new Error('--out must stay inside the repository');
+  const absolutePath = repositoryPath(relativePath, { forWrite: true });
   return { relativePath, absolutePath };
 }
 
@@ -335,8 +371,8 @@ function main() {
     throw new Error(`${relativePath} already exists; pass --force to overwrite`);
   }
   mkdirSync(path.dirname(absolutePath), { recursive: true });
-  writeFileSync(absolutePath, `${JSON.stringify(plan, null, 2)}\n`);
+  atomicWrite(absolutePath, `${JSON.stringify(plan, null, 2)}\n`);
   process.stdout.write(`${relativePath}\n`);
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

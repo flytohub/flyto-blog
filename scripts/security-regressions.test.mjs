@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -7,6 +8,9 @@ import { deflateSync } from 'node:zlib';
 import { decodeRgbaPng, ogImagePng, pngsAreEquivalent, writeIfChanged } from './generate-discovery-feeds.mjs';
 import { atomicWrite, escapeCell, parseSource } from './generate-documentation-reference.mjs';
 import { isExistingSameRepositorySourceUrl } from './list-external-links.mjs';
+import { isTrustedAssetUrl, persistVerifiedAsset, repositoryPath as assetPath, resolveApprovedAsset, validateAssetResponse, verifyDownloadedAsset } from './fetch-video-assets.mjs';
+import { escapeHtml, repositoryPath as renderPath, stripCueTags } from './render-video.mjs';
+import { MissingRepositoryFileError, readInsideRoot, repositoryPath as postPath } from './video-from-post.mjs';
 
 const presentSourceUrl = 'https://github.com/flytohub/flyto-blog/blob/main/present.md#L1';
 const missingSourceUrl = 'https://github.com/flytohub/flyto-blog/blob/main/missing.md';
@@ -61,6 +65,73 @@ test('same-repository source links skip only existing checkout files', () => {
   assert.equal(isExistingSameRepositorySourceUrl(presentSourceUrl, directory), true);
   assert.equal(isExistingSameRepositorySourceUrl(missingSourceUrl, directory), false);
   assert.equal(isExistingSameRepositorySourceUrl(traversalSourceUrl, directory), false);
+});
+
+test('video asset downloads trust only the exact credential-free HTTPS origin', () => {
+  assert.equal(isTrustedAssetUrl('https://assets.mixkit.co/video.mp4'), true);
+  for (const value of [
+    'http://assets.mixkit.co/video.mp4',
+    'https://assets.mixkit.co:444/video.mp4',
+    'https://assets.mixkit.co:443/video.mp4',
+    `https://user:pass${'@'}assets.mixkit.co/video.mp4`,
+    'https://assets.mixkit.co.evil.example/video.mp4',
+    'https://evil.example/?assets.mixkit.co',
+  ]) assert.equal(isTrustedAssetUrl(value), false, value);
+});
+
+test('post reads report a typed missing-file error from the single open', () => {
+  assert.throws(() => readInsideRoot(`posts/missing-${process.pid}.md`), (error) => error instanceof MissingRepositoryFileError && error.code === 'ERR_REPOSITORY_FILE_MISSING');
+});
+
+test('approved asset resolution rejects catalog URL and digest drift', () => {
+  const base = { id: 'mixkit-people-working-laptops-42620', downloadUrl: 'https://assets.mixkit.co/videos/42620/42620-720.mp4', sha256: '4e26b16f9f85ac6843b07290b1c2cbf96d4cb4b6c640b9e47da57b30ca4b48cc', commercialUse: true, licenseUrl: 'https://mixkit.co/license/#videoFree' };
+  assert.throws(() => resolveApprovedAsset({ assets: [{ ...base, downloadUrl: 'https://assets.mixkit.co/other.mp4' }] }, base.id), /URL drifted/);
+  assert.throws(() => resolveApprovedAsset({ assets: [{ ...base, sha256: '0'.repeat(64) }] }, base.id), /checksum drifted/);
+});
+
+test('asset responses refuse redirects and unapproved final URLs', () => {
+  const headers = new Headers({ 'content-type': 'video/mp4' });
+  assert.throws(() => validateAssetResponse({ redirected: true, url: 'https://assets.mixkit.co/videos/42620/42620-720.mp4', ok: true, status: 200, headers }), /redirect/);
+  assert.throws(() => validateAssetResponse({ redirected: false, url: 'https://assets.mixkit.co.evil.example/video.mp4', ok: true, status: 200, headers }), /not approved/);
+});
+
+test('unverified asset bytes never create a final artifact', () => {
+  const directory = mkdtempSync(path.join(tmpdir(), 'flyto-asset-test-'));
+  const output = path.join(directory, 'human-broll.mp4');
+  for (const bytes of [Buffer.alloc(12 * 1024 * 1024 + 1), Buffer.from('digest mismatch')]) {
+    assert.throws(() => persistVerifiedAsset(output, bytes), /exceeds|checksum/);
+    assert.equal(existsSync(output), false);
+  }
+  assert.throws(() => verifyDownloadedAsset(Buffer.from('digest mismatch')), /checksum/);
+  rmSync(directory, { recursive: true });
+});
+
+test('all video path boundaries reject encoded traversal and unsafe path forms', () => {
+  for (const boundary of [assetPath, renderPath, postPath]) {
+    for (const value of ['', '../outside', '%2e%2e/outside', '%252e%252e/outside', 'dir\\file', 'dir\0file', '/absolute']) {
+      assert.throws(() => boundary(value), /path|escape/i, `${boundary.name}: ${JSON.stringify(value)}`);
+    }
+  }
+});
+
+test('video write boundaries reject an existing-parent symlink escape', () => {
+  const linkName = `.security-path-link-${process.pid}`;
+  const linkPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', linkName);
+  const outside = mkdtempSync(path.join(tmpdir(), 'flyto-video-outside-'));
+  symlinkSync(outside, linkPath);
+  try {
+    for (const boundary of [assetPath, renderPath, postPath]) assert.throws(() => boundary(`${linkName}/output`, { forWrite: true }), /escape/i);
+  } finally {
+    rmSync(linkPath);
+    rmSync(outside, { recursive: true });
+  }
+});
+
+test('caption tags are quote-aware and active markup is escaped exactly once', () => {
+  assert.equal(stripCueTags('<v title="1 > 0">safe</v>'), 'safe');
+  const escaped = escapeHtml(`<img onerror='run()'>&`);
+  assert.equal(escaped, '&lt;img onerror=&#39;run()&#39;&gt;&amp;');
+  assert.doesNotMatch(escaped, /<img|onerror='/);
 });
 
 function pngChunkForTest(type, data) {
