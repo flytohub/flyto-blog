@@ -6,6 +6,11 @@ import test from 'node:test';
 import { deflateSync } from 'node:zlib';
 import { decodeRgbaPng, ogImagePng, pngsAreEquivalent, writeIfChanged } from './generate-discovery-feeds.mjs';
 import { atomicWrite, escapeCell, parseSource } from './generate-documentation-reference.mjs';
+import { isExistingSameRepositorySourceUrl } from './list-external-links.mjs';
+
+const presentSourceUrl = 'https://github.com/flytohub/flyto-blog/blob/main/present.md#L1';
+const missingSourceUrl = 'https://github.com/flytohub/flyto-blog/blob/main/missing.md';
+const traversalSourceUrl = 'https://github.com/flytohub/flyto-blog/blob/main/%2e%2e/outside.md';
 
 test('equivalent PNG compression does not change the generated image', () => {
   const original = ogImagePng();
@@ -48,6 +53,14 @@ test('atomic writers refuse symlink destinations and preserve their targets', ()
   assert.throws(() => writeIfChanged(link, 'unsafe'), /symbolic link/);
   assert.throws(() => atomicWrite(link, 'unsafe'), /symbolic link/);
   assert.equal(readFileSync(target, 'utf8'), 'safe');
+});
+
+test('same-repository source links skip only existing checkout files', () => {
+  const directory = mkdtempSync(path.join(tmpdir(), 'flyto-link-test-'));
+  writeFileSync(path.join(directory, 'present.md'), 'safe');
+  assert.equal(isExistingSameRepositorySourceUrl(presentSourceUrl, directory), true);
+  assert.equal(isExistingSameRepositorySourceUrl(missingSourceUrl, directory), false);
+  assert.equal(isExistingSameRepositorySourceUrl(traversalSourceUrl, directory), false);
 });
 
 function pngChunkForTest(type, data) {

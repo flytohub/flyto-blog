@@ -34,8 +34,11 @@ Source-backed contracts for **220 declarations**.
 | function | `renderOutput(plan, output, baseOutDir, args)` | Builds render output. | [scripts/render-video.mjs:793](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L793) |
 | function | `writeManifest(plan, outDir, outputs)` | Builds write manifest. | [scripts/render-video.mjs:860](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L860) |
 | function | `main()` | Implements main. | [scripts/render-video.mjs:878](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L878) |
-| function | `pngChunkForTest(type, data)` | Implements png chunk for test. | [scripts/security-regressions.test.mjs:53](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L53) |
-| function | `crc32ForTest(buffer)` | Implements crc32 for test. | [scripts/security-regressions.test.mjs:62](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L62) |
+| constant | `presentSourceUrl` | Defines the present source url source-of-truth value. | [scripts/security-regressions.test.mjs:11](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L11) |
+| constant | `missingSourceUrl` | Defines the missing source url source-of-truth value. | [scripts/security-regressions.test.mjs:12](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L12) |
+| constant | `traversalSourceUrl` | Defines the traversal source url source-of-truth value. | [scripts/security-regressions.test.mjs:13](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L13) |
+| function | `pngChunkForTest(type, data)` | Implements png chunk for test. | [scripts/security-regressions.test.mjs:66](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L66) |
+| function | `crc32ForTest(buffer)` | Implements crc32 for test. | [scripts/security-regressions.test.mjs:75](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L75) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/seo-manage.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L5) |
 | constant | `seoDir` | Defines the seo dir source-of-truth value. | [scripts/seo-manage.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L6) |
 | constant | `reportDir` | Defines the report dir source-of-truth value. | [scripts/seo-manage.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L7) |
@@ -223,6 +226,3 @@ Source-backed contracts for **220 declarations**.
 | constant | `supportedAspectRatios` | Defines the supported aspect ratios source-of-truth value. | [scripts/video-plan-check.mjs:22](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L22) |
 | constant | `supportedPlatforms` | Defines the supported platforms source-of-truth value. | [scripts/video-plan-check.mjs:23](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L23) |
 | constant | `supportedTemplates` | Defines the supported templates source-of-truth value. | [scripts/video-plan-check.mjs:24](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L24) |
-| constant | `supportedDemoActions` | Defines the supported demo actions source-of-truth value. | [scripts/video-plan-check.mjs:25](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L25) |
-| constant | `failures` | Defines the failures source-of-truth value. | [scripts/video-plan-check.mjs:26](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L26) |
-| constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/video-plan-check.mjs:27](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L27) |

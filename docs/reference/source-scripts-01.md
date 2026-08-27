@@ -195,14 +195,14 @@ Source-backed contracts for **220 declarations**.
 | function | `buildOutputs(files)` | Builds build outputs. | [scripts/generate-documentation-reference.mjs:326](https://github.com/flytohub/flyto-blog/blob/main/scripts/generate-documentation-reference.mjs#L326) |
 | function | `main()` | Implements main. | [scripts/generate-documentation-reference.mjs:419](https://github.com/flytohub/flyto-blog/blob/main/scripts/generate-documentation-reference.mjs#L419) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/list-external-links.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L5) |
-| constant | `outputPath` | Defines the output path source-of-truth value. | [scripts/list-external-links.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L6) |
-| constant | `ownHosts` | Defines the own hosts source-of-truth value. | [scripts/list-external-links.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L7) |
-| constant | `skipDirs` | Defines the skip dirs source-of-truth value. | [scripts/list-external-links.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L8) |
-| constant | `links` | Defines the links source-of-truth value. | [scripts/list-external-links.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L9) |
-| function | `walk(dir)` | Implements walk. | [scripts/list-external-links.mjs:11](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L11) |
-| function | `cleanUrl(value)` | Transforms clean url. | [scripts/list-external-links.mjs:22](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L22) |
-| function | `stripCodeBlocks(value)` | Transforms strip code blocks. | [scripts/list-external-links.mjs:28](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L28) |
-| function | `shouldSkipUrl(rawUrl, parsed)` | Implements should skip url. | [scripts/list-external-links.mjs:34](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L34) |
+| constant | `ownHosts` | Defines the own hosts source-of-truth value. | [scripts/list-external-links.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L6) |
+| constant | `skipDirs` | Defines the skip dirs source-of-truth value. | [scripts/list-external-links.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L7) |
+| function | `walk(dir)` | Implements walk. | [scripts/list-external-links.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L9) |
+| function | `cleanUrl(value)` | Transforms clean url. | [scripts/list-external-links.mjs:20](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L20) |
+| function | `stripCodeBlocks(value)` | Transforms strip code blocks. | [scripts/list-external-links.mjs:26](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L26) |
+| function | `isExistingSameRepositorySourceUrl(rawUrl, checkoutRoot)` | Validates is existing same repository source url. | [scripts/list-external-links.mjs:32](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L32) |
+| function | `shouldSkipUrl(rawUrl, parsed)` | Implements should skip url. | [scripts/list-external-links.mjs:55](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L55) |
+| function | `main()` | Implements main. | [scripts/list-external-links.mjs:75](https://github.com/flytohub/flyto-blog/blob/main/scripts/list-external-links.mjs#L75) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/render-video.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L6) |
 | constant | `defaultPlan` | Defines the default plan source-of-truth value. | [scripts/render-video.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L7) |
 | constant | `brandLogoRelativePath` | Defines the brand logo relative path source-of-truth value. | [scripts/render-video.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L8) |

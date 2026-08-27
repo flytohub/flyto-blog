@@ -2,10 +2,13 @@
 
 # Scripts Source Reference 3
 
-Source-backed contracts for **35 declarations**.
+Source-backed contracts for **38 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| constant | `supportedDemoActions` | Defines the supported demo actions source-of-truth value. | [scripts/video-plan-check.mjs:25](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L25) |
+| constant | `failures` | Defines the failures source-of-truth value. | [scripts/video-plan-check.mjs:26](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L26) |
+| constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/video-plan-check.mjs:27](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L27) |
 | function | `fail(message)` | Implements fail. | [scripts/video-plan-check.mjs:29](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L29) |
 | function | `parseArgs(argv)` | Transforms parse args. | [scripts/video-plan-check.mjs:33](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L33) |
 | function | `readJson(relativePath)` | Retrieves read json. | [scripts/video-plan-check.mjs:43](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L43) |
