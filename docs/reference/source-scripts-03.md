@@ -2,10 +2,21 @@
 
 # Scripts Source Reference 3
 
-Source-backed contracts for **24 declarations**.
+Source-backed contracts for **35 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `fail(message)` | Implements fail. | [scripts/video-plan-check.mjs:29](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L29) |
+| function | `parseArgs(argv)` | Transforms parse args. | [scripts/video-plan-check.mjs:33](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L33) |
+| function | `readJson(relativePath)` | Retrieves read json. | [scripts/video-plan-check.mjs:43](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L43) |
+| function | `assertString(label, value, min, max)` | Validates assert string. | [scripts/video-plan-check.mjs:50](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L50) |
+| function | `assertStringArray(label, value, min, max, itemMin, itemMax)` | Validates assert string array. | [scripts/video-plan-check.mjs:60](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L60) |
+| function | `assertKebabId(label, value)` | Validates assert kebab id. | [scripts/video-plan-check.mjs:69](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L69) |
+| function | `assertNoSecrets(label, value)` | Validates assert no secrets. | [scripts/video-plan-check.mjs:75](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L75) |
+| function | `assertFlyto2Only(label, value)` | Validates assert flyto2 only. | [scripts/video-plan-check.mjs:93](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L93) |
+| function | `assertHttpsAllowed(label, value)` | Validates assert https allowed. | [scripts/video-plan-check.mjs:101](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L101) |
+| function | `validateSeo(relativePath, plan)` | Validates validate seo. | [scripts/video-plan-check.mjs:113](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L113) |
+| function | `validateOutputs(relativePath, plan)` | Validates validate outputs. | [scripts/video-plan-check.mjs:137](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L137) |
 | function | `validateThumbnails(relativePath, plan)` | Validates validate thumbnails. | [scripts/video-plan-check.mjs:161](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L161) |
 | function | `validateProduction(relativePath, plan)` | Validates validate production. | [scripts/video-plan-check.mjs:172](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L172) |
 | function | `validatePlan(relativePath)` | Validates validate plan. | [scripts/video-plan-check.mjs:234](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L234) |

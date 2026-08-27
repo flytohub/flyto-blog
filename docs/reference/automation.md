@@ -24,7 +24,7 @@ The repository exposes **27 npm scripts**, **5 GitHub workflows**, and **19 name
 | `social:check` | `node scripts/audit-social-publisher.mjs` |
 | `social:dry-run` | `node scripts/social-publish.mjs --plan social/posts/community-growth-open-source-ai-workflow-automation.json --dry-run` |
 | `social:publish` | `node scripts/social-publish.mjs` |
-| `test` | `node scripts/audit-blog-source.mjs && node scripts/audit-social-publisher.mjs && npm run video:qa` |
+| `test` | `node --test scripts/security-regressions.test.mjs && node scripts/audit-blog-source.mjs && node scripts/audit-social-publisher.mjs && npm run video:qa` |
 | `verify` | `npm run docs:check && npm run test && npm run lint && npm run build && npm run check:links && npm run audit:seo && npm run seo:score && npm run seo:manage` |
 | `video:artifact-qa` | `node scripts/video-artifact-qa.mjs` |
 | `video:assets` | `node scripts/fetch-video-assets.mjs` |

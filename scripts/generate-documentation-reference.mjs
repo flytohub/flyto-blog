@@ -1,6 +1,6 @@
 import { execFileSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { createHash, randomBytes } from 'node:crypto';
+import { closeSync, constants, existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
@@ -25,14 +25,37 @@ function read(relativePath) {
   return readFileSync(path.join(root, relativePath), 'utf8');
 }
 
-function parseSource(relativePath) {
-  const raw = read(relativePath);
+function vueScriptBlock(raw) {
+  const lower = raw.toLowerCase();
+  let cursor = 0;
+  while ((cursor = lower.indexOf('<script', cursor)) !== -1) {
+    const boundary = lower[cursor + 7];
+    if (boundary && !/[\s/>]/.test(boundary)) { cursor += 7; continue; }
+    let quote = '';
+    let openEnd = cursor + 7;
+    for (; openEnd < raw.length; openEnd += 1) {
+      const character = raw[openEnd];
+      if (quote) { if (character === quote) quote = ''; }
+      else if (character === '"' || character === "'") quote = character;
+      else if (character === '>') break;
+    }
+    if (openEnd >= raw.length) return null;
+    const close = lower.indexOf('</script', openEnd + 1);
+    if (close === -1) return null;
+    const closeEnd = lower.indexOf('>', close + 8);
+    if (closeEnd === -1) return null;
+    return { text: raw.slice(openEnd + 1, close), start: openEnd + 1 };
+  }
+  return null;
+}
+
+function parseSource(relativePath, raw = read(relativePath)) {
   if (!relativePath.endsWith('.vue')) return { text: raw, lineOffset: 0 };
-  const match = raw.match(/<script\b[^>]*>([\s\S]*?)<\/script>/i);
-  if (!match) return { text: '', lineOffset: 0 };
+  const block = vueScriptBlock(raw);
+  if (!block) return { text: '', lineOffset: 0 };
   return {
-    text: match[1],
-    lineOffset: raw.slice(0, match.index + match[0].indexOf(match[1])).split(/\r?\n/).length - 1,
+    text: block.text,
+    lineOffset: raw.slice(0, block.start).split(/\r?\n/).length - 1,
   };
 }
 
@@ -185,7 +208,34 @@ function repositoryLink(relativePath, line = 0) {
 }
 
 function escapeCell(value) {
-  return String(value ?? '').replace(/\|/g, '\\|').replace(/\s+/g, ' ').trim();
+  return String(value ?? '')
+    .replace(/[\u0000-\u001f\u007f-\u009f]/g, ' ')
+    .replace(/\\/g, '&#92;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\|/g, '&#124;')
+    .replace(/`/g, '&#96;')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function atomicWrite(filePath, content) {
+  if (existsSync(filePath) && lstatSync(filePath).isSymbolicLink()) throw new Error(`refusing to replace symbolic link: ${filePath}`);
+  if (existsSync(filePath) && readFileSync(filePath, 'utf8') === content) return false;
+  mkdirSync(path.dirname(filePath), { recursive: true });
+  const temporary = path.join(path.dirname(filePath), `.${path.basename(filePath)}.${process.pid}.${randomBytes(12).toString('hex')}.tmp`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, constants.O_CREAT | constants.O_EXCL | constants.O_WRONLY | constants.O_NOFOLLOW, 0o600);
+    writeFileSync(descriptor, content, 'utf8');
+    closeSync(descriptor);
+    descriptor = undefined;
+    renameSync(temporary, filePath);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+    try { unlinkSync(temporary); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  }
+  return true;
 }
 
 function titleCase(value) {
@@ -385,10 +435,11 @@ function main() {
     return;
   }
 
-  rmSync(outputDir, { recursive: true, force: true });
   mkdirSync(outputDir, { recursive: true });
-  for (const [file, content] of outputs) writeFileSync(path.join(outputDir, file), content);
+  for (const [file, content] of outputs) atomicWrite(path.join(outputDir, file), content);
   console.log(`blog documentation reference generated: ${outputs.size} pages`);
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+
+export { atomicWrite, escapeCell, parseSource, vueScriptBlock };

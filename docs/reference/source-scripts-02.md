@@ -6,6 +6,15 @@ Source-backed contracts for **220 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `lineTexts(lines, x, y, className, step)` | Implements line texts. | [scripts/render-video.mjs:197](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L197) |
+| function | `logoImage(x, y, size)` | Implements logo image. | [scripts/render-video.mjs:203](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L203) |
+| function | `frameCueY(output, spec)` | Implements frame cue y. | [scripts/render-video.mjs:207](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L207) |
+| function | `writeFrame(plan, output, scene, index, outputDir)` | Builds write frame. | [scripts/render-video.mjs:213](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L213) |
+| function | `writeThumbnail(plan, output, thumbnail, index, outputDir)` | Builds write thumbnail. | [scripts/render-video.mjs:348](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L348) |
+| function | `writeStoryboard(plan, output, outputDir, framePaths, thumbnailPaths)` | Builds write storyboard. | [scripts/render-video.mjs:389](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L389) |
+| function | `writeCaptions(plan, outputDir)` | Builds write captions. | [scripts/render-video.mjs:430](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L430) |
+| function | `parseSrt(filePath)` | Transforms parse srt. | [scripts/render-video.mjs:442](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L442) |
+| function | `chunkCaption(text, maxChars, maxWords)` | Implements chunk caption. | [scripts/render-video.mjs:460](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L460) |
 | function | `productionCaptionSpec(output)` | Implements production caption spec. | [scripts/render-video.mjs:476](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L476) |
 | function | `productDemoFileName(output)` | Implements product demo file name. | [scripts/render-video.mjs:482](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L482) |
 | function | `writeProductionCaptions(sourcePath, normalizedSrtPath, assPath, output, tempo, durationSeconds)` | Builds write production captions. | [scripts/render-video.mjs:488](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L488) |
@@ -25,6 +34,8 @@ Source-backed contracts for **220 declarations**.
 | function | `renderOutput(plan, output, baseOutDir, args)` | Builds render output. | [scripts/render-video.mjs:793](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L793) |
 | function | `writeManifest(plan, outDir, outputs)` | Builds write manifest. | [scripts/render-video.mjs:860](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L860) |
 | function | `main()` | Implements main. | [scripts/render-video.mjs:878](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L878) |
+| function | `pngChunkForTest(type, data)` | Implements png chunk for test. | [scripts/security-regressions.test.mjs:53](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L53) |
+| function | `crc32ForTest(buffer)` | Implements crc32 for test. | [scripts/security-regressions.test.mjs:62](https://github.com/flytohub/flyto-blog/blob/main/scripts/security-regressions.test.mjs#L62) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/seo-manage.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L5) |
 | constant | `seoDir` | Defines the seo dir source-of-truth value. | [scripts/seo-manage.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L6) |
 | constant | `reportDir` | Defines the report dir source-of-truth value. | [scripts/seo-manage.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/seo-manage.mjs#L7) |
@@ -215,14 +226,3 @@ Source-backed contracts for **220 declarations**.
 | constant | `supportedDemoActions` | Defines the supported demo actions source-of-truth value. | [scripts/video-plan-check.mjs:25](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L25) |
 | constant | `failures` | Defines the failures source-of-truth value. | [scripts/video-plan-check.mjs:26](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L26) |
 | constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/video-plan-check.mjs:27](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L27) |
-| function | `fail(message)` | Implements fail. | [scripts/video-plan-check.mjs:29](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L29) |
-| function | `parseArgs(argv)` | Transforms parse args. | [scripts/video-plan-check.mjs:33](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L33) |
-| function | `readJson(relativePath)` | Retrieves read json. | [scripts/video-plan-check.mjs:43](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L43) |
-| function | `assertString(label, value, min, max)` | Validates assert string. | [scripts/video-plan-check.mjs:50](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L50) |
-| function | `assertStringArray(label, value, min, max, itemMin, itemMax)` | Validates assert string array. | [scripts/video-plan-check.mjs:60](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L60) |
-| function | `assertKebabId(label, value)` | Validates assert kebab id. | [scripts/video-plan-check.mjs:69](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L69) |
-| function | `assertNoSecrets(label, value)` | Validates assert no secrets. | [scripts/video-plan-check.mjs:75](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L75) |
-| function | `assertFlyto2Only(label, value)` | Validates assert flyto2 only. | [scripts/video-plan-check.mjs:93](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L93) |
-| function | `assertHttpsAllowed(label, value)` | Validates assert https allowed. | [scripts/video-plan-check.mjs:101](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L101) |
-| function | `validateSeo(relativePath, plan)` | Validates validate seo. | [scripts/video-plan-check.mjs:113](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L113) |
-| function | `validateOutputs(relativePath, plan)` | Validates validate outputs. | [scripts/video-plan-check.mjs:137](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L137) |
