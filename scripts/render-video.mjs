@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { closeSync, constants, existsSync, fstatSync, lstatSync, mkdirSync, openSync, readFileSync, realpathSync, renameSync, rmSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -7,10 +7,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const defaultPlan = 'video/plans/community-growth-open-source-ai-workflow-automation.json';
 const brandLogoRelativePath = 'video/assets/flyto2-logo.png';
 const brandLogoPath = path.join(root, brandLogoRelativePath);
-const brandLogoDataUri = `data:image/png;base64,${readFileSync(path.join(root, brandLogoRelativePath)).toString('base64')}`;
+let brandLogoDataUri;
 const templateCatalogRelativePath = 'video/templates/catalog.json';
-const templateCatalog = JSON.parse(readFileSync(path.join(root, templateCatalogRelativePath), 'utf8'));
-const defaultTemplateSequence = templateCatalog.packs.balanced;
+let templateCatalog;
+let defaultTemplateSequence;
 const transitionSeconds = 0.45;
 const aspectSpecs = {
   '16:9': {
@@ -88,18 +88,73 @@ function printHelp() {
 `);
 }
 
-function readPlan(relativePath) {
-  const absolutePath = path.resolve(root, relativePath);
-  if (!absolutePath.startsWith(root)) throw new Error('plan path must stay inside the repository');
-  return JSON.parse(readFileSync(absolutePath, 'utf8'));
+export function repositoryPath(relativePath, { forWrite = false } = {}) {
+  if (typeof relativePath !== 'string' || !relativePath || relativePath.includes('\0') || relativePath.includes('\\') || path.isAbsolute(relativePath)) throw new Error('path must be a non-empty repository-relative path');
+  let decoded = relativePath;
+  for (let count = 0; count < 4; count += 1) { const next = decodeURIComponent(decoded); if (next === decoded) break; decoded = next; }
+  if (!decoded || decoded.includes('\0') || decoded.includes('\\') || path.isAbsolute(decoded) || decoded.split('/').includes('..')) throw new Error(`${relativePath} escapes repository root`);
+  const absolutePath = path.resolve(root, decoded);
+  let parent = forWrite ? path.dirname(absolutePath) : absolutePath;
+  while (!existsSync(parent)) parent = path.dirname(parent);
+  const canonical = realpathSync(parent);
+  if (canonical !== root && !canonical.startsWith(`${root}${path.sep}`)) throw new Error(`${relativePath} escapes repository root`);
+  return absolutePath;
 }
 
-function escapeHtml(value) {
+function readRegularFile(filePath, encoding) {
+  const fd = openSync(filePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try { if (!fstatSync(fd).isFile()) throw new Error(`${filePath} is not a regular file`); return readFileSync(fd, encoding); }
+  finally { closeSync(fd); }
+}
+
+function validateRegularFile(filePath) {
+  const fd = openSync(filePath, constants.O_RDONLY | constants.O_NOFOLLOW);
+  try { if (!fstatSync(fd).isFile()) throw new Error(`${filePath} is not a regular file`); }
+  finally { closeSync(fd); }
+}
+
+function atomicWrite(filePath, data) {
+  if (existsSync(filePath) && lstatSync(filePath).isSymbolicLink()) throw new Error(`${filePath} is a symbolic link`);
+  const temporary = `${filePath}.${process.pid}.${Date.now()}.tmp`;
+  try { const fd = openSync(temporary, constants.O_WRONLY | constants.O_CREAT | constants.O_EXCL | constants.O_NOFOLLOW, 0o600); try { writeFileSync(fd, data); } finally { closeSync(fd); } renameSync(temporary, filePath); }
+  finally { if (existsSync(temporary)) unlinkSync(temporary); }
+}
+
+function loadStaticAssets() {
+  brandLogoDataUri ??= `data:image/png;base64,${readRegularFile(brandLogoPath).toString('base64')}`;
+  templateCatalog ??= JSON.parse(readRegularFile(path.join(root, templateCatalogRelativePath), 'utf8'));
+  defaultTemplateSequence ??= templateCatalog.packs.balanced;
+}
+
+function readPlan(relativePath) {
+  return JSON.parse(readRegularFile(repositoryPath(relativePath), 'utf8'));
+}
+
+export function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+export function stripCueTags(value) {
+  let result = '';
+  for (let index = 0; index < String(value).length;) {
+    if (value[index] !== '<') { result += value[index++]; continue; }
+    let cursor = index + 1;
+    let quote = '';
+    for (; cursor < value.length; cursor += 1) {
+      const character = value[cursor];
+      if (quote) { if (character === quote) quote = ''; }
+      else if (character === '"' || character === "'") quote = character;
+      else if (character === '>') break;
+    }
+    if (cursor === value.length) { result += value.slice(index); break; }
+    index = cursor + 1;
+  }
+  return result;
 }
 
 function wrapWords(text, limit) {
@@ -341,7 +396,7 @@ function writeFrame(plan, output, scene, index, outputDir) {
 </svg>
 `;
   const framePath = path.join(outputDir, 'frames', `scene-${String(index + 1).padStart(2, '0')}.svg`);
-  writeFileSync(framePath, svg);
+  atomicWrite(framePath, svg);
   return framePath;
 }
 
@@ -382,7 +437,7 @@ function writeThumbnail(plan, output, thumbnail, index, outputDir) {
 </svg>
 `;
   const thumbnailPath = path.join(outputDir, 'thumbnails', `thumbnail-${String(index + 1).padStart(2, '0')}.svg`);
-  writeFileSync(thumbnailPath, svg);
+  atomicWrite(thumbnailPath, svg);
   return thumbnailPath;
 }
 
@@ -400,7 +455,7 @@ function writeStoryboard(plan, output, outputDir, framePaths, thumbnailPaths) {
       <small>${scene.durationSeconds}s</small>
     </article>`;
   }).join('\n');
-  writeFileSync(path.join(outputDir, 'storyboard.html'), `<!doctype html>
+  atomicWrite(path.join(outputDir, 'storyboard.html'), `<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -435,12 +490,12 @@ function writeCaptions(plan, outputDir) {
     return `${index + 1}\n${srtTime(start)} --> ${srtTime(cursor)}\n${scene.title} ${scene.body}\n`;
   });
   const captionsPath = path.join(outputDir, 'captions.srt');
-  writeFileSync(captionsPath, `${blocks.join('\n')}\n`);
+  atomicWrite(captionsPath, `${blocks.join('\n')}\n`);
   return captionsPath;
 }
 
 function parseSrt(filePath) {
-  return readFileSync(filePath, 'utf8')
+  return readRegularFile(filePath, 'utf8')
     .trim()
     .split(/\r?\n\s*\r?\n/)
     .map((block) => block.split(/\r?\n/))
@@ -451,7 +506,7 @@ function parseSrt(filePath) {
       return {
         start: parseSrtTime(start),
         end: parseSrtTime(end),
-        text: lines.slice(timingIndex + 1).join(' ').replaceAll(/<[^>]+>/g, '').trim(),
+        text: stripCueTags(lines.slice(timingIndex + 1).join(' ')).trim(),
       };
     })
     .filter((cue) => cue?.text && cue.end > cue.start);
@@ -505,7 +560,7 @@ function writeProductionCaptions(sourcePath, normalizedSrtPath, assPath, output,
   if (!cues.length) throw new Error(`no production caption cues found in ${sourcePath}`);
 
   const srt = cues.map((cue, index) => `${index + 1}\n${srtTime(cue.start)} --> ${srtTime(cue.end)}\n${cue.text}\n`).join('\n');
-  writeFileSync(normalizedSrtPath, `${srt}\n`);
+  atomicWrite(normalizedSrtPath, `${srt}\n`);
 
   const events = cues.map((cue) => {
     const text = cue.text.replaceAll('{', '\\{').replaceAll('}', '\\}');
@@ -526,7 +581,7 @@ Style: Default,DejaVu Sans,${spec.fontSize},&H00FFFFFF,&H00FFFFFF,&H00101824,&H0
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 ${events}
 `;
-  writeFileSync(assPath, ass);
+  atomicWrite(assPath, ass);
   return cues.length;
 }
 
@@ -535,7 +590,7 @@ function writeVoiceover(plan, outputDir) {
     .map((scene, index) => `${index + 1}. ${scene.narration ?? `${scene.title} ${scene.body}`}`)
     .join('\n\n');
   const voiceoverPath = path.join(outputDir, 'voiceover-script.txt');
-  writeFileSync(voiceoverPath, `${script}\n`);
+  atomicWrite(voiceoverPath, `${script}\n`);
   return voiceoverPath;
 }
 
@@ -554,7 +609,7 @@ function writeMetadata(plan, output, outputDir) {
     humanReviewRequired: plan.humanReviewRequired,
     aiDisclosureRequired: plan.aiDisclosureRequired,
   };
-  writeFileSync(path.join(outputDir, 'youtube-metadata.json'), `${JSON.stringify(metadata, null, 2)}\n`);
+  atomicWrite(path.join(outputDir, 'youtube-metadata.json'), `${JSON.stringify(metadata, null, 2)}\n`);
 }
 
 function hasCommand(name) {
@@ -808,14 +863,14 @@ function renderOutput(plan, output, baseOutDir, args) {
   writeMetadata(plan, output, outputDir);
 
   const sharedDir = path.join(baseOutDir, 'shared');
-  const voiceoverPath = args.voiceover ? path.resolve(root, args.voiceover) : path.join(sharedDir, 'voiceover.mp3');
+  const voiceoverPath = args.voiceover ? repositoryPath(args.voiceover) : path.join(sharedDir, 'voiceover.mp3');
   const productDemoPath = args.productDemo
-    ? path.resolve(root, args.productDemo)
+    ? repositoryPath(args.productDemo)
     : path.join(sharedDir, productDemoFileName(output));
-  const humanBrollPath = args.humanBroll ? path.resolve(root, args.humanBroll) : path.join(sharedDir, 'human-broll.mp4');
-  if (!voiceoverPath.startsWith(root) || !productDemoPath.startsWith(root) || !humanBrollPath.startsWith(root)) {
-    throw new Error('production media paths must stay inside the repository');
-  }
+  const humanBrollPath = args.humanBroll ? repositoryPath(args.humanBroll) : path.join(sharedDir, 'human-broll.mp4');
+  if (args.voiceover) validateRegularFile(voiceoverPath);
+  if (args.productDemo) validateRegularFile(productDemoPath);
+  if (args.humanBroll) validateRegularFile(humanBrollPath);
 
   const result = {
     id: output.id,
@@ -871,19 +926,19 @@ function writeManifest(plan, outDir, outputs) {
     outputs,
   };
   const manifestPath = path.join(outDir, 'manifest.json');
-  writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  atomicWrite(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
   return manifestPath;
 }
 
 function main() {
+  loadStaticAssets();
   const args = parseArgs(process.argv.slice(2));
   execFileSync(process.execPath, ['scripts/video-plan-check.mjs', '--plan', args.plan], {
     cwd: root,
     stdio: 'inherit',
   });
   const plan = readPlan(args.plan);
-  const outDir = path.resolve(root, args.outDir || `video/dist/${plan.id}`);
-  if (!outDir.startsWith(root)) throw new Error('--out-dir must stay inside the repository');
+  const outDir = repositoryPath(args.outDir || `video/dist/${plan.id}`, { forWrite: true });
   mkdirSync(outDir, { recursive: true });
 
   const outputs = resolveOutputs(plan, args.variant).map((output) => renderOutput(plan, output, outDir, args));
@@ -898,4 +953,4 @@ function main() {
   process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();

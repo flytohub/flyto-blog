@@ -2,10 +2,21 @@
 
 # Scripts Source Reference 3
 
-Source-backed contracts for **38 declarations**.
+Source-backed contracts for **49 declarations**.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `main()` | Implements main. | [scripts/video-from-post.mjs:350](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-from-post.mjs#L350) |
+| constant | `root` | Defines the root source-of-truth value. | [scripts/video-plan-check.mjs:5](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L5) |
+| constant | `defaultPlanDir` | Defines the default plan dir source-of-truth value. | [scripts/video-plan-check.mjs:6](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L6) |
+| constant | `brandLogoRelativePath` | Defines the brand logo relative path source-of-truth value. | [scripts/video-plan-check.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L7) |
+| constant | `templateCatalog` | Defines the template catalog source-of-truth value. | [scripts/video-plan-check.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L8) |
+| constant | `stockCatalog` | Defines the stock catalog source-of-truth value. | [scripts/video-plan-check.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L9) |
+| constant | `allowedHosts` | Defines the allowed hosts source-of-truth value. | [scripts/video-plan-check.mjs:10](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L10) |
+| constant | `supportedFormats` | Defines the supported formats source-of-truth value. | [scripts/video-plan-check.mjs:21](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L21) |
+| constant | `supportedAspectRatios` | Defines the supported aspect ratios source-of-truth value. | [scripts/video-plan-check.mjs:22](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L22) |
+| constant | `supportedPlatforms` | Defines the supported platforms source-of-truth value. | [scripts/video-plan-check.mjs:23](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L23) |
+| constant | `supportedTemplates` | Defines the supported templates source-of-truth value. | [scripts/video-plan-check.mjs:24](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L24) |
 | constant | `supportedDemoActions` | Defines the supported demo actions source-of-truth value. | [scripts/video-plan-check.mjs:25](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L25) |
 | constant | `failures` | Defines the failures source-of-truth value. | [scripts/video-plan-check.mjs:26](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L26) |
 | constant | `legacyBrandPattern` | Defines the legacy brand pattern source-of-truth value. | [scripts/video-plan-check.mjs:27](https://github.com/flytohub/flyto-blog/blob/main/scripts/video-plan-check.mjs#L27) |

@@ -119,10 +119,13 @@ Source-backed contracts for **220 declarations**.
 | constant | `catalogPath` | Defines the catalog path source-of-truth value. | [scripts/fetch-video-assets.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L9) |
 | constant | `maxAssetBytes` | Defines the max asset bytes source-of-truth value. | [scripts/fetch-video-assets.mjs:10](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L10) |
 | function | `parseArgs(argv)` | Transforms parse args. | [scripts/fetch-video-assets.mjs:12](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L12) |
-| function | `insideRoot(relativePath)` | Implements inside root. | [scripts/fetch-video-assets.mjs:24](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L24) |
-| function | `hasCommand(name)` | Validates has command. | [scripts/fetch-video-assets.mjs:30](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L30) |
-| function | `digest(buffer)` | Implements digest. | [scripts/fetch-video-assets.mjs:39](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L39) |
-| function | `main()` | Implements main. | [scripts/fetch-video-assets.mjs:43](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L43) |
+| function | `repositoryPath(relativePath, { forWrite = false })` | Implements repository path. | [scripts/fetch-video-assets.mjs:24](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L24) |
+| function | `readRegularFile(filePath, encoding)` | Retrieves read regular file. | [scripts/fetch-video-assets.mjs:41](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L41) |
+| function | `atomicWrite(filePath, data)` | Implements atomic write. | [scripts/fetch-video-assets.mjs:50](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L50) |
+| function | `hasCommand(name)` | Validates has command. | [scripts/fetch-video-assets.mjs:60](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L60) |
+| function | `digest(buffer)` | Implements digest. | [scripts/fetch-video-assets.mjs:69](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L69) |
+| function | `isTrustedAssetUrl(value)` | Validates is trusted asset url. | [scripts/fetch-video-assets.mjs:73](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L73) |
+| function | `main()` | Implements main. | [scripts/fetch-video-assets.mjs:82](https://github.com/flytohub/flyto-blog/blob/main/scripts/fetch-video-assets.mjs#L82) |
 | constant | `root` | Defines the root source-of-truth value. | [scripts/generate-discovery-feeds.mjs:7](https://github.com/flytohub/flyto-blog/blob/main/scripts/generate-discovery-feeds.mjs#L7) |
 | constant | `postsDir` | Defines the posts dir source-of-truth value. | [scripts/generate-discovery-feeds.mjs:8](https://github.com/flytohub/flyto-blog/blob/main/scripts/generate-discovery-feeds.mjs#L8) |
 | constant | `publicDir` | Defines the public dir source-of-truth value. | [scripts/generate-discovery-feeds.mjs:9](https://github.com/flytohub/flyto-blog/blob/main/scripts/generate-discovery-feeds.mjs#L9) |
@@ -215,14 +218,11 @@ Source-backed contracts for **220 declarations**.
 | constant | `aspectSpecs` | Defines the aspect specs source-of-truth value. | [scripts/render-video.mjs:15](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L15) |
 | function | `parseArgs(argv)` | Transforms parse args. | [scripts/render-video.mjs:51](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L51) |
 | function | `printHelp()` | Implements print help. | [scripts/render-video.mjs:82](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L82) |
-| function | `readPlan(relativePath)` | Retrieves read plan. | [scripts/render-video.mjs:91](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L91) |
-| function | `escapeHtml(value)` | Implements escape html. | [scripts/render-video.mjs:97](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L97) |
-| function | `wrapWords(text, limit)` | Implements wrap words. | [scripts/render-video.mjs:105](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L105) |
-| function | `sourceLabel(value)` | Implements source label. | [scripts/render-video.mjs:122](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L122) |
-| function | `pad(value)` | Implements pad. | [scripts/render-video.mjs:130](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L130) |
-| function | `srtTime(seconds)` | Implements srt time. | [scripts/render-video.mjs:134](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L134) |
-| function | `parseSrtTime(value)` | Transforms parse srt time. | [scripts/render-video.mjs:143](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L143) |
-| function | `assTime(seconds)` | Implements ass time. | [scripts/render-video.mjs:149](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L149) |
-| function | `outputSpec(output)` | Implements output spec. | [scripts/render-video.mjs:158](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L158) |
-| function | `fallbackOutputs(plan)` | Implements fallback outputs. | [scripts/render-video.mjs:168](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L168) |
-| function | `resolveOutputs(plan, variant)` | Retrieves resolve outputs. | [scripts/render-video.mjs:180](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L180) |
+| function | `repositoryPath(relativePath, { forWrite = false })` | Implements repository path. | [scripts/render-video.mjs:91](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L91) |
+| function | `readRegularFile(filePath, encoding)` | Retrieves read regular file. | [scripts/render-video.mjs:104](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L104) |
+| function | `validateRegularFile(filePath)` | Validates validate regular file. | [scripts/render-video.mjs:110](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L110) |
+| function | `atomicWrite(filePath, data)` | Implements atomic write. | [scripts/render-video.mjs:116](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L116) |
+| function | `loadStaticAssets()` | Retrieves load static assets. | [scripts/render-video.mjs:123](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L123) |
+| function | `readPlan(relativePath)` | Retrieves read plan. | [scripts/render-video.mjs:129](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L129) |
+| function | `escapeHtml(value)` | Implements escape html. | [scripts/render-video.mjs:133](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L133) |
+| function | `stripCueTags(value)` | Transforms strip cue tags. | [scripts/render-video.mjs:142](https://github.com/flytohub/flyto-blog/blob/main/scripts/render-video.mjs#L142) |
