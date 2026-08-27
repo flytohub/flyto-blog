@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vitepress dev",
-    "test": "node scripts/audit-blog-source.mjs && node scripts/audit-social-publisher.mjs && npm run video:qa",
+    "test": "node --test scripts/security-regressions.test.mjs && node scripts/audit-blog-source.mjs && node scripts/audit-social-publisher.mjs && npm run video:qa",
     "lint": "node --check scripts/audit-blog-source.mjs && node --check scripts/audit-social-publisher.mjs && node --check scripts/social-publish.mjs && node --check scripts/video-plan-check.mjs && node --check scripts/video-qa.mjs && node --check scripts/video-from-post.mjs && node --check scripts/capture-product-demo.mjs && node --check scripts/fetch-video-assets.mjs && node --check scripts/synthesize-voiceover.mjs && node --check scripts/video-artifact-qa.mjs && node --check scripts/render-video.mjs && node --check scripts/audit-seo-surface.mjs && node --check scripts/seo-score.mjs && node --check scripts/seo-manage.mjs && node --check scripts/generate-discovery-feeds.mjs && node --check scripts/check-public-links.mjs && node --check scripts/list-external-links.mjs && node --check scripts/generate-documentation-reference.mjs && node --check scripts/check-documentation.mjs",
     "build": "npm run seo:discovery && vitepress build",
     "preview": "vitepress preview",

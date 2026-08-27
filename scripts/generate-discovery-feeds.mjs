@@ -1,6 +1,6 @@
-import { deflateSync } from 'node:zlib';
-import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { deflateSync, inflateSync } from 'node:zlib';
+import { createHash, randomBytes } from 'node:crypto';
+import { closeSync, constants, existsSync, lstatSync, mkdirSync, openSync, readFileSync, readdirSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -110,11 +110,109 @@ function postRecords() {
 
 function writeIfChanged(filePath, content, encoding = 'utf8') {
   const binary = Buffer.isBuffer(content);
+  if (existsSync(filePath) && lstatSync(filePath).isSymbolicLink()) throw new Error(`refusing to replace symbolic link: ${filePath}`);
   const previous = existsSync(filePath) ? readFileSync(filePath, binary ? undefined : encoding) : null;
   if (binary ? Buffer.isBuffer(previous) && previous.equals(content) : previous === content) return false;
   mkdirSync(path.dirname(filePath), { recursive: true });
-  writeFileSync(filePath, content, binary ? undefined : encoding);
+  const temporary = path.join(path.dirname(filePath), `.${path.basename(filePath)}.${process.pid}.${randomBytes(12).toString('hex')}.tmp`);
+  let descriptor;
+  try {
+    descriptor = openSync(temporary, constants.O_CREAT | constants.O_EXCL | constants.O_WRONLY | constants.O_NOFOLLOW, 0o600);
+    writeFileSync(descriptor, content, binary ? undefined : encoding);
+    closeSync(descriptor);
+    descriptor = undefined;
+    renameSync(temporary, filePath);
+  } finally {
+    if (descriptor !== undefined) closeSync(descriptor);
+    try { unlinkSync(temporary); } catch (error) { if (error.code !== 'ENOENT') throw error; }
+  }
   return true;
+}
+
+const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+const maxPngBytes = 16 * 1024 * 1024;
+const maxPngPixels = 1200 * 630;
+const maxPngCompressedBytes = 8 * 1024 * 1024;
+
+function decodeRgbaPng(buffer) {
+  if (!Buffer.isBuffer(buffer) || buffer.length > maxPngBytes || !buffer.subarray(0, 8).equals(pngSignature)) throw new Error('invalid PNG signature or size');
+  let offset = 8;
+  let width = 0;
+  let height = 0;
+  let sawHeader = false;
+  let sawEnd = false;
+  const compressed = [];
+  let compressedLength = 0;
+  while (offset < buffer.length) {
+    if (offset + 12 > buffer.length) throw new Error('truncated PNG chunk');
+    const length = buffer.readUInt32BE(offset);
+    const end = offset + 12 + length;
+    if (end > buffer.length) throw new Error('truncated PNG data');
+    const type = buffer.toString('ascii', offset + 4, offset + 8);
+    const data = buffer.subarray(offset + 8, offset + 8 + length);
+    if (crc32(buffer.subarray(offset + 4, offset + 8 + length)) !== buffer.readUInt32BE(offset + 8 + length)) throw new Error('invalid PNG CRC');
+    if (!sawHeader && type !== 'IHDR') throw new Error('PNG header must be first');
+    if (type === 'IHDR') {
+      if (sawHeader || length !== 13) throw new Error('invalid PNG header');
+      width = data.readUInt32BE(0);
+      height = data.readUInt32BE(4);
+      if (!width || !height || width * height > maxPngPixels || data[8] !== 8 || data[9] !== 6 || data[10] || data[11] || data[12]) throw new Error('unsupported or oversized PNG');
+      sawHeader = true;
+    } else if (type === 'IDAT') {
+      if (!sawHeader || sawEnd) throw new Error('misplaced PNG image data');
+      compressedLength += length;
+      if (compressedLength > maxPngCompressedBytes) throw new Error('oversized PNG image data');
+      compressed.push(data);
+    } else if (type === 'IEND') {
+      if (length || !compressed.length) throw new Error('invalid PNG end');
+      sawEnd = true;
+      if (end !== buffer.length) throw new Error('trailing PNG data');
+    } else if ((type.charCodeAt(0) & 0x20) === 0) throw new Error(`unsupported critical PNG chunk: ${type}`);
+    offset = end;
+  }
+  if (!sawHeader || !sawEnd) throw new Error('incomplete PNG');
+  const rowBytes = width * 4;
+  const inflatedLength = (rowBytes + 1) * height;
+  const raw = inflateSync(Buffer.concat(compressed, compressedLength), { maxOutputLength: inflatedLength });
+  if (raw.length !== inflatedLength) throw new Error('invalid inflated PNG length');
+  const pixels = Buffer.alloc(rowBytes * height);
+  for (let y = 0; y < height; y += 1) {
+    const filter = raw[y * (rowBytes + 1)];
+    if (filter > 4) throw new Error('invalid PNG filter');
+    for (let x = 0; x < rowBytes; x += 1) {
+      const source = raw[y * (rowBytes + 1) + x + 1];
+      const left = x >= 4 ? pixels[y * rowBytes + x - 4] : 0;
+      const above = y ? pixels[(y - 1) * rowBytes + x] : 0;
+      const upperLeft = y && x >= 4 ? pixels[(y - 1) * rowBytes + x - 4] : 0;
+      let predictor = 0;
+      if (filter === 1) predictor = left;
+      else if (filter === 2) predictor = above;
+      else if (filter === 3) predictor = Math.floor((left + above) / 2);
+      else if (filter === 4) {
+        const p = left + above - upperLeft;
+        const distances = [Math.abs(p - left), Math.abs(p - above), Math.abs(p - upperLeft)];
+        predictor = distances[0] <= distances[1] && distances[0] <= distances[2] ? left : distances[1] <= distances[2] ? above : upperLeft;
+      }
+      pixels[y * rowBytes + x] = (source + predictor) & 0xff;
+    }
+  }
+  return { width, height, pixels };
+}
+
+function pngsAreEquivalent(left, right) {
+  try {
+    const a = decodeRgbaPng(left);
+    const b = decodeRgbaPng(right);
+    return a.width === b.width && a.height === b.height && a.pixels.equals(b.pixels);
+  } catch {
+    return false;
+  }
+}
+
+function writePngIfChanged(filePath, content) {
+  if (existsSync(filePath) && lstatSync(filePath).isSymbolicLink()) throw new Error(`refusing to replace symbolic link: ${filePath}`);
+  if (existsSync(filePath) && pngsAreEquivalent(readFileSync(filePath), content)) return false;
+  return writeIfChanged(filePath, content);
 }
 
 function rss(posts) {
@@ -372,8 +470,10 @@ function main() {
     [path.join(publicDir, 'discovery-manifest.json'), manifest(posts)],
   ];
   let changed = outputs.filter(([filePath, content]) => writeIfChanged(filePath, content)).length;
-  if (writeIfChanged(path.join(publicDir, 'og-image.png'), ogImagePng())) changed += 1;
+  if (writePngIfChanged(path.join(publicDir, 'og-image.png'), ogImagePng())) changed += 1;
   console.log(`SEO discovery files ready: ${outputs.length + 1} outputs, ${changed} changed`);
 }
 
-main();
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
+
+export { decodeRgbaPng, ogImagePng, pngsAreEquivalent, writeIfChanged, writePngIfChanged };

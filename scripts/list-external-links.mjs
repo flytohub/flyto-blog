@@ -1,12 +1,10 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const outputPath = path.resolve(root, process.argv[2] ?? '.external-links.txt');
 const ownHosts = new Set(['blog.flyto2.com']);
 const skipDirs = new Set(['.git', '.flyto-index', '.pytest_cache', '.vitepress', 'node_modules']);
-const links = new Set();
 
 function walk(dir) {
   if (!existsSync(dir)) return [];
@@ -31,9 +29,33 @@ function stripCodeBlocks(value) {
     .replace(/~~~[\s\S]*?~~~/g, '');
 }
 
+export function isExistingSameRepositorySourceUrl(rawUrl, checkoutRoot = root) {
+  const match = rawUrl.match(/^https:\/\/github\.com\/flytohub\/flyto-blog\/blob\/main\/([^?#]+)(?:#[^?]*)?$/);
+  if (!match) return false;
+
+  let decodedPath;
+  try {
+    decodedPath = decodeURIComponent(match[1]);
+  } catch {
+    return false;
+  }
+
+  const realRoot = realpathSync(checkoutRoot);
+  const candidate = path.resolve(realRoot, decodedPath);
+  if (candidate === realRoot || !candidate.startsWith(`${realRoot}${path.sep}`)) return false;
+
+  try {
+    const realCandidate = realpathSync(candidate);
+    return realCandidate.startsWith(`${realRoot}${path.sep}`) && statSync(realCandidate).isFile();
+  } catch {
+    return false;
+  }
+}
+
 function shouldSkipUrl(rawUrl, parsed) {
   if (rawUrl.includes('[[') || rawUrl.includes(']]')) return true;
   if (ownHosts.has(parsed.host)) return true;
+  if (isExistingSameRepositorySourceUrl(rawUrl)) return true;
 
   const host = parsed.hostname.toLowerCase();
   if (host === 'localhost' || host === '127.0.0.1' || host === '::1') return true;
@@ -50,17 +72,23 @@ function shouldSkipUrl(rawUrl, parsed) {
   return false;
 }
 
-for (const filePath of walk(root)) {
-  if (filePath === outputPath) continue;
-  if (!filePath.endsWith('.md') && !filePath.endsWith('.txt')) continue;
-  const content = stripCodeBlocks(readFileSync(filePath, 'utf8'));
-  for (const match of content.matchAll(/https?:\/\/[^\s<>"'`]+/g)) {
-    const url = cleanUrl(match[0]);
-    const parsed = new URL(url);
-    if (!shouldSkipUrl(url, parsed)) links.add(url);
+function main() {
+  const outputPath = path.resolve(root, process.argv[2] ?? '.external-links.txt');
+  const links = new Set();
+  for (const filePath of walk(root)) {
+    if (filePath === outputPath) continue;
+    if (!filePath.endsWith('.md') && !filePath.endsWith('.txt')) continue;
+    const content = stripCodeBlocks(readFileSync(filePath, 'utf8'));
+    for (const match of content.matchAll(/https?:\/\/[^\s<>"'`]+/g)) {
+      const url = cleanUrl(match[0]);
+      const parsed = new URL(url);
+      if (!shouldSkipUrl(url, parsed)) links.add(url);
+    }
   }
+
+  mkdirSync(path.dirname(outputPath), { recursive: true });
+  writeFileSync(outputPath, `${[...links].sort().join('\n')}\n`);
+  console.log(`wrote ${links.size} external links to ${path.relative(root, outputPath)}`);
 }
 
-mkdirSync(path.dirname(outputPath), { recursive: true });
-writeFileSync(outputPath, `${[...links].sort().join('\n')}\n`);
-console.log(`wrote ${links.size} external links to ${path.relative(root, outputPath)}`);
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main();
