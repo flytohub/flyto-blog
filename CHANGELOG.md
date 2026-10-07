@@ -13,6 +13,8 @@
 - Fixed the symlink-escape security regression test cleanup: it removed its
   directory symlink with `rmSync`, which throws `EISDIR` on Node 23+, failing
   the test and leaving the link in the checkout. It now uses `unlinkSync`.
+- Removed the README link to `flytohub/flyto-landing-page`, which is a private
+  repository and returned 404 to readers and to the SEO link gate.
 
 ### Added
 
