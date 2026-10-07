@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+### Fixed
+
+- Upgraded lockfile dependencies flagged high by `npm audit`: `vue` and
+  `@vue/*` 3.5.29 -> 3.5.43 (GHSA-g2v6-rqmx-r4w6, SSR attribute XSS),
+  `js-yaml` 3.15.1 -> 3.15.2 (GHSA-2883-xcg3-v3hh), and `source-map-js`
+  1.2.1 -> 1.2.2 (GHSA-68fv-2mgg-jv7q). `sprintf-js` (moderate,
+  GHSA-hp3w-g68c-fv3c, reached only through `gray-matter`'s front-matter
+  parser at build time) has no patched release and remains open.
+- Fixed the symlink-escape security regression test cleanup: it removed its
+  directory symlink with `rmSync`, which throws `EISDIR` on Node 23+, failing
+  the test and leaving the link in the checkout. It now uses `unlinkSync`.
+- Removed the README link to `flytohub/flyto-landing-page`, which is a private
+  repository and returned 404 to readers and to the SEO link gate.
+
 ### Added
 
 - Added the governed Flyto2 coding verification contract for pinned dependency

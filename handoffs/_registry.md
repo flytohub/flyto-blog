@@ -2,6 +2,7 @@
 
 | Date | Topic | File |
 | --- | --- | --- |
+| 2026-10-07 | Dependency audit fix | `2026-10-07-dependency-audit.md` |
 | 2026-07-23 | Source-backed blog documentation | `2026-07-23-source-backed-blog-documentation.md` |
 | 2026-07-21 | Human video production | `2026-07-21-human-video-production.md` |
 | 2026-07-18 | SEO discovery surfaces | `2026-07-18-seo-discovery-surfaces.md` |

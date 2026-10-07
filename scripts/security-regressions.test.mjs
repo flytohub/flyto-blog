@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -122,7 +122,7 @@ test('video write boundaries reject an existing-parent symlink escape', () => {
   try {
     for (const boundary of [assetPath, renderPath, postPath]) assert.throws(() => boundary(`${linkName}/output`, { forWrite: true }), /escape/i);
   } finally {
-    rmSync(linkPath);
+    unlinkSync(linkPath);
     rmSync(outside, { recursive: true });
   }
 });

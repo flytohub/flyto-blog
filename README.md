@@ -164,9 +164,8 @@ with an outline first.
 
 ## Related
 
-- [flyto2.com](https://flyto2.com)
+- [flyto2.com](https://flyto2.com) — product site
 - [flyto-docs](https://github.com/flytohub/flyto-docs) — product documentation (not essays)
-- [flyto-landing-page](https://github.com/flytohub/flyto-landing-page)
 - [flyto-indexer](https://github.com/flytohub/flyto-indexer) — code intelligence MCP for AI-assisted engineering
 - [Flyto2 community hub](https://flyto2.com/community/)
 
